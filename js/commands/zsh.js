@@ -856,8 +856,50 @@ const format = {
   },
 };
 
+// top command
+const top = {
+  name: 'top',
+  description: 'Display system processes',
+  usage: 'top',
+  aliases: ['htop'],
+
+  async execute(args, terminal) {
+    const processes = [
+      { pid: '1337', cpu: '99.9%', mem: '0.1%', name: 'chrome', desc: '(consuming your RAM since 2008)' },
+      { pid: '42', cpu: '47.3%', mem: '23.4%', name: 'node', desc: '(node_modules intensifies)' },
+      { pid: '666', cpu: '66.6%', mem: '6.6%', name: 'electron', desc: '(it\'s just chrome in disguise)' },
+      { pid: '404', cpu: '0.0%', mem: '0.0%', name: 'motivation', desc: '(not found)' },
+      { pid: '500', cpu: '12.3%', mem: '45.6%', name: 'vscode', desc: '(also chrome btw)' },
+      { pid: '200', cpu: '5.2%', mem: '1.2%', name: 'spotify', desc: '(surprise! also chrome)' },
+      { pid: '100', cpu: '0.1%', mem: '0.1%', name: 'terminal', desc: '(the only honest app)' },
+    ];
+
+    terminal.output.print('Processes - because everything is chrome nowadays', 'system');
+    terminal.output.newline();
+    terminal.output.print('  PID    %CPU   %MEM   COMMAND', 'info');
+    terminal.output.print('─'.repeat(50), 'system');
+
+    for (const p of processes) {
+      await new Promise(r => setTimeout(r, 150));
+      terminal.output.print(`  ${p.pid.padEnd(6)} ${p.cpu.padEnd(6)} ${p.mem.padEnd(6)} ${p.name} ${p.desc}`, 'normal');
+    }
+
+    terminal.output.newline();
+    terminal.output.print('Press q to quit... just kidding, this is a website.', 'system');
+
+    await new Promise(r => setTimeout(r, 800));
+    terminal.output.newline();
+    terminal.output.print('↑ Scrolling to top...', 'system');
+
+    await new Promise(r => setTimeout(r, 500));
+    terminal.output.container.scrollTo({ top: 0, behavior: 'smooth' });
+
+    return { success: true };
+  },
+};
+
 // Register all commands as fake (hidden from main help)
-[ls, cd, pwd, cat, rm, sudo, vim, nano, exit, whoami, date, echo, man, touch, mkdir, grep, uptime, su, git, npm, make, curl, ping, history, sl, cowsay, docker, format]
+[ls, cd, pwd, cat, rm, sudo, vim, nano, exit, whoami, date, echo, man, touch, mkdir, grep, uptime, su, git, npm, make, curl, ping, history, sl, cowsay, docker, format, top]
   .forEach(cmd => {
     cmd.fake = true;
     commandRegistry.register(cmd);
