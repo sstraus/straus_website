@@ -16,9 +16,9 @@
 /* Output area - scrollable */
 .terminal-output {
   flex: 1;
+  min-height: 0; /* Required for flex child with overflow */
   overflow-y: auto;
   overflow-x: hidden;
-  padding-bottom: 8px;
 }
 
 /* Single line of output */
@@ -26,6 +26,11 @@
   margin-bottom: var(--line-gap);
   white-space: pre-wrap;
   word-break: break-word;
+}
+
+/* Temporary padding during typing */
+.terminal-output.typing {
+  padding-bottom: 24px;
 }
 
 /* Input line at bottom */
@@ -157,7 +162,7 @@
 /* Divider line */
 .terminal-line--divider {
   color: var(--term-text-dim);
-  margin: 8px 0;
+  margin: 2px 0 6px;
 }
 
 /* Responsive */

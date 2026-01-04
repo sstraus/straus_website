@@ -16,6 +16,21 @@ export class OutputRenderer {
   }
 
   /**
+   * Scroll to bottom after layout is complete
+   * Uses double rAF to ensure DOM has been rendered
+   */
+  scrollAfterLayout() {
+    return new Promise(resolve => {
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          this.container.scrollTop = this.container.scrollHeight;
+          resolve();
+        });
+      });
+    });
+  }
+
+  /**
    * Print a line of text (instant)
    * @param {string} text
    * @param {string} type - 'normal', 'system', 'error', 'success', 'info', 'command'
@@ -26,7 +41,6 @@ export class OutputRenderer {
     }, text);
 
     this.container.appendChild(line);
-    this.scrollToEnd();
   }
 
   /**
@@ -52,10 +66,17 @@ export class OutputRenderer {
       className: `terminal-line terminal-line--${type}`,
     });
 
+    // Add typing class for extra padding during animation
+    this.container.classList.add('typing');
+
     this.container.appendChild(line);
+    this.container.scrollTo({ top: 999999, behavior: 'instant' });
 
     await this.typewriter.type(text, line, options);
-    this.scrollToEnd();
+
+    // Remove typing class after done
+    this.container.classList.remove('typing');
+    this.container.scrollTo({ top: 999999, behavior: 'instant' });
   }
 
   /**
@@ -82,7 +103,6 @@ export class OutputRenderer {
     );
 
     this.container.appendChild(line);
-    this.scrollToEnd();
   }
 
   /**
@@ -94,7 +114,6 @@ export class OutputRenderer {
     const wrapper = createElement('div', { className });
     wrapper.innerHTML = html;
     this.container.appendChild(wrapper);
-    this.scrollToEnd();
   }
 
   /**
@@ -109,7 +128,6 @@ export class OutputRenderer {
     const container = createElement('div', { className });
     container.innerHTML = lines.join('\n');
     this.container.appendChild(container);
-    this.scrollToEnd();
   }
 
   /**
@@ -129,7 +147,6 @@ export class OutputRenderer {
     wrapper.appendChild(ascii);
     wrapper.appendChild(img);
     this.container.appendChild(wrapper);
-    this.scrollToEnd();
   }
 
   /**
@@ -157,7 +174,7 @@ export class OutputRenderer {
     }
 
     this.container.appendChild(container);
-    this.scrollToEnd();
+    this.container.scrollTo({ top: 999999, behavior: 'instant' });
   }
 
   /**
@@ -187,7 +204,7 @@ export class OutputRenderer {
    * Scroll to the end of output
    */
   scrollToEnd() {
-    scrollToBottom(this.container);
+    this.container.scrollTo({ top: 999999, behavior: 'instant' });
   }
 
   /**

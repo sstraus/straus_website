@@ -1,8 +1,16 @@
 # straus.it - Personal Terminal Website
 
+**Current Version:** 1.1.0
+
 ## Project Overview
 
 Personal portfolio website simulating a Mac terminal running "straus-code" CLI. Built with vanilla JavaScript and ES6 modules.
+
+## IMPORTANT: On Every Change
+
+When making changes to the website:
+1. **Update `sitemap.xml`** - Change `<lastmod>` dates for affected pages
+2. **Update version** - Increment version number above and in `index.html` if significant change
 
 ## Deployment
 
@@ -20,7 +28,7 @@ Deploys to: `stefano@100.86.23.27:/volume1/web/me`
 3. Fast, no rsync needed
 
 ### Files deployed:
-- `index.html`, `favicon.svg`
+- `index.html`, `favicon.svg`, `robots.txt`, `sitemap.xml`
 - `css/`, `js/`, `content/`, `img/`, `vendor/`, `assets/`
 
 ## Local Development

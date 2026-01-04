@@ -40,14 +40,7 @@ Anthropic is the leader here—very expensive but absolutely the way to go for r
 ## What I've Built
 
 During this period, I have built a wide range of things:
-
-- Personal tools
-- Small internal products
-- Analytical systems
-- Automations
-- Interfaces
-- Prototypes
-- A full application layer that one of my teams is now adapting for production readiness
+Personal tools, Small internal products, Analytical systems, Automations, Interfaces, Prototypes to a full application layer that one of my teams is now adapting for production readiness
 
 Some of these projects reached production. Others were abandoned without hesitation. **Fast discard is part of the process.** The value is not the artifact itself, but the understanding accumulated along the way.
 
@@ -140,6 +133,4 @@ In the end, what matters is reducing friction between an idea and its realizatio
 
 That is how I am relearning how to work with code.
 
----
-
-*Originally published on [Medium](https://medium.com/@stefanostraus/building-software-without-writing-it-first-59cf6c71337b). Feel free to [reach out on X](https://x.com/StefanoStraus) – I'd love to hear your thoughts.*
+*Originally published on [Medium](https://medium.com/@stefanostraus/building-software-without-writing-it-first-59cf6c71337b).*

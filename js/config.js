@@ -4,9 +4,9 @@
 export const config = {
   // Typing animation speeds (ms per character)
   typeSpeed: {
-    fast: 15,
-    normal: 30,
-    slow: 50,
+    fast: 7,
+    normal: 15,
+    slow: 25,
   },
 
   // Delay durations (ms)
@@ -28,13 +28,15 @@ export const config = {
     content: '/content',
     blog: '/content/blog',
     blogIndex: '/content/blog/index.json',
+    archiveIndex: '/content/blog/wordpress-archive/index.json',
+    archive: '/content/blog/wordpress-archive',
   },
 
   // Site info
   site: {
     name: 'straus.it',
     author: 'Stefano Straus',
-    version: '1.0.0',
+    version: '1.1.3',
   },
 
   // Debug mode

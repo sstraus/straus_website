@@ -1,6 +1,6 @@
 ---
 title: Custom Slash Commands for Claude Code
-date: 2025-12-25
+date: 2025-10-11
 tags: [ai, claude-code, productivity, automation]
 ---
 
@@ -214,7 +214,3 @@ Commands transform Claude Code from a chatbot into a **workflow automation tool*
 The best commands encode your team's best practices. They ensure consistency, reduce errors, and let you focus on the actual problem instead of the process.
 
 Start with `/fix` and `/prime`. Add more as patterns emerge.
-
----
-
-*Share your favorite commands with me on [X](https://x.com/StefanoStraus).*

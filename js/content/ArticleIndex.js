@@ -7,7 +7,9 @@ import { config } from '../config.js';
 class ArticleIndexClass {
   constructor() {
     this.articles = null;
+    this.archiveArticles = null;
     this.loaded = false;
+    this.archiveLoaded = false;
   }
 
   /**
@@ -108,12 +110,57 @@ class ArticleIndexClass {
   }
 
   /**
+   * Load archive articles
+   * @returns {Promise<void>}
+   */
+  async loadArchive() {
+    if (this.archiveLoaded) return;
+
+    try {
+      const data = await ContentLoader.loadJson(config.paths.archiveIndex);
+      this.archiveArticles = (data.articles || []).map(a => ({
+        ...a,
+        isArchive: true,
+      }));
+      this.archiveLoaded = true;
+    } catch (err) {
+      console.error('Failed to load archive index:', err);
+      this.archiveArticles = [];
+      this.archiveLoaded = true;
+    }
+  }
+
+  /**
+   * Get all archive articles
+   * @returns {Promise<Array>}
+   */
+  async getArchive() {
+    await this.loadArchive();
+    return this.archiveArticles.sort((a, b) => {
+      return new Date(b.date) - new Date(a.date);
+    });
+  }
+
+  /**
+   * Find archive article by slug
+   * @param {string} slug
+   * @returns {Promise<Object|null>}
+   */
+  async findArchiveBySlug(slug) {
+    await this.loadArchive();
+    return this.archiveArticles.find(a => a.slug === slug) || null;
+  }
+
+  /**
    * Refresh the index (clear cache and reload)
    */
   async refresh() {
     this.loaded = false;
+    this.archiveLoaded = false;
     this.articles = null;
+    this.archiveArticles = null;
     ContentLoader.invalidate(config.paths.blogIndex);
+    ContentLoader.invalidate(config.paths.archiveIndex);
     await this.load();
   }
 }

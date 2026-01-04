@@ -3,18 +3,66 @@
     {
       "slug": "welcome-to-my-terminal",
       "title": "Welcome to My Terminal",
-      "date": "2025-01-04",
+      "date": "2026-01-04",
       "description": "An introduction to this unusual website and why I built it this way",
       "tags": ["meta", "personal"],
-      "file": "2025-01-04-welcome-to-my-terminal.md"
+      "file": "2026-01-04-welcome-to-my-terminal.md"
     },
     {
       "slug": "building-software-without-writing-it-first",
-      "title": "Building Software with AI Assistants",
-      "date": "2025-01-01",
-      "description": "Twelve Months Inside AI-Driven Development to enhance development workflows",
-      "tags": ["ai", "development", "tools"],
-      "file": "2025-01-01-building-software-without-writing-it-first.md"
+      "title": "Building Software Without Writing It First",
+      "date": "2026-01-01",
+      "description": "Twelve Months Inside AI-Driven Development",
+      "tags": ["ai", "development", "llm", "vibe-coding"],
+      "file": "2026-01-01-building-software-without-writing-it-first.md"
+    },
+    {
+      "slug": "claude-code-setup",
+      "title": "My Claude Code Setup",
+      "date": "2025-11-01",
+      "description": "A complete walkthrough of how I configure Claude Code",
+      "tags": ["ai", "claude-code", "setup", "development"],
+      "file": "2025-11-01-claude-code-setup.md"
+    },
+    {
+      "slug": "claude-code-commands",
+      "title": "Custom Slash Commands for Claude Code",
+      "date": "2025-10-11",
+      "description": "Building productivity workflows with custom slash commands",
+      "tags": ["ai", "claude-code", "productivity", "automation"],
+      "file": "2025-10-11-claude-code-commands.md"
+    },
+    {
+      "slug": "settings-sentry",
+      "title": "SettingsSentry - Never Lose Your macOS Settings Again",
+      "date": "2025-08-15",
+      "description": "A lightweight tool to backup and restore macOS application settings",
+      "tags": ["macos", "tools", "backup", "open-source"],
+      "file": "2025-08-15-settings-sentry.md"
+    },
+    {
+      "slug": "my-macos-dev-toolkit",
+      "title": "My macOS Developer Toolkit",
+      "date": "2025-07-20",
+      "description": "A curated collection of Homebrew tools that power my daily workflow",
+      "tags": ["macos", "tools", "homebrew", "productivity", "development"],
+      "file": "2025-07-20-my-macos-dev-toolkit.md"
+    },
+    {
+      "slug": "finicky-url-routing",
+      "title": "Finicky - Take Control of Your URLs",
+      "date": "2025-02-13",
+      "description": "How I use Finicky to route URLs, strip tracking, and bypass paywalls",
+      "tags": ["macos", "tools", "productivity", "automation"],
+      "file": "2025-02-13-finicky-url-routing.md"
+    },
+    {
+      "slug": "bland-ai-call-centers",
+      "title": "Bland.ai - The End of Call Centers As We Know Them",
+      "date": "2024-04-26",
+      "description": "AI phone operators that sound human are about to transform an industry",
+      "tags": ["ai", "automation", "future-of-work"],
+      "file": "2024-04-26-bland-ai-call-centers.md"
     }
   ]
 }

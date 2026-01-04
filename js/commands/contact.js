@@ -4,6 +4,7 @@
 import { commandRegistry } from './CommandRegistry.js';
 import { ContentLoader } from '../content/ContentLoader.js';
 import { MarkdownParser } from '../content/MarkdownParser.js';
+import { scrollToTopTrick } from '../utils/scrollTrick.js';
 
 const contact = {
   name: 'contact',
@@ -30,6 +31,9 @@ const contact = {
         { label: 'blog', command: 'blog' },
         { label: 'skills', command: 'skills' },
       ]);
+
+      // Trigger scroll-to-top trick if content is long
+      scrollToTopTrick(output);
 
       return { success: true };
     } catch (err) {

@@ -1,6 +1,6 @@
 ---
 title: My Claude Code Setup
-date: 2025-12-13
+date: 2025-11-01
 tags: [ai, claude-code, setup, development]
 ---
 
@@ -37,7 +37,7 @@ This is the main configuration file. Here's what matters:
   "model": "opus",
   "alwaysThinkingEnabled": true,
   "max_turns": 100,
-  "includeCoAuthoredBy": false 
+  "includeCoAuthoredBy": false
 }
 ```
 
@@ -46,7 +46,7 @@ Key settings:
 - **model**: I use `opus` for complex tasks (expensive but reliable), `sonnet` for everyday work
 - **alwaysThinkingEnabled**: Without thinking even Opus is weak
 - **max_turns**: How many back-and-forth turns before stopping
-- **includeCoAuthoredBy**: Avoid having "Co-authored-by" add to git commits
+- **includeCoAuthoredBy**: Avoid having "Co-authored-by" added to git commits
 
 ### Permissions
 
@@ -69,13 +69,15 @@ Claude Code has a robust permission system. I prefer a permissive setup with exp
 
 The `*` allows most operations, but you can be more restrictive.
 
-Usually i run Claude with 
+Usually I run Claude with:
+
 ```bash
-claude --dangerously-skip-permissions  --resume --chrome
+claude --dangerously-skip-permissions --resume --chrome
 ```
 
-I know, it's dangerous, but I commit continiously and have good backup startegies.
-This will speed up your work by 10x.
+I know, it's dangerous, but I commit continuously and have good backup strategies. This will speed up your work by 10x.
+
+Resume is usefull for a list of previous esession to continue and --chrome will allow browser acces to understand the web content you're building (you need the Claude extension).
 
 ### CLAUDE.md
 
@@ -155,7 +157,7 @@ Enable in settings:
 
 ## Hooks
 
-Hooks let you run commands before/after Claude actions. I use them for automatic git checkpoints:
+Hooks let you run commands before/after Claude actions. I use them for automatic git-ai checkpoints:
 
 ```json
 {
@@ -175,11 +177,11 @@ Hooks let you run commands before/after Claude actions. I use them for automatic
 }
 ```
 
-This creates automatic checkpoints whenever Claude edits files—easy rollback if something goes wrong.
+This creates automatic checkpoints to distinguish when AI edited the code and when it was a human activity. Thanks to https://github.com/acunniffe/git-ai
 
 ## Status Line
 
-The status line shows useful info while Claude works. I use claude-hud:
+The status line shows useful info while Claude works. I use claude-hud(https://github.com/jarrodwatts/claude-hud):
 
 ```json
 {
@@ -190,13 +192,39 @@ The status line shows useful info while Claude works. I use claude-hud:
 }
 ```
 
+## iTerm 2 Notifications
+
+Never miss when Claude completes a task. In iTerm 2:
+
+1. Open **Preferences → Profiles → Terminal**
+2. Enable **"Silence bell"**
+3. Select **"Send escape sequence-generated alerts"**
+4. Set your preferred notification delay
+
+This sends a system notification when Claude finishes long-running tasks.
+
+## Makefile Patterns
+
+Every project gets a Makefile. It's the universal interface that Claude understands immediately.
+
+Key patterns:
+
+- **Self-documenting help**: `make help` parses `## target: description` comments
+- **Consistent targets**: `build`, `test`, `deploy`, `clean` work the same everywhere
+- **Environment loading**: Auto-include `.env` files when present
+
+The value is consistency. Claude reads `make deploy` and knows what to do—no explaining build systems per project.
+
 ## Tips for Daily Use
 
-1. **Start with `/prime`** - Use a custom command to analyze the project before starting work
-2. **Use opus for complex tasks** - Worth the cost for architecture decisions
-3. **Check the todo list** - Claude tracks its own progress, review it
-4. **Leverage MCP** - Context7 for docs, Serena for code navigation
-5. **Trust but verify** - Always review generated code before committing
+1. **Almost always use Plan mode** - Let Claude think before acting
+2. **Give Claude verification methods** - Unit tests, Chrome extension, or simulators
+3. **Hold the same bar for human and Claude code** - Use `/code-review` to automate review
+4. **Press Shift+Tab** - Toggle auto-accept for file edits, reduces friction
+5. **Use opus for complex tasks** - Worth the cost for architecture decisions
+6. **Check the todo list** - Claude tracks its own progress, review it
+7. **Leverage MCP** - Context7 for docs, Serena for code navigation
+8. **Trust but verify** - Always review generated code before committing
 
 ## Project-Specific Config
 
@@ -224,7 +252,3 @@ Each project can have its own `.claude/CLAUDE.md` with specific instructions:
 Claude Code is more than a coding assistant—it's a development environment that understands context, follows instructions, and integrates with your tools. The key is configuration: take time to set up your CLAUDE.md, permissions, and MCP servers.
 
 The investment pays off exponentially.
-
----
-
-*Questions about my setup? [Reach out on X](https://x.com/StefanoStraus).*

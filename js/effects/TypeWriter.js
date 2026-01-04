@@ -26,12 +26,16 @@ export class TypeWriter {
   async type(text, container, options = {}) {
     this.aborted = false;
     const speed = options.speed || this.speed;
+    const onType = options.onType; // Optional callback after each character
 
     for (let i = 0; i < text.length; i++) {
       if (this.aborted) break;
 
       const char = text[i];
       container.textContent += char;
+
+      // Call onType callback if provided (useful for scrolling)
+      if (onType) onType();
 
       // Variable speed for more natural feel
       let charDelay = speed;

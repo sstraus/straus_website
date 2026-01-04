@@ -3,7 +3,7 @@ REMOTE_HOST := stefano@100.86.23.27
 REMOTE_PATH := /volume1/web/me
 
 # Files/folders to deploy (exclude dev files)
-DEPLOY_FILES := index.html favicon.svg css js content img vendor assets
+DEPLOY_FILES := index.html favicon.svg robots.txt sitemap.xml css js content img vendor assets
 
 .PHONY: deploy clean
 

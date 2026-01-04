@@ -47,7 +47,3 @@ I'll be posting articles about:
 - Thoughts on the tech industry
 
 Feel free to explore, and don't hesitate to reach out if you have questions!
-
----
-
-*Use the `blog` command to see more articles.*

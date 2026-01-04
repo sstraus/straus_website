@@ -6,6 +6,7 @@ import { ArticleIndex } from '../content/ArticleIndex.js';
 import { ContentLoader } from '../content/ContentLoader.js';
 import { MarkdownParser } from '../content/MarkdownParser.js';
 import { createElement } from '../utils/dom.js';
+import { scrollToTopTrick } from '../utils/scrollTrick.js';
 
 const read = {
   name: 'read',
@@ -34,7 +35,14 @@ const read = {
     output.print('Loading article...', 'system');
 
     try {
-      const article = await ArticleIndex.findBySlug(slug);
+      let article = await ArticleIndex.findBySlug(slug);
+      let isArchive = false;
+
+      // Check archive if not found in main index
+      if (!article) {
+        article = await ArticleIndex.findArchiveBySlug(slug);
+        isArchive = true;
+      }
 
       if (!article) {
         return {
@@ -43,7 +51,8 @@ const read = {
         };
       }
 
-      const markdown = await ContentLoader.load(`/content/blog/${article.file}`);
+      const basePath = isArchive ? '/content/blog/wordpress-archive' : '/content/blog';
+      const markdown = await ContentLoader.load(`${basePath}/${article.file}`);
       const html = MarkdownParser.parse(markdown);
 
       output.clear();
@@ -71,6 +80,13 @@ const read = {
 
       // Article content
       output.renderHtml(html);
+
+      // Standard blog footer
+      output.newline();
+      output.printDivider();
+      output.newline();
+      const footer = '*Questions? [Reach out on X](https://x.com/StefanoStraus).*';
+      output.renderHtml(MarkdownParser.parse(footer));
       output.newline();
 
       // Find related articles (same tags)
@@ -87,6 +103,9 @@ const read = {
       }
 
       terminal.showSuggestions(suggestions);
+
+      // Trigger the scroll-to-top trick (don't await - runs in background)
+      scrollToTopTrick(output);
 
       return { success: true };
     } catch (err) {

@@ -54,8 +54,8 @@ const ASCII_LOGO = [
   '   ╚══════╝   ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝ ╚══════╝',
 ];
 
-const INIT_STEPS = [
-  { text: 'Initializing straus-code v1.0.0...', delay: 400 },
+const getInitSteps = () => [
+  { text: `Initializing straus-code v${config.site.version}...`, delay: 400 },
   { text: 'Loading personality matrix... done', delay: 300 },
   { text: 'Establishing neural pathways... done', delay: 300 },
   { text: 'Ready.', delay: 200 },
@@ -81,7 +81,7 @@ export class InitSequence {
     await delay(500);
 
     // Print initialization steps
-    for (const step of INIT_STEPS) {
+    for (const step of getInitSteps()) {
       await output.typewrite(`> ${step.text}`, 'system', {
         speed: config.typeSpeed.fast,
       });
