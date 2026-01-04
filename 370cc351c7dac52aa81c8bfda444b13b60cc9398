@@ -1,0 +1,23 @@
+js/commands/zsh.js
+  d44bc879436acdbe 859-900,902
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.0.26",
+  "base_commit_sha": "370cc351c7dac52aa81c8bfda444b13b60cc9398",
+  "prompts": {
+    "d44bc879436acdbe": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1628076b-fd1b-479d-ad4c-e2299bce7b25",
+        "model": "claude-opus-4-5-20251101"
+      },
+      "human_author": "Stefano Straus <stefano@straus.it>",
+      "messages": [],
+      "total_additions": 43,
+      "total_deletions": 1,
+      "accepted_lines": 43,
+      "overriden_lines": 0
+    }
+  }
+}
