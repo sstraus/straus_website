@@ -23,7 +23,7 @@ export class OutputRenderer {
     if (this._scrollPending) return;
     this._scrollPending = true;
     requestAnimationFrame(() => {
-      this.container.scrollTo({ top: 999999, behavior: 'instant' });
+      this.container.scrollTo({ top: 999999, behavior: 'smooth' });
       this._scrollPending = false;
     });
   }
@@ -84,13 +84,13 @@ export class OutputRenderer {
     this.container.classList.add('typing');
 
     this.container.appendChild(line);
-    this.container.scrollTo({ top: 999999, behavior: 'instant' });
+    this.container.scrollTo({ top: 999999, behavior: 'smooth' });
 
     await this.typewriter.type(text, line, options);
 
     // Remove typing class after done
     this.container.classList.remove('typing');
-    this.container.scrollTo({ top: 999999, behavior: 'instant' });
+    this.container.scrollTo({ top: 999999, behavior: 'smooth' });
   }
 
   /**
@@ -189,7 +189,7 @@ export class OutputRenderer {
     }
 
     this.container.appendChild(container);
-    this.container.scrollTo({ top: 999999, behavior: 'instant' });
+    this.container.scrollTo({ top: 999999, behavior: 'smooth' });
   }
 
   /**
@@ -219,7 +219,7 @@ export class OutputRenderer {
    * Scroll to the end of output
    */
   scrollToEnd() {
-    this.container.scrollTo({ top: 999999, behavior: 'instant' });
+    this.container.scrollTo({ top: 999999, behavior: 'smooth' });
   }
 
   /**
