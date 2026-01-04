@@ -13,6 +13,19 @@ export class OutputRenderer {
   constructor(outputContainer) {
     this.container = outputContainer;
     this.typewriter = new TypeWriter();
+    this._scrollPending = false;
+  }
+
+  /**
+   * Schedule a scroll to bottom (debounced via rAF)
+   */
+  _scheduleScroll() {
+    if (this._scrollPending) return;
+    this._scrollPending = true;
+    requestAnimationFrame(() => {
+      this.container.scrollTo({ top: 999999, behavior: 'instant' });
+      this._scrollPending = false;
+    });
   }
 
   /**
@@ -41,6 +54,7 @@ export class OutputRenderer {
     }, text);
 
     this.container.appendChild(line);
+    this._scheduleScroll();
   }
 
   /**
@@ -114,6 +128,7 @@ export class OutputRenderer {
     const wrapper = createElement('div', { className });
     wrapper.innerHTML = html;
     this.container.appendChild(wrapper);
+    this._scheduleScroll();
   }
 
   /**

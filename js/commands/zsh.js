@@ -16,7 +16,7 @@ let currentDir = '~';
 // ls command
 const ls = {
   name: 'ls',
-  description: 'List directory contents (fake)',
+  description: 'List directory contents',
   usage: 'ls [options]',
   aliases: ['dir'],
 
@@ -45,7 +45,7 @@ const ls = {
 // cd command
 const cd = {
   name: 'cd',
-  description: 'Change directory (fake)',
+  description: 'Change directory',
   usage: 'cd [directory]',
 
   async execute(args, terminal) {
@@ -85,7 +85,7 @@ const cd = {
 // pwd command
 const pwd = {
   name: 'pwd',
-  description: 'Print working directory (fake)',
+  description: 'Print working directory',
   usage: 'pwd',
 
   async execute(args, terminal) {
@@ -384,7 +384,7 @@ const man = {
 // touch command
 const touch = {
   name: 'touch',
-  description: 'Create a file (fake)',
+  description: 'Create a file',
   usage: 'touch [file]',
 
   async execute(args, terminal) {
@@ -403,7 +403,7 @@ const touch = {
 // mkdir command
 const mkdir = {
   name: 'mkdir',
-  description: 'Create a directory (fake)',
+  description: 'Create a directory',
   usage: 'mkdir [directory]',
 
   async execute(args, terminal) {
@@ -421,7 +421,7 @@ const mkdir = {
 // grep command
 const grep = {
   name: 'grep',
-  description: 'Search for patterns (fake)',
+  description: 'Search for patterns',
   usage: 'grep [pattern] [file]',
 
   async execute(args, terminal) {
