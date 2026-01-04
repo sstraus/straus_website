@@ -5,6 +5,7 @@ import { commandRegistry } from './CommandRegistry.js';
 import { ContentLoader } from '../content/ContentLoader.js';
 import { MarkdownParser } from '../content/MarkdownParser.js';
 import { scrollToTopTrick } from '../utils/scrollTrick.js';
+import { config } from '../config.js';
 
 const skills = {
   name: 'skills',
@@ -18,7 +19,7 @@ const skills = {
     output.print('Loading skills...', 'system');
 
     try {
-      const markdown = await ContentLoader.load('/content/skills.md');
+      const markdown = await ContentLoader.load(`${config.paths.content}/skills.md`);
       const html = MarkdownParser.parse(markdown);
 
       output.clear();

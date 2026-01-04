@@ -23,13 +23,13 @@ export const config = {
     scrollBehavior: 'smooth',
   },
 
-  // Content paths
+  // Content paths (relative for GitHub Pages compatibility)
   paths: {
-    content: '/content',
-    blog: '/content/blog',
-    blogIndex: '/content/blog/index.json',
-    archiveIndex: '/content/blog/wordpress-archive/index.json',
-    archive: '/content/blog/wordpress-archive',
+    content: 'content',
+    blog: 'content/blog',
+    blogIndex: 'content/blog/index.json',
+    archiveIndex: 'content/blog/wordpress-archive/index.json',
+    archive: 'content/blog/wordpress-archive',
   },
 
   // Site info
