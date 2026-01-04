@@ -1,0 +1,25 @@
+js/core/OutputRenderer.js
+  d44bc879436acdbe 16-28,57,131
+js/commands/zsh.js
+  d44bc879436acdbe 19,48,88,387,406,424
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.0.26",
+  "base_commit_sha": "8ed55fd233442cc980da2957d0ebaaa2ee61b1ea",
+  "prompts": {
+    "d44bc879436acdbe": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1628076b-fd1b-479d-ad4c-e2299bce7b25",
+        "model": "claude-opus-4-5-20251101"
+      },
+      "human_author": "Stefano Straus <stefano@straus.it>",
+      "messages": [],
+      "total_additions": 21,
+      "total_deletions": 6,
+      "accepted_lines": 21,
+      "overriden_lines": 0
+    }
+  }
+}
