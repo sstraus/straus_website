@@ -1,0 +1,20 @@
+{
+  "articles": [
+    {
+      "slug": "welcome-to-my-terminal",
+      "title": "Welcome to My Terminal",
+      "date": "2025-01-15",
+      "description": "An introduction to this unusual website and why I built it this way",
+      "tags": ["meta", "personal"],
+      "file": "2025-01-15-welcome-to-my-terminal.md"
+    },
+    {
+      "slug": "building-with-ai",
+      "title": "Building Software with AI Assistants",
+      "date": "2025-01-20",
+      "description": "My experience using AI tools like Claude to enhance development workflows",
+      "tags": ["ai", "development", "tools"],
+      "file": "2025-01-20-building-with-ai.md"
+    }
+  ]
+}

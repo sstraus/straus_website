@@ -1,0 +1,39 @@
+/* Blinking Cursor */
+.cursor {
+  display: inline-block;
+  width: 8px;
+  height: 1.2em;
+  background: var(--term-text);
+  margin-left: 1px;
+  vertical-align: text-bottom;
+  animation: blink var(--cursor-blink-speed) step-end infinite;
+}
+
+@keyframes blink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+/* Cursor states */
+.cursor--typing {
+  animation: none;
+  opacity: 1;
+}
+
+.cursor--hidden {
+  display: none;
+}
+
+/* Cursor inside output (for typing animation) */
+.typing-cursor {
+  display: inline-block;
+  width: 8px;
+  height: 1em;
+  background: var(--term-text);
+  vertical-align: text-bottom;
+  animation: blink var(--cursor-blink-speed) step-end infinite;
+}

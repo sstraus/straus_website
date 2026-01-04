@@ -1,0 +1,83 @@
+/* Command Prompt */
+.prompt-symbol {
+  color: var(--term-prompt);
+  margin-right: 8px;
+  flex-shrink: 0;
+  font-weight: 500;
+}
+
+.prompt-symbol::before {
+  content: '>';
+}
+
+/* Input display */
+.input-display {
+  color: var(--term-command);
+  white-space: pre;
+}
+
+/* Command echo (shown after enter) */
+.command-echo {
+  display: flex;
+  align-items: baseline;
+}
+
+.command-echo .prompt-symbol {
+  margin-right: 8px;
+}
+
+.command-echo .command-text {
+  color: var(--term-command);
+}
+
+/* Clickable Suggestions */
+.suggestions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--suggestion-gap);
+  margin-top: 16px;
+  margin-bottom: 8px;
+}
+
+.suggestion {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 14px;
+  background: rgba(88, 166, 255, 0.1);
+  border: 1px solid var(--term-prompt);
+  border-radius: 4px;
+  color: var(--term-prompt);
+  cursor: pointer;
+  font-family: var(--font-mono);
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.suggestion:hover {
+  background: rgba(88, 166, 255, 0.2);
+  transform: translateY(-1px);
+}
+
+.suggestion:active {
+  transform: translateY(0);
+}
+
+/* Suggestion with icon */
+.suggestion-icon {
+  margin-right: 6px;
+  font-size: 14px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .suggestions {
+    gap: 6px;
+  }
+
+  .suggestion {
+    padding: 8px 12px;
+    font-size: 13px;
+  }
+}

@@ -1,0 +1,190 @@
+/* Output and Markdown Rendering */
+
+/* Headings in markdown */
+.md-content h1 {
+  color: var(--term-highlight);
+  font-size: 1.4em;
+  font-weight: 700;
+  margin: 16px 0 8px 0;
+  border-bottom: 1px solid var(--term-text-dim);
+  padding-bottom: 4px;
+}
+
+.md-content h2 {
+  color: var(--term-info);
+  font-size: 1.2em;
+  font-weight: 600;
+  margin: 14px 0 6px 0;
+}
+
+.md-content h3 {
+  color: var(--term-text);
+  font-size: 1.1em;
+  font-weight: 600;
+  margin: 12px 0 4px 0;
+}
+
+/* Paragraphs */
+.md-content p {
+  margin: 8px 0;
+  line-height: var(--line-height);
+}
+
+/* Links */
+.md-content a {
+  color: var(--term-link);
+  text-decoration: none;
+  border-bottom: 1px dotted var(--term-link);
+  transition: border-color 0.2s;
+}
+
+.md-content a:hover {
+  border-bottom-style: solid;
+}
+
+/* Code */
+.md-content code {
+  background: rgba(110, 118, 129, 0.2);
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-size: 0.9em;
+  color: var(--term-highlight);
+}
+
+.md-content pre {
+  background: rgba(0, 0, 0, 0.3);
+  padding: 12px;
+  border-radius: 4px;
+  overflow-x: auto;
+  margin: 12px 0;
+  border-left: 3px solid var(--term-prompt);
+}
+
+.md-content pre code {
+  background: none;
+  padding: 0;
+  color: var(--term-text);
+}
+
+/* Lists */
+.md-content ul,
+.md-content ol {
+  margin: 8px 0;
+  padding-left: 24px;
+}
+
+.md-content li {
+  margin: 4px 0;
+}
+
+.md-content ul li::marker {
+  color: var(--term-prompt);
+}
+
+.md-content ol li::marker {
+  color: var(--term-info);
+}
+
+/* Blockquote */
+.md-content blockquote {
+  border-left: 3px solid var(--claude-orange);
+  padding-left: 12px;
+  margin: 12px 0;
+  color: var(--term-text-dim);
+  font-style: italic;
+}
+
+/* Strong and emphasis */
+.md-content strong {
+  color: var(--term-command);
+  font-weight: 600;
+}
+
+.md-content em {
+  color: var(--term-warning);
+  font-style: italic;
+}
+
+/* Horizontal rule */
+.md-content hr {
+  border: none;
+  border-top: 1px solid var(--term-text-dim);
+  margin: 16px 0;
+}
+
+/* Tables */
+.md-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 12px 0;
+}
+
+.md-content th,
+.md-content td {
+  border: 1px solid var(--term-text-dim);
+  padding: 8px 12px;
+  text-align: left;
+}
+
+.md-content th {
+  background: rgba(88, 166, 255, 0.1);
+  color: var(--term-info);
+  font-weight: 600;
+}
+
+/* Article meta */
+.article-meta {
+  color: var(--term-text-dim);
+  font-size: var(--font-size-sm);
+  margin-bottom: 12px;
+}
+
+.article-meta .date {
+  color: var(--term-info);
+}
+
+.article-meta .tags {
+  margin-left: 12px;
+}
+
+.article-meta .tag {
+  display: inline-block;
+  background: rgba(168, 85, 247, 0.2);
+  color: var(--claude-purple);
+  padding: 2px 8px;
+  border-radius: 3px;
+  font-size: 11px;
+  margin-left: 4px;
+}
+
+/* Blog list item */
+.blog-item {
+  margin: 8px 0;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(110, 118, 129, 0.2);
+}
+
+.blog-item:last-child {
+  border-bottom: none;
+}
+
+.blog-item-title {
+  color: var(--term-link);
+  cursor: pointer;
+}
+
+.blog-item-title:hover {
+  text-decoration: underline;
+}
+
+.blog-item-date {
+  color: var(--term-text-dim);
+  font-size: var(--font-size-sm);
+  margin-left: 8px;
+}
+
+.blog-item-desc {
+  color: var(--term-text-dim);
+  font-size: var(--font-size-sm);
+  margin-top: 4px;
+}

@@ -1,0 +1,72 @@
+/* CSS Reset */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  font-family: var(--font-mono);
+}
+
+.container {
+  width: 100%;
+  max-width: var(--window-max-width);
+  margin: 0 auto;
+}
+
+/* Selection */
+::selection {
+  background: var(--term-prompt);
+  color: var(--term-bg);
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--term-text-dim);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--term-text);
+}
+
+/* Mobile fullscreen */
+@media (max-width: 768px) {
+  html, body {
+    height: 100%;
+    overflow: hidden;
+  }
+
+  body {
+    padding: 0;
+    align-items: stretch;
+    justify-content: stretch;
+  }
+
+  .container {
+    max-width: none;
+    height: 100%;
+  }
+}

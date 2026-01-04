@@ -1,0 +1,9 @@
+/* Main CSS - Import aggregator */
+@import 'variables.css';
+@import 'reset.css';
+@import 'window-chrome.css';
+@import 'terminal.css';
+@import 'cursor.css';
+@import 'prompt.css';
+@import 'output.css';
+@import 'animations.css';

@@ -1,0 +1,186 @@
+/* Mac Window Chrome */
+.mac-window {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 80vh;
+  min-height: var(--window-min-height);
+  max-height: 800px;
+  border-radius: var(--window-border-radius);
+  overflow: hidden;
+  box-shadow: var(--window-shadow), 0 0 0 1px var(--chrome-border);
+  background: var(--term-bg);
+}
+
+/* Title Bar */
+.window-titlebar {
+  display: flex;
+  align-items: center;
+  height: var(--titlebar-height);
+  background: var(--chrome-bg);
+  border-bottom: 1px solid var(--chrome-border);
+  padding: 0 12px;
+  user-select: none;
+  flex-shrink: 0;
+}
+
+/* Traffic Lights */
+.traffic-lights {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.traffic-light {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.2s;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.traffic-light--close {
+  background: var(--traffic-close);
+}
+
+.traffic-light--minimize {
+  background: var(--traffic-minimize);
+}
+
+.traffic-light--expand {
+  background: var(--traffic-expand);
+}
+
+/* Hover effect - show icons */
+.mac-window:not(:hover) .traffic-light {
+  opacity: 0.8;
+}
+
+.traffic-light:hover {
+  transform: scale(1.1);
+}
+
+/* Show icons on hover */
+.traffic-lights:hover .traffic-light::after {
+  font-size: 8px;
+  font-weight: bold;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.traffic-lights:hover .traffic-light--close::after {
+  content: '✕';
+}
+
+.traffic-lights:hover .traffic-light--minimize::after {
+  content: '−';
+}
+
+.traffic-lights:hover .traffic-light--expand::after {
+  content: '+';
+}
+
+/* Fullscreen mode */
+.mac-window--fullscreen {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  max-width: none !important;
+  max-height: none !important;
+  border-radius: 0 !important;
+  z-index: 9999;
+}
+
+/* Minimized state */
+.mac-window--minimized {
+  animation: minimizeWindow 0.3s ease-in forwards;
+}
+
+@keyframes minimizeWindow {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.1) translateY(100%);
+  }
+}
+
+/* Restore animation */
+.mac-window--restoring {
+  animation: restoreWindow 0.3s ease-out forwards;
+}
+
+@keyframes restoreWindow {
+  0% {
+    opacity: 0;
+    transform: scale(0.1) translateY(100%);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Window Title */
+.window-title {
+  flex: 1;
+  text-align: center;
+  color: var(--chrome-title-text);
+  font-size: 13px;
+  font-family: var(--font-system);
+  font-weight: 400;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.window-spacer {
+  width: 52px; /* Balance the traffic lights */
+  flex-shrink: 0;
+}
+
+/* Responsive - Mobile goes fullscreen */
+@media (max-width: 768px) {
+  .mac-window {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    max-width: none !important;
+    max-height: none !important;
+    border-radius: 0 !important;
+    z-index: 9999;
+  }
+
+  .window-title {
+    font-size: 12px;
+  }
+
+  /* Hide traffic lights on mobile - they don't make sense */
+  .traffic-lights {
+    display: none;
+  }
+
+  /* Adjust window spacer */
+  .window-spacer {
+    display: none;
+  }
+
+  /* Center the title */
+  .window-title {
+    text-align: center;
+    padding: 0 12px;
+  }
+}
