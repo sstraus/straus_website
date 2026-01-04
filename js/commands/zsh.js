@@ -453,6 +453,9 @@ const uptime = {
   },
 };
 
-// Register all commands
+// Register all commands as fake (hidden from main help)
 [ls, cd, pwd, cat, rm, sudo, vim, nano, exit, whoami, date, echo, man, touch, mkdir, grep, uptime]
-  .forEach(cmd => commandRegistry.register(cmd));
+  .forEach(cmd => {
+    cmd.fake = true;
+    commandRegistry.register(cmd);
+  });

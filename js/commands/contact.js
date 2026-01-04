@@ -2,7 +2,8 @@
  * contact command - Display contact information
  */
 import { commandRegistry } from './CommandRegistry.js';
-import { createElement } from '../utils/dom.js';
+import { ContentLoader } from '../content/ContentLoader.js';
+import { MarkdownParser } from '../content/MarkdownParser.js';
 
 const contact = {
   name: 'contact',
@@ -13,63 +14,27 @@ const contact = {
   async execute(args, terminal) {
     const { output } = terminal;
 
-    output.newline();
-    output.print('Contact', 'info');
-    output.printDivider();
-    output.newline();
+    output.print('Loading contact info...', 'system');
 
-    const links = [
-      {
-        icon: '→',
-        label: 'GitHub',
-        url: 'https://github.com/stefanostraus',
-        display: 'github.com/stefanostraus',
-      },
-      {
-        icon: '→',
-        label: 'LinkedIn',
-        url: 'https://linkedin.com/in/stefanostraus',
-        display: 'linkedin.com/in/stefanostraus',
-      },
-      {
-        icon: '→',
-        label: 'Email',
-        url: 'mailto:hello@straus.it',
-        display: 'hello@straus.it',
-      },
-    ];
+    try {
+      const markdown = await ContentLoader.load('/content/contact.md');
+      const html = MarkdownParser.parse(markdown);
 
-    const container = createElement('div', { className: 'md-content' });
+      // Clear the loading message and render content
+      output.clear();
+      output.renderHtml(html);
+      output.newline();
 
-    for (const link of links) {
-      const p = createElement('p');
-      const icon = createElement('span', {}, `${link.icon} `);
-      const label = createElement('strong', {}, `${link.label}: `);
-      const a = createElement('a', {
-        href: link.url,
-        target: '_blank',
-        rel: 'noopener noreferrer',
-      }, link.display);
+      terminal.showSuggestions([
+        { label: 'about', command: 'about' },
+        { label: 'blog', command: 'blog' },
+        { label: 'skills', command: 'skills' },
+      ]);
 
-      p.appendChild(icon);
-      p.appendChild(label);
-      p.appendChild(a);
-      container.appendChild(p);
+      return { success: true };
+    } catch (err) {
+      return { error: true, message: `Failed to load contact info: ${err.message}` };
     }
-
-    output.container.appendChild(container);
-    output.newline();
-
-    output.print("Feel free to reach out – I'm always happy to connect!", 'system');
-    output.newline();
-
-    terminal.showSuggestions([
-      { label: 'about', command: 'about' },
-      { label: 'blog', command: 'blog' },
-      { label: 'skills', command: 'skills' },
-    ]);
-
-    return { success: true };
   },
 };
 

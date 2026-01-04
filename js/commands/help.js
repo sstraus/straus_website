@@ -13,8 +13,33 @@ const help = {
     const { output } = terminal;
 
     if (args.length > 0) {
-      // Show help for specific command
       const cmdName = args[0].toLowerCase();
+
+      // Special case: help fake - show only fake commands
+      if (cmdName === 'fake') {
+        const allCommands = commandRegistry.getAll();
+        const fakeCommands = allCommands.filter(cmd => {
+          const fullCmd = commandRegistry.get(cmd.name);
+          return fullCmd?.fake;
+        });
+
+        output.newline();
+        output.print('Fake terminal commands (for fun):', 'info');
+        output.newline();
+
+        for (const cmd of fakeCommands) {
+          const padding = ' '.repeat(Math.max(0, 12 - cmd.name.length));
+          output.print(`  ${cmd.name}${padding}${cmd.description}`);
+        }
+
+        output.newline();
+        output.print('These are joke commands that simulate a real terminal.', 'system');
+        output.newline();
+
+        return { success: true };
+      }
+
+      // Show help for specific command
       const cmd = commandRegistry.get(cmdName);
 
       if (!cmd) {
@@ -35,20 +60,24 @@ const help = {
       return { success: true };
     }
 
-    // Show all commands
-    const commands = commandRegistry.getAll();
+    // Show only real commands (not fake)
+    const allCommands = commandRegistry.getAll();
+    const realCommands = allCommands.filter(cmd => {
+      const fullCmd = commandRegistry.get(cmd.name);
+      return !fullCmd?.fake;
+    });
 
     output.newline();
     output.print('Available commands:', 'info');
     output.newline();
 
-    for (const cmd of commands) {
+    for (const cmd of realCommands) {
       const padding = ' '.repeat(Math.max(0, 12 - cmd.name.length));
       output.print(`  ${cmd.name}${padding}${cmd.description}`);
     }
 
     output.newline();
-    output.print('Type "help <command>" for more information.', 'system');
+    output.print('Type "help fake" for fun terminal commands.', 'system');
     output.newline();
 
     terminal.showSuggestions([

@@ -2,6 +2,8 @@
  * skills command - Display tech stack
  */
 import { commandRegistry } from './CommandRegistry.js';
+import { ContentLoader } from '../content/ContentLoader.js';
+import { MarkdownParser } from '../content/MarkdownParser.js';
 
 const skills = {
   name: 'skills',
@@ -12,47 +14,26 @@ const skills = {
   async execute(args, terminal) {
     const { output } = terminal;
 
-    output.newline();
-    output.print('Tech Stack', 'info');
-    output.printDivider();
-    output.newline();
+    output.print('Loading skills...', 'system');
 
-    const categories = [
-      {
-        name: 'Languages',
-        items: ['JavaScript/TypeScript', 'Python', 'Go', 'SQL'],
-      },
-      {
-        name: 'Frontend',
-        items: ['React', 'Vue.js', 'HTML/CSS', 'Tailwind'],
-      },
-      {
-        name: 'Backend',
-        items: ['Node.js', 'FastAPI', 'PostgreSQL', 'Redis'],
-      },
-      {
-        name: 'DevOps',
-        items: ['Docker', 'Kubernetes', 'AWS', 'GitHub Actions'],
-      },
-      {
-        name: 'AI/ML',
-        items: ['LangChain', 'OpenAI API', 'Claude API', 'Vector DBs'],
-      },
-    ];
+    try {
+      const markdown = await ContentLoader.load('/content/skills.md');
+      const html = MarkdownParser.parse(markdown);
 
-    for (const category of categories) {
-      output.print(`  ${category.name}`, 'info');
-      output.print(`    ${category.items.join(' · ')}`, 'system');
+      output.clear();
+      output.renderHtml(html);
       output.newline();
+
+      terminal.showSuggestions([
+        { label: 'about', command: 'about' },
+        { label: 'blog', command: 'blog' },
+        { label: 'contact', command: 'contact' },
+      ]);
+
+      return { success: true };
+    } catch (err) {
+      return { error: true, message: `Failed to load skills: ${err.message}` };
     }
-
-    terminal.showSuggestions([
-      { label: 'about', command: 'about' },
-      { label: 'blog', command: 'blog' },
-      { label: 'contact', command: 'contact' },
-    ]);
-
-    return { success: true };
   },
 };
 

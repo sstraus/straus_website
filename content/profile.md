@@ -1,13 +1,13 @@
 # About Me
 
-Hi, I'm **Stefano Straus** – a tech industry veteran with over 25 years of diverse experience, currently based in Alicante, Spain.
+Hi, I'm **Stefano Straus** – a tech industry veteran with over 30 years of diverse experience, currently based in Alicante, Spain.
 
 ## What I Do
 
-I'm **VP of Engineering at Lansweeper**, bringing my extensive background in technology management and digital product development. My focus areas include:
+I'm **VP of Engineering at [Lansweeper](https://www.lansweeper.com)**, bringing my extensive background in technology management and digital product development. My focus areas include:
 
 - **AI-Powered Development** – Exploring "vibe coding" and LLM-assisted development workflows
-- **Digital Product Design** – Building products with user experience at the core
+- **Product Engineering** – Designing platforms where usability emerges from solid architecture
 - **Technology Leadership** – Managing teams and driving technical strategy
 
 ## Philosophy
@@ -35,7 +35,6 @@ When I'm not working, you might find me:
 - English (Full professional proficiency)
 - German (Basic understanding, lack of practice)
 - Spanish (Elementary proficiency)
-- C# (Fluent in code)
 
 ---
 
