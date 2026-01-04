@@ -1,0 +1,23 @@
+css/window-chrome.css
+  d44bc879436acdbe 44-47
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.0.26",
+  "base_commit_sha": "a99d8c134ac437f1d9a5f07205975024d680c9dc",
+  "prompts": {
+    "d44bc879436acdbe": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1628076b-fd1b-479d-ad4c-e2299bce7b25",
+        "model": "claude-opus-4-5-20251101"
+      },
+      "human_author": "Stefano Straus <stefano@straus.it>",
+      "messages": [],
+      "total_additions": 4,
+      "total_deletions": 0,
+      "accepted_lines": 4,
+      "overriden_lines": 0
+    }
+  }
+}
