@@ -70,7 +70,8 @@
 .md-content ul,
 .md-content ol {
   margin: 8px 0;
-  padding-left: 24px;
+  padding-left: 12px;
+  list-style-position: inside;
 }
 
 .md-content li {
