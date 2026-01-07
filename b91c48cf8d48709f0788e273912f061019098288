@@ -1,0 +1,23 @@
+content/blog/index.json
+  6bc0e727d00b4d00 4-10
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.0.29",
+  "base_commit_sha": "b91c48cf8d48709f0788e273912f061019098288",
+  "prompts": {
+    "6bc0e727d00b4d00": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "bb474658-1d13-4a82-8f69-36754de14599",
+        "model": "claude-sonnet-4-5-20250929"
+      },
+      "human_author": "Stefano Straus <stefano@straus.it>",
+      "messages": [],
+      "total_additions": 8,
+      "total_deletions": 0,
+      "accepted_lines": 8,
+      "overriden_lines": 0
+    }
+  }
+}
