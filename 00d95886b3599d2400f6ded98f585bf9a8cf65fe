@@ -1,0 +1,23 @@
+js/config.js
+  6bc0e727d00b4d00 7-9
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.0.29",
+  "base_commit_sha": "00d95886b3599d2400f6ded98f585bf9a8cf65fe",
+  "prompts": {
+    "6bc0e727d00b4d00": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "bb474658-1d13-4a82-8f69-36754de14599",
+        "model": "claude-sonnet-4-5-20250929"
+      },
+      "human_author": "Stefano Straus <stefano@straus.it>",
+      "messages": [],
+      "total_additions": 3,
+      "total_deletions": 3,
+      "accepted_lines": 3,
+      "overriden_lines": 0
+    }
+  }
+}
