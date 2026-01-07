@@ -86,7 +86,7 @@ const read = {
       output.newline();
       output.printDivider();
       output.newline();
-      const footer = '*Questions? [Reach out on X](https://x.com/StefanoStraus).*';
+      const footer = '*Questions? [Reach out on X](https://x.com/StefanoStraus).*\n\n*Most of this was still written by a human. For now.*';
       output.renderHtml(MarkdownParser.parse(footer));
       output.newline();
 
