@@ -1,6 +1,14 @@
 {
   "articles": [
     {
+      "slug": "beads-task-tracking-for-ai-agents",
+      "title": "Beads - External Memory for AI Agents",
+      "date": "2026-01-07",
+      "description": "The task tracker that gives AI agents persistent memory across sessions",
+      "tags": ["ai", "claude-code", "beads", "task-tracking", "development"],
+      "file": "2026-01-07-beads-task-tracking-for-ai-agents.md"
+    },
+    {
       "slug": "welcome-to-my-terminal",
       "title": "Welcome to My Terminal",
       "date": "2026-01-04",
