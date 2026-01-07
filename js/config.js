@@ -4,9 +4,9 @@
 export const config = {
   // Typing animation speeds (ms per character)
   typeSpeed: {
-    fast: 7,
-    normal: 15,
-    slow: 25,
+    fast: 5,
+    normal: 10,
+    slow: 18,
   },
 
   // Delay durations (ms)
