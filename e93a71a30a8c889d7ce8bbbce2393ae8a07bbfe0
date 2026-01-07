@@ -1,0 +1,27 @@
+content/blog/2026-01-07-beads-task-tracking-for-ai-agents.md
+  6bc0e727d00b4d00 1-147
+sitemap.xml
+  6bc0e727d00b4d00 17,34-39
+js/commands/read.js
+  6bc0e727d00b4d00 89
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.0.29",
+  "base_commit_sha": "e93a71a30a8c889d7ce8bbbce2393ae8a07bbfe0",
+  "prompts": {
+    "6bc0e727d00b4d00": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "bb474658-1d13-4a82-8f69-36754de14599",
+        "model": "claude-sonnet-4-5-20250929"
+      },
+      "human_author": "Stefano Straus <stefano@straus.it>",
+      "messages": [],
+      "total_additions": 216,
+      "total_deletions": 52,
+      "accepted_lines": 155,
+      "overriden_lines": 0
+    }
+  }
+}
