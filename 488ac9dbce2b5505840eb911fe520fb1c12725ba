@@ -1,0 +1,31 @@
+js/commands/index.js
+  dc0d0b070edb35da 12-15
+js/commands/theme.js
+  dc0d0b070edb35da 1-54
+css/reset.css
+  dc0d0b070edb35da 22-26,68-71
+css/variables.css
+  dc0d0b070edb35da 60-78
+index.html
+  dc0d0b070edb35da 6-16,41,79
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.0.29",
+  "base_commit_sha": "488ac9dbce2b5505840eb911fe520fb1c12725ba",
+  "prompts": {
+    "dc0d0b070edb35da": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "0887712d-eb06-4ce0-a8e0-03b11a13c8f5",
+        "model": "claude-sonnet-4-5-20250929"
+      },
+      "human_author": "Stefano Straus <stefano@straus.it>",
+      "messages": [],
+      "total_additions": 118,
+      "total_deletions": 21,
+      "accepted_lines": 99,
+      "overriden_lines": 0
+    }
+  }
+}
