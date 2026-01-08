@@ -42,14 +42,22 @@ export class Terminal {
     // Disable input during initialization
     this.input.disable();
 
-    // Run startup sequence
-    await InitSequence.run(this.output);
+    // Check if landing directly on blog content (list or post)
+    const initialCommand = this.router.parseCurrentHash();
+    const isDirectBlogAccess = initialCommand && (
+      initialCommand.startsWith('read ') ||
+      initialCommand === 'blog'
+    );
+
+    // Skip init sequence for direct blog content access
+    if (!isDirectBlogAccess) {
+      await InitSequence.run(this.output);
+    }
 
     // Mark as ready
     this.ready = true;
 
-    // Check for deep link
-    const initialCommand = this.router.parseCurrentHash();
+    // Execute deep link command if present
     if (initialCommand) {
       await this.executeCommand(initialCommand, { echo: false });
     }
