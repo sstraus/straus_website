@@ -9,3 +9,7 @@ import './read.js';
 import './skills.js';
 import './contact.js';
 import './zsh.js';
+import { initTheme } from './theme.js';
+
+// Initialize theme on load
+initTheme();

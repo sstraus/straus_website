@@ -57,3 +57,22 @@
   /* Shadows */
   --window-shadow: 0 22px 70px 4px rgba(0, 0, 0, 0.56);
 }
+
+/* Light Theme */
+body.light-theme {
+  /* Terminal Colors (Light) */
+  --term-bg: #ffffff;
+  --term-text: #1f2328;
+  --term-text-dim: #656d76;
+  --term-prompt: #0550ae;
+  --term-command: #0a0c10;
+  --term-success: #1a7f37;
+  --term-error: #d1242f;
+  --term-warning: #bf8700;
+  --term-info: #0550ae;
+  --term-link: #0969da;
+  --term-highlight: #bc4c00;
+
+  /* Shadows */
+  --window-shadow: 0 22px 70px 4px rgba(0, 0, 0, 0.12);
+}

@@ -19,6 +19,11 @@ body {
   justify-content: center;
   padding: 20px;
   font-family: var(--font-mono);
+  transition: background 0.3s ease;
+}
+
+body.light-theme {
+  background: linear-gradient(135deg, #f6f8fa 0%, #e1e4e8 50%, #d1d5db 100%);
 }
 
 .container {
@@ -58,6 +63,10 @@ body {
     height: 100%;
     overflow: hidden;
     background: #000;
+  }
+
+  body.light-theme {
+    background: #e1e4e8;
   }
 
   body {
