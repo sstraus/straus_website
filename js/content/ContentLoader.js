@@ -45,7 +45,11 @@ class ContentLoaderClass {
    */
   async loadJson(path) {
     const content = await this.load(path);
-    return JSON.parse(content);
+    try {
+      return JSON.parse(content);
+    } catch (err) {
+      throw new Error(`Failed to parse JSON from ${path}: ${err.message}`);
+    }
   }
 
   /**

@@ -5,6 +5,7 @@ import { createElement, scrollToBottom, clearChildren } from '../utils/dom.js';
 import { TypeWriter } from '../effects/TypeWriter.js';
 import { delay } from '../utils/delay.js';
 import { config } from '../config.js';
+import { sanitizeHtml } from '../utils/sanitize.js';
 
 export class OutputRenderer {
   /**
@@ -126,7 +127,8 @@ export class OutputRenderer {
    */
   renderHtml(html, className = 'md-content') {
     const wrapper = createElement('div', { className });
-    wrapper.innerHTML = html;
+    // Defense-in-depth: always sanitize even if caller should have sanitized
+    wrapper.innerHTML = sanitizeHtml(html);
     this.container.appendChild(wrapper);
     this._scheduleScroll();
   }

@@ -59,6 +59,7 @@
 }
 
 /* Light Theme */
+html.light-theme-loading,
 body.light-theme {
   /* Terminal Colors (Light) */
   --term-bg: #ffffff;

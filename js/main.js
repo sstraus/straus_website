@@ -37,11 +37,11 @@ async function init() {
   } catch (err) {
     console.error('Failed to initialize terminal:', err);
 
-    container.innerHTML = `
-      <div class="terminal-line terminal-line--error">
-        Failed to initialize terminal. Please refresh the page.
-      </div>
-    `;
+    // Create error message without using innerHTML (XSS prevention)
+    const errorDiv = document.createElement('div');
+    errorDiv.className = 'terminal-line terminal-line--error';
+    errorDiv.textContent = 'Failed to initialize terminal. Please refresh the page.';
+    container.appendChild(errorDiv);
   }
 }
 

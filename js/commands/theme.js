@@ -37,17 +37,29 @@ const theme = {
     }
 
     // Save preference
-    localStorage.setItem(THEME_KEY, newTheme);
+    try {
+      localStorage.setItem(THEME_KEY, newTheme);
+    } catch (e) {
+      terminal.output.print('Note: Theme preference could not be saved (storage unavailable)', 'system');
+    }
 
     return { success: true };
   },
 };
 
-// Apply saved theme on load
+// Apply saved theme on load and cleanup loading class
 export function initTheme() {
-  const savedTheme = localStorage.getItem(THEME_KEY);
-  if (savedTheme === 'light') {
-    document.body.classList.add('light-theme');
+  // Remove the loading class from html (applied by inline script)
+  document.documentElement.classList.remove('light-theme-loading');
+
+  // Apply theme to body (works now that DOM is ready)
+  try {
+    const savedTheme = localStorage.getItem(THEME_KEY);
+    if (savedTheme === 'light') {
+      document.body.classList.add('light-theme');
+    }
+  } catch (e) {
+    // localStorage not available, use default theme
   }
 }
 
