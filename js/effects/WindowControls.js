@@ -68,6 +68,11 @@ class WindowControls {
    * Red button - reset to home page
    */
   reset() {
+    // Clear any pending restore timer
+    if (this.restoreTimer) {
+      clearTimeout(this.restoreTimer);
+      this.restoreTimer = null;
+    }
     // Clear hash and reload to restart
     window.location.hash = '';
     window.location.reload();

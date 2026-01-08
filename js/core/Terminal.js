@@ -7,6 +7,7 @@ import { InputHandler } from './InputHandler.js';
 import { CommandProcessor } from './CommandProcessor.js';
 import { InitSequence } from '../effects/InitSequence.js';
 import { HashRouter } from '../router/HashRouter.js';
+import { ContentLoader } from '../content/ContentLoader.js';
 import { config } from '../config.js';
 
 export class Terminal {
@@ -120,6 +121,8 @@ export class Terminal {
    */
   clear() {
     this.output.clear();
+    // Clear content cache to free memory
+    ContentLoader.clearCache();
   }
 
   /**

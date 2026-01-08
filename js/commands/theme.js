@@ -30,9 +30,19 @@ const theme = {
     // Apply theme
     if (newTheme === 'light') {
       document.body.classList.add('light-theme');
+      // Update meta theme-color for mobile browsers
+      const metaTheme = document.querySelector('meta[name="theme-color"]');
+      if (metaTheme) {
+        metaTheme.setAttribute('content', '#ffffff');
+      }
       terminal.output.success('Switched to light theme');
     } else {
       document.body.classList.remove('light-theme');
+      // Update meta theme-color for mobile browsers
+      const metaTheme = document.querySelector('meta[name="theme-color"]');
+      if (metaTheme) {
+        metaTheme.setAttribute('content', '#000000');
+      }
       terminal.output.success('Switched to dark theme');
     }
 
@@ -57,6 +67,11 @@ export function initTheme() {
     const savedTheme = localStorage.getItem(THEME_KEY);
     if (savedTheme === 'light') {
       document.body.classList.add('light-theme');
+      // Update meta theme-color for mobile browsers
+      const metaTheme = document.querySelector('meta[name="theme-color"]');
+      if (metaTheme) {
+        metaTheme.setAttribute('content', '#ffffff');
+      }
     }
   } catch (e) {
     // localStorage not available, use default theme

@@ -85,12 +85,12 @@ export class OutputRenderer {
     this.container.classList.add('typing');
 
     this.container.appendChild(line);
-    this.container.scrollTo({ top: 999999, behavior: 'smooth' });
 
     await this.typewriter.type(text, line, options);
 
     // Remove typing class after done
     this.container.classList.remove('typing');
+    // Scroll to bottom after typing completes
     this.container.scrollTo({ top: 999999, behavior: 'smooth' });
   }
 

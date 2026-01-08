@@ -22,12 +22,15 @@ export async function scrollToTopTrick(output) {
   };
   output.container.addEventListener('scroll', onScroll);
 
-  await delay(1250);
+  try {
+    await delay(1250);
 
-  output.container.removeEventListener('scroll', onScroll);
-
-  // Abort if user already started reading
-  if (userScrolled) return;
+    // Abort if user already started reading
+    if (userScrolled) return;
+  } finally {
+    // Always remove listener, even if function is interrupted
+    output.container.removeEventListener('scroll', onScroll);
+  }
 
   // Add typing class for visibility
   output.container.classList.add('typing');

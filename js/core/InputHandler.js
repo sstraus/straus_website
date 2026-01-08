@@ -64,6 +64,12 @@ export class InputHandler {
             this.onSubmit('clear');
           }
           break;
+        case 't':
+          if (e.ctrlKey || e.metaKey) {
+            e.preventDefault();
+            this.onSubmit('theme');
+          }
+          break;
       }
     });
 

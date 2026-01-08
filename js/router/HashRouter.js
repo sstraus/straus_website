@@ -7,6 +7,7 @@ export class HashRouter {
    */
   constructor(terminal) {
     this.terminal = terminal;
+    this.hashChangeHandler = null;
     this.bindEvents();
   }
 
@@ -14,14 +15,25 @@ export class HashRouter {
    * Bind hashchange event
    */
   bindEvents() {
-    window.addEventListener('hashchange', () => {
+    this.hashChangeHandler = () => {
       if (this.terminal.isReady()) {
         const command = this.parseCurrentHash();
         if (command) {
           this.terminal.executeCommand(command, { echo: true });
         }
       }
-    });
+    };
+    window.addEventListener('hashchange', this.hashChangeHandler);
+  }
+
+  /**
+   * Cleanup event listeners
+   */
+  destroy() {
+    if (this.hashChangeHandler) {
+      window.removeEventListener('hashchange', this.hashChangeHandler);
+      this.hashChangeHandler = null;
+    }
   }
 
   /**
