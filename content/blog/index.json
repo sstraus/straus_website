@@ -1,6 +1,14 @@
 {
   "articles": [
     {
+      "slug": "claude-code-subagents-hidden-superpower",
+      "title": "Claude Code Subagents: The Hidden Superpower You're Not Using",
+      "date": "2026-01-08",
+      "description": "How to use competing subagents for better code reviews and why a little pressure makes AI work harder",
+      "tags": ["ai", "claude-code", "subagents", "code-review", "development"],
+      "file": "2026-01-08-claude-code-subagents-hidden-superpower.md"
+    },
+    {
       "slug": "beads-task-tracking-for-ai-agents",
       "title": "Beads - External Memory for AI Agents",
       "date": "2026-01-07",

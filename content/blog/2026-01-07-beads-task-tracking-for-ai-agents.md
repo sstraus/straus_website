@@ -6,92 +6,88 @@ tags: [ai, claude-code, beads, task-tracking, development]
 
 # Beads: External Memory for AI Agents
 
-I just discovered [Beads](https://github.com/steveyegge/beads), and this is the biggest infrastructure breakthrough I've seen for AI-driven development since I started working this way.
+I found [Beads](https://github.com/steveyegge/beads) last week, and it solved a problem I didn't know how to fix.
 
-Not a new model. Not a new IDE. A task tracker. But one that fundamentally changes how agents work on long-horizon tasks.
+It's not a new AI model. Not a new IDE. It's a task tracker. But it completely changes how AI agents handle long projects.
 
-## The Real Problem
+## The Problem I Had
 
-Markdown TODOs don't work for agents. They work fine for humans who can hold context across sessions and manually track dependencies. But agents?
+Markdown TODO lists don't work with AI agents. They work fine for me. I can remember context between sessions, track dependencies in my head. But agents can't.
 
-Agents have context limits. No persistent memory. They work best with structured data and explicit semantics.
+Here's what kept happening: I'd be 200 messages deep in a session. The agent had finished half my plan. I'd ask "what's next?" and it would either:
 
-You're 200 messages into a session. The agent completed half your plan. You ask "what's next?" and it either:
+1. Hope the markdown TODO was still in its context window
+2. Ask me to paste it again
+3. Guess
 
-1. Hopes the markdown TODO is still in context
-2. Asks you to re-read it
-3. Guesses
+Then I'd hit the context limit. Or switch git branches. Or close my laptop and come back tomorrow. The plan would fall apart. Early tasks would be forgotten. Dependencies were just text notes like "TODO: fix auth (blocked on bd-3)". The agent couldn't actually query what was ready to work on.
 
-Then you hit the context window limit. Or switch branches. Or close the session and come back tomorrow. The plan fragments. Early tasks get forgotten. Dependencies exist only as prose notes like "TODO: fix auth (blocked on bd-3)" which means the agent can't query for ready work - it has to read and interpret text.
-
-This is write-only memory. Completely backwards for how agents actually operate.
+This drove me crazy. I was using markdown as write-only memory. The agent could write tasks down but couldn't effectively read them back. Completely backwards.
 
 ## What Beads Actually Is
 
-Beads is a git-backed issue tracker that acts like a managed central database but writes everything to git as JSONL. You get both: queries **and** versioning.
+Beads is an issue tracker that lives in git. It acts like a database but stores everything as files in your repo. So you get both: the ability to query tasks **and** full version control.
 
-It's external memory for agents with dependency tracking and query capabilities.
+Think of it as external memory for AI agents. Memory they can actually search.
 
-The architecture is simple:
+Here's how it works:
 
-- Issues stored in `.beads/` directory as JSONL files
-- SQLite for local caching and queries
-- Background daemon for sync
-- Hash-based IDs that prevent collisions
-- JSON output everywhere
+- Tasks stored in `.beads/` directory as JSON files
+- SQLite cache for fast queries
+- Background sync daemon
+- IDs that never collide across branches
+- Everything outputs JSON
 
-But the genius is in the semantics. Dependencies are first-class. You don't write "blocked by X" in prose - you create explicit relationships. Discovery during execution maps directly to how agents work: when implementing a feature and finding a bug, you create an issue and link it with `discovered-from`. The dependency graph becomes a map of how work actually unfolded, not a flat list.
+But here's the clever part: dependencies are real relationships, not text. You don't write "blocked by X" in a comment. You create an actual link between tasks. When you find a bug while building a feature, you create an issue and link it with `discovered-from`. The dependency graph shows how work actually unfolded, not just a flat list.
 
-## It Just Works
+## How I Use It
 
-Beads has an incredibly small footprint. It's a drop-in upgrade that requires almost zero explanation to agents.
-
-I tell Claude Code:
+The setup is simple. I tell Claude Code:
 
 > "We track work in Beads instead of Markdown. Run bd quickstart to see how."
 
-That's it. No configuration files. No schema definitions. No long system prompts explaining the workflow.
+That's it. No config files. No long explanations. No system prompts.
 
-The agent immediately understands. It starts running `bd ready --json` to find unblocked work. It creates issues with `bd create`. It updates status, links dependencies, manages hierarchical epics. All without me explaining the commands.
+Claude figures it out immediately. It starts running `bd ready --json` to find what's not blocked. Creates tasks with `bd create`. Updates status. Links dependencies. All without me explaining the commands.
 
-Why? Because Beads was designed for how agents actually think:
+Why does this work so well? Because Beads was built for how agents actually think.
 
-**Queryable, not interpretable**
-Instead of scanning markdown and mentally parsing text, the agent runs `bd ready --json` and gets a definitive list of unblocked work. The cognitive load difference is massive. It's not interpreting - it's querying structured data.
+**Agents can query, not just read**
+Instead of reading markdown and trying to parse text, Claude runs `bd ready --json` and gets a clear list. The difference is huge. It's querying real data, not interpreting text.
 
-**Session persistence without re-prompting**
-Between conversations, work doesn't vanish into context-window limbo. The agent doesn't need me to copy-paste the TODO list. It runs `bd ready --json` and is immediately back in context.
+**Sessions don't lose context**
+When I close my laptop and come back tomorrow, the work is still there. Claude doesn't need me to paste the TODO list again. It just runs `bd ready --json` and picks up where it left off.
 
-**Multi-agent coordination that actually works**
-With markdown, two agents on the same project means conflicting TODO lists and duplicated work. With Beads, both query the same logical database (via git), see what's claimed (`status: in_progress`), and work on different ready issues. The `--assignee` filter makes this trivial.
+**Multiple agents don't conflict**
+With markdown, two agents would fight over the same TODO list and duplicate work. With Beads, both query the same database (through git), see what's in progress, and pick different tasks. Simple.
 
-**Naturally distributed**
-Worker agents on multiple machines can share the same beads database backed by git. Any merge conflicts - including those from workers on different branches creating issues with colliding IDs - are transparently solved by the AI doing intelligent collision resolution.
+**It works across machines**
+I can have agents on different computers sharing the same task database through git. Even if they create tasks on different branches with the same ID, git handles the merge. No collisions.
 
-**Audit trail the agent can trust**
-When an issue is updated, the event is logged with timestamp and actor. The agent can see history. With markdown, you'd need to parse git blame, and even then you only see line-level changes, not semantic "status changed from open to in_progress."
+**Full history**
+When a task updates, it's logged with a timestamp and who did it. Claude can see the history. With markdown, you'd need to check git blame, and even then you only see line changes, not "status changed from open to in_progress."
 
 ## A Real Example
 
-Steve Yegge (Beads' creator) shared a story that captures how well this works:
+Steve Yegge built Beads. He shared a story that shows how well this works:
 
-He dropped Beads onto an old dev box, installed Sourcegraph Amp, and asked it to file beads issues for everything in his decade-old TODO list for Wyvern.
+He installed Beads on an old computer. Installed Sourcegraph Amp. Asked it to file issues for his decade-old TODO list for a project called Wyvern.
 
-**Less than 30 seconds** for Amp to come up to speed and begin filing issues.
+**30 seconds**: Amp understood the system and started filing issues.
 
-**30 minutes later**: 128 issues created. Six main epics. Five sub-epics. Complex interdependencies and parent/child relationships fully mapped.
+**30 minutes later**: 128 issues created. Six main categories. Five sub-categories. All the dependencies mapped out.
 
-After all issues were filed, he could ask the agent "what are the top priority ready work items?" and get an immediate, accurate answer.
+Then he could ask "what are the top priority tasks I can work on right now?" and get an instant, correct answer.
 
-This is the difference. You sling issues around like candy. Batch updates. Split them. Merge them. You always know what's open, what's blocked, what the priorities are.
+That's the difference. You can create issues fast. Update them in batches. Split them. Merge them. You always know what's open, what's blocked, what matters most.
 
-**And so do your agents.**
+**And your agents know too.**
 
-For me, this changes everything about long-horizon tasks. I can give Claude work that spans days, multiple sessions, branch switches. It doesn't lose its place. It doesn't ask me to re-explain the context. It just runs `bd ready --json` and continues where it left off.
+For me, this changes how I work on long projects. I can give Claude Code work that takes days, across multiple sessions, across git branches. It doesn't lose track. It doesn't ask me to explain again. It just runs `bd ready --json` and continues.
 
-## Installation
+## How to Install It
 
-Beads is available through multiple package managers:
+You can install Beads through npm, Homebrew, or Go:
 
 ```bash
 # npm
@@ -104,44 +100,44 @@ brew install steveyegge/beads/bd
 go install github.com/steveyegge/beads/cmd/bd@latest
 ```
 
-Works on Linux (glibc 2.32+), macOS, and Windows.
+Works on Linux, macOS, and Windows.
 
-Once installed, initialize it in your project:
+Then run this in your project:
 
 ```bash
 bd quickstart
 ```
 
-The quickstart guide is interactive and shows you everything you need to know in under two minutes.
+The quickstart is interactive. Takes about two minutes to learn everything.
 
 ## Why This Matters
 
-The bottleneck in AI-driven development isn't models anymore. It's infrastructure.
+The problem with AI development isn't the models anymore. It's the infrastructure around them.
 
-Specifically: how do AI agents maintain coherent, long-term plans without constant human intervention?
+Specifically: how do agents keep track of long-term plans without you constantly reminding them?
 
-Markdown doesn't scale. GitHub Issues are designed for human workflows, not agent cognition. JIRA is enterprise bloat.
+Markdown doesn't scale. GitHub Issues are built for humans, not agents. JIRA is too heavy.
 
-Beads solves a different problem entirely: **external working memory for agents**.
+Beads solves something different: **external working memory for agents**.
 
-Think about what agents need:
+Here's what agents actually need:
 
-1. **Structured data they can query** - not prose they have to interpret
-2. **Persistence across context windows** - the plan survives session boundaries
-3. **Dependency graphs** - explicit relationships, not implied by prose
-4. **Multi-agent coordination** - multiple workers without conflicts
-5. **Git integration** - version control for the plan itself
+1. **Data they can query** - not text they have to read and understand
+2. **Memory across sessions** - the plan survives when you close your laptop
+3. **Real dependency graphs** - not dependencies written in comments
+4. **Multi-agent coordination** - several agents working without stepping on each other
+5. **Git integration** - version control for the tasks themselves
 
-Beads delivers all of this with an incredibly lightweight implementation. The entire tool is small enough that agents can learn it from `bd --help` and the quickstart guide.
+Beads does all of this. And it's small enough that agents learn it just from reading `bd --help`.
 
-This is what missing infrastructure looks like when you find it. Not flashy. Not marketed. Just solving a real problem that's been blocking serious work.
+This is what good infrastructure looks like. Not flashy. Not marketed. Just solving a real problem that was blocking real work.
 
-## My Take
+## What I Think
 
-Beads is the kind of tool that changes how you work. Not because it's flashy, but because it removes friction you didn't realize was there.
+Beads changed how I work with AI. Not because it's exciting, but because it removed friction I didn't know I had.
 
-If you're using Claude Code, Cursor, or any AI coding assistant for non-trivial projects, you need task persistence. Markdown doesn't cut it. Beads does.
+If you're using Claude Code, Cursor, or any AI assistant for real projects, you need task persistence. Markdown doesn't work. Beads does.
 
-Try it. Run `bd quickstart`. See how an agent behaves when it actually has memory.
+Try it. Run `bd quickstart`. Watch how Claude behaves when it has actual memory.
 
 You won't go back.
