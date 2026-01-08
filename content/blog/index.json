@@ -1,6 +1,14 @@
 {
   "articles": [
     {
+      "slug": "native-lsp-in-claude-code",
+      "title": "Native LSP in Claude Code: The End of Serena and Workarounds",
+      "date": "2026-01-08",
+      "description": "How native LSP support in Claude Code 2.0.74 makes Serena MCP and manual gopls commands obsolete",
+      "tags": ["ai", "claude-code", "lsp", "gopls", "development"],
+      "file": "2026-01-08-native-lsp-in-claude-code.md"
+    },
+    {
       "slug": "claude-code-subagents-hidden-superpower",
       "title": "Claude Code Subagents: The Hidden Superpower You're Not Using",
       "date": "2026-01-08",

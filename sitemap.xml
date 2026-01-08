@@ -32,6 +32,12 @@
   </url>
   <!-- Blog posts -->
   <url>
+    <loc>https://straus.it/#read/native-lsp-in-claude-code</loc>
+    <lastmod>2026-01-09</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://straus.it/#read/claude-code-subagents-hidden-superpower</loc>
     <lastmod>2026-01-08</lastmod>
     <changefreq>yearly</changefreq>
