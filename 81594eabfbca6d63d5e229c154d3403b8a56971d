@@ -1,0 +1,39 @@
+js/config.js
+  dc0d0b070edb35da 39
+js/content/ContentLoader.js
+  dc0d0b070edb35da 48,50-52
+css/reset.css
+  dc0d0b070edb35da 25,69
+js/main.js
+  dc0d0b070edb35da 40-44
+index.html
+  dc0d0b070edb35da 7-20
+css/variables.css
+  dc0d0b070edb35da 62
+sitemap.xml
+  dc0d0b070edb35da 36
+js/commands/theme.js
+  dc0d0b070edb35da 40,42-44,50,52-56,60-62
+js/core/OutputRenderer.js
+  dc0d0b070edb35da 8,130-131
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.0.29",
+  "base_commit_sha": "81594eabfbca6d63d5e229c154d3403b8a56971d",
+  "prompts": {
+    "dc0d0b070edb35da": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "0887712d-eb06-4ce0-a8e0-03b11a13c8f5",
+        "model": "claude-sonnet-4-5-20250929"
+      },
+      "human_author": "Stefano Straus <stefano@straus.it>",
+      "messages": [],
+      "total_additions": 49,
+      "total_deletions": 14,
+      "accepted_lines": 44,
+      "overriden_lines": 0
+    }
+  }
+}
