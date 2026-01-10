@@ -1,6 +1,22 @@
 {
   "articles": [
     {
+      "slug": "vibe-code-better-with-claude-code",
+      "title": "8 Ways to Vibe-Code Better with Claude Code",
+      "date": "2026-01-10",
+      "description": "The system around the prompt matters more than the prompt itself",
+      "tags": ["ai", "claude-code", "vibe-coding", "productivity", "development"],
+      "file": "2026-01-10-vibe-code-better-with-claude-code.md"
+    },
+    {
+      "slug": "ralph-wiggum-autonomous-loops",
+      "title": "Ralph Wiggum - Autonomous Loops for Claude Code",
+      "date": "2026-01-09",
+      "description": "The bash loop technique that took over AI development",
+      "tags": ["ai", "claude-code", "ralph-wiggum", "automation", "development"],
+      "file": "2026-01-09-ralph-wiggum-autonomous-loops.md"
+    },
+    {
       "slug": "native-lsp-in-claude-code",
       "title": "Native LSP in Claude Code: The End of Serena and Workarounds",
       "date": "2026-01-08",
