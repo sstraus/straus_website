@@ -7,6 +7,7 @@ import { ContentLoader } from '../content/ContentLoader.js';
 import { MarkdownParser } from '../content/MarkdownParser.js';
 import { createElement } from '../utils/dom.js';
 import { scrollToTopTrick } from '../utils/scrollTrick.js';
+import { setPageTitle } from '../utils/pageTitle.js';
 import { config } from '../config.js';
 
 const read = {
@@ -55,6 +56,9 @@ const read = {
       const basePath = isArchive ? config.paths.archive : config.paths.blog;
       const markdown = await ContentLoader.load(`${basePath}/${article.file}`);
       const html = MarkdownParser.parse(markdown);
+
+      // Update page title for GA tracking
+      setPageTitle(article.title);
 
       output.clear();
 

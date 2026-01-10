@@ -5,6 +5,7 @@ import { commandRegistry } from './CommandRegistry.js';
 import { ContentLoader } from '../content/ContentLoader.js';
 import { MarkdownParser } from '../content/MarkdownParser.js';
 import { scrollToTopTrick } from '../utils/scrollTrick.js';
+import { setPageTitle } from '../utils/pageTitle.js';
 import { config } from '../config.js';
 
 const skills = {
@@ -21,6 +22,9 @@ const skills = {
     try {
       const markdown = await ContentLoader.load(`${config.paths.content}/skills.md`);
       const html = MarkdownParser.parse(markdown);
+
+      // Update page title for GA tracking
+      setPageTitle('Skills');
 
       output.clear();
       output.renderHtml(html);

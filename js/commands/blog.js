@@ -4,6 +4,7 @@
 import { commandRegistry } from './CommandRegistry.js';
 import { ArticleIndex } from '../content/ArticleIndex.js';
 import { createElement } from '../utils/dom.js';
+import { setPageTitle } from '../utils/pageTitle.js';
 
 // Calculate how many articles fit based on terminal height
 function calculatePageSize(terminal) {
@@ -66,6 +67,9 @@ const blog = {
       const currentPage = Math.min(page, totalPages);
       const startIdx = (currentPage - 1) * PAGE_SIZE;
       const pageArticles = allArticles.slice(startIdx, startIdx + PAGE_SIZE);
+
+      // Update page title for GA tracking
+      setPageTitle('Blog');
 
       output.clear();
       output.print(`Blog Articles — Page ${currentPage}/${totalPages}`, 'info');
