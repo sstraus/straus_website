@@ -1,0 +1,33 @@
+js/utils/pageTitle.js
+  0c01fa158798141d 1-30
+js/commands/read.js
+  0c01fa158798141d 10,60-62
+js/commands/skills.js
+  0c01fa158798141d 8,26-28
+js/commands/blog.js
+  0c01fa158798141d 7,71-73
+js/commands/contact.js
+  0c01fa158798141d 8,26-28
+js/commands/about.js
+  0c01fa158798141d 8,26-28
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.0.31",
+  "base_commit_sha": "f80cf8e46c77733fe750dd8b8e339d73ab02be3c",
+  "prompts": {
+    "0c01fa158798141d": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "c4009a72-cb72-45d3-b717-986019b15873",
+        "model": "claude-opus-4-5-20251101"
+      },
+      "human_author": "Stefano Straus <stefano@straus.it>",
+      "messages": [],
+      "total_additions": 50,
+      "total_deletions": 0,
+      "accepted_lines": 50,
+      "overriden_lines": 0
+    }
+  }
+}
