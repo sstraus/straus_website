@@ -14,7 +14,7 @@
   </url>
   <url>
     <loc>https://straus.it/#blog</loc>
-    <lastmod>2026-01-10</lastmod>
+    <lastmod>2026-01-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -31,6 +31,12 @@
     <priority>0.7</priority>
   </url>
   <!-- Blog posts -->
+  <url>
+    <loc>https://straus.it/#read/option-key-model-switcher</loc>
+    <lastmod>2026-01-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
   <url>
     <loc>https://straus.it/#read/vibe-code-better-with-claude-code</loc>
     <lastmod>2026-01-10</lastmod>
