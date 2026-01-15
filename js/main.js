@@ -6,6 +6,7 @@ import { $ } from './utils/dom.js';
 import { domReady } from './utils/delay.js';
 import { config } from './config.js';
 import { windowControls } from './effects/WindowControls.js';
+import { MetaManager } from './seo/MetaManager.js';
 
 // Load all commands
 import './commands/index.js';
@@ -21,6 +22,9 @@ async function init() {
   }
 
   try {
+    // Initialize SEO metadata with defaults
+    MetaManager.resetToDefault();
+
     const terminalApp = new Terminal(container);
 
     // Expose for debugging and suggestion callbacks

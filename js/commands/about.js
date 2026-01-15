@@ -6,6 +6,7 @@ import { ContentLoader } from '../content/ContentLoader.js';
 import { MarkdownParser } from '../content/MarkdownParser.js';
 import { scrollToTopTrick } from '../utils/scrollTrick.js';
 import { setPageTitle } from '../utils/pageTitle.js';
+import { MetaManager } from '../seo/MetaManager.js';
 import { config } from '../config.js';
 
 const about = {
@@ -25,6 +26,9 @@ const about = {
 
       // Update page title for GA tracking
       setPageTitle('About');
+
+      // Reset meta tags to default
+      MetaManager.resetToDefault();
 
       // Clear the loading message and render content
       output.clear();

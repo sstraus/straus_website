@@ -8,6 +8,7 @@ import { MarkdownParser } from '../content/MarkdownParser.js';
 import { createElement } from '../utils/dom.js';
 import { scrollToTopTrick } from '../utils/scrollTrick.js';
 import { setPageTitle } from '../utils/pageTitle.js';
+import { MetaManager } from '../seo/MetaManager.js';
 import { config } from '../config.js';
 
 const read = {
@@ -59,6 +60,9 @@ const read = {
 
       // Update page title for GA tracking
       setPageTitle(article.title);
+
+      // Update meta tags and structured data for SEO
+      MetaManager.updateArticleMeta(article);
 
       output.clear();
 

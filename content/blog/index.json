@@ -1,6 +1,14 @@
 {
   "articles": [
     {
+      "slug": "from-code-to-intent",
+      "title": "From Code to Intent - Why Software Development Is Changing Its Core Model",
+      "date": "2026-01-16",
+      "description": "The shift from instruction-based programming to intent-based systems and what it means for developers",
+      "tags": ["ai", "development", "intent-based-programming", "paradigm-shift"],
+      "file": "2026-01-16-from-code-to-intent.md"
+    },
+    {
       "slug": "option-key-model-switcher",
       "title": "The Option+P Trap: Why Claude Code's Model Switcher Doesn't Work on macOS",
       "date": "2026-01-15",

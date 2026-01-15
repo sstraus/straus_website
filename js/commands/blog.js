@@ -5,6 +5,7 @@ import { commandRegistry } from './CommandRegistry.js';
 import { ArticleIndex } from '../content/ArticleIndex.js';
 import { createElement } from '../utils/dom.js';
 import { setPageTitle } from '../utils/pageTitle.js';
+import { MetaManager } from '../seo/MetaManager.js';
 
 // Calculate how many articles fit based on terminal height
 function calculatePageSize(terminal) {
@@ -70,6 +71,9 @@ const blog = {
 
       // Update page title for GA tracking
       setPageTitle('Blog');
+
+      // Update meta tags for SEO
+      MetaManager.updateBlogListingMeta();
 
       output.clear();
       output.print(`Blog Articles — Page ${currentPage}/${totalPages}`, 'info');
