@@ -1,10 +1,12 @@
 # The Option+P Trap: Why Claude Code's Model Switcher Doesn't Work on macOS
 
-Last week I discovered Claude Code's new keyboard shortcut for switching models on the fly. Option+P opens a menu where you can instantly switch between Sonnet, Haiku, and Opus without leaving the conversation. Brilliant idea. Game changing for workflow.
+When Claude Code released the Option+P shortcut for switching models on the fly, I tried it immediately. Option+P should open a menu where you can instantly switch between Sonnet, Haiku, and Opus without leaving the conversation. Perfect for cost optimization.
 
 Except it didn't work.
 
-I pressed Option+P and got a π symbol in my terminal instead of a model selector. Every time. I thought it was a bug in Claude Code. I checked the version. I restarted the terminal. Nothing changed. Just more π symbols.
+I pressed Option+P and got a π symbol in my terminal instead of a model selector. Every time. I tried a few more times, saw more Greek letters, and gave up. I assumed it was broken and moved on.
+
+But the problem kept nagging me. The cost savings matter. Starting with Haiku for simple tasks, then switching to Sonnet when complexity increases. That's the workflow. But the only way to change models was to wait for Claude to finish, then type `/model` when the session was idle. Frustrating. Workflow breaking. And completely unnecessary if Option+P actually worked.
 
 Then I found [GitHub issue #13854](https://github.com/anthropics/claude-code/issues/13854). I wasn't alone. Dozens of macOS users reporting the same thing. The shortcut works perfectly on Linux and Windows. On macOS? Nothing but Greek letters.
 
@@ -44,11 +46,13 @@ After enabling this, Option+P works perfectly. The model switcher appears. You c
 
 ## The Missing Piece
 
-But here's what bothers me. Claude Code could detect this.
+But here's what bothers me. Claude Code could handle this.
 
-When you first run Claude Code on macOS, it could check if the terminal supports Meta key behavior. If not, it could show a warning. Or better, it could display platform-specific shortcuts in the help menu. On macOS without Meta key support, show Cmd+P or Ctrl+P instead of Option+P.
+I use iTerm2. iTerm2 allows applications to control Option key behavior programmatically. The application can tell the terminal "treat Option as Meta for these shortcuts." No user configuration needed. The terminal handles it automatically.
 
-The current behavior fails silently. You press Option+P, get a π, and assume the feature doesn't exist. Many users probably don't know the model switcher is there at all.
+Claude Code doesn't do this. It assumes you've already configured your terminal correctly. When you haven't, it fails silently. You press Option+P, get a π, and assume the feature doesn't exist. Many users probably don't know the model switcher is there at all.
+
+The technical capability exists. The terminal API supports it. But Claude Code doesn't use it. Instead, it pushes the burden onto users. Figure out your terminal settings. Enable Option as Meta manually. Read GitHub issues to discover why it's broken.
 
 I reported this in the GitHub issue. The team acknowledged it. Maybe a future version will handle it better. For now, you need to configure your terminal manually.
 
