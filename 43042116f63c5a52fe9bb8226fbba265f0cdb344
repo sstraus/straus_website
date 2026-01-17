@@ -1,0 +1,27 @@
+content/blog/index.json
+  2d3c828e7713bc41 4-10
+sitemap.xml
+  2d3c828e7713bc41 35-39
+content/blog/2026-01-17-what-n8n-teaches-about-automation.md
+  2d3c828e7713bc41 1-10,12-103
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.0.34",
+  "base_commit_sha": "43042116f63c5a52fe9bb8226fbba265f0cdb344",
+  "prompts": {
+    "2d3c828e7713bc41": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "16002d59-cc54-4edb-8471-d0e07e8ab984",
+        "model": "claude-sonnet-4-5-20250929"
+      },
+      "human_author": "Stefano Straus <stefano@straus.it>",
+      "messages": [],
+      "total_additions": 142,
+      "total_deletions": 25,
+      "accepted_lines": 116,
+      "overriden_lines": 1
+    }
+  }
+}
