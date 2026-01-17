@@ -32,6 +32,12 @@
   </url>
   <!-- Blog posts -->
   <url>
+    <loc>https://straus.it/#read/what-n8n-teaches-about-automation</loc>
+    <lastmod>2026-01-17</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://straus.it/#read/from-code-to-intent</loc>
     <lastmod>2026-01-16</lastmod>
     <changefreq>yearly</changefreq>

@@ -1,6 +1,14 @@
 {
   "articles": [
     {
+      "slug": "what-n8n-teaches-about-automation",
+      "title": "What n8n Actually Teaches You About Automation",
+      "date": "2026-01-17",
+      "description": "The constraints and disciplines that separate automation systems that survive from those that collapse",
+      "tags": ["automation", "n8n", "workflows", "systems-thinking"],
+      "file": "2026-01-17-what-n8n-teaches-about-automation.md"
+    },
+    {
       "slug": "from-code-to-intent",
       "title": "From Code to Intent - Why Software Development Is Changing Its Core Model",
       "date": "2026-01-16",
