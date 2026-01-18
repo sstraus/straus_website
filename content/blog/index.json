@@ -1,6 +1,14 @@
 {
   "articles": [
     {
+      "slug": "interpreting-2025-tech-layoffs",
+      "title": "Interpreting 2025 Tech Layoffs Without the Hype",
+      "date": "2026-01-18",
+      "description": "What the data actually shows when you check the numbers behind the narrative",
+      "tags": ["tech-industry", "layoffs", "data-analysis", "employability"],
+      "file": "2026-01-18-interpreting-2025-tech-layoffs.md"
+    },
+    {
       "slug": "what-n8n-teaches-about-automation",
       "title": "What n8n Actually Teaches You About Automation",
       "date": "2026-01-17",
