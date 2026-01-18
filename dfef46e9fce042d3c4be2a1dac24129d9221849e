@@ -1,0 +1,31 @@
+js/config.js
+  f3169dcc889e976c 39
+content/blog/index.json
+  f3169dcc889e976c 4-10
+index.html
+  f3169dcc889e976c 70,108
+sitemap.xml
+  f3169dcc889e976c 5,11,17,35-39
+content/blog/2026-01-18-interpreting-2025-tech-layoffs.md
+  f3169dcc889e976c 1-47
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.0.35",
+  "base_commit_sha": "dfef46e9fce042d3c4be2a1dac24129d9221849e",
+  "prompts": {
+    "f3169dcc889e976c": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "a769aa9e-d0a4-4d24-8711-02595e5b78ff",
+        "model": "claude-sonnet-4-5-20250929"
+      },
+      "human_author": "Stefano Straus <stefano@straus.it>",
+      "messages": [],
+      "total_additions": 67,
+      "total_deletions": 6,
+      "accepted_lines": 67,
+      "overriden_lines": 0
+    }
+  }
+}
