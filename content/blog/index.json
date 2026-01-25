@@ -1,6 +1,14 @@
 {
   "articles": [
     {
+      "slug": "the-junior-developer-problem",
+      "title": "The Junior Developer Problem",
+      "date": "2026-01-25",
+      "description": "Why investing in junior developers no longer makes sense for many companies, and what newcomers must do to survive",
+      "tags": ["ai", "careers", "hiring", "industry-trends"],
+      "file": "2026-01-25-the-junior-developer-problem.md"
+    },
+    {
       "slug": "interpreting-2025-tech-layoffs",
       "title": "Interpreting 2025 Tech Layoffs Without the Hype",
       "date": "2026-01-18",
