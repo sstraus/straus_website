@@ -3,6 +3,7 @@
  */
 import { $ } from '../utils/dom.js';
 import { cursorManager } from '../effects/CursorManager.js';
+import { commandRegistry } from '../commands/CommandRegistry.js';
 
 export class InputHandler {
   /**
@@ -43,6 +44,10 @@ export class InputHandler {
         case 'Enter':
           e.preventDefault();
           this.submit();
+          break;
+        case 'Tab':
+          e.preventDefault();
+          this.autocomplete();
           break;
         case 'ArrowUp':
           e.preventDefault();
@@ -148,6 +153,54 @@ export class InputHandler {
     setTimeout(() => {
       this.displayElement.textContent = '';
     }, 500);
+  }
+
+  /**
+   * Autocomplete command on Tab
+   */
+  autocomplete() {
+    const input = this.hiddenInput.value.trim();
+    if (!input) return;
+
+    // Only autocomplete the command part (first word)
+    const parts = input.split(' ');
+    const partial = parts[0].toLowerCase();
+
+    // Get all command names and aliases
+    const commands = commandRegistry.getNames();
+    const matches = commands.filter(cmd => cmd.startsWith(partial));
+
+    if (matches.length === 1) {
+      // Single match: complete it
+      parts[0] = matches[0];
+      this.hiddenInput.value = parts.join(' ');
+      this.updateDisplay();
+    } else if (matches.length > 1) {
+      // Multiple matches: find common prefix
+      const commonPrefix = this.findCommonPrefix(matches);
+      if (commonPrefix.length > partial.length) {
+        parts[0] = commonPrefix;
+        this.hiddenInput.value = parts.join(' ');
+        this.updateDisplay();
+      }
+    }
+  }
+
+  /**
+   * Find common prefix among strings
+   */
+  findCommonPrefix(strings) {
+    if (strings.length === 0) return '';
+    if (strings.length === 1) return strings[0];
+
+    let prefix = strings[0];
+    for (let i = 1; i < strings.length; i++) {
+      while (!strings[i].startsWith(prefix)) {
+        prefix = prefix.slice(0, -1);
+        if (prefix === '') return '';
+      }
+    }
+    return prefix;
   }
 
   /**

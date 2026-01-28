@@ -12,6 +12,13 @@
   background: var(--term-bg);
 }
 
+/* Window has been dragged/positioned */
+.mac-window--positioned {
+  position: absolute;
+  width: var(--window-max-width);
+  max-width: calc(100vw - 40px);
+}
+
 /* Title Bar */
 .window-titlebar {
   display: flex;
@@ -22,6 +29,20 @@
   padding: 0 12px;
   user-select: none;
   flex-shrink: 0;
+  cursor: grab;
+}
+
+.window-titlebar:active {
+  cursor: grabbing;
+}
+
+/* Prevent text selection while dragging */
+.mac-window--dragging {
+  user-select: none;
+}
+
+.mac-window--dragging * {
+  user-select: none;
 }
 
 /* Traffic Lights */
@@ -186,5 +207,10 @@
   .window-title {
     text-align: center;
     padding: 0 12px;
+  }
+
+  /* No dragging on mobile */
+  .window-titlebar {
+    cursor: default;
   }
 }
