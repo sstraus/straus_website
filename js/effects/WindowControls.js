@@ -6,12 +6,15 @@ import { $ } from '../utils/dom.js';
 class WindowControls {
   constructor() {
     this.window = null;
+    this.titlebar = null;
     this.closeBtn = null;
     this.minimizeBtn = null;
     this.expandBtn = null;
     this.isFullscreen = false;
     this.isMinimized = false;
     this.restoreTimer = null;
+    this.isDragging = false;
+    this.dragOffset = { x: 0, y: 0 };
   }
 
   /**
@@ -19,6 +22,7 @@ class WindowControls {
    */
   init() {
     this.window = $('.mac-window');
+    this.titlebar = $('.window-titlebar');
     this.closeBtn = $('.traffic-light--close');
     this.minimizeBtn = $('.traffic-light--minimize');
     this.expandBtn = $('.traffic-light--expand');
@@ -62,6 +66,11 @@ class WindowControls {
         this.toggleFullscreen();
       }
     });
+
+    // Drag events on titlebar
+    this.titlebar?.addEventListener('mousedown', (e) => this.startDrag(e));
+    document.addEventListener('mousemove', (e) => this.drag(e));
+    document.addEventListener('mouseup', () => this.stopDrag());
   }
 
   /**
@@ -147,6 +156,59 @@ class WindowControls {
     } else {
       this.window.classList.remove('mac-window--fullscreen');
     }
+  }
+
+  /**
+   * Start dragging the window
+   */
+  startDrag(e) {
+    // Don't drag if clicking on traffic lights, fullscreen, or mobile
+    if (e.target.closest('.traffic-lights') || this.isFullscreen || this.isMobile) {
+      return;
+    }
+
+    this.isDragging = true;
+    this.window.classList.add('mac-window--dragging');
+
+    // Calculate offset from mouse to window top-left
+    const rect = this.window.getBoundingClientRect();
+    this.dragOffset.x = e.clientX - rect.left;
+    this.dragOffset.y = e.clientY - rect.top;
+
+    // Switch to absolute positioning on first drag
+    if (!this.window.classList.contains('mac-window--positioned')) {
+      this.window.classList.add('mac-window--positioned');
+      this.window.style.left = `${rect.left}px`;
+      this.window.style.top = `${rect.top}px`;
+    }
+
+    e.preventDefault();
+  }
+
+  /**
+   * Handle drag movement
+   */
+  drag(e) {
+    if (!this.isDragging) return;
+
+    const newX = e.clientX - this.dragOffset.x;
+    const newY = e.clientY - this.dragOffset.y;
+
+    // Keep window within viewport bounds
+    const maxX = window.innerWidth - this.window.offsetWidth;
+    const maxY = window.innerHeight - this.window.offsetHeight;
+
+    this.window.style.left = `${Math.max(0, Math.min(newX, maxX))}px`;
+    this.window.style.top = `${Math.max(0, Math.min(newY, maxY))}px`;
+  }
+
+  /**
+   * Stop dragging
+   */
+  stopDrag() {
+    if (!this.isDragging) return;
+    this.isDragging = false;
+    this.window.classList.remove('mac-window--dragging');
   }
 }
 
