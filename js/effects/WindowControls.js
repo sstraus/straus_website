@@ -169,6 +169,7 @@ class WindowControls {
 
     this.isDragging = true;
     this.window.classList.add('mac-window--dragging');
+    document.body.classList.add('is-dragging');
 
     // Calculate offset from mouse to window top-left
     const rect = this.window.getBoundingClientRect();
@@ -209,6 +210,7 @@ class WindowControls {
     if (!this.isDragging) return;
     this.isDragging = false;
     this.window.classList.remove('mac-window--dragging');
+    document.body.classList.remove('is-dragging');
   }
 }
 

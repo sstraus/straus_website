@@ -25,15 +25,15 @@ async function init() {
     // Initialize SEO metadata with defaults
     MetaManager.resetToDefault();
 
+    // Initialize window controls (traffic lights) immediately - before typewriter
+    windowControls.init();
+
     const terminalApp = new Terminal(container);
 
     // Expose for debugging and suggestion callbacks
     window.terminalApp = terminalApp;
 
     await terminalApp.init();
-
-    // Initialize window controls (traffic lights)
-    windowControls.init();
 
     if (config.debug) {
       console.log('Terminal initialized successfully');

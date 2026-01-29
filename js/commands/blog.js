@@ -102,7 +102,15 @@ const blog = {
 
         const title = createElement('span', {
           className: 'blog-item-title',
+          tabindex: '0',
+          role: 'link',
           onClick: () => terminal.runCommand(`read ${article.slug}`),
+          onKeydown: (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              terminal.runCommand(`read ${article.slug}`);
+            }
+          },
         }, article.title);
 
         const date = createElement('span', {
@@ -131,7 +139,15 @@ const blog = {
         if (currentPage > 1) {
           const prev = createElement('span', {
             className: 'blog-page-link',
+            tabindex: '0',
+            role: 'link',
             onClick: () => terminal.runCommand(`blog ${currentPage - 1}`),
+            onKeydown: (e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                terminal.runCommand(`blog ${currentPage - 1}`);
+              }
+            },
           }, '← prev');
           pagination.appendChild(prev);
         }
@@ -144,7 +160,15 @@ const blog = {
         if (currentPage < totalPages) {
           const next = createElement('span', {
             className: 'blog-page-link',
+            tabindex: '0',
+            role: 'link',
             onClick: () => terminal.runCommand(`blog ${currentPage + 1}`),
+            onKeydown: (e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                terminal.runCommand(`blog ${currentPage + 1}`);
+              }
+            },
           }, 'next →');
           pagination.appendChild(next);
         }
