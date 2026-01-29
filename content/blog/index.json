@@ -1,6 +1,14 @@
 {
   "articles": [
     {
+      "slug": "keyboards-survive-voice-computing",
+      "title": "The Noise Problem Nobody Talks About",
+      "date": "2026-01-29",
+      "description": "Christian Klein predicts keyboards will disappear in three years. The constraint is social, not technical.",
+      "tags": ["ai", "voice-computing", "predictions", "work"],
+      "file": "2026-01-29-keyboards-survive-voice-computing.md"
+    },
+    {
       "slug": "the-junior-developer-problem",
       "title": "The Junior Developer Problem",
       "date": "2026-01-25",
