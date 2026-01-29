@@ -38,8 +38,15 @@
   transition: border-color 0.2s;
 }
 
-.md-content a:hover {
+.md-content a:hover,
+.md-content a:focus {
   border-bottom-style: solid;
+  outline: none;
+}
+
+.md-content a:focus-visible {
+  outline: 2px solid var(--term-link);
+  outline-offset: 2px;
 }
 
 /* Code */
@@ -174,8 +181,15 @@
   cursor: pointer;
 }
 
-.blog-item-title:hover {
+.blog-item-title:hover,
+.blog-item-title:focus {
   text-decoration: underline;
+  outline: none;
+}
+
+.blog-item-title:focus-visible {
+  outline: 2px solid var(--term-link);
+  outline-offset: 2px;
 }
 
 .blog-item-date {
@@ -225,8 +239,15 @@
   cursor: pointer;
 }
 
-.blog-page-link:hover {
+.blog-page-link:hover,
+.blog-page-link:focus {
   text-decoration: underline;
+  outline: none;
+}
+
+.blog-page-link:focus-visible {
+  outline: 2px solid var(--term-link);
+  outline-offset: 2px;
 }
 
 .blog-page-info {

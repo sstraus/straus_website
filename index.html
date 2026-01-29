@@ -67,13 +67,13 @@
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 
   <!-- Styles (versioned for cache busting) -->
-  <link rel="stylesheet" href="css/main.css?v=1.2.7">
+  <link rel="stylesheet" href="css/main.css?v=1.2.8">
 </head>
 <body>
   <div class="container">
     <div class="mac-window">
       <div class="window-titlebar">
-        <div class="traffic-lights">
+        <div class="traffic-lights" aria-hidden="true">
           <span class="traffic-light traffic-light--close"></span>
           <span class="traffic-light traffic-light--minimize"></span>
           <span class="traffic-light traffic-light--expand"></span>
@@ -81,8 +81,8 @@
         <div class="window-title">straus-code — stefano＠straus.it</div>
         <div class="window-spacer"></div>
       </div>
-      <div class="terminal" id="terminal">
-        <div class="terminal-output" id="terminal-output"></div>
+      <div class="terminal" id="terminal" role="main">
+        <div class="terminal-output" id="terminal-output" aria-live="polite" aria-atomic="false"></div>
         <div class="terminal-input-line">
           <span class="prompt-symbol"></span>
           <span class="input-display" id="input-display"></span>
@@ -96,6 +96,7 @@
           autocorrect="off"
           autocapitalize="off"
           spellcheck="false"
+          aria-label="Terminal command input"
         >
       </div>
     </div>
@@ -105,6 +106,6 @@
   <script src="vendor/marked.min.js"></script>
 
   <!-- App (versioned for cache busting) -->
-  <script type="module" src="js/main.js?v=1.2.7"></script>
+  <script type="module" src="js/main.js?v=1.2.8"></script>
 </body>
 </html>
