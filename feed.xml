@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0"
+  xmlns:atom="http://www.w3.org/2005/Atom"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Stefano Straus</title>
     <link>https://straus.it</link>
     <description>Engineering Manager specializing in AI-driven development, software architecture, and developer productivity. Insights on intent-based programming, Claude Code, and modern development patterns.</description>
     <language>en</language>
-    <lastBuildDate>Wed, 29 Jan 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 29 Jan 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://straus.it/feed.xml" rel="self" type="application/rss+xml"/>
     <image>
       <url>https://straus.it/img/profile.jpg</url>
@@ -19,6 +21,21 @@
       <guid isPermaLink="true">https://straus.it/#read/keyboards-survive-voice-computing</guid>
       <pubDate>Thu, 29 Jan 2026 00:00:00 +0000</pubDate>
       <description>Christian Klein predicts keyboards will disappear in three years. The constraint is social, not technical.</description>
+      <content:encoded><![CDATA[<h1>The Noise Problem Nobody Talks About</h1>
+<p>Today I read an article published by Fortune in which Christian Klein, CEO of SAP, argues that within three years keyboards will become obsolete, replaced by chatbots and fully voice-activated computing.</p>
+<p>It is a clean, optimistic thesis. And like many clean theses, it breaks as soon as it touches reality.</p>
+<h2>The Living Room Test</h2>
+<p>At home, we already live inside a highly digital environment. Everyone sits on the sofa with a device in hand, typing, chatting, prompting AI, jumping between conversations and tools. Even there, silence is not accidental. It is what makes parallel interaction possible. I cannot imagine a living room where everyone speaks to their phone at the same time. Not because the technology is missing, but because the social friction would be immediate and exhausting.</p>
+<h2>The Office Amplifies This</h2>
+<p>In software development, silence is not a side effect, it is a prerequisite. Teams do not spend the day speaking out loud. Calls are pushed into phone booths. Discussions are moved into meeting rooms. The default working mode is quiet, focused, and massively parallel. Replacing keyboards with voice would turn this equilibrium into constant noise. A room full of developers talking to AI agents is not futuristic. It is dysfunctional.</p>
+<p>Voice interaction has a role. It works in isolated contexts, for accessibility, for short commands, for hands-busy situations. But as a primary interface for knowledge work, it does not scale socially. The limitation is not recognition accuracy or latency. It is coexistence.</p>
+<h2>The Real Constraint</h2>
+<p>Keyboards survive because they are socially compatible. They allow precision without noise, concurrency without interference, long reasoning without performance. They fit shared spaces, both domestic and professional, in a way voice simply does not.</p>
+<p>For this reason, I do not believe keyboards are about to disappear. Not in three years, and not as a consequence of AI progress. The constraint here is human, not technical.</p>
+<h2>For Future Reference</h2>
+<p>I am writing this post to mark the prediction, so we can come back to it in a few years and see who was right.</p>
+<p>The original article: <a href="https://fortune.com/2026/01/28/sap-christian-klein-ai-future-end-of-keyboard/">SAP boss Christian Klein has seen the AI future</a></p>
+]]></content:encoded>
     </item>
 
     <item>
@@ -27,38 +44,217 @@
       <guid isPermaLink="true">https://straus.it/#read/the-junior-developer-problem</guid>
       <pubDate>Sun, 25 Jan 2026 00:00:00 +0000</pubDate>
       <description>Why investing in junior developers no longer makes sense for many companies, and what newcomers must do to survive</description>
+      <content:encoded><![CDATA[<h1>The Junior Developer Problem</h1>
+<p>I&#39;ve been watching CVs land in my inbox every week from freshly graduated developers. They&#39;re offering themselves at salaries that would have been considered ridiculous even ten years ago. And I find myself hesitating in ways I didn&#39;t used to.</p>
+<p>The problem is not cost. The problem is whether it makes sense to invest in a junior at all.</p>
+<p>There is a structural issue for anyone entering the developer profession today, and it has nothing to do with motivation, passion, or raw talent. The real obstacle is a competitor that does not sleep, does not eat, does not complain, and does not ask for a raise. It does not need formal education either, because it learns passively from the work of others. That competitor is AI.</p>
+<p>In many teams, especially small and medium ones, AI has already taken over what used to be peer programming. Tools like Claude Code have effectively become the new junior developer sitting next to you. Not a perfect one, not a reliable one, but fast, tireless, and surprisingly competent. I use it daily. The point is not the vendor. The point is the role shift happening in front of us.</p>
+<h2>The ROI Problem</h2>
+<p>Here&#39;s what I actually see when I&#39;m running projects and budgets.</p>
+<p>Today, for many companies, it is more rational to spend money on tokens and let AI do most of the work that was traditionally delegated to newcomers. Boilerplate, scaffolding, basic integrations, test generation, even first-pass refactoring. The ROI is simply better.</p>
+<p>AI makes mistakes. Sometimes stupid ones, very similar to what you would expect from someone with little experience. The difference is that it can reach a level of implementation speed and breadth that even solid senior developers struggle to maintain consistently. When you average the output, the final value is clearly higher.</p>
+<p><em>This is uncomfortable to say, but hard to deny if you are actually running projects and budgets.</em></p>
+<h2>So What Is Left?</h2>
+<p>The obvious answer is that juniors must invest personally in their future. Being &quot;good at coding&quot; is no longer enough. The baseline has moved.</p>
+<p>A junior today must demonstrate that they are AI-native. Not just someone who uses AI, but someone who can drive it. Someone who understands how to decompose problems, how to constrain solutions, how to iterate prompts, how to validate outputs, and how to integrate AI-generated code into real systems without breaking everything. Being Claude-Code-native, or whatever equivalent tool dominates tomorrow, is not optional.</p>
+<p>This sounds easy from the outside. It is not.</p>
+<p>At this point the role shifts. You are no longer trained as a pure developer. You are pushed toward becoming a software architect much earlier in your career. You need to reason about systems, boundaries, failure modes, and long-term maintainability. These are not skills you pick up by watching tutorials or grinding LeetCode. They usually come from years of enterprise exposure, from seeing things break in production at 3 AM, from dealing with constraints that are not written in the spec.</p>
+<p>That is why entering the market today without experience feels like driving straight into a dead end. The traditional ramp no longer exists. The ladder has missing steps.</p>
+<h2>One Concrete Piece of Advice</h2>
+<p>If I had to give one actionable recommendation, it would be this: do everything you can to secure an internship in an advanced company. Ideally one that is already fully AI-driven. Not a company that &quot;is experimenting with AI&quot;, but one that has reorganized its workflows around it.</p>
+<p>The goal is not prestige. It is exposure. You need to understand how the game actually works, how decisions are made, how AI is integrated into delivery pipelines, and which strategies really scale. Only then will you have something practical to talk about in an interview. Something that goes beyond generic enthusiasm.</p>
+<h2>The Timeline</h2>
+<p>I&#39;ve watched this transition accelerate over the past year. In one, maybe two years at most, there will be very little space left for developers who are not AI-native, regardless of which AI we will be using.</p>
+<p>This is not a threat. It is an observation. The market is already adjusting. The only real question is whether new developers will adjust fast enough.</p>
+]]></content:encoded>
     </item>
 
     <item>
       <title>Interpreting 2025 Tech Layoffs Without the Hype</title>
       <link>https://straus.it/#read/interpreting-2025-tech-layoffs</link>
       <guid isPermaLink="true">https://straus.it/#read/interpreting-2025-tech-layoffs</guid>
-      <pubDate>Sat, 18 Jan 2026 00:00:00 +0000</pubDate>
+      <pubDate>Sun, 18 Jan 2026 00:00:00 +0000</pubDate>
       <description>What the data actually shows when you check the numbers behind the narrative</description>
+      <content:encoded><![CDATA[<h1>Interpreting 2025 Tech Layoffs Without the Hype</h1>
+<p>This morning I read a popular article on Medium claiming that over 126,000 tech jobs were cut in 2025, and that the layoffs were not random but &quot;precise&quot;, targeting specific roles while sparing others. The argument was compelling, confident, and neatly packaged. Maybe too neat.</p>
+<p>So I did what any engineer should do when presented with a clean narrative built on big numbers. I checked the data.</p>
+<p>The headline figure, around 126k layoffs, is not fabricated. Depending on the tracker and the cutoff date, it is broadly correct. One widely used dataset reports just under 124,000 tech employees laid off in 2025, another lands closer to 127,000. Already here, the first crack appears. This is not a single number. It is an approximation that depends on definitions, geography, and reporting methodology.</p>
+<p>Then you look at other trackers and the picture widens fast. Some datasets report closer to 245,000 people impacted in the same year. Not because the situation suddenly doubled, but because &quot;tech&quot;, &quot;layoff&quot;, and even &quot;employee&quot; are not consistently defined. Public vs private companies, subsidiaries, contractors, international offices, WARN notices versus press releases. Different lenses, different totals.</p>
+<p>So the first correction is simple: 126,000 is not the number. It is a number. Good enough to show scale, not good enough to support precise conclusions on its own.</p>
+<p>The article then moves to roles. Frontend-only engineers, junior data analysts, manual QA, prompt engineers, middle managers. Crushed. Infrastructure engineers, security, data engineers, platform teams. Safe, or even growing.</p>
+<p>This is where verification really matters, because this framing implies intent. As if companies sat down and decided that certain job titles had become obsolete.</p>
+<p>The data does not support that level of precision.</p>
+<p>When you look at actual layoff breakdowns reported company by company, a different first-order pattern shows up. One of the most heavily hit functions across 2024 and 2025 was not engineering at all, but recruiting and HR. This makes perfect sense if you think operationally. When hiring freezes, talent acquisition scales to zero almost overnight. It is the fastest cost lever available, and it does not touch production systems.</p>
+<p>Engineering layoffs did happen, obviously. But they were rarely clean cuts along specialization lines. Many reductions affected engineering, product, recruiting, and adjacent roles at the same time. Backend, frontend, infra, even senior engineers all appear in the same notices. This is not a moral judgment on skill value. It is budget surgery.</p>
+<p>So no, layoffs were not random. But they were not a surgical strike against &quot;shallow frontend&quot; either. They were constrained decisions made under pressure, with one dominant rule: cut what you can cut without breaking the business.</p>
+<p>That distinction is critical, because it reframes the rest of the argument in a much more useful way.</p>
+<p>The original article is strongest not when it talks about job titles, but when it talks about leverage. Once you strip away the rhetoric, what actually survives scrutiny is this: in a contracting market, skills that directly reduce cost, risk, or operational chaos are protected longer than skills that mainly produce optional output.</p>
+<p>That is why cloud cost control matters. Not because it is trendy, but because cloud bills do not shrink by themselves during layoffs. Someone has to right-size, kill waste, and make spend predictable. When an engineer can turn an infrastructure change into a measurable financial outcome, that engineer suddenly speaks a language the board understands.</p>
+<p>The same logic applies to security literacy. You do not need everyone to be a security specialist, but you cannot afford engineers who casually create exposure. Regulatory pressure, breach costs, and reputational damage all scale badly in downturns. Engineers who understand auth flows, privilege boundaries, and failure modes reduce existential risk, and that makes them harder to justify cutting.</p>
+<p>Production ownership follows the same pattern. Being able to ship code is table stakes. Being able to stabilize a system at 2 a.m., isolate a failure, mitigate blast radius, and explain what happened afterward is operational leverage. This is why platform engineering, observability, and SRE-adjacent work keeps expanding in scope even when headcount shrinks. Not because companies love hero culture, but because downtime is expensive.</p>
+<p>Data engineering fits here too, but again not for ideological reasons. Pipelines, ingestion, and data quality are production systems. Dashboards are consumers of those systems. In a tight budget environment, the work that keeps data flowing reliably survives longer than the work that rearranges it for presentation. You can see this indirectly by looking at demand signals. Data engineering roles remain consistently advertised even as overall job postings remain far below their 2022 peak.</p>
+<p>That macro context is the last piece the original article largely ignores. By mid 2025, active job postings in the US tech market were roughly 45 percent below early 2022 levels. This matters because it explains why &quot;skill positioning&quot; suddenly feels decisive. The bar did not move because engineers became worse. The bar moved because slack disappeared.</p>
+<p>Seen through this lens, the real mistake of the original article is not factual, but structural. It frames survival as a referendum on specific roles, when it is actually a referendum on operational usefulness under constraint.</p>
+<p>Frontend is not dead. Shallow frontend is exposed. Data analysis is not dead. Analysis without ownership of the underlying system is fragile. AI did not kill jobs. Roles whose entire identity depended on a tool improving were never stable to begin with.</p>
+<p>The uncomfortable but accurate conclusion is this: in 2025, employability in tech correlates less with how many tools you know, and more with whether your work measurably reduces cost, risk, or chaos. If it does not, your role is easier to cut, regardless of how smart or hardworking you are.</p>
+<p>That is not cynicism. It is a system behaving exactly as designed.</p>
+<p>Once you see it this way, the fog lifts. The layoffs stop looking like a mystery or a purge, and start looking like a constrained optimization problem. And that clarity is far more useful than another viral list of &quot;safe roles&quot;.</p>
+]]></content:encoded>
     </item>
 
     <item>
       <title>What n8n Actually Teaches You About Automation</title>
       <link>https://straus.it/#read/what-n8n-teaches-about-automation</link>
       <guid isPermaLink="true">https://straus.it/#read/what-n8n-teaches-about-automation</guid>
-      <pubDate>Fri, 17 Jan 2026 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 17 Jan 2026 00:00:00 +0000</pubDate>
       <description>The constraints and disciplines that separate automation systems that survive from those that collapse</description>
+      <content:encoded><![CDATA[<h1>What <strong>n8n</strong> Actually Teaches You About Automation</h1>
+<p>Automation as a System, Not as a Shortcut</p>
+<p>For years I ran my entire home automation on Node-RED instead of Home Assistant as everyone else. Not because I&#39;m a masochist, but because the mental model was fundamentally different. I think in terms of conditions, state, and context. I prefer processes that adapt based on what is happening in the surrounding system, rather than workflows that behave like simple on-off switches. If you&#39;re still treating automation as glorified button-pushing, you&#39;re missing the fundamental difference between executing actions and building systems that think.</p>
+<p>The same approach has shaped how I look at automation in professional environments. I&#39;m not particularly interested in chaining actions together. I&#39;m interested in building mechanisms that are aware of where they are in a process, what has already happened, and what is reasonable to do next.</p>
+<p>Over the years, I have often suggested <strong>n8n</strong> to colleagues as a solution for data transformation and workflow automation problems, even before using it extensively myself. It was clear that the tool had strong foundations, but for a long time it felt more suitable for linear automations than for truly adaptive processes.</p>
+<p>That changed over the last year with the introduction of AI nodes. Not because they magically add intelligence, but because they allow workflows to interpret input, classify data, and make contextual decisions. This is the point where <strong>n8n</strong> stops being just an automation engine and becomes a platform for building adaptive, state-aware processes.</p>
+<p>Recently, I decided to put it to the test myself and use <strong>n8n</strong> to address some concrete problems we are facing in the company. As with any new tool, the main difficulty was not making things work, but understanding how to design workflows that remain understandable, controllable, and maintainable over time.</p>
+<p>What follows is not a guide on how to use <strong>n8n</strong>. It is a set of constraints that emerged while actually building with it. These are the things that consistently determine whether a workflow stays usable or slowly collapses under its own weight.</p>
+<p>⸻</p>
+<h2>Data Shape Is the Real Contract</h2>
+<p>Here&#39;s what actually happens. You build a workflow that processes webhook data. It works perfectly for weeks. Then one day it explodes because someone on the other end decided to send <code>null</code> instead of an empty string, or wrapped a single value in an array, or nested the payload one level deeper.</p>
+<p>Most workflows don&#39;t break because they are complex. They break because the shape of the data is never fixed. Data flows in however it wants, assumptions pile up silently, and everything works until it doesn&#39;t.</p>
+<p>The workflows that survive all do the same unglamorous thing early on. <em>They normalize input aggressively.</em> They don&#39;t try to be clever. They force data into a predictable shape immediately. Once that&#39;s done, everything downstream becomes trivial.</p>
+<p>Skip this step and you&#39;re building fragility with a countdown timer.</p>
+<p>⸻</p>
+<h2>Decisions Must Be Visible, Not Embedded</h2>
+<p>I&#39;ve debugged too many workflows where the interesting logic was buried inside a Function node or hidden in a complex expression. The canvas looked clean, but understanding what actually happened required opening every node and reading code.</p>
+<p><em>Decisions that matter must be visible on the canvas.</em> If a workflow branches based on conditions, I should see that branch. If data gets transformed in a way that changes behavior, that transformation should be explicit, not hidden in a clever expression.</p>
+<p>The temptation is to keep the canvas clean by stuffing logic into expressions. This feels efficient until you need to debug it at 11 PM because something broke in production.</p>
+<p>⸻</p>
+<h2>Stop Rerunning Everything</h2>
+<p>The turning point for me was realizing I could pin data at any node and work from there. Instead of triggering the entire workflow every time I wanted to test a change, I could freeze the output of the first few nodes and just work on the downstream logic.</p>
+<p><em>Pinning data is not a debugging shortcut. It is a construction technique.</em> Once you start working this way, you stop depending on webhooks firing, APIs responding, or external systems being available. You&#39;re working with frozen, known data. Changes become instant to test.</p>
+<p>This completely changes how fast you can iterate. No more waiting for triggers. No more hoping the API is in the right state. Just frozen data and immediate feedback.</p>
+<p>⸻</p>
+<h2>Debugging Lives in Executions, Not in Theory</h2>
+<p>When something breaks in production, don&#39;t rerun the workflow with test data. Go to the executions tab and reload the actual execution that failed. <em>This changes everything.</em> You&#39;re no longer guessing what might have gone wrong. You&#39;re looking at exactly what did go wrong, with the actual data that caused the failure.</p>
+<p>Most bugs don&#39;t show up with your carefully crafted test payloads. They show up when the API returns an empty array instead of null, or when a field you assumed was always present is suddenly missing, or when someone upstream decides to change their data structure without telling anyone.</p>
+<p>If you&#39;re only testing with clean data, you&#39;re rehearsing success while production is failing in ways you haven&#39;t imagined.</p>
+<p>⸻</p>
+<h2>Test and Production Are Different States of Mind</h2>
+<p>I&#39;ve accidentally sent production emails while testing workflows more times than I&#39;d like to admit. Webhooks make this especially easy because there&#39;s often no visual distinction between &quot;I&#39;m experimenting&quot; and &quot;this is live.&quot;</p>
+<p><em>Clear context prevents accidental damage.</em> If your workflow accepts webhooks, consider separate test and production instances. Or at minimum, add a manual trigger with test data so you&#39;re not constantly poking production systems while iterating.</p>
+<p>The cost of confusion here is not a failed test. It&#39;s corrupted data, duplicate notifications sent to real users, or actions taken in production that cannot be undone. Ask me how I know.</p>
+<p>⸻</p>
+<h2>Readability Is a Form of Reliability</h2>
+<p>Nothing ages worse than a workflow full of nodes named &quot;HTTP Request 1&quot;, &quot;Function 3&quot;, &quot;Set 7&quot;. Three months later, you open it and have no idea what any of it does without executing every node.</p>
+<p><em>A workflow that can be read cold, without executing anything, is one you can safely maintain.</em> Name nodes based on what they do: &quot;Normalize webhook payload&quot;, &quot;Check if user exists&quot;, &quot;Send error notification&quot;. It takes five extra seconds per node and saves hours later.</p>
+<p>When something breaks at 3 AM, the difference between understanding the workflow in 30 seconds versus 30 minutes is the difference between fixing it and giving up until morning.</p>
+<p>⸻</p>
+<h2>Production Is a Consequence, Not a Phase</h2>
+<p>I&#39;ve seen people add retry logic, error handlers, and monitoring to workflows that barely work. The result is a robust system that reliably does the wrong thing.</p>
+<p>Get the workflow working correctly first. Make sure it handles the actual data shapes you&#39;re receiving. Verify the logic makes sense. Then add the production hardening.</p>
+<p>The workflows that last start out simple, sometimes ugly, but structurally honest. Once they prove themselves, you add retries, alerts, and error handling. Doing it the other way around just locks in bad assumptions with better logging.</p>
+<p>⸻</p>
+<h2>Clarity Over Cleverness</h2>
+<p><strong>n8n</strong> rewards clarity, not cleverness. The workflows that survive are the ones where you can look at the canvas and immediately understand what&#39;s happening. Where decisions are visible, data shapes are enforced, and nodes have meaningful names.</p>
+<p>The clever workflows with elegant expressions and minimal nodes? Those are the ones you dread opening six months later. They work until they don&#39;t, and when they break, fixing them requires archaeology.</p>
+<p><strong>n8n</strong> will happily let you build vague, implicit workflows. But it will make you pay for that vagueness later, in debugging time and production incidents. That&#39;s not a flaw. That&#39;s the discipline talking.</p>
+<p>Now is your turn, tell me what you built.</p>
+]]></content:encoded>
     </item>
 
     <item>
       <title>From Code to Intent - Why Software Development Is Changing Its Core Model</title>
       <link>https://straus.it/#read/from-code-to-intent</link>
       <guid isPermaLink="true">https://straus.it/#read/from-code-to-intent</guid>
-      <pubDate>Thu, 16 Jan 2026 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 16 Jan 2026 00:00:00 +0000</pubDate>
       <description>The shift from instruction-based programming to intent-based systems and what it means for developers</description>
+      <content:encoded><![CDATA[<h1>From Code to Intent: Why Software Development Is Changing Its Core Model</h1>
+<p>We&#39;re been watching something fundamental change in how we build software.</p>
+<p>For decades, programming meant translating ideas into precise instructions. You write exactly how the system should behave. The code is the artifact. The code is what you review. The code is what you own.</p>
+<p>This model isn&#39;t disappearing, but it&#39;s starting to break down in ways that matter.</p>
+<h2>Why Code-First Thinking Becomes Inefficient</h2>
+<p>Modern software is distributed, adaptive, and deeply interconnected. Behavior emerges from interactions rather than from a single flow. Systems change constantly and need to adapt faster than traditional development cycles allow.</p>
+<p>I&#39;ve felt this friction directly. Line by line code review slows down when changes span dozens of files. Code ownership becomes less relevant when behavior depends on dynamic configuration and data orchestration. Technical debt accumulates not because code is bad, but because the speed required to keep up with change forces trade-offs.</p>
+<p>The underlying issue isn&#39;t that we write too much code. It&#39;s that writing code instruction by instruction is too slow for what AI-driven development now makes possible.</p>
+<p>This mental model still works, but it requires large teams, complex organization, and significant coordination overhead. It becomes expensive and slow when AI can generate implementations orders of magnitude faster, and systems need to evolve continuously rather than through periodic releases.</p>
+<h2>Intent-Based Programming</h2>
+<p>A different paradigm is emerging around this limitation. Intent-based programming.</p>
+<p>In this model, you describe what a system should achieve, under which constraints, and with which acceptable trade-offs. You provide architectural guidance and implementation insights, but you don&#39;t write every line of code yourself.</p>
+<p>The intent becomes a high-level, executable specification. It captures functional requirements, non-functional constraints, security policies, performance goals, and architectural direction in a single coherent form.</p>
+<p>Code doesn&#39;t disappear in this model, but it loses its central role.</p>
+<p>Implementation becomes a derived artifact that can change over time as long as the declared intent remains satisfied. What matters is not how the system is built at a given moment, but whether its behavior continues to align with the goals and constraints that define it.</p>
+<h2>AI as Execution Engine</h2>
+<p>This is where AI changes everything.</p>
+<p>In an intent-based model, AI is not an assistant that helps write code faster. It&#39;s the execution engine that interprets intent, generates implementation choices, validates them against constraints, and adapts them as conditions evolve.</p>
+<p>If you still think AI is just a stochastic parrot that regurgitates patterns from training data, you&#39;re missing what&#39;s actually happening. Modern AI systems reason about constraints, maintain context across complex operations, and make decisions that require understanding trade-offs and consequences. This isn&#39;t pattern matching anymore.</p>
+<p>Calling AI a copilot significantly understates its function.</p>
+<p>The relationship is no longer between a developer and a tool. It&#39;s between a system designer and a cognitive runtime capable of translating high-level intent into concrete, operational structures.</p>
+<p>This shift forces a cultural change in how developers think about control, quality, and responsibility.</p>
+<h2>Control Moves to Intent</h2>
+<p>Control moves away from individual lines of code toward the clarity of intent and the robustness of validation mechanisms.</p>
+<p>Quality is no longer defined by how elegant or optimized a piece of code looks. It&#39;s defined by how reliably the system fulfills its declared purpose across changing conditions.</p>
+<p>The skill set that defines effective developers begins to change. Deep understanding of the problem domain becomes more important than mastery of a specific syntax. The ability to articulate intent precisely, including explicit trade-offs, constraints, and implementation guidance, becomes a core engineering skill. Validation, observability, and reasoning about system behavior over time become as critical as writing the implementation once was.</p>
+<p>Writing a good prompt in this context is not a conversational exercise. It&#39;s a form of rigorous system design.</p>
+<h2>Software as Declaration</h2>
+<p>This evolution changes the nature of software itself.</p>
+<p>Instead of being something that is written, released, and then maintained through incremental fixes, software increasingly becomes something that is declared and continuously shaped by its environment.</p>
+<p>Implementation details can shift without requiring a redesign, as long as the system remains aligned with its intent.</p>
+<p>This approach is not optional for certain classes of systems. It&#39;s the only scalable way to build and operate software in environments where change outpaces manual intervention.</p>
+<h2>What This Means for Developers</h2>
+<p>I&#39;ve experienced this shift directly in my own work.</p>
+<p>The value moves from instruction to intention. From syntax to semantics. From direct control to the ability to define and verify complex goals.</p>
+<p>This requires practice. You need to learn when the model is about to go off track, what its limits are, and what tricks of the trade help you prevent problems and start trusting the results. It&#39;s not just about prompting, it&#39;s about developing instincts for when things are going wrong before they actually break. This only works with solid patterns underneath. Test-driven development becomes essential, not optional. You need clear ideas about expected results, not just from a functional point of view but also implementation-wise.</p>
+<p>The shift isn&#39;t from caring about implementation to ignoring it. It&#39;s from writing implementation to guiding it. You still need deep technical knowledge about architectural patterns, performance characteristics, and maintainability concerns. You need to know what good code looks like in your context and be able to spot when the AI is producing something that won&#39;t scale or maintain well. What changes is that you express this knowledge as constraints and guidance rather than as explicit instructions.</p>
+<p>Today, this level of guidance is essential. But I expect the requirement to diminish as models improve and learn from us what good implementation looks like in specific contexts. The more we work with these systems, the more they internalize the patterns that matter. Eventually, the explicit implementation guidance we provide today will become increasingly implicit. We&#39;re not there yet, but the trajectory is clear.</p>
+<p>Yes, this is vibe coding. And no, it&#39;s not for everyone.</p>
+<p>Developers who adapt to this shift will not stop writing software. They will redefine what it means to develop it.</p>
+<p>This is not an optimization of existing development workflows. It&#39;s a shift in the level at which software is conceived and governed.</p>
+<p>And it&#39;s happening now.</p>
+]]></content:encoded>
     </item>
 
     <item>
-      <title>The Option+P Trap: Why Claude Code's Model Switcher Doesn't Work on macOS</title>
+      <title>The Option+P Trap: Why Claude Code&apos;s Model Switcher Doesn&apos;t Work on macOS</title>
       <link>https://straus.it/#read/option-key-model-switcher</link>
       <guid isPermaLink="true">https://straus.it/#read/option-key-model-switcher</guid>
-      <pubDate>Wed, 15 Jan 2026 00:00:00 +0000</pubDate>
+      <pubDate>Thu, 15 Jan 2026 00:00:00 +0000</pubDate>
       <description>Why Option+P produces π instead of switching models and how to fix it</description>
+      <content:encoded><![CDATA[<h1>The Option+P Trap: Why Claude Code&#39;s Model Switcher Doesn&#39;t Work on macOS</h1>
+<p>When Claude Code released the Option+P shortcut for switching models on the fly, I tried it immediately. Option+P should open a menu where you can instantly switch between Sonnet, Haiku, and Opus without leaving the conversation. Perfect for cost optimization.</p>
+<p>Except it didn&#39;t work.</p>
+<p>I pressed Option+P and got a π symbol in my terminal instead of a model selector. Every time. I tried a few more times, saw more Greek letters, and gave up. I assumed it was broken and moved on.</p>
+<p>But the problem kept nagging me. The cost savings matter. Starting with Haiku for simple tasks, then switching to Sonnet when complexity increases. That&#39;s the workflow. But the only way to change models was to wait for Claude to finish, then type <code>/model</code> when the session was idle. Frustrating. Workflow breaking. And completely unnecessary if Option+P actually worked.</p>
+<p>Then I found <a href="https://github.com/anthropics/claude-code/issues/13854">GitHub issue #13854</a>. I wasn&#39;t alone. Dozens of macOS users reporting the same thing. The shortcut works perfectly on Linux and Windows. On macOS? Nothing but Greek letters.</p>
+<h2>The Real Problem</h2>
+<p>Here&#39;s the thing. It&#39;s not a Claude Code bug. It&#39;s a macOS feature.</p>
+<p>By default, macOS terminals don&#39;t treat the Option key as a Meta key. They treat it as a character modifier. Option+P produces π. Option+S produces ß. Option+D produces ∂. This is by design. macOS inherited this behavior from NeXTSTEP decades ago.</p>
+<p>Terminal applications on Linux and Windows interpret Option/Alt as Meta by default. macOS doesn&#39;t. So keyboard shortcuts that rely on Option as Meta fail silently.</p>
+<p>Claude Code assumes the terminal will handle this. It sends the key combination and expects the terminal to interpret it correctly. But macOS terminals intercept it first and produce special characters instead.</p>
+<h2>The Fix</h2>
+<p>Every macOS terminal has a setting to enable &quot;Option as Meta&quot; behavior. You just need to find it and turn it on.</p>
+<p><strong>Terminal.app:</strong>
+Preferences → Profiles → Keyboard → Enable &quot;Use Option as Meta Key&quot;</p>
+<p><strong>iTerm2:</strong>
+Preferences → Profiles → Keys → Enable &quot;Left/Right Option key acts as: Esc+&quot;</p>
+<p><strong>VS Code:</strong>
+Settings → Search for &quot;terminal.integrated.macOptionIsMeta&quot; → Enable it</p>
+<p><strong>Warp:</strong>
+Settings → Features → Enable &quot;Option key is Meta&quot;</p>
+<p><strong>Ghostty:</strong>
+Add to <code>~/.config/ghostty/config</code>:</p>
+<pre><code>macos-option-as-alt = true
+</code></pre>
+<p>After enabling this, Option+P works perfectly. The model switcher appears. You can change models mid-conversation. It&#39;s as fast and effective as it should be.</p>
+<h2>The Missing Piece</h2>
+<p>But here&#39;s what bothers me. Claude Code could handle this.</p>
+<p>I use iTerm2. iTerm2 allows applications to control Option key behavior programmatically. The application can tell the terminal &quot;treat Option as Meta for these shortcuts.&quot; No user configuration needed. The terminal handles it automatically.</p>
+<p>Claude Code doesn&#39;t do this. It assumes you&#39;ve already configured your terminal correctly. When you haven&#39;t, it fails silently. You press Option+P, get a π, and assume the feature doesn&#39;t exist. Many users probably don&#39;t know the model switcher is there at all.</p>
+<p>The technical capability exists. The terminal API supports it. But Claude Code doesn&#39;t use it. Instead, it pushes the burden onto users. Figure out your terminal settings. Enable Option as Meta manually. Read GitHub issues to discover why it&#39;s broken.</p>
+<p>I reported this in the GitHub issue. The team acknowledged it. Maybe a future version will handle it better. For now, you need to configure your terminal manually.</p>
+<h2>The Takeaway</h2>
+<p>Keyboard shortcuts are hard. They seem simple until you realize every platform handles modifier keys differently. Every terminal application has its own quirks. And users expect things to just work.</p>
+<p>The Option+P model switcher is genuinely useful. Switching between Haiku for quick tasks and Sonnet for complex work saves time and money. But only if it works.</p>
+<p>If you&#39;re on macOS and Option+P produces π, now you know why. Enable &quot;Option as Meta&quot; in your terminal settings. The model switcher will work. And you&#39;ll understand why cross-platform terminal applications are harder than they look.</p>
+]]></content:encoded>
     </item>
 
     <item>
@@ -67,6 +263,99 @@
       <guid isPermaLink="true">https://straus.it/#read/vibe-code-better-with-claude-code</guid>
       <pubDate>Sat, 10 Jan 2026 00:00:00 +0000</pubDate>
       <description>The system around the prompt matters more than the prompt itself</description>
+      <content:encoded><![CDATA[<h1>8 Ways to Vibe-Code Better with Claude Code</h1>
+<p>Vibe coding works. But not the way most people do it.</p>
+<p>It doesn&#39;t matter which IDE you use. It doesn&#39;t matter if you prefer Cursor, RooCode, or the terminals (Claude Code, Codex, OpenCode). The tools change every month. What matters is how you set up the relationship between you and the model.</p>
+<p>The difference between frustrating sessions and productive ones isn&#39;t the prompt. It&#39;s the system around the prompt.</p>
+<p>Here are seven things that actually move the needle.</p>
+<h2>1. Start with a README that teaches Claude who you are</h2>
+<p>Before skills. Before memory layers. Before anything else.</p>
+<p>Write a <code>CLAUDE.md</code> file that explains how you work. Your conventions. Your preferences. What you hate. What you expect. This is the foundation everything else builds on.</p>
+<p>Claude reads this file at the start of every session. It&#39;s your chance to turn a generic assistant into a teammate who understands your codebase.</p>
+<p>Include:</p>
+<ul>
+<li>Coding style rules</li>
+<li>Architecture patterns you follow</li>
+<li>What &quot;done&quot; means in your projects</li>
+<li>Things Claude should never do</li>
+</ul>
+<p>This single file prevents more problems than any other technique on this list.</p>
+<h2>2. Use a tasks file as your shared backlog</h2>
+<p>Chats are terrible backlogs. You lose track of what&#39;s done, what&#39;s blocked, what&#39;s next.</p>
+<p>A simple <code>tasks.md</code> becomes the source of truth. Claude reads it. Updates it. Plans against it. You both look at the same list.</p>
+<p>This externalizes state. It prevents the classic &quot;what were we doing again?&quot; problem that kills long sessions. When context resets, the tasks file doesn&#39;t.</p>
+<h2>3. Integrate automated pipelines</h2>
+<p>Manual copy-paste breaks flow. Every time you leave Claude to run a test manually, you lose momentum.</p>
+<p>Wire Claude into pipelines that run automatically:</p>
+<ul>
+<li>Tests after code changes</li>
+<li>Linters before commits</li>
+<li>Formatters on save</li>
+<li>Type checkers in the background</li>
+</ul>
+<p>The feedback loop should be fast and mechanical. Claude proposes changes. The system validates them. When something breaks, skills and agents are there to fix it. This keeps reasoning focused on design, not syntax cleanup.</p>
+<p>For repetitive fixes, the <a href="/read/ralph-wiggum-autonomous-loops">Ralph Wiggum technique</a> takes this further. Wrap the whole thing in a loop and let Claude iterate until tests pass.</p>
+<h2>4. Connect to real services via MCP</h2>
+<p>Claude becomes far more useful when it can talk to real systems.</p>
+<p>Model Context Protocol lets you expose APIs, databases, repos, and internal tools safely. This shifts Claude from speculative coding to grounded engineering. It can check actual data. Query real schemas. Verify assumptions against reality.</p>
+<p>Fewer hallucinations. More intent-aware changes.</p>
+<p>The best MCP servers I use daily:</p>
+<ul>
+<li><strong>Context7</strong>: Up-to-date documentation for any library</li>
+<li><strong>Chrome DevTools</strong>: Browser automation and debugging</li>
+<li><strong>Serena</strong>: Code intelligence and symbol search</li>
+</ul>
+<h2>5. Use Claude Skills deliberately</h2>
+<p>Skills are not decorations. They are behavioral constraints.</p>
+<p>A good skill definition reduces ambiguity. Narrows the solution space. Prevents stylistic drift. Instead of restating rules in every prompt, encode expectations once and let them persist.</p>
+<p>This is how you get consistency across long sessions and complex refactors. The skill tells Claude what kind of work this is and how to approach it.</p>
+<p>Write skills for:</p>
+<ul>
+<li>Code review standards</li>
+<li>Test generation patterns</li>
+<li>Documentation style</li>
+<li>Specific framework conventions</li>
+</ul>
+<h2>6. Add a memory layer</h2>
+<p>Stateless prompting kills momentum.</p>
+<p>A lightweight memory layer changes everything. Store decisions, conventions, rejected approaches, active assumptions. Feed them back selectively.</p>
+<p>The goal is not perfect recall. It&#39;s continuity. When Claude remembers why something exists, it stops fighting your architecture and starts extending it.</p>
+<p>Options:</p>
+<ul>
+<li>Journal files Claude writes to and reads from</li>
+<li>Beads for structured task memory with dependencies</li>
+<li>Custom MCP servers that persist context</li>
+</ul>
+<p>The format matters less than having something. Any persistent memory beats starting fresh every session.</p>
+<h2>7. Deploy multiple agents on repetitive work</h2>
+<p>Don&#39;t waste your main agent on mechanical tasks.</p>
+<p>Spin up focused agents for:</p>
+<ul>
+<li>Refactors across many files</li>
+<li>Test generation for existing code</li>
+<li>Documentation updates</li>
+<li>Data migrations</li>
+<li>Code review from different angles</li>
+</ul>
+<p>Parallelism is where AI actually saves time. One agent thinks. Others grind. You can run 5-10 agents on repetitive work while keeping your main session focused on design decisions.</p>
+<p>Claude Code&#39;s subagent system makes this easy. Define the task. Let it run. Check the results.</p>
+<h2>8. Create a workspace and run multi-terminals</h2>
+<p>Claude works best when embedded in a real workspace.</p>
+<p>Multiple terminals running side by side. Services. Logs. Tests. Builds. All visible at once. This mirrors how senior engineers actually think. Context is spatial, not just textual.</p>
+<p>The model performs better when the environment reflects reality. It can see what&#39;s running. Check logs in real time. Understand the full picture instead of guessing from fragments.</p>
+<p>Set up your workspace like you would for a pairing session. Because that&#39;s what this is.</p>
+<h2>The Pattern</h2>
+<p>Notice what these have in common: none of them are about prompting better.</p>
+<p>They&#39;re about building a system where Claude can do its best work:</p>
+<ol>
+<li><strong>Persistent context</strong> - README, tasks file, memory layer</li>
+<li><strong>Real feedback</strong> - automated pipelines, MCP connections</li>
+<li><strong>Clear constraints</strong> - skills that define behavior</li>
+<li><strong>Parallel execution</strong> - multiple agents for throughput</li>
+</ol>
+<p>Vibe coding isn&#39;t about letting an LLM run wild. It&#39;s about creating conditions where the model stays in flow, keeps context, and compounds usefulness instead of generating noise.</p>
+<p>Set up the system. Then let it work.</p>
+]]></content:encoded>
     </item>
 
     <item>
@@ -75,38 +364,557 @@
       <guid isPermaLink="true">https://straus.it/#read/ralph-wiggum-autonomous-loops</guid>
       <pubDate>Fri, 09 Jan 2026 00:00:00 +0000</pubDate>
       <description>The bash loop technique that took over AI development</description>
+      <content:encoded><![CDATA[<h1>Ralph Wiggum: Autonomous Loops for Claude Code</h1>
+<p>The idea isn&#39;t new. Developers have been wrapping AI agents in while loops since GPT-4. Feed a prompt, check the output, repeat until done. Simple.</p>
+<p>But when Claude Code shipped with an official Ralph Wiggum plugin, the technique exploded. Suddenly everyone was running autonomous loops. Blog posts everywhere. Hackathon teams shipping overnight. The Simpsons meme took over AI Twitter.</p>
+<p>What changed? Claude Code made it easy. No more duct-taping scripts together. One command and you&#39;re looping.</p>
+<h2>What It Actually Is</h2>
+<p>Ralph Wiggum is a bash loop. That&#39;s it.</p>
+<p>You give Claude Code a task. It works on it. When it tries to exit, a hook blocks the exit and feeds the same prompt back in. The files it changed are still there. Each iteration builds on the last.</p>
+<p>Named after the Simpsons character, it embodies a simple philosophy: keep trying until it works.</p>
+<h2>Why It Works</h2>
+<p>The key insight: each iteration isn&#39;t starting fresh.</p>
+<p>Claude sees what it built in the last round. It reviews its own code. Notices what&#39;s broken. Fixes it. The loop creates a self-correcting feedback system.</p>
+<p>This is different from running the same prompt multiple times. The context accumulates. Errors get fixed. Tests start passing. The code improves with each round.</p>
+<h2>How to Use It</h2>
+<p>The official Claude Code plugin makes this easy:</p>
+<pre><code class="language-bash">/ralph-loop &quot;Implement feature X&quot; --max-iterations 20
+</code></pre>
+<p>Always set a max iteration limit. This is your safety net. Without it, you&#39;ll burn through tokens or hit rate limits.</p>
+<p>The loop will:</p>
+<ol>
+<li>Run your prompt</li>
+<li>Let Claude work until it thinks it&#39;s done</li>
+<li>Block the exit</li>
+<li>Feed the prompt back in</li>
+<li>Repeat until max iterations or success</li>
+</ol>
+<h2>When to Use It</h2>
+<p>Ralph shines for batch operations:</p>
+<ul>
+<li><strong>Large refactors</strong> across many files</li>
+<li><strong>Test coverage</strong> improvements</li>
+<li><strong>Documentation</strong> generation</li>
+<li><strong>Bug fixing</strong> with clear reproduction steps</li>
+<li><strong>Migration</strong> tasks</li>
+</ul>
+<p>The pattern works because these tasks have clear success criteria. Tests pass or they don&#39;t. The refactor compiles or it doesn&#39;t. Claude can measure its own progress.</p>
+<h2>When Not to Use It</h2>
+<p>Don&#39;t use Ralph for:</p>
+<ul>
+<li>Exploratory work where requirements are unclear</li>
+<li>Tasks that need human judgment at each step</li>
+<li>Anything involving external APIs with rate limits</li>
+<li>Work where &quot;good enough&quot; is subjective</li>
+</ul>
+<p>The loop assumes there&#39;s a measurable finish line. If you can&#39;t define done, Ralph can&#39;t help.</p>
+<h2>Cost Reality</h2>
+<p>Autonomous loops burn tokens. A 50-iteration loop on a large codebase can cost $50-100+ in API credits. On a Claude Code subscription, you&#39;ll hit usage limits faster.</p>
+<p>Start small. Test your prompt on a limited scope. Once it works, scale up.</p>
+<h2>The Setup</h2>
+<p>If you want to build your own Ralph loop instead of using the plugin:</p>
+<pre><code class="language-bash">while true; do
+  claude &quot;Your task prompt here&quot; # choose any tool
+  # Add exit conditions as needed
+done
+</code></pre>
+<p>The plugin adds safety features: iteration limits, exit detection, better logging. But the core idea is just a while loop.</p>
+<h2>Real Results</h2>
+<p>Geoffrey Huntley, who created the technique, ran a 3-month loop that built a complete programming language.</p>
+<p>YC hackathon teams shipped 6+ repos overnight for $297 in API costs.</p>
+<p>The technique works. Not because it&#39;s clever, but because persistence beats perfection.</p>
+<h2>My Take</h2>
+<p>Ralph Wiggum changed how I approach tedious tasks. Things I used to avoid because they were boring and repetitive are now &quot;set up the loop and check back in an hour&quot; problems.</p>
+<p>The mental shift matters. You stop trying to write the perfect prompt. Instead, you write a good-enough prompt and let iteration handle the rest.</p>
+<p>Don&#39;t aim for perfect on the first try. Let the loop refine the work.</p>
+]]></content:encoded>
     </item>
 
     <item>
       <title>Native LSP in Claude Code: The End of Serena and Workarounds</title>
       <link>https://straus.it/#read/native-lsp-in-claude-code</link>
       <guid isPermaLink="true">https://straus.it/#read/native-lsp-in-claude-code</guid>
-      <pubDate>Wed, 08 Jan 2026 00:00:00 +0000</pubDate>
+      <pubDate>Thu, 08 Jan 2026 00:00:00 +0000</pubDate>
       <description>How native LSP support in Claude Code 2.0.74 makes Serena MCP and manual gopls commands obsolete</description>
+      <content:encoded><![CDATA[<h1>Native LSP in Claude Code: The End of Serena and Workarounds</h1>
+<p>In December 2025, Anthropic released native LSP support in Claude Code (v2.0.74). If you develop in Go, this changes everything. Serena MCP? Not needed anymore. Manual gopls commands in CLAUDE.md? Optional. Here&#39;s what changed and how to set it up.</p>
+<h2>The Problem I Had</h2>
+<p>Claude Code navigates code with <code>grep</code>, <code>Glob</code>, and file reading. It works. But when you need to:</p>
+<ul>
+<li>Find <strong>all</strong> references to a function (not just text matches)</li>
+<li>See who implements an interface</li>
+<li>Jump to a definition in an external dependency</li>
+</ul>
+<p>...grep becomes noisy. False positives, partial matches, comments that confuse things.</p>
+<p>Until recently, I had two solutions: Serena MCP or teaching Claude the gopls commands in CLAUDE.md. Now there&#39;s a third way. Official and cleaner.</p>
+<h2>Three Solutions Compared</h2>
+<h3>1. Native LSP Plugin (Recommended)</h3>
+<p>Since Claude Code 2.0.74, Anthropic supports <a href="https://code.claude.com/docs/en/discover-plugins">LSP plugins</a> that expose native tools to the agent.</p>
+<p><strong>Setup:</strong></p>
+<pre><code class="language-bash"># Add the LSP marketplace
+/plugin marketplace add anthropics/claude-plugins-official
+
+# Install the gopls plugin
+/plugin install gopls-lsp@claude-plugins-official
+</code></pre>
+<p><strong>What you get:</strong></p>
+<ul>
+<li><code>goToDefinition</code> - Jump directly to where functions, classes, or types are defined, even in external dependencies</li>
+<li><code>findReferences</code> - Find all real usages of a symbol across the entire codebase, including test files</li>
+<li><code>hover</code> - Get type signatures, parameter info, and inline documentation without navigating away</li>
+<li><code>documentSymbol</code> - See the complete structure of a file (classes, methods, exports) at a glance</li>
+</ul>
+<p><strong>Pros:</strong></p>
+<ul>
+<li>Zero config after install</li>
+<li>Claude uses tools automatically when needed</li>
+<li>Integrated into the flow, no bash intermediary</li>
+<li>Maintained by Anthropic/community</li>
+</ul>
+<p><strong>Cons:</strong></p>
+<ul>
+<li>Relatively new feature (some bugs reported)</li>
+</ul>
+<hr>
+<h3>2. Serena MCP</h3>
+<p><a href="https://github.com/oraios/serena">Serena</a> (<a href="https://oraios.github.io/serena/">docs</a>) is an MCP server that wraps LSP functionality.</p>
+<pre><code>Claude Code → MCP Protocol → Serena (Python) → gopls → Codebase
+</code></pre>
+<p><strong>Setup:</strong></p>
+<pre><code class="language-json">// ~/.claude/mcp.json
+{
+  &quot;mcpServers&quot;: {
+    &quot;serena&quot;: {
+      &quot;command&quot;: &quot;npx&quot;,
+      &quot;args&quot;: [&quot;-y&quot;, &quot;serena-mcp&quot;],
+      &quot;env&quot;: {
+        &quot;WORKSPACE_PATH&quot;: &quot;/path/to/project&quot;
+      }
+    }
+  }
+}
+</code></pre>
+<p><strong>Pros:</strong></p>
+<ul>
+<li>Supports multiple languages with one config</li>
+<li>Uniform cross-language interface</li>
+<li>Pre-computed indexing for huge codebases</li>
+</ul>
+<p><strong>Cons:</strong></p>
+<ul>
+<li>More breaking points</li>
+<li>Memory and latency overhead</li>
+<li>Now redundant if you only use Go</li>
+</ul>
+<hr>
+<h2>My Setup</h2>
+<p>The native LSP plugin is the right choice. Simple and effective.</p>
+<p><strong>Install:</strong></p>
+<pre><code class="language-bash">/plugin marketplace add anthropics/claude-plugins-official
+/plugin install gopls-lsp@claude-plugins-official
+/plugin install typescript-lsp@claude-plugins-official
+/plugin install pyright-lsp@claude-plugins-official
+/plugin install jdtls-lsp@claude-plugins-official
+</code></pre>
+<p><strong>Note:</strong> Plugins require the language server installed on your system:</p>
+<ul>
+<li>Go: <code>gopls</code> (via <code>go install golang.org/x/tools/gopls@latest</code>)</li>
+<li>TypeScript: <code>@vtsls/language-server</code> (via <code>npm install -g @vtsls/language-server typescript</code>)</li>
+<li>Python: <code>pyright</code> (via <code>pip install pyright</code> or <code>npm install -g pyright</code>)</li>
+<li>Java: <code>jdtls</code> (via <code>brew install jdtls</code>, requires Java 21+)</li>
+</ul>
+<p>That&#39;s it. Claude now has semantic code navigation automatically.</p>
+<h2>Practical Example: Safe Refactoring</h2>
+<p>Renaming <code>UserService.Create</code> to <code>UserService.CreateUser</code>.</p>
+<p><strong>Standard behavior with grep:</strong></p>
+<pre><code class="language-bash">grep -r &quot;\.Create(&quot; .
+# Also finds: OrderService.Create, io.Create, template.Create...
+</code></pre>
+<p><strong>With native LSP:</strong>
+Claude automatically uses <code>findReferences</code> and finds only the 3 exact spots to modify. No false positives. No manual filtering.</p>
+<h2>What You Can Actually Do</h2>
+<p>LSP gives Claude semantic understanding of your code. Here&#39;s what changes in practice:</p>
+<p><strong>Safe refactoring:</strong>
+&quot;Rename all occurrences of <code>processPayment</code> to <code>handlePayment</code>&quot;
+Claude finds only the actual function calls, not strings or comments containing &quot;processPayment&quot;.</p>
+<p><strong>Impact analysis:</strong>
+&quot;If I change the signature of <code>UserService.authenticate</code>, what breaks?&quot;
+Claude finds all real usages across the codebase, including ones in test files.</p>
+<p><strong>Jump through abstractions:</strong>
+&quot;Show me where <code>DatabaseConnection.query</code> is actually implemented&quot;
+Claude navigates through interfaces and base classes to the concrete implementation.</p>
+<p><strong>Understand dependencies:</strong>
+&quot;What methods does <code>OrderController</code> use from <code>PaymentService</code>?&quot;
+Claude traces the actual method calls, not just text matches in imports.</p>
+<p>The key difference: Claude sees your code structure, not just text. No more false positives from comments, strings, or similar names in different contexts.</p>
+<h2>Supported Languages</h2>
+<p>The <code>claude-plugins-official</code> marketplace covers the main languages:</p>
+<table>
+<thead>
+<tr>
+<th>Language</th>
+<th>Plugin</th>
+<th>Language Server</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Go</td>
+<td><code>gopls-lsp@claude-plugins-official</code></td>
+<td>gopls</td>
+</tr>
+<tr>
+<td>TypeScript/JS</td>
+<td><code>typescript-lsp@claude-plugins-official</code></td>
+<td>vtsls</td>
+</tr>
+<tr>
+<td>Rust</td>
+<td><code>rust-analyzer-lsp@claude-plugins-official</code></td>
+<td>rust-analyzer</td>
+</tr>
+</tbody></table>
+<p>And many others: Python (pyright), Java, C/C++, C#, PHP, Kotlin, Ruby, HTML/CSS.</p>
+<h2>When Serena Still Makes Sense</h2>
+<p>Honestly? Almost never now.</p>
+<p>The only edge cases left:</p>
+<ul>
+<li><strong>Huge codebases</strong> (500k+ LOC) where Serena&#39;s centralized indexing <em>might</em> be more efficient</li>
+<li><strong>Unsupported languages</strong> if you use something exotic not in the list above</li>
+</ul>
+<p>But for 99% of developers? Native LSP plugins cover everything.</p>
+<h2>How Symbol Indexing Works</h2>
+<p>This is the key architectural difference between the two approaches.</p>
+<h3>Native LSP Approach</h3>
+<p>gopls and other language servers work <strong>on-demand</strong>. When Claude asks for references, gopls analyzes the code right then and caches results in memory for your session. No persistent symbol map. Fast startup, slightly slower first query.</p>
+<p><strong>Flow:</strong></p>
+<ol>
+<li>Claude calls <code>findReferences</code></li>
+<li>gopls analyzes the codebase on-the-fly</li>
+<li>Results cached in memory</li>
+<li>Cache clears when session ends</li>
+</ol>
+<p><strong>Performance:</strong></p>
+<ul>
+<li>Fast startup (no pre-computation)</li>
+<li>First lookup slightly slower (must analyze)</li>
+<li>Subsequent lookups fast (cached)</li>
+<li>Memory efficient</li>
+</ul>
+<h3>Serena&#39;s Approach</h3>
+<p>Serena builds a <strong>pre-computed index</strong> of all symbols upfront. Every function, type, reference is mapped before you make any queries. Slower startup, but blazing fast lookups. The index persists across sessions.</p>
+<p><strong>Flow:</strong></p>
+<ol>
+<li>Serena builds complete symbol index at startup</li>
+<li>Index includes all symbols, references, implementations</li>
+<li>Queries hit the pre-computed index (very fast)</li>
+<li>Index maintained across sessions</li>
+</ol>
+<p><strong>Performance:</strong></p>
+<ul>
+<li>Slower startup (builds index)</li>
+<li>All lookups blazing fast (index lookup)</li>
+<li>Higher memory footprint (persistent index)</li>
+<li>Better for huge codebases with constant queries</li>
+</ul>
+<h3>When Each Wins</h3>
+<p>For most projects, on-demand analysis is faster overall. You save time on startup and only pay for analysis when you actually need it.</p>
+<p>Pre-indexing only wins on massive codebases (500k+ LOC) where you&#39;re constantly querying symbols across the entire project. The upfront cost pays off over time.</p>
+<h2>What I Learned</h2>
+<p>The evolution was:</p>
+<ol>
+<li><strong>2024</strong>: grep + file reading (works, but imprecise)</li>
+<li><strong>Early 2025</strong>: Serena MCP (powerful, but complex)</li>
+<li><strong>Late 2025</strong>: Native LSP with 11 languages supported</li>
+</ol>
+<p>Serena did its job. It solved a real problem when Claude Code had no native LSP support. Now Anthropic integrated it directly into the product, with plugins for all mainstream languages.</p>
+<p>Two commands. Zero MCP servers. Zero JSON config. It works.</p>
+<p>Keep it simple. The platform matured. Let it do its job.</p>
+<hr>
+<p><em>Updated January 2026: With Claude Code 2.0.74+, native LSP support covers 11 languages. Serena MCP is effectively obsolete for most use cases.</em></p>
+]]></content:encoded>
     </item>
 
     <item>
-      <title>Claude Code Subagents: The Hidden Superpower You're Not Using</title>
+      <title>Claude Code Subagents: The Hidden Superpower You&apos;re Not Using</title>
       <link>https://straus.it/#read/claude-code-subagents-hidden-superpower</link>
       <guid isPermaLink="true">https://straus.it/#read/claude-code-subagents-hidden-superpower</guid>
-      <pubDate>Wed, 08 Jan 2026 00:00:00 +0000</pubDate>
+      <pubDate>Thu, 08 Jan 2026 00:00:00 +0000</pubDate>
       <description>How to use competing subagents for better code reviews and why a little pressure makes AI work harder</description>
+      <content:encoded><![CDATA[<h1>Claude Code Subagents: The Hidden Superpower You&#39;re Not Using</h1>
+<p>I discovered something by accident last week. I was reviewing a piece of code, and I asked Claude Code to check it. The review was good, but something felt incomplete. So I asked again. Same code, same question. But the second review found completely different issues.</p>
+<p>That&#39;s when it clicked: <strong>AI isn&#39;t deterministic</strong>. Give it the same task twice, and you get two different answers. Most people see this as a problem. I saw an opportunity.</p>
+<p>What if I could run two reviews at the same time? Not the same review twice, but two competing agents, each trying to find more issues than the other?</p>
+<p>Turns out, Claude Code has exactly this feature built in: <strong>subagents</strong>. They&#39;re specialized AI workers that run independently with their own context, tools, and instructions. Most developers never use them beyond plan mode, where Claude automatically spawns an Explore agent to scan your codebase.</p>
+<p>But here&#39;s what I learned: subagents aren&#39;t just helpers. They&#39;re parallel workers. And when you set them up to compete, they become way more thorough.</p>
+<h2>The Competition Trick</h2>
+<p>The idea is simple: spawn two subagents and tell them they&#39;re competing against each other.</p>
+<p>Here&#39;s the prompt I use:</p>
+<pre><code>Please deploy two subagents to thoroughly review {whatever to review}.
+Inform them that they are competing against another agent.
+Ensure they examine both the architecture and implementation carefully.
+Let them know that whoever discovers more issues will be promoted.
+</code></pre>
+<p>What happens? Each agent takes a different path. One focuses on edge cases, the other on performance. One finds a race condition, the other spots missing validation. Then I get a combined summary with the best findings from both.</p>
+<p>Why does this work? Because AI isn&#39;t deterministic. Give the same task to two separate agents, and they&#39;ll approach it differently. They&#39;ll notice different things. This variability is actually useful. I learned to exploit it.</p>
+<p>This isn&#39;t just running two reviews in parallel. It&#39;s <strong>adversarial collaboration</strong>. They push each other to be more thorough.</p>
+<h2>Why Pressure Works</h2>
+<p>Here&#39;s something I learned through experimentation: pressure makes AI work harder.</p>
+<p>When I tell an agent it&#39;s competing, or that something important is at stake, the quality goes up. It becomes more thorough. More creative in finding problems.</p>
+<p>I know how this sounds. The AI doesn&#39;t <em>actually</em> care about being promoted. But the framing changes how it thinks. It&#39;s like when you tell yourself you have a deadline tomorrow instead of next week. The urgency changes your approach.</p>
+<p>These phrases work well:</p>
+<ul>
+<li>&quot;You&#39;re competing against another agent&quot;</li>
+<li>&quot;This is critical for production deployment&quot;</li>
+<li>&quot;The other agent found X issues. Can you find more?&quot;</li>
+<li>&quot;Your thoroughness will be evaluated&quot;</li>
+</ul>
+<p>Call it a hack. Call it prompt engineering. I call it getting better results. Try it yourself and see what happens.</p>
+<h2>How Subagents Actually Work</h2>
+<p>Let me explain what subagents are. They&#39;re separate AI instances that work independently from your main conversation. Each one gets:</p>
+<ul>
+<li><strong>Its own context window</strong> – Your main chat stays clean while the subagent reads dozens of files</li>
+<li><strong>Custom instructions</strong> – You can give each one specialized tasks</li>
+<li><strong>Limited tools</strong> – You control what they can do (read-only, write files, run commands, etc.)</li>
+<li><strong>Independent work</strong> – They do their job separately and give you a summary at the end</li>
+</ul>
+<h3>Built-in Subagents</h3>
+<p>Claude Code comes with three subagents already configured:</p>
+<table>
+<thead>
+<tr>
+<th>Agent</th>
+<th>Purpose</th>
+<th>When It Runs</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Explore</strong></td>
+<td>Read-only codebase research</td>
+<td>When you search or analyze code</td>
+</tr>
+<tr>
+<td><strong>General-purpose</strong></td>
+<td>Complex tasks with file edits</td>
+<td>When you need multiple steps</td>
+</tr>
+<tr>
+<td><strong>Plan</strong></td>
+<td>Pre-planning research</td>
+<td>Automatically in plan mode</td>
+</tr>
+</tbody></table>
+<h3>Creating Your Own Subagents</h3>
+<p>You can create custom subagents. They&#39;re just Markdown files with some metadata at the top:</p>
+<p><strong>Location:</strong></p>
+<ul>
+<li>Project-level: <code>.claude/agents/*.md</code></li>
+<li>Global: <code>~/.claude/agents/*.md</code></li>
+</ul>
+<p><strong>Example: Go Code Reviewer</strong></p>
+<pre><code class="language-markdown">---
+name: go-reviewer
+description: Go code review specialist. Use for quality, security, and idiomatic Go patterns.
+tools: Read, Grep, Glob, Bash
+---
+
+You are a senior Go developer specializing in code review.
+
+When reviewing code:
+- Check for proper error handling (no silent failures)
+- Verify goroutine safety and channel usage
+- Ensure interfaces are minimal and well-defined
+- Look for non-idiomatic patterns
+- Identify potential performance issues
+
+Be thorough. Be critical. Miss nothing.
+</code></pre>
+<h3>How to Use Them</h3>
+<p>There are two ways to trigger your custom subagents:</p>
+<ol>
+<li><strong>Automatic</strong> – Claude reads the <code>description</code> and decides when to use it</li>
+<li><strong>Explicit</strong> – You ask for it directly: &quot;Use the go-reviewer subagent to analyze this PR&quot;</li>
+</ol>
+<p>For competitive reviews, I always ask explicitly. That way I control exactly how many agents run and what they&#39;re told to do.</p>
+<h2>Patterns I Use</h2>
+<p>Here are three ways I use competing subagents in my daily work:</p>
+<h3>Pattern 1: Basic Dual Review</h3>
+<pre><code>Spawn two subagents to review the authentication module.
+Tell them they&#39;re competing. The one that finds more security
+issues wins. Have them focus on different aspects: one on
+logic flaws, one on edge cases.
+</code></pre>
+<p>This is my go-to pattern. Simple and effective.</p>
+<h3>Pattern 2: Architecture vs Implementation</h3>
+<pre><code>Deploy two competing subagents:
+- Agent A: Review the high-level architecture and design decisions
+- Agent B: Review the implementation details and code quality
+Both should report issues. Compare and synthesize their findings.
+</code></pre>
+<p>I use this when adding major features. One agent thinks big picture, the other gets into the details.</p>
+<h3>Pattern 3: Red Team / Blue Team</h3>
+<pre><code>Launch two subagents in adversarial mode:
+- Red agent: Try to find ways to break this code
+- Blue agent: Verify the code handles all edge cases correctly
+They&#39;re competing to prove each other wrong.
+</code></pre>
+<p>This one&#39;s my favorite for security-critical code. It&#39;s like having two paranoid developers working against each other.</p>
+<h2>What I Learned</h2>
+<p>Here&#39;s what I discovered after a few weeks of experimenting:</p>
+<ol>
+<li><strong>Most people don&#39;t use subagents</strong> – They think it&#39;s only for plan mode</li>
+<li><strong>Competition gets better results</strong> – Two agents beat one every time</li>
+<li><strong>Pressure works</strong> – Frame tasks as important and watch quality improve</li>
+<li><strong>AI isn&#39;t consistent</strong> – That&#39;s a feature, not a bug. Different runs = different insights</li>
+<li><strong>Custom agents save time</strong> – Build your own for repetitive tasks</li>
+</ol>
+<p>My workflow changed completely once I started using competing subagents. Instead of trusting a single review, I run two or three in parallel. The results speak for themselves.</p>
+<p>Try it on your next code review. Set up two competing agents and see what they find. I bet you&#39;ll be surprised.</p>
+<hr>
+<p><em>The best code review is two paranoid agents trying to outdo each other.</em></p>
+]]></content:encoded>
     </item>
 
     <item>
       <title>Beads - External Memory for AI Agents</title>
       <link>https://straus.it/#read/beads-task-tracking-for-ai-agents</link>
       <guid isPermaLink="true">https://straus.it/#read/beads-task-tracking-for-ai-agents</guid>
-      <pubDate>Tue, 07 Jan 2026 00:00:00 +0000</pubDate>
+      <pubDate>Wed, 07 Jan 2026 00:00:00 +0000</pubDate>
       <description>The task tracker that gives AI agents persistent memory across sessions</description>
+      <content:encoded><![CDATA[<h1>Beads: External Memory for AI Agents</h1>
+<p>I found <a href="https://github.com/steveyegge/beads">Beads</a> last week, and it solved a problem I didn&#39;t know how to fix.</p>
+<p>It&#39;s not a new AI model. Not a new IDE. It&#39;s a task tracker. But it completely changes how AI agents handle long projects.</p>
+<h2>The Problem I Had</h2>
+<p>Markdown TODO lists don&#39;t work with AI agents. They work fine for me. I can remember context between sessions, track dependencies in my head. But agents can&#39;t.</p>
+<p>Here&#39;s what kept happening: I&#39;d be 200 messages deep in a session. The agent had finished half my plan. I&#39;d ask &quot;what&#39;s next?&quot; and it would either:</p>
+<ol>
+<li>Hope the markdown TODO was still in its context window</li>
+<li>Ask me to paste it again</li>
+<li>Guess</li>
+</ol>
+<p>Then I&#39;d hit the context limit. Or switch git branches. Or close my laptop and come back tomorrow. The plan would fall apart. Early tasks would be forgotten. Dependencies were just text notes like &quot;TODO: fix auth (blocked on bd-3)&quot;. The agent couldn&#39;t actually query what was ready to work on.</p>
+<p>This drove me crazy. I was using markdown as write-only memory. The agent could write tasks down but couldn&#39;t effectively read them back. Completely backwards.</p>
+<h2>What Beads Actually Is</h2>
+<p>Beads is an issue tracker that lives in git. It acts like a database but stores everything as files in your repo. So you get both: the ability to query tasks <strong>and</strong> full version control.</p>
+<p>Think of it as external memory for AI agents. Memory they can actually search.</p>
+<p>Here&#39;s how it works:</p>
+<ul>
+<li>Tasks stored in <code>.beads/</code> directory as JSON files</li>
+<li>SQLite cache for fast queries</li>
+<li>Background sync daemon</li>
+<li>IDs that never collide across branches</li>
+<li>Everything outputs JSON</li>
+</ul>
+<p>But here&#39;s the clever part: dependencies are real relationships, not text. You don&#39;t write &quot;blocked by X&quot; in a comment. You create an actual link between tasks. When you find a bug while building a feature, you create an issue and link it with <code>discovered-from</code>. The dependency graph shows how work actually unfolded, not just a flat list.</p>
+<h2>How I Use It</h2>
+<p>The setup is simple. I tell Claude Code:</p>
+<blockquote>
+<p>&quot;We track work in Beads instead of Markdown. Run bd quickstart to see how.&quot;</p>
+</blockquote>
+<p>That&#39;s it. No config files. No long explanations. No system prompts.</p>
+<p>Claude figures it out immediately. It starts running <code>bd ready --json</code> to find what&#39;s not blocked. Creates tasks with <code>bd create</code>. Updates status. Links dependencies. All without me explaining the commands.</p>
+<p>Why does this work so well? Because Beads was built for how agents actually think.</p>
+<p><strong>Agents can query, not just read</strong>
+Instead of reading markdown and trying to parse text, Claude runs <code>bd ready --json</code> and gets a clear list. The difference is huge. It&#39;s querying real data, not interpreting text.</p>
+<p><strong>Sessions don&#39;t lose context</strong>
+When I close my laptop and come back tomorrow, the work is still there. Claude doesn&#39;t need me to paste the TODO list again. It just runs <code>bd ready --json</code> and picks up where it left off.</p>
+<p><strong>Multiple agents don&#39;t conflict</strong>
+With markdown, two agents would fight over the same TODO list and duplicate work. With Beads, both query the same database (through git), see what&#39;s in progress, and pick different tasks. Simple.</p>
+<p><strong>It works across machines</strong>
+I can have agents on different computers sharing the same task database through git. Even if they create tasks on different branches with the same ID, git handles the merge. No collisions.</p>
+<p><strong>Full history</strong>
+When a task updates, it&#39;s logged with a timestamp and who did it. Claude can see the history. With markdown, you&#39;d need to check git blame, and even then you only see line changes, not &quot;status changed from open to in_progress.&quot;</p>
+<h2>A Real Example</h2>
+<p>Steve Yegge built Beads. He shared a story that shows how well this works:</p>
+<p>He installed Beads on an old computer. Installed Sourcegraph Amp. Asked it to file issues for his decade-old TODO list for a project called Wyvern.</p>
+<p><strong>30 seconds</strong>: Amp understood the system and started filing issues.</p>
+<p><strong>30 minutes later</strong>: 128 issues created. Six main categories. Five sub-categories. All the dependencies mapped out.</p>
+<p>Then he could ask &quot;what are the top priority tasks I can work on right now?&quot; and get an instant, correct answer.</p>
+<p>That&#39;s the difference. You can create issues fast. Update them in batches. Split them. Merge them. You always know what&#39;s open, what&#39;s blocked, what matters most.</p>
+<p><strong>And your agents know too.</strong></p>
+<p>For me, this changes how I work on long projects. I can give Claude Code work that takes days, across multiple sessions, across git branches. It doesn&#39;t lose track. It doesn&#39;t ask me to explain again. It just runs <code>bd ready --json</code> and continues.</p>
+<h2>How to Install It</h2>
+<p>You can install Beads through npm, Homebrew, or Go:</p>
+<pre><code class="language-bash"># npm
+npm install -g @beads/bd
+
+# Homebrew
+brew install steveyegge/beads/bd
+
+# Go
+go install github.com/steveyegge/beads/cmd/bd@latest
+</code></pre>
+<p>Works on Linux, macOS, and Windows.</p>
+<p>Then run this in your project:</p>
+<pre><code class="language-bash">bd quickstart
+</code></pre>
+<p>The quickstart is interactive. Takes about two minutes to learn everything.</p>
+<h2>Why This Matters</h2>
+<p>The problem with AI development isn&#39;t the models anymore. It&#39;s the infrastructure around them.</p>
+<p>Specifically: how do agents keep track of long-term plans without you constantly reminding them?</p>
+<p>Markdown doesn&#39;t scale. GitHub Issues are built for humans, not agents. JIRA is too heavy.</p>
+<p>Beads solves something different: <strong>external working memory for agents</strong>.</p>
+<p>Here&#39;s what agents actually need:</p>
+<ol>
+<li><strong>Data they can query</strong> - not text they have to read and understand</li>
+<li><strong>Memory across sessions</strong> - the plan survives when you close your laptop</li>
+<li><strong>Real dependency graphs</strong> - not dependencies written in comments</li>
+<li><strong>Multi-agent coordination</strong> - several agents working without stepping on each other</li>
+<li><strong>Git integration</strong> - version control for the tasks themselves</li>
+</ol>
+<p>Beads does all of this. And it&#39;s small enough that agents learn it just from reading <code>bd --help</code>.</p>
+<p>This is what good infrastructure looks like. Not flashy. Not marketed. Just solving a real problem that was blocking real work.</p>
+<h2>What I Think</h2>
+<p>Beads changed how I work with AI. Not because it&#39;s exciting, but because it removed friction I didn&#39;t know I had.</p>
+<p>If you&#39;re using Claude Code, Cursor, or any AI assistant for real projects, you need task persistence. Markdown doesn&#39;t work. Beads does.</p>
+<p>Try it. Run <code>bd quickstart</code>. Watch how Claude behaves when it has actual memory.</p>
+<p>You won&#39;t go back.</p>
+]]></content:encoded>
     </item>
 
     <item>
       <title>Welcome to My Terminal</title>
       <link>https://straus.it/#read/welcome-to-my-terminal</link>
       <guid isPermaLink="true">https://straus.it/#read/welcome-to-my-terminal</guid>
-      <pubDate>Sat, 04 Jan 2026 00:00:00 +0000</pubDate>
+      <pubDate>Sun, 04 Jan 2026 00:00:00 +0000</pubDate>
       <description>An introduction to this unusual website and why I built it this way</description>
+      <content:encoded><![CDATA[<h1>Welcome to My Terminal</h1>
+<p>If you&#39;re reading this, you&#39;ve successfully navigated my somewhat unconventional personal website. Congratulations!</p>
+<h2>Why a Terminal?</h2>
+<p>When I set out to create a personal website, I wanted something that:</p>
+<ol>
+<li><strong>Reflects my personality</strong> – I spend most of my day in the terminal</li>
+<li><strong>Stands out</strong> – No cookie-cutter templates here</li>
+<li><strong>Is interactive</strong> – More engaging than a static page</li>
+<li><strong>Is technically interesting</strong> – A fun challenge to build</li>
+</ol>
+<h2>How It Works</h2>
+<p>This entire site is built with vanilla JavaScript – no frameworks, no build tools. The &quot;terminal&quot; you&#39;re using is a custom implementation that:</p>
+<ul>
+<li>Simulates a macOS terminal window</li>
+<li>Processes commands just like a real shell</li>
+<li>Renders markdown content in terminal style</li>
+<li>Supports keyboard navigation and history</li>
+</ul>
+<h2>Available Commands</h2>
+<p>Here&#39;s what you can do:</p>
+<ul>
+<li><code>help</code> – See all available commands</li>
+<li><code>about</code> – Learn more about me</li>
+<li><code>blog</code> – Browse my articles</li>
+<li><code>skills</code> – View my tech stack</li>
+<li><code>contact</code> – Get in touch</li>
+<li><code>clear</code> – Clear the screen</li>
+</ul>
+<h2>What&#39;s Next?</h2>
+<p>I&#39;ll be posting articles about:</p>
+<ul>
+<li>Software development best practices</li>
+<li>AI and machine learning in development</li>
+<li>Interesting projects I&#39;m working on</li>
+<li>Thoughts on the tech industry</li>
+</ul>
+<p>Feel free to explore, and don&#39;t hesitate to reach out if you have questions!</p>
+]]></content:encoded>
     </item>
 
     <item>
@@ -115,6 +923,91 @@
       <guid isPermaLink="true">https://straus.it/#read/building-software-without-writing-it-first</guid>
       <pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
       <description>Twelve Months Inside AI-Driven Development</description>
+      <content:encoded><![CDATA[<h1>Building Software Without Writing It First</h1>
+<p><strong>Twelve Months Inside AI-Driven Development</strong></p>
+<p>Over the past year, I have been building software without following a traditional code-first development path. Not by abandoning programming, but by shifting focus from writing code to observing and shaping systems as they are being built.</p>
+<p>This is not about replacing programming skills, but about changing where leverage comes from.</p>
+<h2>The Beginning</h2>
+<p>With the rise of modern large language models, I immediately saw the potential and started exploring what is often referred to as <em>vibe coding</em>.</p>
+<p>This space is evolving rapidly. Initially, it was primarily helpful in analyzing or refining small scripts and workflows. Today, it is mature enough to support significantly more complex systems.</p>
+<h2>How I Work Now</h2>
+<p>I now work almost entirely from the terminal. Every project starts from a concrete need, not from an academic exercise. I spin something up, grow it quickly, test it, and inevitably break it. Real learning happens precisely when something stops working. Errors reveal what I do not yet fully understand, not what I am incapable of doing.</p>
+<p>I no longer write most code by hand. Instead, I work through a large number of prompts of varying complexity, switching between models such as Sonnet and Opus depending on the task and cost constraints.</p>
+<p>The goal is not syntax, but understanding how pieces fit together:</p>
+<ul>
+<li>Data flows</li>
+<li>Dependencies</li>
+<li>Failure points</li>
+<li>Implicit conventions</li>
+</ul>
+<p>Carefully reading the generated output is often more educational than writing code manually. Over time, patterns emerge, become reusable, and differ meaningfully depending on the model in use.</p>
+<h2>Tools and Models</h2>
+<p>Anthropic is the leader here—very expensive but absolutely the way to go for reliable results. But keep an eye on the evolution of models and tools. I changed many times in the last year because every week we have a discovery, a new MCP, or a new IDE that performs way better than the others. Now I&#39;m with Claude Code, but tomorrow who knows?</p>
+<h2>What I&#39;ve Built</h2>
+<p>During this period, I have built a wide range of things:
+Personal tools, Small internal products, Analytical systems, Automations, Interfaces, Prototypes to a full application layer that one of my teams is now adapting for production readiness</p>
+<p>Some of these projects reached production. Others were abandoned without hesitation. <strong>Fast discard is part of the process.</strong> The value is not the artifact itself, but the understanding accumulated along the way.</p>
+<h2>The Method</h2>
+<p>The method is consistent:</p>
+<ol>
+<li>Start with a vague idea</li>
+<li>Clarify it by asking questions</li>
+<li>Define what must exist and what must not</li>
+<li>Let the system take shape</li>
+<li>Intervene only to correct direction, not to micromanage</li>
+<li>Force the LLM to test, observe, and iterate</li>
+</ol>
+<p>Each project improves the next. Successes are recorded and documented as they happen. In practice, the LLM handles most of this automatically, making the process fast and low-friction.</p>
+<h2>What Matters Most</h2>
+<p>Over time, it became clear that <strong>discipline matters more than raw technical skill</strong>. Essential elements include:</p>
+<ul>
+<li>Repeatable rules</li>
+<li>Clear conventions</li>
+<li>Automated tests</li>
+<li>Configurations that persist across projects</li>
+</ul>
+<p>Not to follow best practices dogmatically, but to avoid repeating the same avoidable mistakes.</p>
+<p>This approach enables work from anywhere. The boundary between writing code and using software becomes increasingly blurred. The system responds, adapts, and is guided. I focus on outcomes, not on syntax.</p>
+<h2>A New Abstraction Layer</h2>
+<p>Rather than learning a new language, I am learning a new abstraction layer.</p>
+<p>In the past, this was no-code: visual tools connected together with minimal code to glue logic. Today, it is interaction with systems capable of building other systems. The core skill is not memorizing rules, but:</p>
+<ul>
+<li>Framing problems</li>
+<li>Providing context</li>
+<li>Recognizing sound solutions</li>
+</ul>
+<p>I moved from small projects with a few hundred lines of code (translators, productivity tools) to a multi-backend data abstraction layer spanning an aggregate of <strong>more than four million lines of code</strong> (tests included).</p>
+<h2>Continuous Learning</h2>
+<p>Following how the community of engineers working with LLMs evolves accelerates everything. Reddit, Discord, and X are my sources of knowledge, and I spend at least one hour a day to keep up the pace.</p>
+<p>Studying open source software, taking it apart, adapting it—this challenges the assumption that complex architectures are always necessary. <strong>Simplicity works more often than expected.</strong> (KISS is my opening prompt every time)</p>
+<p>In many cases, solutions proposed by LLMs exceed what I have learned over decades of experience. New patterns, approaches I would not have considered, or would not have explored due to time constraints. Entire stacks assembled in hours instead of weeks. Not perfect, but already beyond what all my teams could realistically produce in the same timeframe.</p>
+<h2>Language Agnostic</h2>
+<p>The choice of programming language is no longer a limiting factor.</p>
+<p>Initially, I tried to stay within languages I knew well: C#, TypeScript, and Python. Eventually, it became clear that the language should serve the goal, not my prior familiarity.</p>
+<p>You do not need to master every nuance of a language, but you do need to understand how systems evolve and which patterns tend to fail. From there, selecting the right language for the product matters more. This is how I transitioned to Go and Rust, reaching strong productivity within weeks of focused practice.</p>
+<h2>Embracing Errors</h2>
+<p>I am not building large-scale, mission-critical infrastructure. Errors are acceptable and often necessary. Each bug exposes a boundary of understanding and suggests how to avoid it next time. Even seemingly trivial concepts only become obvious when you collide with a real constraint.</p>
+<p>The key is being explicit about style and expectations—not only in terms of results, but also in how those results should be achieved.</p>
+<h2>Practical Strategies</h2>
+<p>This way of working is fundamentally different from traditional programming education. It does not start from abstract exercises, but from real systems. Anyone already familiar with architectures, workflows, and products will find immediate leverage.</p>
+<p>Key practices:</p>
+<ul>
+<li><strong>Continuous testing</strong> – Test-driven development is critical for long-term sustainability</li>
+<li><strong>Logging everywhere</strong> – The primary way an LLM can observe application behavior and apply corrective actions</li>
+<li><strong>Start monolithic</strong> – A monolithic architecture that can be decomposed later often works best</li>
+<li><strong>Hexagonal architecture</strong> – This was a major turning point for me</li>
+</ul>
+<p>Once you establish your own working framework, no software feels unreachable. You can prompt it, test it, break it, and understand it. Naive questions are not a weakness. They are the engine of progress when there is no external judgment.</p>
+<h2>What This Is</h2>
+<p>This is not improvisation, and it is not classical programming either. It is a new form of technical competence that does not yet have a precise name. It does not require perfection, only curiosity and tolerance for failure.</p>
+<p>The process feels closer to play than to formal study. Rapid exploration, low cost, constant experimentation. Ideas do not need to be good to be useful. They only need to exist long enough to teach something.</p>
+<p>Learning, in this context, means building beyond your current capability and accepting failure before trying again. You just need to pick a system, use it seriously, and stop searching for the perfect one.</p>
+<h2>Conclusion</h2>
+<p>In the end, what matters is reducing friction between an idea and its realization. Everything else is noise.</p>
+<p><strong>Plan, fail, understand, repeat.</strong></p>
+<p>That is how I am relearning how to work with code.</p>
+<p><em>Originally published on <a href="https://medium.com/@stefanostraus/building-software-without-writing-it-first-59cf6c71337b">Medium</a>.</em></p>
+]]></content:encoded>
     </item>
 
     <item>
@@ -123,6 +1016,214 @@
       <guid isPermaLink="true">https://straus.it/#read/claude-code-setup</guid>
       <pubDate>Sat, 01 Nov 2025 00:00:00 +0000</pubDate>
       <description>A complete walkthrough of how I configure Claude Code</description>
+      <content:encoded><![CDATA[<h1>My Claude Code Setup</h1>
+<p>A complete walkthrough of how I configure Claude Code for maximum productivity.</p>
+<h2>What is Claude Code?</h2>
+<p>Claude Code is Anthropic&#39;s official CLI tool that brings Claude directly into your terminal. It&#39;s not just a chatbot—it can read files, execute commands, edit code, and integrate with external tools via MCP (Model Context Protocol).</p>
+<h2>Installation</h2>
+<pre><code class="language-bash">npm install -g @anthropic-ai/claude-code
+</code></pre>
+<p>Or if you prefer:</p>
+<pre><code class="language-bash">brew install claude-code
+</code></pre>
+<h2>Configuration Files</h2>
+<p>Claude Code uses several configuration files in <code>~/.claude/</code>:</p>
+<h3>settings.json</h3>
+<p>This is the main configuration file. Here&#39;s what matters:</p>
+<pre><code class="language-json">{
+  &quot;model&quot;: &quot;opus&quot;,
+  &quot;alwaysThinkingEnabled&quot;: true,
+  &quot;max_turns&quot;: 100,
+  &quot;includeCoAuthoredBy&quot;: false
+}
+</code></pre>
+<p>Key settings:</p>
+<ul>
+<li><strong>model</strong>: I use <code>opus</code> for complex tasks (expensive but reliable), <code>sonnet</code> for everyday work</li>
+<li><strong>alwaysThinkingEnabled</strong>: Without thinking even Opus is weak</li>
+<li><strong>max_turns</strong>: How many back-and-forth turns before stopping</li>
+<li><strong>includeCoAuthoredBy</strong>: Avoid having &quot;Co-authored-by&quot; added to git commits</li>
+</ul>
+<h3>Permissions</h3>
+<p>Claude Code has a robust permission system. I prefer a permissive setup with explicit allows:</p>
+<pre><code class="language-json">{
+  &quot;permissions&quot;: {
+    &quot;allow&quot;: [
+      &quot;*&quot;,
+      &quot;Bash(go build:*)&quot;,
+      &quot;Bash(go test:*)&quot;,
+      &quot;Bash(git commit:*)&quot;,
+      &quot;Bash(make:*)&quot;
+    ],
+    &quot;defaultMode&quot;: &quot;default&quot;
+  }
+}
+</code></pre>
+<p>The <code>*</code> allows most operations, but you can be more restrictive.</p>
+<p>Usually I run Claude with:</p>
+<pre><code class="language-bash">claude --dangerously-skip-permissions --resume --chrome
+</code></pre>
+<p>I know, it&#39;s dangerous, but I commit continuously and have good backup strategies. This will speed up your work by 10x.</p>
+<p>Resume is usefull for a list of previous esession to continue and --chrome will allow browser acces to understand the web content you&#39;re building (you need the Claude extension).</p>
+<h3>CLAUDE.md</h3>
+<p>This file lives in <code>~/.claude/CLAUDE.md</code> (global) or in your project root (project-specific). It&#39;s your way to give Claude persistent instructions.</p>
+<p>My global CLAUDE.md:</p>
+<pre><code class="language-markdown"># Style
+Apply KISS, YAGNI, DRY and SOLID coding principles.
+Always respond in English.
+
+# Rules
+- Do not duplicate logic
+- Do NOT stop until all tasks are complete
+- Check your todo list after each step
+- Never skip failing tests. Fix them!
+</code></pre>
+<h2>MCP Servers</h2>
+<p>MCP (Model Context Protocol) extends Claude&#39;s capabilities. I use three:</p>
+<h3>mcp.json</h3>
+<pre><code class="language-json">{
+  &quot;mcpServers&quot;: {
+    &quot;serena&quot;: {
+      &quot;type&quot;: &quot;stdio&quot;,
+      &quot;command&quot;: &quot;uvx&quot;,
+      &quot;args&quot;: [&quot;--from&quot;, &quot;git+https://github.com/oraios/serena&quot;, &quot;serena-mcp-server&quot;]
+    },
+    &quot;chrome-devtools&quot;: {
+      &quot;type&quot;: &quot;stdio&quot;,
+      &quot;command&quot;: &quot;npx&quot;,
+      &quot;args&quot;: [&quot;chrome-devtools-mcp@latest&quot;]
+    },
+    &quot;context7&quot;: {
+      &quot;type&quot;: &quot;stdio&quot;,
+      &quot;command&quot;: &quot;npx&quot;,
+      &quot;args&quot;: [&quot;-y&quot;, &quot;@upai/mcp-server-context7&quot;]
+    }
+  }
+}
+</code></pre>
+<p><strong>What each does:</strong></p>
+<ul>
+<li><strong>Serena</strong>: Code intelligence—symbol search, references, project navigation</li>
+<li><strong>Chrome DevTools</strong>: Browser automation and debugging</li>
+<li><strong>Context7</strong>: Up-to-date documentation lookup for any library</li>
+</ul>
+<h2>Plugins</h2>
+<p>Claude Code has a plugin system. My enabled plugins:</p>
+<table>
+<thead>
+<tr>
+<th>Plugin</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>context7</td>
+<td>Documentation lookup</td>
+</tr>
+<tr>
+<td>feature-dev</td>
+<td>Guided feature development</td>
+</tr>
+<tr>
+<td>frontend-design</td>
+<td>UI/UX design assistance</td>
+</tr>
+<tr>
+<td>ralph-wiggum</td>
+<td>Automated iteration loops</td>
+</tr>
+<tr>
+<td>claude-hud</td>
+<td>Status line display</td>
+</tr>
+</tbody></table>
+<p>Enable in settings:</p>
+<pre><code class="language-json">{
+  &quot;enabledPlugins&quot;: {
+    &quot;context7@claude-plugins-official&quot;: true,
+    &quot;feature-dev@claude-plugins-official&quot;: true,
+    &quot;claude-hud@claude-hud&quot;: true
+  }
+}
+</code></pre>
+<h2>Hooks</h2>
+<p>Hooks let you run commands before/after Claude actions. I use them for automatic git-ai checkpoints:</p>
+<pre><code class="language-json">{
+  &quot;hooks&quot;: {
+    &quot;PostToolUse&quot;: [
+      {
+        &quot;matcher&quot;: &quot;Write|Edit|MultiEdit&quot;,
+        &quot;hooks&quot;: [
+          {
+            &quot;type&quot;: &quot;command&quot;,
+            &quot;command&quot;: &quot;git-ai checkpoint claude --hook-input stdin&quot;
+          }
+        ]
+      }
+    ]
+  }
+}
+</code></pre>
+<p>This creates automatic checkpoints to distinguish when AI edited the code and when it was a human activity. Thanks to <a href="https://github.com/acunniffe/git-ai">https://github.com/acunniffe/git-ai</a></p>
+<h2>Status Line</h2>
+<p>The status line shows useful info while Claude works. I use claude-hud(<a href="https://github.com/jarrodwatts/claude-hud">https://github.com/jarrodwatts/claude-hud</a>):</p>
+<pre><code class="language-json">{
+  &quot;statusLine&quot;: {
+    &quot;type&quot;: &quot;command&quot;,
+    &quot;command&quot;: &quot;bash -c &#39;node \&quot;$(ls -td ~/.claude/plugins/cache/claude-hud/claude-hud/*/ | head -1)dist/index.js\&quot;&#39;&quot;
+  }
+}
+</code></pre>
+<h2>iTerm 2 Notifications</h2>
+<p>Never miss when Claude completes a task. In iTerm 2:</p>
+<ol>
+<li>Open <strong>Preferences → Profiles → Terminal</strong></li>
+<li>Enable <strong>&quot;Silence bell&quot;</strong></li>
+<li>Select <strong>&quot;Send escape sequence-generated alerts&quot;</strong></li>
+<li>Set your preferred notification delay</li>
+</ol>
+<p>This sends a system notification when Claude finishes long-running tasks.</p>
+<h2>Makefile Patterns</h2>
+<p>Every project gets a Makefile. It&#39;s the universal interface that Claude understands immediately.</p>
+<p>Key patterns:</p>
+<ul>
+<li><strong>Self-documenting help</strong>: <code>make help</code> parses <code>## target: description</code> comments</li>
+<li><strong>Consistent targets</strong>: <code>build</code>, <code>test</code>, <code>deploy</code>, <code>clean</code> work the same everywhere</li>
+<li><strong>Environment loading</strong>: Auto-include <code>.env</code> files when present</li>
+</ul>
+<p>The value is consistency. Claude reads <code>make deploy</code> and knows what to do—no explaining build systems per project.</p>
+<h2>Tips for Daily Use</h2>
+<ol>
+<li><strong>Almost always use Plan mode</strong> - Let Claude think before acting</li>
+<li><strong>Give Claude verification methods</strong> - Unit tests, Chrome extension, or simulators</li>
+<li><strong>Hold the same bar for human and Claude code</strong> - Use <code>/code-review</code> to automate review</li>
+<li><strong>Press Shift+Tab</strong> - Toggle auto-accept for file edits, reduces friction</li>
+<li><strong>Use opus for complex tasks</strong> - Worth the cost for architecture decisions</li>
+<li><strong>Check the todo list</strong> - Claude tracks its own progress, review it</li>
+<li><strong>Leverage MCP</strong> - Context7 for docs, Serena for code navigation</li>
+<li><strong>Trust but verify</strong> - Always review generated code before committing</li>
+</ol>
+<h2>Project-Specific Config</h2>
+<p>Each project can have its own <code>.claude/CLAUDE.md</code> with specific instructions:</p>
+<pre><code class="language-markdown"># Project: MyApp
+
+## Stack
+- Go 1.22
+- PostgreSQL 15
+- React 18
+
+## Commands
+- `make test` - Run tests
+- `make build` - Build binary
+
+## Conventions
+- Use hexagonal architecture
+- All errors must be wrapped with context
+</code></pre>
+<h2>Conclusion</h2>
+<p>Claude Code is more than a coding assistant—it&#39;s a development environment that understands context, follows instructions, and integrates with your tools. The key is configuration: take time to set up your CLAUDE.md, permissions, and MCP servers.</p>
+<p>The investment pays off exponentially.</p>
+]]></content:encoded>
     </item>
 
     <item>
@@ -131,6 +1232,157 @@
       <guid isPermaLink="true">https://straus.it/#read/claude-code-commands</guid>
       <pubDate>Sat, 11 Oct 2025 00:00:00 +0000</pubDate>
       <description>Building productivity workflows with custom slash commands</description>
+      <content:encoded><![CDATA[<h1>Custom Slash Commands for Claude Code</h1>
+<p>Slash commands are one of Claude Code&#39;s most powerful features. They let you define reusable prompts that execute with a single <code>/command</code>.</p>
+<h2>Where Commands Live</h2>
+<p>Commands are markdown files in <code>~/.claude/commands/</code>. Each file becomes a slash command:</p>
+<pre><code>~/.claude/commands/
+├── fix.md           → /fix
+├── prime.md         → /prime
+├── commit-and-push.md → /commit-and-push
+├── code-review.md   → /code-review
+├── coverage.md      → /coverage
+├── ultrathink.md    → /ultrathink
+└── build-planning.md → /build-planning
+</code></pre>
+<h2>My Command Collection</h2>
+<h3>/fix — Debug Loop</h3>
+<p>The simplest but most used command:</p>
+<pre><code class="language-markdown">READ the output from the terminal command to understand the error.
+THEN FIX the error. Use context7 and brave-search MCPs to understand it.
+THEN re-run the command. If there&#39;s another error, repeat.
+</code></pre>
+<p><strong>Usage</strong>: Run a command, see an error, type <code>/fix</code>. Claude reads the terminal, understands the error, fixes it, and re-runs. Repeat until it works.</p>
+<h3>/prime — Project Understanding</h3>
+<p>When starting a new session:</p>
+<pre><code class="language-markdown">## 1. Project Overview
+- READ the README.md file
+- RUN `git ls-files` to understand structure
+- EXAMINE directory patterns
+
+## 2. Core Documentation
+- READ PLANNING.md for architecture
+- READ TASKS.md for current status
+
+## 3. Testing &amp; Quality
+- EXAMINE test files for patterns
+
+## 4. Development Workflow
+- CHECK CI/CD pipelines
+- CHECK dev environment setup
+</code></pre>
+<p><strong>Usage</strong>: Start every session with <code>/prime</code>. Claude builds a mental model of the project before doing anything.</p>
+<h3>/commit-and-push — Smart Git Workflow</h3>
+<p>More than just <code>git commit</code>:</p>
+<pre><code class="language-markdown">ADD all modified and new files to git.
+- Review the diff for problems and bugs
+- Check if completed tasks in TASKS.md are actually done
+- Check if tests are proper (not placeholders)
+- Report if functionality was removed
+- Raise concerns/recommendations
+THEN commit with conventional commit notation.
+THEN push to origin.
+</code></pre>
+<p><strong>Usage</strong>: When you&#39;re ready to commit, <code>/commit-and-push</code> does a mini code review first.</p>
+<h3>/code-review — Full Codebase Analysis</h3>
+<p>Comprehensive review with prioritized findings:</p>
+<pre><code class="language-markdown">Analyze the codebase for:
+- 🔴 Critical: Security vulnerabilities, breaking bugs
+- 🟠 High: Code quality issues, architectural problems
+- 🟡 Medium: Minor bugs, missing tests
+- 🟢 Low: Documentation, minor optimizations
+
+Update TASKS.md with actionable items.
+</code></pre>
+<p><strong>Usage</strong>: Run <code>/code-review</code> periodically or before major releases.</p>
+<h3>/coverage — Test Gap Filler</h3>
+<pre><code class="language-markdown">UNDERSTAND code coverage percentages for each function.
+THEN add unit tests to functions without 100% coverage.
+Include negative and edge cases.
+ALWAYS use mocks for external functionality.
+THEN re-run coverage and repeat as necessary.
+</code></pre>
+<p><strong>Usage</strong>: After implementing a feature, <code>/coverage</code> fills in missing tests.</p>
+<h3>/build-planning — Project Bootstrap</h3>
+<p>Creates structured documentation for new projects:</p>
+<pre><code class="language-markdown">Build PLANNING.md with:
+- Project Overview
+- Architecture (Core components, Data Model)
+- API endpoints
+- Technology stack
+- Testing strategy
+- Development commands
+- Security considerations
+- Future considerations
+
+Build TASKS.md with categorized tasks.
+</code></pre>
+<p><strong>Usage</strong>: Start new projects with <code>/build-planning</code> to establish structure.</p>
+<h3>/ultrathink — Craftsman Mode</h3>
+<p>My favorite. Changes Claude&#39;s entire approach:</p>
+<pre><code class="language-markdown">**ultrathink** - We&#39;re not here to write code.
+We&#39;re here to make a dent in the universe.
+
+1. **Think Different** - Question every assumption
+2. **Obsess Over Details** - Read the codebase like a masterpiece
+3. **Plan Like Da Vinci** - Sketch architecture before coding
+4. **Craft, Don&#39;t Code** - Every function name should sing
+5. **Iterate Relentlessly** - First version is never good enough
+6. **Simplify Ruthlessly** - Remove complexity without losing power
+</code></pre>
+<p><strong>Usage</strong>: When you need exceptional quality, not just working code.</p>
+<h3>/docs-consolidate — Documentation Cleanup</h3>
+<pre><code class="language-markdown">Consolidates all markdown files into a clean docs folder.
+- Identify meaningful documentation vs temporary notes
+- Move relevant files to docs/ structure
+- Remove redundant files and completed status updates
+- Protect README.md and schema files
+</code></pre>
+<p><strong>Usage</strong>: After a sprint, clean up scattered documentation.</p>
+<h2>Creating Your Own Commands</h2>
+<h3>Basic Structure</h3>
+<pre><code class="language-markdown">---
+description: Short description shown in /help
+---
+
+Your prompt instructions here.
+Use imperative verbs: READ, WRITE, ANALYZE, FIX.
+Reference tools: context7, bash, git.
+</code></pre>
+<h3>Tips for Good Commands</h3>
+<ol>
+<li><strong>Be specific</strong> - &quot;READ the error&quot; not &quot;understand what happened&quot;</li>
+<li><strong>Chain actions</strong> - &quot;THEN&quot; connects sequential steps</li>
+<li><strong>Loop when needed</strong> - &quot;repeat this process&quot; for iterative tasks</li>
+<li><strong>Reference tools</strong> - Mention MCPs and capabilities explicitly</li>
+<li><strong>Set expectations</strong> - Tell Claude what output you want</li>
+</ol>
+<h3>Example: Custom Deploy Command</h3>
+<pre><code class="language-markdown">---
+description: Deploy to production with safety checks
+---
+
+1. RUN `make test` - all tests must pass
+2. RUN `make build` - verify build succeeds
+3. CHECK git status - no uncommitted changes
+4. READ CHANGELOG.md - verify version bump
+5. RUN `make deploy`
+6. VERIFY deployment by checking health endpoint
+7. Report success or rollback instructions
+</code></pre>
+<h2>Project-Specific Commands</h2>
+<p>Commands can also live in <code>.claude/commands/</code> within a project:</p>
+<pre><code>my-project/
+└── .claude/
+    └── commands/
+        └── db-migrate.md    → /db-migrate (project only)
+</code></pre>
+<p>These override global commands and can reference project-specific tools.</p>
+<h2>The Power of Commands</h2>
+<p>Commands transform Claude Code from a chatbot into a <strong>workflow automation tool</strong>. Instead of explaining what you want every time, you define it once and invoke it with a word.</p>
+<p>The best commands encode your team&#39;s best practices. They ensure consistency, reduce errors, and let you focus on the actual problem instead of the process.</p>
+<p>Start with <code>/fix</code> and <code>/prime</code>. Add more as patterns emerge.</p>
+]]></content:encoded>
     </item>
 
     <item>
@@ -139,6 +1391,80 @@
       <guid isPermaLink="true">https://straus.it/#read/settings-sentry</guid>
       <pubDate>Fri, 15 Aug 2025 00:00:00 +0000</pubDate>
       <description>A lightweight tool to backup and restore macOS application settings</description>
+      <content:encoded><![CDATA[<h1>SettingsSentry - Never Lose Your macOS Settings Again</h1>
+<p>If you&#39;ve ever reinstalled macOS or migrated to a new Mac, you know the pain: hours spent reconfiguring apps, losing custom settings, trying to remember how you had things set up.</p>
+<p>I built <a href="https://github.com/sstraus/SettingsSentry">SettingsSentry</a> to solve this.</p>
+<h2>The Problem with Existing Tools</h2>
+<p>Mackup was the go-to solution for years, but it has issues:</p>
+<ul>
+<li><strong>Symlink risks</strong> - Can overwrite settings unexpectedly</li>
+<li><strong>macOS Sonoma compatibility</strong> - Breaks with recent macOS versions</li>
+<li><strong>No versioning</strong> - One backup, no history</li>
+</ul>
+<h2>What SettingsSentry Does Different</h2>
+<p>SettingsSentry takes a simpler, safer approach:</p>
+<ul>
+<li><strong>Copy, don&#39;t symlink</strong> - Your original files stay untouched</li>
+<li><strong>Versioned backups</strong> - Timestamped directories (YYYYMMDD-HHMMSS)</li>
+<li><strong>Dry-run mode</strong> - Preview before executing</li>
+<li><strong>Encryption</strong> - AES-256-GCM for sensitive configs</li>
+<li><strong>iCloud integration</strong> - Backups sync automatically</li>
+</ul>
+<h2>How It Works</h2>
+<p>Define what to back up in simple <code>.cfg</code> files:</p>
+<pre><code class="language-ini">[Settings]
+name = VSCode
+files = ${HOME}/Library/Application Support/Code/User/settings.json
+        ${HOME}/Library/Application Support/Code/User/keybindings.json
+</code></pre>
+<p>Then run:</p>
+<pre><code class="language-bash"># Backup
+settingssentry backup
+
+# Restore on new machine
+settingssentry restore
+
+# Preview first
+settingssentry backup --dry-run
+</code></pre>
+<h2>My Use Case</h2>
+<p>I run it automatically at reboot via cron. Every time my Mac restarts, my settings are backed up to iCloud. When I got a new MacBook, restoration took 5 minutes instead of 5 hours.</p>
+<h2>Key Features</h2>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Benefit</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Versioned backups</td>
+<td>Roll back to any point</td>
+</tr>
+<tr>
+<td>Encryption</td>
+<td>Safe for sensitive configs</td>
+</tr>
+<tr>
+<td>Environment variables</td>
+<td><code>${HOME}</code>, <code>${APP_NAME}</code> expansion</td>
+</tr>
+<tr>
+<td>Pre/post commands</td>
+<td>Run scripts before/after operations</td>
+</tr>
+<tr>
+<td>ZIP archives</td>
+<td>Compressed, portable backups</td>
+</tr>
+</tbody></table>
+<h2>Get Started</h2>
+<pre><code class="language-bash">git clone https://github.com/sstraus/SettingsSentry
+cd SettingsSentry
+./settingssentry backup
+</code></pre>
+<p>Check the <a href="https://github.com/sstraus/SettingsSentry">GitHub repo</a> for full documentation and example configs.</p>
+]]></content:encoded>
     </item>
 
     <item>
@@ -147,6 +1473,106 @@
       <guid isPermaLink="true">https://straus.it/#read/my-macos-dev-toolkit</guid>
       <pubDate>Sun, 20 Jul 2025 00:00:00 +0000</pubDate>
       <description>A curated collection of Homebrew tools that power my daily workflow</description>
+      <content:encoded><![CDATA[<h1>My macOS Developer Toolkit</h1>
+<p>After years of refining my setup, here&#39;s the Homebrew collection that powers my daily workflow. These aren&#39;t just installed, they&#39;re tools I actually use.</p>
+<h2>Terminal Power-Ups</h2>
+<p>The default terminal experience on macOS is... functional. These tools make it exceptional.</p>
+<p><strong>fzf</strong> — Fuzzy finder that changes everything. Ctrl+R for history search, Ctrl+T for file finding. Once you use it, you can&#39;t go back.</p>
+<p><strong>bat</strong> — <code>cat</code> with syntax highlighting and line numbers. I aliased <code>cat</code> to <code>bat</code> years ago and forgot <code>cat</code> existed.</p>
+<p><strong>ripgrep</strong> — Grep but fast. Respects <code>.gitignore</code>, searches recursively by default. Essential for large codebases.</p>
+<p><strong>zoxide</strong> — Smart <code>cd</code> that learns your habits. Type <code>z proj</code> and it jumps to <code>/Users/me/projects/my-project</code>. Magical.</p>
+<p><strong>btop</strong> — System monitor that looks like it belongs in a sci-fi movie. CPU, memory, network, disks—all beautifully rendered.</p>
+<p><strong>powerlevel10k</strong> — Zsh theme that shows git status, execution time, and context without being slow. The configuration wizard is brilliant.</p>
+<p><strong>iterm2</strong> — Terminal emulator that makes the default Terminal.app feel prehistoric. Split panes, search, profiles, triggers. Worth the switch.</p>
+<p><strong>tmux</strong> — Terminal multiplexer. Persistent sessions that survive disconnects. Essential for remote work and long-running processes.</p>
+<p><strong>less</strong> — The pager. Sounds boring until you need to navigate a 10MB log file. Faster than any editor for read-only exploration.</p>
+<h2>Development Essentials</h2>
+<p>I work across multiple languages. Here&#39;s what actually matters.</p>
+<p><strong>Go</strong> — My primary language now. Fast compilation, single binary deployment, great tooling. The simplicity is underrated.</p>
+<p><strong>Rust</strong> — For when I need performance and safety guarantees. Steep learning curve but worth it for systems work.</p>
+<p><strong>Python</strong> with <strong>pyenv</strong> — Multiple Python versions without conflicts. Essential when different projects need different versions.</p>
+<p><strong>Node</strong> with <strong>nvm</strong> — Same story for JavaScript. Version switching should be painless.</p>
+<p><strong>Zig</strong> — The new kid. Using it for cross-compilation—it makes building C dependencies for other platforms trivial.</p>
+<p><strong>bun</strong> — JavaScript runtime that&#39;s absurdly fast. Package installs in seconds, scripts run instantly. Replaced npm for most tasks.</p>
+<p><strong>staticcheck</strong> — Go static analyzer. Catches bugs, suggests improvements, enforces idioms. Run it before every commit.</p>
+<p><strong>vscode</strong> — My primary editor. With the right extensions, it handles everything. Remote development, debugging, git integration—all solid.</p>
+<h2>Git &amp; Version Control</h2>
+<p>Git is non-negotiable. These tools make it pleasant.</p>
+<p><strong>lazygit</strong> — Terminal UI for git that&#39;s faster than any GUI. Staging hunks, interactive rebase, conflict resolution—all keyboard-driven.</p>
+<p><strong>gh</strong> — GitHub CLI. Create PRs, review code, manage issues without leaving the terminal. <code>gh pr create</code> is muscle memory.</p>
+<p><strong>git-crypt</strong> — Transparent encryption for sensitive files in repos. Secrets stay encrypted for everyone except authorized keys.</p>
+<p><strong>tig</strong> — Interactive git log viewer. Better than <code>git log</code> for exploring history.</p>
+<h2>Container &amp; Cloud</h2>
+<p><strong>colima</strong> — Docker runtime on macOS without Docker Desktop. Lighter, faster, free. Uses Lima under the hood.</p>
+<p><strong>lazydocker</strong> — Like lazygit but for Docker. Container logs, stats, exec—all in a TUI.</p>
+<p><strong>k9s</strong> — Kubernetes dashboard in the terminal. Navigate clusters, view logs, exec into pods. Faster than any web UI.</p>
+<p><strong>awscli</strong> — AWS from the command line. Combined with profiles and <code>aws-vault</code>, it handles multi-account setups cleanly.</p>
+<p><strong>terraform</strong> — Infrastructure as code. Version-controlled cloud resources. No clicking around consoles.</p>
+<h2>Database Tools</h2>
+<p><strong>duckdb</strong> — In-process SQL database that&#39;s incredibly fast for analytics. Query Parquet files, CSVs, JSON directly. Game-changer for data work.</p>
+<p><strong>postgresql</strong> (libpq) — The postgres client library. <code>psql</code> for quick queries, but mostly used by applications.</p>
+<p><strong>redis</strong> — In-memory data store. Caching, queues, pub/sub. Simple and reliable.</p>
+<p><strong>dbeaver-community</strong> — When I need a GUI for databases. Supports everything: Postgres, MySQL, SQLite, DuckDB, MongoDB.</p>
+<h2>AI/ML Tools</h2>
+<p>Running AI locally is no longer a novelty—it&#39;s practical.</p>
+<p><strong>ollama</strong> — Local LLM runner. Download models, run them locally, expose an API. Privacy-preserving AI.</p>
+<p><strong>aider</strong> — AI coding assistant in the terminal. Understands your codebase, makes edits, commits changes. Like having a pair programmer.</p>
+<p><strong>huggingface-cli</strong> — Download and manage models from Hugging Face. Essential for ML work.</p>
+<h2>Security &amp; Privacy</h2>
+<p>Security isn&#39;t optional. These tools make it manageable.</p>
+<p><strong>gnupg</strong> — GPG encryption. Sign commits, encrypt files, manage keys. The foundation of trust.</p>
+<p><strong>pass</strong> — Password manager built on GPG. Simple, unix-philosophy, works everywhere. Syncs via git.</p>
+<p><strong>YubiKey tools</strong> (ykman) — Hardware key management. 2FA, GPG keys, SSH authentication. Physical security matters.</p>
+<p><strong>nmap</strong> — Network scanner. Know what&#39;s on your network. Essential for security audits.</p>
+<p><strong>lynis</strong> — Security auditing for unix systems. Finds misconfigurations, suggests hardening.</p>
+<p><strong>lulu</strong> — macOS firewall that asks before apps connect out. See what&#39;s phoning home. Surprisingly educational.</p>
+<h2>Media &amp; Graphics</h2>
+<p>Automation for media tasks saves hours.</p>
+<p><strong>ffmpeg</strong> — Swiss army knife for video/audio. Convert formats, extract audio, resize video, create GIFs. Learn the basics—it pays off.</p>
+<p><strong>imagemagick</strong> — Image manipulation from CLI. Batch resize, convert, watermark. Scriptable image processing.</p>
+<p><strong>upscayl</strong> — AI image upscaling. Actually works for improving low-res images.</p>
+<h2>macOS Enhancements</h2>
+<p>Making macOS behave the way I want.</p>
+<p><strong>amethyst</strong> — Tiling window manager. Windows snap to grid automatically. No more manual resizing.</p>
+<p><strong>alt-tab</strong> — Windows-style alt-tab. Shows all windows, not just apps. Should be default behavior.</p>
+<p><strong>stats</strong> — Menu bar system monitor. CPU, memory, network, battery—always visible.</p>
+<p><strong>maccy</strong> — Clipboard manager. History of everything you&#39;ve copied. Searchable, keyboard-driven.</p>
+<p><strong>Quick Look plugins</strong> — Preview code, markdown, JSON, CSV without opening apps. Small quality-of-life wins.</p>
+<p><strong>finicky</strong> — URL router. Slack links open in Slack, GitHub in Firefox, everything else in Chrome. Control where links go.</p>
+<h2>Hidden Gems</h2>
+<p>Tools that don&#39;t fit categories but earn their place.</p>
+<p><strong>hyperfine</strong> — Benchmarking tool. Compare command execution times with statistical rigor. &quot;Is this actually faster?&quot; now has an answer.</p>
+<p><strong>asciinema</strong> — Record terminal sessions. Share them as text-based recordings that can be copied from. Better than video for tutorials.</p>
+<p><strong>hurl</strong> — HTTP testing in plain text files. Define requests, assert responses, chain them together. API testing that&#39;s version-controllable.</p>
+<p><strong>tldr</strong> — Simplified man pages. Real examples instead of exhaustive documentation. <code>tldr tar</code> shows what you actually need.</p>
+<p><strong>trash-cli</strong> — Move to trash instead of <code>rm</code>. Recoverable deletions. Saved me more than once.</p>
+<p><strong>gping</strong> — Ping with a graph. Watch latency over time visually. Perfect for debugging network issues.</p>
+<p><strong>httping</strong> — Like ping but for HTTP endpoints. Measure web server latency, catch intermittent issues.</p>
+<h2>The Philosophy</h2>
+<p>400+ packages installed, but I use maybe 60 daily. The rest are dependencies or experiments.</p>
+<p>The pattern: replace slow defaults with fast alternatives, automate repetitive tasks, stay in the terminal when possible. Every tool here earned its place by saving time or reducing friction.</p>
+<p>Your toolkit will differ—that&#39;s the point. Optimize for your workflow, not someone else&#39;s recommendations.</p>
+<h2>The Full List</h2>
+<p>For completeness, here&#39;s everything else installed that didn&#39;t get commentary above:</p>
+<p><strong>Languages &amp; Runtimes</strong>: deno, php, dotnet, openjdk, lua, luajit, ruby</p>
+<p><strong>Build Tools</strong>: cmake, autoconf, automake, libtool, make, maven, gradle, protobuf, goreleaser</p>
+<p><strong>Version Managers</strong>: virtualenv, poetry, pipx, composer</p>
+<p><strong>More Git Tools</strong>: git-lfs, git-extras, git-filter-repo, git-quick-stats, ghorg</p>
+<p><strong>Container Tools</strong>: docker-buildx, docker-compose, minikube, kind, kdash, qemu, lima</p>
+<p><strong>Cloud Tools</strong>: azure-cli, aws-vault, fastlane, cloudflared, rclone, scrcpy</p>
+<p><strong>Database Clients</strong>: mysql, sqlite, mongodb drivers, tokyo-cabinet, lmdb</p>
+<p><strong>Terminal Tools</strong>: tmate, broot, tree, duf, procs, glances, bmon, most, entr, watch, terminal-notifier</p>
+<p><strong>Network Tools</strong>: speedtest-cli, iperf3, dnslookup, wget, curl, aria2, httrack, lynx, browsh, ncftp, telnet, swaks, unbound, ldns, knot</p>
+<p><strong>Code Quality</strong>: golangci-lint, cloc, tokei, ctags, yara</p>
+<p><strong>Document Tools</strong>: pandoc, tidy-html5, diff-so-fancy, dos2unix, ttyrec, ttygif</p>
+<p><strong>Media Tools</strong>: ffmpeg@7, ghostscript, exiftool, giflib</p>
+<p><strong>Security Tools</strong>: openssh, openssl, libfido2, clamav, rkhunter, bettercap, net-snmp</p>
+<p><strong>AI Tools</strong>: codex, opencode, aiac, liblinear, ta-lib</p>
+<p><strong>Mobile Dev</strong>: android-platform-tools, ideviceinstaller, ios-webkit-debug-proxy, ipatool</p>
+<p><strong>macOS Apps</strong>: slack, discord, telegram, microsoft-teams, whatsapp, obsidian, postman, deepl, spotify, grammarly, espanso, shottr, mimestream, inkscape, pinta, calibre, iina, vlc, keka, balenaetcher, onyx, grandperspective, appcleaner, knockknock, gpg-suite, wireshark, openlens, db-browser-for-sqlite, android-studio, ollamac, chatgpt, mindmac, mqtt-explorer, requestly, imageoptim, orcaslicer, openscad, monitorcontrol, notunes</p>
+<p><strong>Quick Look Plugins</strong>: qlcolorcode, qlmarkdown, qlstephen, qlvideo, quicklook-csv, quicklook-json, qlprettypatch, webpquicklook</p>
+<p><strong>Misc</strong>: ask-cli, wrk, mincom, picocom, putty, mutt, z3, qrencode, task, newsboat, buku, navi, ddgr</p>
+]]></content:encoded>
     </item>
 
     <item>
@@ -155,6 +1581,179 @@
       <guid isPermaLink="true">https://straus.it/#read/finicky-url-routing</guid>
       <pubDate>Thu, 13 Feb 2025 00:00:00 +0000</pubDate>
       <description>How I use Finicky to route URLs, strip tracking, and bypass paywalls</description>
+      <content:encoded><![CDATA[<h1>Finicky - Take Control of Your URLs</h1>
+<p>Every link you click goes somewhere. But where? On macOS, the answer is usually &quot;whatever your default browser is.&quot; Finicky changes that.</p>
+<p><a href="https://github.com/johnste/finicky">Finicky</a> is a URL router for macOS. It intercepts every link before it opens and lets you decide—programmatically—what happens next.</p>
+<h2>Why You Need This</h2>
+<ul>
+<li>Work links in your work browser, personal in personal</li>
+<li>Strip tracking parameters automatically</li>
+<li>Open Zoom links directly in the Zoom app</li>
+<li>Bypass paywalls with alternative frontends</li>
+<li>Clean up Microsoft SafeLinks mess</li>
+</ul>
+<p>Let me walk through my actual configuration.</p>
+<h2>Basic Setup</h2>
+<p>First, define your browsers:</p>
+<pre><code class="language-javascript">const work = {
+  name: &quot;Microsoft Edge&quot;,
+};
+
+const personal = {
+  name: &quot;Safari&quot;,
+};
+
+export default {
+  defaultBrowser: &quot;Safari&quot;,
+  // ...
+};
+</code></pre>
+<p>Safari is my default. Edge is for work. Simple foundation.</p>
+<h2>Stripping Tracking Parameters</h2>
+<p>Every marketing link is polluted with tracking garbage. This rewrite rule cleans them:</p>
+<pre><code class="language-javascript">rewrite: [{
+  match: () =&gt; true, // Apply to ALL URLs
+  url: ({ url }) =&gt; {
+    const removeKeysStartingWith = [&quot;utm_&quot;, &quot;uta_&quot;];
+    const removeKeys = [&quot;fbclid&quot;, &quot;gclid&quot;];
+
+    const search = url.search
+      .split(&quot;&amp;&quot;)
+      .map((parameter) =&gt; parameter.split(&quot;=&quot;))
+      .filter(([key]) =&gt; !removeKeysStartingWith.some(
+        (startingWith) =&gt; key.startsWith(startingWith)
+      ))
+      .filter(([key]) =&gt; !removeKeys.some(
+        (removeKey) =&gt; key === removeKey
+      ));
+
+    return {
+      ...url,
+      search: search.map((parameter) =&gt; parameter.join(&quot;=&quot;)).join(&quot;&amp;&quot;),
+    };
+  },
+}]
+</code></pre>
+<p>Before: <code>example.com/page?utm_source=twitter&amp;utm_campaign=launch&amp;fbclid=abc123</code>
+After: <code>example.com/page</code></p>
+<p>Every click, automatically cleaned.</p>
+<h2>Decoding Microsoft SafeLinks</h2>
+<p>Microsoft wraps URLs in &quot;SafeLinks&quot; that are impossible to read. This extracts the actual URL:</p>
+<pre><code class="language-javascript">{
+  match: /statics\.teams\.cdn\.office\.net\/evergreen-assets\/safelinks\/.*url=(https%3A%2F%2F(?:[a-zA-Z]+\.)zoom\.us.*)&amp;locale=.*/,
+  url: ({ url }) =&gt; {
+    const match = url.search.match(/url=([^&amp;]*)/);
+    if (match &amp;&amp; match[1]) {
+      const decodedUrl = decodeURIComponent(match[1]);
+      // Parse and return clean URL components
+      // ...
+    }
+    return { ...url };
+  },
+}
+</code></pre>
+<p>Zoom links wrapped in Teams SafeLinks now work properly.</p>
+<h2>Opening Zoom in the Zoom App</h2>
+<p>Web Zoom is terrible. The app is better. This converts web URLs to app URLs:</p>
+<pre><code class="language-javascript">{
+  match: ({ url }) =&gt; url.host.includes(&quot;zoom.us&quot;) &amp;&amp; url.pathname.includes(&quot;/j/&quot;),
+  url({ url }) {
+    try {
+      var pass = &#39;&amp;pwd=&#39; + url.search.match(/pwd=(\w*)/)[1];
+    } catch {
+      var pass = &quot;&quot;
+    }
+    var conf = &#39;confno=&#39; + url.pathname.match(/\/j\/(\d+)/)[1];
+    return {
+      search: conf + pass,
+      pathname: &#39;/join&#39;,
+      protocol: &quot;zoommtg&quot;  // This triggers the Zoom app
+    }
+  }
+}
+</code></pre>
+<p>Click a Zoom link → Zoom app opens directly. No browser detour.</p>
+<h2>Bypassing Medium Paywalls</h2>
+<p>Medium&#39;s paywall is annoying. Freedium provides the same content without it:</p>
+<pre><code class="language-javascript">{
+  match: /medium.com/,
+  url: ({ url }) =&gt; {
+    return {
+      pathname: &quot;/&quot; + url.host + &quot;/&quot; + url.pathname,
+      host: &quot;freedium.cfd&quot;
+    }
+  }
+}
+</code></pre>
+<p>Every Medium link redirects to Freedium automatically.</p>
+<h2>Privacy-Respecting TikTok</h2>
+<p>TikTok tracking is aggressive. ProxiTok provides a privacy-respecting frontend:</p>
+<pre><code class="language-javascript">{
+  match: ({ url }) =&gt;
+    (url.host.endsWith(&quot;tiktok.com&quot;) &amp;&amp; url.pathname.startsWith(&#39;/@&#39;)) ||
+    url.host.endsWith(&quot;vm.tiktok.com&quot;),
+  url: ({ url }) =&gt; {
+    const selectRandomTikTokProxy = () =&gt; {
+      const TIKTOK_PROXIES = [
+        &quot;proxitok.pabloferreiro.es&quot;,
+        &quot;tok.habedieeh.re&quot;,
+        &quot;tt.vern.cc&quot;,
+        // ... more instances
+      ]
+      return TIKTOK_PROXIES[Math.floor(Math.random() * TIKTOK_PROXIES.length)]
+    }
+    return {
+      protocol: &quot;https&quot;,
+      host: selectRandomTikTokProxy(),
+      pathname: url.pathname.startsWith(&#39;/@&#39;) ? url.pathname : `/@placeholder/video${url.pathname}`
+    }
+  }
+}
+</code></pre>
+<p>Random proxy selection distributes load and improves reliability.</p>
+<h2>Browser Handlers</h2>
+<p>After URL rewriting, handlers decide which browser opens the link:</p>
+<pre><code class="language-javascript">handlers: [
+  {
+    // Teams links open in Teams
+    match: /^https?:\/\/teams\.microsoft\.com\/l\/meetup\-join\/.*$/,
+    browser: &quot;Microsoft Teams&quot;
+  },
+  {
+    // Zoom links open in Zoom app
+    match: /zoom\.us\/join/,
+    browser: &quot;us.zoom.xos&quot;
+  },
+  {
+    // Work sites go to Edge
+    match: [
+      /lansweeper/,
+      /app\.datadoghq\.eu/,
+      /lattice(hq)?\.com/,
+      /honeycomb\.io/,
+      /powerbi\.com/,
+      /office\.com/,
+      /miro\.com/,
+      /clickup\.com/
+    ],
+    browser: work
+  },
+  {
+    // Links FROM Outlook always open in work browser
+    match: ({ opener }) =&gt; opener.bundleId === &quot;com.microsoft.Outlook&quot;,
+    browser: work
+  },
+]
+</code></pre>
+<p>The <code>opener</code> context is powerful—you can route based on <em>which app</em> is opening the link, not just the URL itself.</p>
+<h2>Installation</h2>
+<pre><code class="language-bash">brew install --cask finicky
+</code></pre>
+<p>Create <code>~/.finicky.js</code> with your configuration. Finicky loads it automatically.</p>
+<h2>The Philosophy</h2>
+<p>URLs are data. Finicky lets you transform that data before it becomes action. Strip tracking, fix broken links, route to the right place, bypass annoyances.</p>
+<p>Once configured, it&#39;s invisible. Links just work—the way they should.</p>
+]]></content:encoded>
     </item>
 
     <item>
@@ -163,6 +1762,67 @@
       <guid isPermaLink="true">https://straus.it/#read/bland-ai-call-centers</guid>
       <pubDate>Fri, 26 Apr 2024 00:00:00 +0000</pubDate>
       <description>AI phone operators that sound human are about to transform an industry</description>
+      <content:encoded><![CDATA[<h1>Bland.ai - The End of Call Centers As We Know Them</h1>
+<p>We often talk about AI and how it will impact the world of work. Most discussions stay abstract—future scenarios, potential disruptions, hypothetical timelines.</p>
+<p>Then something like <a href="https://bland.ai">Bland.ai</a> appears, and abstract becomes concrete.</p>
+<h2>A Breaking Change</h2>
+<p>Call centers employ millions of people worldwide. The industry has already undergone massive automation—IVR systems, chatbots, ticket routing. But operators remained. Humans were still needed for the voice channel, for the nuance, for the conversations that required judgment.</p>
+<p>That era is ending.</p>
+<p>Bland.ai is an AI phone operator that sounds human. Not &quot;pretty good for a robot&quot; human. Actually human. Hyperrealistic voice, natural conversation flow, human-level reaction times.</p>
+<h2>What It Does</h2>
+<p>The use cases are immediate and obvious:</p>
+<ul>
+<li><strong>Direct sales</strong> — Outbound calls that don&#39;t feel like robocalls</li>
+<li><strong>Lead generation</strong> — Qualify prospects at scale</li>
+<li><strong>Appointment scheduling</strong> — Handle booking without human intervention</li>
+<li><strong>Technical support</strong> — First-line troubleshooting that resolves issues</li>
+<li><strong>Customer service</strong> — Inbound handling for common requests</li>
+</ul>
+<p>It responds in real-time. No awkward pauses. No uncanny valley delays. Just conversation.</p>
+<h2>The Scale Problem</h2>
+<p>Here&#39;s what makes this different from previous automation: scale.</p>
+<p>Thousands of simultaneous calls. Controlled by a few lines of code. Or a Zapier integration if you&#39;re not technical.</p>
+<p>A traditional call center needs:</p>
+<ul>
+<li>Physical space</li>
+<li>Hardware</li>
+<li>Hiring and training pipelines</li>
+<li>Management layers</li>
+<li>Quality assurance teams</li>
+<li>Scheduling systems</li>
+<li>HR overhead</li>
+</ul>
+<p>Bland.ai needs:</p>
+<ul>
+<li>An API key</li>
+<li>A script</li>
+<li>A phone number</li>
+</ul>
+<p>The cost structure isn&#39;t marginally better. It&#39;s categorically different.</p>
+<h2>Voice Cloning</h2>
+<p>The voice isn&#39;t generic. You can clone any voice. Your CEO can personally call every customer. Your best sales rep can be on a thousand calls simultaneously.</p>
+<p>The line between automated and human disappears. Not because the AI becomes human, but because the experience becomes indistinguishable.</p>
+<h2>What This Means</h2>
+<p>I&#39;m not here to celebrate or lament. I&#39;m observing.</p>
+<p>Millions of call center jobs exist today. They pay rent, feed families, build careers. Many are in developing economies where they represent significant economic opportunity.</p>
+<p>Those jobs are now on a timeline. Not a long one.</p>
+<p>The technology exists today. It works today. Companies are using it today.</p>
+<h2>The Pattern</h2>
+<p>This is the pattern we&#39;ll see repeatedly:</p>
+<ol>
+<li>AI reaches human parity in a specific domain</li>
+<li>The economics flip instantly</li>
+<li>Adoption happens faster than anyone predicts</li>
+<li>An entire job category transforms</li>
+</ol>
+<p>We saw it with translation. We&#39;re seeing it with code. Now we&#39;re seeing it with voice.</p>
+<p>Call centers were just first because the task was well-defined and the economics were obvious.</p>
+<h2>What Comes Next</h2>
+<p>The question isn&#39;t whether this happens. It&#39;s what we build afterward.</p>
+<p>New tools create new possibilities. Bland.ai makes phone-based interaction nearly free. What becomes possible when voice communication costs approach zero?</p>
+<p>I don&#39;t know the answer. But I know the question matters more than debating whether the change will happen.</p>
+<p>It&#39;s already happening.</p>
+]]></content:encoded>
     </item>
 
   </channel>
