@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Stefano Straus</title>
+    <link>https://straus.it</link>
+    <description>Engineering Manager specializing in AI-driven development, software architecture, and developer productivity. Insights on intent-based programming, Claude Code, and modern development patterns.</description>
+    <language>en</language>
+    <lastBuildDate>Wed, 29 Jan 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://straus.it/feed.xml" rel="self" type="application/rss+xml"/>
+    <image>
+      <url>https://straus.it/img/profile.jpg</url>
+      <title>Stefano Straus</title>
+      <link>https://straus.it</link>
+    </image>
+
+    <item>
+      <title>The Noise Problem Nobody Talks About</title>
+      <link>https://straus.it/#read/keyboards-survive-voice-computing</link>
+      <guid isPermaLink="true">https://straus.it/#read/keyboards-survive-voice-computing</guid>
+      <pubDate>Thu, 29 Jan 2026 00:00:00 +0000</pubDate>
+      <description>Christian Klein predicts keyboards will disappear in three years. The constraint is social, not technical.</description>
+    </item>
+
+    <item>
+      <title>The Junior Developer Problem</title>
+      <link>https://straus.it/#read/the-junior-developer-problem</link>
+      <guid isPermaLink="true">https://straus.it/#read/the-junior-developer-problem</guid>
+      <pubDate>Sun, 25 Jan 2026 00:00:00 +0000</pubDate>
+      <description>Why investing in junior developers no longer makes sense for many companies, and what newcomers must do to survive</description>
+    </item>
+
+    <item>
+      <title>Interpreting 2025 Tech Layoffs Without the Hype</title>
+      <link>https://straus.it/#read/interpreting-2025-tech-layoffs</link>
+      <guid isPermaLink="true">https://straus.it/#read/interpreting-2025-tech-layoffs</guid>
+      <pubDate>Sat, 18 Jan 2026 00:00:00 +0000</pubDate>
+      <description>What the data actually shows when you check the numbers behind the narrative</description>
+    </item>
+
+    <item>
+      <title>What n8n Actually Teaches You About Automation</title>
+      <link>https://straus.it/#read/what-n8n-teaches-about-automation</link>
+      <guid isPermaLink="true">https://straus.it/#read/what-n8n-teaches-about-automation</guid>
+      <pubDate>Fri, 17 Jan 2026 00:00:00 +0000</pubDate>
+      <description>The constraints and disciplines that separate automation systems that survive from those that collapse</description>
+    </item>
+
+    <item>
+      <title>From Code to Intent - Why Software Development Is Changing Its Core Model</title>
+      <link>https://straus.it/#read/from-code-to-intent</link>
+      <guid isPermaLink="true">https://straus.it/#read/from-code-to-intent</guid>
+      <pubDate>Thu, 16 Jan 2026 00:00:00 +0000</pubDate>
+      <description>The shift from instruction-based programming to intent-based systems and what it means for developers</description>
+    </item>
+
+    <item>
+      <title>The Option+P Trap: Why Claude Code's Model Switcher Doesn't Work on macOS</title>
+      <link>https://straus.it/#read/option-key-model-switcher</link>
+      <guid isPermaLink="true">https://straus.it/#read/option-key-model-switcher</guid>
+      <pubDate>Wed, 15 Jan 2026 00:00:00 +0000</pubDate>
+      <description>Why Option+P produces π instead of switching models and how to fix it</description>
+    </item>
+
+    <item>
+      <title>8 Ways to Vibe-Code Better with Claude Code</title>
+      <link>https://straus.it/#read/vibe-code-better-with-claude-code</link>
+      <guid isPermaLink="true">https://straus.it/#read/vibe-code-better-with-claude-code</guid>
+      <pubDate>Sat, 10 Jan 2026 00:00:00 +0000</pubDate>
+      <description>The system around the prompt matters more than the prompt itself</description>
+    </item>
+
+    <item>
+      <title>Ralph Wiggum - Autonomous Loops for Claude Code</title>
+      <link>https://straus.it/#read/ralph-wiggum-autonomous-loops</link>
+      <guid isPermaLink="true">https://straus.it/#read/ralph-wiggum-autonomous-loops</guid>
+      <pubDate>Fri, 09 Jan 2026 00:00:00 +0000</pubDate>
+      <description>The bash loop technique that took over AI development</description>
+    </item>
+
+    <item>
+      <title>Native LSP in Claude Code: The End of Serena and Workarounds</title>
+      <link>https://straus.it/#read/native-lsp-in-claude-code</link>
+      <guid isPermaLink="true">https://straus.it/#read/native-lsp-in-claude-code</guid>
+      <pubDate>Wed, 08 Jan 2026 00:00:00 +0000</pubDate>
+      <description>How native LSP support in Claude Code 2.0.74 makes Serena MCP and manual gopls commands obsolete</description>
+    </item>
+
+    <item>
+      <title>Claude Code Subagents: The Hidden Superpower You're Not Using</title>
+      <link>https://straus.it/#read/claude-code-subagents-hidden-superpower</link>
+      <guid isPermaLink="true">https://straus.it/#read/claude-code-subagents-hidden-superpower</guid>
+      <pubDate>Wed, 08 Jan 2026 00:00:00 +0000</pubDate>
+      <description>How to use competing subagents for better code reviews and why a little pressure makes AI work harder</description>
+    </item>
+
+    <item>
+      <title>Beads - External Memory for AI Agents</title>
+      <link>https://straus.it/#read/beads-task-tracking-for-ai-agents</link>
+      <guid isPermaLink="true">https://straus.it/#read/beads-task-tracking-for-ai-agents</guid>
+      <pubDate>Tue, 07 Jan 2026 00:00:00 +0000</pubDate>
+      <description>The task tracker that gives AI agents persistent memory across sessions</description>
+    </item>
+
+    <item>
+      <title>Welcome to My Terminal</title>
+      <link>https://straus.it/#read/welcome-to-my-terminal</link>
+      <guid isPermaLink="true">https://straus.it/#read/welcome-to-my-terminal</guid>
+      <pubDate>Sat, 04 Jan 2026 00:00:00 +0000</pubDate>
+      <description>An introduction to this unusual website and why I built it this way</description>
+    </item>
+
+    <item>
+      <title>Building Software Without Writing It First</title>
+      <link>https://straus.it/#read/building-software-without-writing-it-first</link>
+      <guid isPermaLink="true">https://straus.it/#read/building-software-without-writing-it-first</guid>
+      <pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+      <description>Twelve Months Inside AI-Driven Development</description>
+    </item>
+
+    <item>
+      <title>My Claude Code Setup</title>
+      <link>https://straus.it/#read/claude-code-setup</link>
+      <guid isPermaLink="true">https://straus.it/#read/claude-code-setup</guid>
+      <pubDate>Sat, 01 Nov 2025 00:00:00 +0000</pubDate>
+      <description>A complete walkthrough of how I configure Claude Code</description>
+    </item>
+
+    <item>
+      <title>Custom Slash Commands for Claude Code</title>
+      <link>https://straus.it/#read/claude-code-commands</link>
+      <guid isPermaLink="true">https://straus.it/#read/claude-code-commands</guid>
+      <pubDate>Sat, 11 Oct 2025 00:00:00 +0000</pubDate>
+      <description>Building productivity workflows with custom slash commands</description>
+    </item>
+
+    <item>
+      <title>SettingsSentry - Never Lose Your macOS Settings Again</title>
+      <link>https://straus.it/#read/settings-sentry</link>
+      <guid isPermaLink="true">https://straus.it/#read/settings-sentry</guid>
+      <pubDate>Fri, 15 Aug 2025 00:00:00 +0000</pubDate>
+      <description>A lightweight tool to backup and restore macOS application settings</description>
+    </item>
+
+    <item>
+      <title>My macOS Developer Toolkit</title>
+      <link>https://straus.it/#read/my-macos-dev-toolkit</link>
+      <guid isPermaLink="true">https://straus.it/#read/my-macos-dev-toolkit</guid>
+      <pubDate>Sun, 20 Jul 2025 00:00:00 +0000</pubDate>
+      <description>A curated collection of Homebrew tools that power my daily workflow</description>
+    </item>
+
+    <item>
+      <title>Finicky - Take Control of Your URLs</title>
+      <link>https://straus.it/#read/finicky-url-routing</link>
+      <guid isPermaLink="true">https://straus.it/#read/finicky-url-routing</guid>
+      <pubDate>Thu, 13 Feb 2025 00:00:00 +0000</pubDate>
+      <description>How I use Finicky to route URLs, strip tracking, and bypass paywalls</description>
+    </item>
+
+    <item>
+      <title>Bland.ai - The End of Call Centers As We Know Them</title>
+      <link>https://straus.it/#read/bland-ai-call-centers</link>
+      <guid isPermaLink="true">https://straus.it/#read/bland-ai-call-centers</guid>
+      <pubDate>Fri, 26 Apr 2024 00:00:00 +0000</pubDate>
+      <description>AI phone operators that sound human are about to transform an industry</description>
+    </item>
+
+  </channel>
+</rss>
