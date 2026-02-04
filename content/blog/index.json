@@ -1,6 +1,14 @@
 {
   "articles": [
     {
+      "slug": "saaspocalypse-thin-application-layer",
+      "title": "The SaaSpocalypse Is a Clarification, Not a Collapse",
+      "date": "2026-02-04",
+      "description": "What the market panic over Anthropic's releases reveals about where defensibility actually lives",
+      "tags": ["ai", "saas", "foundation-models", "software-architecture", "market-dynamics"],
+      "file": "2026-02-04-saaspocalypse-thin-application-layer.md"
+    },
+    {
       "slug": "keyboards-survive-voice-computing",
       "title": "The Noise Problem Nobody Talks About",
       "date": "2026-01-29",
