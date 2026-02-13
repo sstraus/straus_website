@@ -1,6 +1,14 @@
 {
   "articles": [
     {
+      "slug": "minimax-kimi-multipolar-ai",
+      "title": "MiniMax, Kimi, and the End of the US-Only AI Narrative",
+      "date": "2026-02-13",
+      "description": "On the benchmarks that matter for AI-driven software systems, Chinese models are no longer trailing. Model selection is now a workload decision.",
+      "tags": ["ai", "benchmarks", "minimax", "kimi", "model-selection"],
+      "file": "2026-02-13-minimax-kimi-multipolar-ai.md"
+    },
+    {
       "slug": "saaspocalypse-thin-application-layer",
       "title": "The SaaSpocalypse Is a Clarification, Not a Collapse",
       "date": "2026-02-04",
