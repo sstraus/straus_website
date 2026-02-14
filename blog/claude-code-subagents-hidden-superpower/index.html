@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Claude Code Subagents: The Hidden Superpower You're Not Using | Stefano Straus</title>
+  <meta name="description" content="How to use competing subagents for better code reviews and why a little pressure makes AI work harder">
+  <meta name="author" content="Stefano Straus">
+  <link rel="canonical" href="https://straus.it/blog/claude-code-subagents-hidden-superpower/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Claude Code Subagents: The Hidden Superpower You're Not Using">
+  <meta property="og:description" content="How to use competing subagents for better code reviews and why a little pressure makes AI work harder">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://straus.it/blog/claude-code-subagents-hidden-superpower/">
+  <meta property="og:image" content="https://straus.it/img/profile.jpg">
+  <meta property="og:site_name" content="Stefano Straus">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@StefanoStraus">
+  <meta name="twitter:title" content="Claude Code Subagents: The Hidden Superpower You're Not Using">
+  <meta name="twitter:description" content="How to use competing subagents for better code reviews and why a little pressure makes AI work harder">
+  <meta name="twitter:image" content="https://straus.it/img/profile.jpg">
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Claude Code Subagents: The Hidden Superpower You're Not Using",
+  "description": "How to use competing subagents for better code reviews and why a little pressure makes AI work harder",
+  "author": {
+    "@type": "Person",
+    "name": "Stefano Straus",
+    "url": "https://straus.it"
+  },
+  "datePublished": "2026-01-08",
+  "dateModified": "2026-01-08",
+  "publisher": {
+    "@type": "Person",
+    "name": "Stefano Straus"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://straus.it/blog/claude-code-subagents-hidden-superpower/"
+  },
+  "keywords": "ai, claude-code, subagents, code-review, development"
+}
+  </script>
+
+  <!-- Redirect JS users to terminal view -->
+  <script>window.location.replace('/#read/claude-code-subagents-hidden-superpower');</script>
+
+  <style>
+    body { font-family: system-ui, -apple-system, sans-serif; max-width: 720px; margin: 2rem auto; padding: 0 1rem; line-height: 1.6; color: #222; }
+    a { color: #0066cc; }
+    .back { margin-bottom: 2rem; }
+    article img { max-width: 100%; }
+    time { color: #666; }
+    h1 { margin-bottom: 0.25rem; }
+    pre { background: #f5f5f5; padding: 1rem; overflow-x: auto; border-radius: 4px; }
+    code { font-family: 'JetBrains Mono', monospace; font-size: 0.9em; }
+    blockquote { border-left: 3px solid #ddd; margin-left: 0; padding-left: 1rem; color: #555; }
+    table { border-collapse: collapse; width: 100%; }
+    th, td { border: 1px solid #ddd; padding: 0.5rem; text-align: left; }
+    th { background: #f5f5f5; }
+  </style>
+</head>
+<body>
+  <noscript>
+    <nav class="back"><a href="/">&larr; straus.it</a></nav>
+    <article>
+      <h1>Claude Code Subagents: The Hidden Superpower You're Not Using</h1>
+      <time datetime="2026-01-08">January 8, 2026</time>
+<h1>Claude Code Subagents: The Hidden Superpower You&#39;re Not Using</h1>
+<p>I discovered something by accident last week. I was reviewing a piece of code, and I asked Claude Code to check it. The review was good, but something felt incomplete. So I asked again. Same code, same question. But the second review found completely different issues.</p>
+<p>That&#39;s when it clicked: <strong>AI isn&#39;t deterministic</strong>. Give it the same task twice, and you get two different answers. Most people see this as a problem. I saw an opportunity.</p>
+<p>What if I could run two reviews at the same time? Not the same review twice, but two competing agents, each trying to find more issues than the other?</p>
+<p>Turns out, Claude Code has exactly this feature built in: <strong>subagents</strong>. They&#39;re specialized AI workers that run independently with their own context, tools, and instructions. Most developers never use them beyond plan mode, where Claude automatically spawns an Explore agent to scan your codebase.</p>
+<p>But here&#39;s what I learned: subagents aren&#39;t just helpers. They&#39;re parallel workers. And when you set them up to compete, they become way more thorough.</p>
+<h2>The Competition Trick</h2>
+<p>The idea is simple: spawn two subagents and tell them they&#39;re competing against each other.</p>
+<p>Here&#39;s the prompt I use:</p>
+<pre><code>Please deploy two subagents to thoroughly review {whatever to review}.
+Inform them that they are competing against another agent.
+Ensure they examine both the architecture and implementation carefully.
+Let them know that whoever discovers more issues will be promoted.
+</code></pre>
+<p>What happens? Each agent takes a different path. One focuses on edge cases, the other on performance. One finds a race condition, the other spots missing validation. Then I get a combined summary with the best findings from both.</p>
+<p>Why does this work? Because AI isn&#39;t deterministic. Give the same task to two separate agents, and they&#39;ll approach it differently. They&#39;ll notice different things. This variability is actually useful. I learned to exploit it.</p>
+<p>This isn&#39;t just running two reviews in parallel. It&#39;s <strong>adversarial collaboration</strong>. They push each other to be more thorough.</p>
+<h2>Why Pressure Works</h2>
+<p>Here&#39;s something I learned through experimentation: pressure makes AI work harder.</p>
+<p>When I tell an agent it&#39;s competing, or that something important is at stake, the quality goes up. It becomes more thorough. More creative in finding problems.</p>
+<p>I know how this sounds. The AI doesn&#39;t <em>actually</em> care about being promoted. But the framing changes how it thinks. It&#39;s like when you tell yourself you have a deadline tomorrow instead of next week. The urgency changes your approach.</p>
+<p>These phrases work well:</p>
+<ul>
+<li>&quot;You&#39;re competing against another agent&quot;</li>
+<li>&quot;This is critical for production deployment&quot;</li>
+<li>&quot;The other agent found X issues. Can you find more?&quot;</li>
+<li>&quot;Your thoroughness will be evaluated&quot;</li>
+</ul>
+<p>Call it a hack. Call it prompt engineering. I call it getting better results. Try it yourself and see what happens.</p>
+<h2>How Subagents Actually Work</h2>
+<p>Let me explain what subagents are. They&#39;re separate AI instances that work independently from your main conversation. Each one gets:</p>
+<ul>
+<li><strong>Its own context window</strong> – Your main chat stays clean while the subagent reads dozens of files</li>
+<li><strong>Custom instructions</strong> – You can give each one specialized tasks</li>
+<li><strong>Limited tools</strong> – You control what they can do (read-only, write files, run commands, etc.)</li>
+<li><strong>Independent work</strong> – They do their job separately and give you a summary at the end</li>
+</ul>
+<h3>Built-in Subagents</h3>
+<p>Claude Code comes with three subagents already configured:</p>
+<table>
+<thead>
+<tr>
+<th>Agent</th>
+<th>Purpose</th>
+<th>When It Runs</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Explore</strong></td>
+<td>Read-only codebase research</td>
+<td>When you search or analyze code</td>
+</tr>
+<tr>
+<td><strong>General-purpose</strong></td>
+<td>Complex tasks with file edits</td>
+<td>When you need multiple steps</td>
+</tr>
+<tr>
+<td><strong>Plan</strong></td>
+<td>Pre-planning research</td>
+<td>Automatically in plan mode</td>
+</tr>
+</tbody></table>
+<h3>Creating Your Own Subagents</h3>
+<p>You can create custom subagents. They&#39;re just Markdown files with some metadata at the top:</p>
+<p><strong>Location:</strong></p>
+<ul>
+<li>Project-level: <code>.claude/agents/*.md</code></li>
+<li>Global: <code>~/.claude/agents/*.md</code></li>
+</ul>
+<p><strong>Example: Go Code Reviewer</strong></p>
+<pre><code class="language-markdown">---
+name: go-reviewer
+description: Go code review specialist. Use for quality, security, and idiomatic Go patterns.
+tools: Read, Grep, Glob, Bash
+---
+
+You are a senior Go developer specializing in code review.
+
+When reviewing code:
+- Check for proper error handling (no silent failures)
+- Verify goroutine safety and channel usage
+- Ensure interfaces are minimal and well-defined
+- Look for non-idiomatic patterns
+- Identify potential performance issues
+
+Be thorough. Be critical. Miss nothing.
+</code></pre>
+<h3>How to Use Them</h3>
+<p>There are two ways to trigger your custom subagents:</p>
+<ol>
+<li><strong>Automatic</strong> – Claude reads the <code>description</code> and decides when to use it</li>
+<li><strong>Explicit</strong> – You ask for it directly: &quot;Use the go-reviewer subagent to analyze this PR&quot;</li>
+</ol>
+<p>For competitive reviews, I always ask explicitly. That way I control exactly how many agents run and what they&#39;re told to do.</p>
+<h2>Patterns I Use</h2>
+<p>Here are three ways I use competing subagents in my daily work:</p>
+<h3>Pattern 1: Basic Dual Review</h3>
+<pre><code>Spawn two subagents to review the authentication module.
+Tell them they&#39;re competing. The one that finds more security
+issues wins. Have them focus on different aspects: one on
+logic flaws, one on edge cases.
+</code></pre>
+<p>This is my go-to pattern. Simple and effective.</p>
+<h3>Pattern 2: Architecture vs Implementation</h3>
+<pre><code>Deploy two competing subagents:
+- Agent A: Review the high-level architecture and design decisions
+- Agent B: Review the implementation details and code quality
+Both should report issues. Compare and synthesize their findings.
+</code></pre>
+<p>I use this when adding major features. One agent thinks big picture, the other gets into the details.</p>
+<h3>Pattern 3: Red Team / Blue Team</h3>
+<pre><code>Launch two subagents in adversarial mode:
+- Red agent: Try to find ways to break this code
+- Blue agent: Verify the code handles all edge cases correctly
+They&#39;re competing to prove each other wrong.
+</code></pre>
+<p>This one&#39;s my favorite for security-critical code. It&#39;s like having two paranoid developers working against each other.</p>
+<h2>What I Learned</h2>
+<p>Here&#39;s what I discovered after a few weeks of experimenting:</p>
+<ol>
+<li><strong>Most people don&#39;t use subagents</strong> – They think it&#39;s only for plan mode</li>
+<li><strong>Competition gets better results</strong> – Two agents beat one every time</li>
+<li><strong>Pressure works</strong> – Frame tasks as important and watch quality improve</li>
+<li><strong>AI isn&#39;t consistent</strong> – That&#39;s a feature, not a bug. Different runs = different insights</li>
+<li><strong>Custom agents save time</strong> – Build your own for repetitive tasks</li>
+</ol>
+<p>My workflow changed completely once I started using competing subagents. Instead of trusting a single review, I run two or three in parallel. The results speak for themselves.</p>
+<p>Try it on your next code review. Set up two competing agents and see what they find. I bet you&#39;ll be surprised.</p>
+<hr>
+<p><em>The best code review is two paranoid agents trying to outdo each other.</em></p>
+
+    </article>
+    <nav><a href="/">&larr; Back to straus.it</a></nav>
+  </noscript>
+</body>
+</html>

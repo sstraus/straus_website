@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My macOS Developer Toolkit | Stefano Straus</title>
+  <meta name="description" content="A curated collection of Homebrew tools that power my daily workflow">
+  <meta name="author" content="Stefano Straus">
+  <link rel="canonical" href="https://straus.it/blog/my-macos-dev-toolkit/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="My macOS Developer Toolkit">
+  <meta property="og:description" content="A curated collection of Homebrew tools that power my daily workflow">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://straus.it/blog/my-macos-dev-toolkit/">
+  <meta property="og:image" content="https://straus.it/img/profile.jpg">
+  <meta property="og:site_name" content="Stefano Straus">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@StefanoStraus">
+  <meta name="twitter:title" content="My macOS Developer Toolkit">
+  <meta name="twitter:description" content="A curated collection of Homebrew tools that power my daily workflow">
+  <meta name="twitter:image" content="https://straus.it/img/profile.jpg">
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "My macOS Developer Toolkit",
+  "description": "A curated collection of Homebrew tools that power my daily workflow",
+  "author": {
+    "@type": "Person",
+    "name": "Stefano Straus",
+    "url": "https://straus.it"
+  },
+  "datePublished": "2025-07-20",
+  "dateModified": "2025-07-20",
+  "publisher": {
+    "@type": "Person",
+    "name": "Stefano Straus"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://straus.it/blog/my-macos-dev-toolkit/"
+  },
+  "keywords": "macos, tools, homebrew, productivity, development"
+}
+  </script>
+
+  <!-- Redirect JS users to terminal view -->
+  <script>window.location.replace('/#read/my-macos-dev-toolkit');</script>
+
+  <style>
+    body { font-family: system-ui, -apple-system, sans-serif; max-width: 720px; margin: 2rem auto; padding: 0 1rem; line-height: 1.6; color: #222; }
+    a { color: #0066cc; }
+    .back { margin-bottom: 2rem; }
+    article img { max-width: 100%; }
+    time { color: #666; }
+    h1 { margin-bottom: 0.25rem; }
+    pre { background: #f5f5f5; padding: 1rem; overflow-x: auto; border-radius: 4px; }
+    code { font-family: 'JetBrains Mono', monospace; font-size: 0.9em; }
+    blockquote { border-left: 3px solid #ddd; margin-left: 0; padding-left: 1rem; color: #555; }
+    table { border-collapse: collapse; width: 100%; }
+    th, td { border: 1px solid #ddd; padding: 0.5rem; text-align: left; }
+    th { background: #f5f5f5; }
+  </style>
+</head>
+<body>
+  <noscript>
+    <nav class="back"><a href="/">&larr; straus.it</a></nav>
+    <article>
+      <h1>My macOS Developer Toolkit</h1>
+      <time datetime="2025-07-20">July 20, 2025</time>
+<h1>My macOS Developer Toolkit</h1>
+<p>After years of refining my setup, here&#39;s the Homebrew collection that powers my daily workflow. These aren&#39;t just installed, they&#39;re tools I actually use.</p>
+<h2>Terminal Power-Ups</h2>
+<p>The default terminal experience on macOS is... functional. These tools make it exceptional.</p>
+<p><strong>fzf</strong> — Fuzzy finder that changes everything. Ctrl+R for history search, Ctrl+T for file finding. Once you use it, you can&#39;t go back.</p>
+<p><strong>bat</strong> — <code>cat</code> with syntax highlighting and line numbers. I aliased <code>cat</code> to <code>bat</code> years ago and forgot <code>cat</code> existed.</p>
+<p><strong>ripgrep</strong> — Grep but fast. Respects <code>.gitignore</code>, searches recursively by default. Essential for large codebases.</p>
+<p><strong>zoxide</strong> — Smart <code>cd</code> that learns your habits. Type <code>z proj</code> and it jumps to <code>/Users/me/projects/my-project</code>. Magical.</p>
+<p><strong>btop</strong> — System monitor that looks like it belongs in a sci-fi movie. CPU, memory, network, disks—all beautifully rendered.</p>
+<p><strong>powerlevel10k</strong> — Zsh theme that shows git status, execution time, and context without being slow. The configuration wizard is brilliant.</p>
+<p><strong>iterm2</strong> — Terminal emulator that makes the default Terminal.app feel prehistoric. Split panes, search, profiles, triggers. Worth the switch.</p>
+<p><strong>tmux</strong> — Terminal multiplexer. Persistent sessions that survive disconnects. Essential for remote work and long-running processes.</p>
+<p><strong>less</strong> — The pager. Sounds boring until you need to navigate a 10MB log file. Faster than any editor for read-only exploration.</p>
+<h2>Development Essentials</h2>
+<p>I work across multiple languages. Here&#39;s what actually matters.</p>
+<p><strong>Go</strong> — My primary language now. Fast compilation, single binary deployment, great tooling. The simplicity is underrated.</p>
+<p><strong>Rust</strong> — For when I need performance and safety guarantees. Steep learning curve but worth it for systems work.</p>
+<p><strong>Python</strong> with <strong>pyenv</strong> — Multiple Python versions without conflicts. Essential when different projects need different versions.</p>
+<p><strong>Node</strong> with <strong>nvm</strong> — Same story for JavaScript. Version switching should be painless.</p>
+<p><strong>Zig</strong> — The new kid. Using it for cross-compilation—it makes building C dependencies for other platforms trivial.</p>
+<p><strong>bun</strong> — JavaScript runtime that&#39;s absurdly fast. Package installs in seconds, scripts run instantly. Replaced npm for most tasks.</p>
+<p><strong>staticcheck</strong> — Go static analyzer. Catches bugs, suggests improvements, enforces idioms. Run it before every commit.</p>
+<p><strong>vscode</strong> — My primary editor. With the right extensions, it handles everything. Remote development, debugging, git integration—all solid.</p>
+<h2>Git &amp; Version Control</h2>
+<p>Git is non-negotiable. These tools make it pleasant.</p>
+<p><strong>lazygit</strong> — Terminal UI for git that&#39;s faster than any GUI. Staging hunks, interactive rebase, conflict resolution—all keyboard-driven.</p>
+<p><strong>gh</strong> — GitHub CLI. Create PRs, review code, manage issues without leaving the terminal. <code>gh pr create</code> is muscle memory.</p>
+<p><strong>git-crypt</strong> — Transparent encryption for sensitive files in repos. Secrets stay encrypted for everyone except authorized keys.</p>
+<p><strong>tig</strong> — Interactive git log viewer. Better than <code>git log</code> for exploring history.</p>
+<h2>Container &amp; Cloud</h2>
+<p><strong>colima</strong> — Docker runtime on macOS without Docker Desktop. Lighter, faster, free. Uses Lima under the hood.</p>
+<p><strong>lazydocker</strong> — Like lazygit but for Docker. Container logs, stats, exec—all in a TUI.</p>
+<p><strong>k9s</strong> — Kubernetes dashboard in the terminal. Navigate clusters, view logs, exec into pods. Faster than any web UI.</p>
+<p><strong>awscli</strong> — AWS from the command line. Combined with profiles and <code>aws-vault</code>, it handles multi-account setups cleanly.</p>
+<p><strong>terraform</strong> — Infrastructure as code. Version-controlled cloud resources. No clicking around consoles.</p>
+<h2>Database Tools</h2>
+<p><strong>duckdb</strong> — In-process SQL database that&#39;s incredibly fast for analytics. Query Parquet files, CSVs, JSON directly. Game-changer for data work.</p>
+<p><strong>postgresql</strong> (libpq) — The postgres client library. <code>psql</code> for quick queries, but mostly used by applications.</p>
+<p><strong>redis</strong> — In-memory data store. Caching, queues, pub/sub. Simple and reliable.</p>
+<p><strong>dbeaver-community</strong> — When I need a GUI for databases. Supports everything: Postgres, MySQL, SQLite, DuckDB, MongoDB.</p>
+<h2>AI/ML Tools</h2>
+<p>Running AI locally is no longer a novelty—it&#39;s practical.</p>
+<p><strong>ollama</strong> — Local LLM runner. Download models, run them locally, expose an API. Privacy-preserving AI.</p>
+<p><strong>aider</strong> — AI coding assistant in the terminal. Understands your codebase, makes edits, commits changes. Like having a pair programmer.</p>
+<p><strong>huggingface-cli</strong> — Download and manage models from Hugging Face. Essential for ML work.</p>
+<h2>Security &amp; Privacy</h2>
+<p>Security isn&#39;t optional. These tools make it manageable.</p>
+<p><strong>gnupg</strong> — GPG encryption. Sign commits, encrypt files, manage keys. The foundation of trust.</p>
+<p><strong>pass</strong> — Password manager built on GPG. Simple, unix-philosophy, works everywhere. Syncs via git.</p>
+<p><strong>YubiKey tools</strong> (ykman) — Hardware key management. 2FA, GPG keys, SSH authentication. Physical security matters.</p>
+<p><strong>nmap</strong> — Network scanner. Know what&#39;s on your network. Essential for security audits.</p>
+<p><strong>lynis</strong> — Security auditing for unix systems. Finds misconfigurations, suggests hardening.</p>
+<p><strong>lulu</strong> — macOS firewall that asks before apps connect out. See what&#39;s phoning home. Surprisingly educational.</p>
+<h2>Media &amp; Graphics</h2>
+<p>Automation for media tasks saves hours.</p>
+<p><strong>ffmpeg</strong> — Swiss army knife for video/audio. Convert formats, extract audio, resize video, create GIFs. Learn the basics—it pays off.</p>
+<p><strong>imagemagick</strong> — Image manipulation from CLI. Batch resize, convert, watermark. Scriptable image processing.</p>
+<p><strong>upscayl</strong> — AI image upscaling. Actually works for improving low-res images.</p>
+<h2>macOS Enhancements</h2>
+<p>Making macOS behave the way I want.</p>
+<p><strong>amethyst</strong> — Tiling window manager. Windows snap to grid automatically. No more manual resizing.</p>
+<p><strong>alt-tab</strong> — Windows-style alt-tab. Shows all windows, not just apps. Should be default behavior.</p>
+<p><strong>stats</strong> — Menu bar system monitor. CPU, memory, network, battery—always visible.</p>
+<p><strong>maccy</strong> — Clipboard manager. History of everything you&#39;ve copied. Searchable, keyboard-driven.</p>
+<p><strong>Quick Look plugins</strong> — Preview code, markdown, JSON, CSV without opening apps. Small quality-of-life wins.</p>
+<p><strong>finicky</strong> — URL router. Slack links open in Slack, GitHub in Firefox, everything else in Chrome. Control where links go.</p>
+<h2>Hidden Gems</h2>
+<p>Tools that don&#39;t fit categories but earn their place.</p>
+<p><strong>hyperfine</strong> — Benchmarking tool. Compare command execution times with statistical rigor. &quot;Is this actually faster?&quot; now has an answer.</p>
+<p><strong>asciinema</strong> — Record terminal sessions. Share them as text-based recordings that can be copied from. Better than video for tutorials.</p>
+<p><strong>hurl</strong> — HTTP testing in plain text files. Define requests, assert responses, chain them together. API testing that&#39;s version-controllable.</p>
+<p><strong>tldr</strong> — Simplified man pages. Real examples instead of exhaustive documentation. <code>tldr tar</code> shows what you actually need.</p>
+<p><strong>trash-cli</strong> — Move to trash instead of <code>rm</code>. Recoverable deletions. Saved me more than once.</p>
+<p><strong>gping</strong> — Ping with a graph. Watch latency over time visually. Perfect for debugging network issues.</p>
+<p><strong>httping</strong> — Like ping but for HTTP endpoints. Measure web server latency, catch intermittent issues.</p>
+<h2>The Philosophy</h2>
+<p>400+ packages installed, but I use maybe 60 daily. The rest are dependencies or experiments.</p>
+<p>The pattern: replace slow defaults with fast alternatives, automate repetitive tasks, stay in the terminal when possible. Every tool here earned its place by saving time or reducing friction.</p>
+<p>Your toolkit will differ—that&#39;s the point. Optimize for your workflow, not someone else&#39;s recommendations.</p>
+<h2>The Full List</h2>
+<p>For completeness, here&#39;s everything else installed that didn&#39;t get commentary above:</p>
+<p><strong>Languages &amp; Runtimes</strong>: deno, php, dotnet, openjdk, lua, luajit, ruby</p>
+<p><strong>Build Tools</strong>: cmake, autoconf, automake, libtool, make, maven, gradle, protobuf, goreleaser</p>
+<p><strong>Version Managers</strong>: virtualenv, poetry, pipx, composer</p>
+<p><strong>More Git Tools</strong>: git-lfs, git-extras, git-filter-repo, git-quick-stats, ghorg</p>
+<p><strong>Container Tools</strong>: docker-buildx, docker-compose, minikube, kind, kdash, qemu, lima</p>
+<p><strong>Cloud Tools</strong>: azure-cli, aws-vault, fastlane, cloudflared, rclone, scrcpy</p>
+<p><strong>Database Clients</strong>: mysql, sqlite, mongodb drivers, tokyo-cabinet, lmdb</p>
+<p><strong>Terminal Tools</strong>: tmate, broot, tree, duf, procs, glances, bmon, most, entr, watch, terminal-notifier</p>
+<p><strong>Network Tools</strong>: speedtest-cli, iperf3, dnslookup, wget, curl, aria2, httrack, lynx, browsh, ncftp, telnet, swaks, unbound, ldns, knot</p>
+<p><strong>Code Quality</strong>: golangci-lint, cloc, tokei, ctags, yara</p>
+<p><strong>Document Tools</strong>: pandoc, tidy-html5, diff-so-fancy, dos2unix, ttyrec, ttygif</p>
+<p><strong>Media Tools</strong>: ffmpeg@7, ghostscript, exiftool, giflib</p>
+<p><strong>Security Tools</strong>: openssh, openssl, libfido2, clamav, rkhunter, bettercap, net-snmp</p>
+<p><strong>AI Tools</strong>: codex, opencode, aiac, liblinear, ta-lib</p>
+<p><strong>Mobile Dev</strong>: android-platform-tools, ideviceinstaller, ios-webkit-debug-proxy, ipatool</p>
+<p><strong>macOS Apps</strong>: slack, discord, telegram, microsoft-teams, whatsapp, obsidian, postman, deepl, spotify, grammarly, espanso, shottr, mimestream, inkscape, pinta, calibre, iina, vlc, keka, balenaetcher, onyx, grandperspective, appcleaner, knockknock, gpg-suite, wireshark, openlens, db-browser-for-sqlite, android-studio, ollamac, chatgpt, mindmac, mqtt-explorer, requestly, imageoptim, orcaslicer, openscad, monitorcontrol, notunes</p>
+<p><strong>Quick Look Plugins</strong>: qlcolorcode, qlmarkdown, qlstephen, qlvideo, quicklook-csv, quicklook-json, qlprettypatch, webpquicklook</p>
+<p><strong>Misc</strong>: ask-cli, wrk, mincom, picocom, putty, mutt, z3, qrencode, task, newsboat, buku, navi, ddgr</p>
+
+    </article>
+    <nav><a href="/">&larr; Back to straus.it</a></nav>
+  </noscript>
+</body>
+</html>

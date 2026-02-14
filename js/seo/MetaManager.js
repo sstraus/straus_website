@@ -45,7 +45,7 @@ class MetaManagerClass {
    * @param {Object} article - Article object from ArticleIndex
    */
   updateArticleMeta(article) {
-    const url = `${this.baseUrl}/#read/${article.slug}`;
+    const url = `${this.baseUrl}/blog/${article.slug}/`;
     const description = article.description || `${article.title} by ${config.site.author}`;
 
     this.updateMeta({

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Option+P Trap: Why Claude Code's Model Switcher Doesn't Work on macOS | Stefano Straus</title>
+  <meta name="description" content="Why Option+P produces π instead of switching models and how to fix it">
+  <meta name="author" content="Stefano Straus">
+  <link rel="canonical" href="https://straus.it/blog/option-key-model-switcher/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="The Option+P Trap: Why Claude Code's Model Switcher Doesn't Work on macOS">
+  <meta property="og:description" content="Why Option+P produces π instead of switching models and how to fix it">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://straus.it/blog/option-key-model-switcher/">
+  <meta property="og:image" content="https://straus.it/img/profile.jpg">
+  <meta property="og:site_name" content="Stefano Straus">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@StefanoStraus">
+  <meta name="twitter:title" content="The Option+P Trap: Why Claude Code's Model Switcher Doesn't Work on macOS">
+  <meta name="twitter:description" content="Why Option+P produces π instead of switching models and how to fix it">
+  <meta name="twitter:image" content="https://straus.it/img/profile.jpg">
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "The Option+P Trap: Why Claude Code's Model Switcher Doesn't Work on macOS",
+  "description": "Why Option+P produces π instead of switching models and how to fix it",
+  "author": {
+    "@type": "Person",
+    "name": "Stefano Straus",
+    "url": "https://straus.it"
+  },
+  "datePublished": "2026-01-15",
+  "dateModified": "2026-01-15",
+  "publisher": {
+    "@type": "Person",
+    "name": "Stefano Straus"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://straus.it/blog/option-key-model-switcher/"
+  },
+  "keywords": "ai, claude-code, macos, keyboard-shortcuts, troubleshooting"
+}
+  </script>
+
+  <!-- Redirect JS users to terminal view -->
+  <script>window.location.replace('/#read/option-key-model-switcher');</script>
+
+  <style>
+    body { font-family: system-ui, -apple-system, sans-serif; max-width: 720px; margin: 2rem auto; padding: 0 1rem; line-height: 1.6; color: #222; }
+    a { color: #0066cc; }
+    .back { margin-bottom: 2rem; }
+    article img { max-width: 100%; }
+    time { color: #666; }
+    h1 { margin-bottom: 0.25rem; }
+    pre { background: #f5f5f5; padding: 1rem; overflow-x: auto; border-radius: 4px; }
+    code { font-family: 'JetBrains Mono', monospace; font-size: 0.9em; }
+    blockquote { border-left: 3px solid #ddd; margin-left: 0; padding-left: 1rem; color: #555; }
+    table { border-collapse: collapse; width: 100%; }
+    th, td { border: 1px solid #ddd; padding: 0.5rem; text-align: left; }
+    th { background: #f5f5f5; }
+  </style>
+</head>
+<body>
+  <noscript>
+    <nav class="back"><a href="/">&larr; straus.it</a></nav>
+    <article>
+      <h1>The Option+P Trap: Why Claude Code's Model Switcher Doesn't Work on macOS</h1>
+      <time datetime="2026-01-15">January 15, 2026</time>
+<h1>The Option+P Trap: Why Claude Code&#39;s Model Switcher Doesn&#39;t Work on macOS</h1>
+<p>When Claude Code released the Option+P shortcut for switching models on the fly, I tried it immediately. Option+P should open a menu where you can instantly switch between Sonnet, Haiku, and Opus without leaving the conversation. Perfect for cost optimization.</p>
+<p>Except it didn&#39;t work.</p>
+<p>I pressed Option+P and got a π symbol in my terminal instead of a model selector. Every time. I tried a few more times, saw more Greek letters, and gave up. I assumed it was broken and moved on.</p>
+<p>But the problem kept nagging me. The cost savings matter. Starting with Haiku for simple tasks, then switching to Sonnet when complexity increases. That&#39;s the workflow. But the only way to change models was to wait for Claude to finish, then type <code>/model</code> when the session was idle. Frustrating. Workflow breaking. And completely unnecessary if Option+P actually worked.</p>
+<p>Then I found <a href="https://github.com/anthropics/claude-code/issues/13854">GitHub issue #13854</a>. I wasn&#39;t alone. Dozens of macOS users reporting the same thing. The shortcut works perfectly on Linux and Windows. On macOS? Nothing but Greek letters.</p>
+<h2>The Real Problem</h2>
+<p>Here&#39;s the thing. It&#39;s not a Claude Code bug. It&#39;s a macOS feature.</p>
+<p>By default, macOS terminals don&#39;t treat the Option key as a Meta key. They treat it as a character modifier. Option+P produces π. Option+S produces ß. Option+D produces ∂. This is by design. macOS inherited this behavior from NeXTSTEP decades ago.</p>
+<p>Terminal applications on Linux and Windows interpret Option/Alt as Meta by default. macOS doesn&#39;t. So keyboard shortcuts that rely on Option as Meta fail silently.</p>
+<p>Claude Code assumes the terminal will handle this. It sends the key combination and expects the terminal to interpret it correctly. But macOS terminals intercept it first and produce special characters instead.</p>
+<h2>The Fix</h2>
+<p>Every macOS terminal has a setting to enable &quot;Option as Meta&quot; behavior. You just need to find it and turn it on.</p>
+<p><strong>Terminal.app:</strong>
+Preferences → Profiles → Keyboard → Enable &quot;Use Option as Meta Key&quot;</p>
+<p><strong>iTerm2:</strong>
+Preferences → Profiles → Keys → Enable &quot;Left/Right Option key acts as: Esc+&quot;</p>
+<p><strong>VS Code:</strong>
+Settings → Search for &quot;terminal.integrated.macOptionIsMeta&quot; → Enable it</p>
+<p><strong>Warp:</strong>
+Settings → Features → Enable &quot;Option key is Meta&quot;</p>
+<p><strong>Ghostty:</strong>
+Add to <code>~/.config/ghostty/config</code>:</p>
+<pre><code>macos-option-as-alt = true
+</code></pre>
+<p>After enabling this, Option+P works perfectly. The model switcher appears. You can change models mid-conversation. It&#39;s as fast and effective as it should be.</p>
+<h2>The Missing Piece</h2>
+<p>But here&#39;s what bothers me. Claude Code could handle this.</p>
+<p>I use iTerm2. iTerm2 allows applications to control Option key behavior programmatically. The application can tell the terminal &quot;treat Option as Meta for these shortcuts.&quot; No user configuration needed. The terminal handles it automatically.</p>
+<p>Claude Code doesn&#39;t do this. It assumes you&#39;ve already configured your terminal correctly. When you haven&#39;t, it fails silently. You press Option+P, get a π, and assume the feature doesn&#39;t exist. Many users probably don&#39;t know the model switcher is there at all.</p>
+<p>The technical capability exists. The terminal API supports it. But Claude Code doesn&#39;t use it. Instead, it pushes the burden onto users. Figure out your terminal settings. Enable Option as Meta manually. Read GitHub issues to discover why it&#39;s broken.</p>
+<p>I reported this in the GitHub issue. The team acknowledged it. Maybe a future version will handle it better. For now, you need to configure your terminal manually.</p>
+<h2>The Takeaway</h2>
+<p>Keyboard shortcuts are hard. They seem simple until you realize every platform handles modifier keys differently. Every terminal application has its own quirks. And users expect things to just work.</p>
+<p>The Option+P model switcher is genuinely useful. Switching between Haiku for quick tasks and Sonnet for complex work saves time and money. But only if it works.</p>
+<p>If you&#39;re on macOS and Option+P produces π, now you know why. Enable &quot;Option as Meta&quot; in your terminal settings. The model switcher will work. And you&#39;ll understand why cross-platform terminal applications are harder than they look.</p>
+
+    </article>
+    <nav><a href="/">&larr; Back to straus.it</a></nav>
+  </noscript>
+</body>
+</html>

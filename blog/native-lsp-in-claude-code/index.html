@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Native LSP in Claude Code: The End of Serena and Workarounds | Stefano Straus</title>
+  <meta name="description" content="How native LSP support in Claude Code 2.0.74 makes Serena MCP and manual gopls commands obsolete">
+  <meta name="author" content="Stefano Straus">
+  <link rel="canonical" href="https://straus.it/blog/native-lsp-in-claude-code/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Native LSP in Claude Code: The End of Serena and Workarounds">
+  <meta property="og:description" content="How native LSP support in Claude Code 2.0.74 makes Serena MCP and manual gopls commands obsolete">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://straus.it/blog/native-lsp-in-claude-code/">
+  <meta property="og:image" content="https://straus.it/img/profile.jpg">
+  <meta property="og:site_name" content="Stefano Straus">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@StefanoStraus">
+  <meta name="twitter:title" content="Native LSP in Claude Code: The End of Serena and Workarounds">
+  <meta name="twitter:description" content="How native LSP support in Claude Code 2.0.74 makes Serena MCP and manual gopls commands obsolete">
+  <meta name="twitter:image" content="https://straus.it/img/profile.jpg">
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Native LSP in Claude Code: The End of Serena and Workarounds",
+  "description": "How native LSP support in Claude Code 2.0.74 makes Serena MCP and manual gopls commands obsolete",
+  "author": {
+    "@type": "Person",
+    "name": "Stefano Straus",
+    "url": "https://straus.it"
+  },
+  "datePublished": "2026-01-08",
+  "dateModified": "2026-01-08",
+  "publisher": {
+    "@type": "Person",
+    "name": "Stefano Straus"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://straus.it/blog/native-lsp-in-claude-code/"
+  },
+  "keywords": "ai, claude-code, lsp, gopls, development"
+}
+  </script>
+
+  <!-- Redirect JS users to terminal view -->
+  <script>window.location.replace('/#read/native-lsp-in-claude-code');</script>
+
+  <style>
+    body { font-family: system-ui, -apple-system, sans-serif; max-width: 720px; margin: 2rem auto; padding: 0 1rem; line-height: 1.6; color: #222; }
+    a { color: #0066cc; }
+    .back { margin-bottom: 2rem; }
+    article img { max-width: 100%; }
+    time { color: #666; }
+    h1 { margin-bottom: 0.25rem; }
+    pre { background: #f5f5f5; padding: 1rem; overflow-x: auto; border-radius: 4px; }
+    code { font-family: 'JetBrains Mono', monospace; font-size: 0.9em; }
+    blockquote { border-left: 3px solid #ddd; margin-left: 0; padding-left: 1rem; color: #555; }
+    table { border-collapse: collapse; width: 100%; }
+    th, td { border: 1px solid #ddd; padding: 0.5rem; text-align: left; }
+    th { background: #f5f5f5; }
+  </style>
+</head>
+<body>
+  <noscript>
+    <nav class="back"><a href="/">&larr; straus.it</a></nav>
+    <article>
+      <h1>Native LSP in Claude Code: The End of Serena and Workarounds</h1>
+      <time datetime="2026-01-08">January 8, 2026</time>
+<h1>Native LSP in Claude Code: The End of Serena and Workarounds</h1>
+<p>In December 2025, Anthropic released native LSP support in Claude Code (v2.0.74). If you develop in Go, this changes everything. Serena MCP? Not needed anymore. Manual gopls commands in CLAUDE.md? Optional. Here&#39;s what changed and how to set it up.</p>
+<h2>The Problem I Had</h2>
+<p>Claude Code navigates code with <code>grep</code>, <code>Glob</code>, and file reading. It works. But when you need to:</p>
+<ul>
+<li>Find <strong>all</strong> references to a function (not just text matches)</li>
+<li>See who implements an interface</li>
+<li>Jump to a definition in an external dependency</li>
+</ul>
+<p>...grep becomes noisy. False positives, partial matches, comments that confuse things.</p>
+<p>Until recently, I had two solutions: Serena MCP or teaching Claude the gopls commands in CLAUDE.md. Now there&#39;s a third way. Official and cleaner.</p>
+<h2>Three Solutions Compared</h2>
+<h3>1. Native LSP Plugin (Recommended)</h3>
+<p>Since Claude Code 2.0.74, Anthropic supports <a href="https://code.claude.com/docs/en/discover-plugins">LSP plugins</a> that expose native tools to the agent.</p>
+<p><strong>Setup:</strong></p>
+<pre><code class="language-bash"># Add the LSP marketplace
+/plugin marketplace add anthropics/claude-plugins-official
+
+# Install the gopls plugin
+/plugin install gopls-lsp@claude-plugins-official
+</code></pre>
+<p><strong>What you get:</strong></p>
+<ul>
+<li><code>goToDefinition</code> - Jump directly to where functions, classes, or types are defined, even in external dependencies</li>
+<li><code>findReferences</code> - Find all real usages of a symbol across the entire codebase, including test files</li>
+<li><code>hover</code> - Get type signatures, parameter info, and inline documentation without navigating away</li>
+<li><code>documentSymbol</code> - See the complete structure of a file (classes, methods, exports) at a glance</li>
+</ul>
+<p><strong>Pros:</strong></p>
+<ul>
+<li>Zero config after install</li>
+<li>Claude uses tools automatically when needed</li>
+<li>Integrated into the flow, no bash intermediary</li>
+<li>Maintained by Anthropic/community</li>
+</ul>
+<p><strong>Cons:</strong></p>
+<ul>
+<li>Relatively new feature (some bugs reported)</li>
+</ul>
+<hr>
+<h3>2. Serena MCP</h3>
+<p><a href="https://github.com/oraios/serena">Serena</a> (<a href="https://oraios.github.io/serena/">docs</a>) is an MCP server that wraps LSP functionality.</p>
+<pre><code>Claude Code → MCP Protocol → Serena (Python) → gopls → Codebase
+</code></pre>
+<p><strong>Setup:</strong></p>
+<pre><code class="language-json">// ~/.claude/mcp.json
+{
+  &quot;mcpServers&quot;: {
+    &quot;serena&quot;: {
+      &quot;command&quot;: &quot;npx&quot;,
+      &quot;args&quot;: [&quot;-y&quot;, &quot;serena-mcp&quot;],
+      &quot;env&quot;: {
+        &quot;WORKSPACE_PATH&quot;: &quot;/path/to/project&quot;
+      }
+    }
+  }
+}
+</code></pre>
+<p><strong>Pros:</strong></p>
+<ul>
+<li>Supports multiple languages with one config</li>
+<li>Uniform cross-language interface</li>
+<li>Pre-computed indexing for huge codebases</li>
+</ul>
+<p><strong>Cons:</strong></p>
+<ul>
+<li>More breaking points</li>
+<li>Memory and latency overhead</li>
+<li>Now redundant if you only use Go</li>
+</ul>
+<hr>
+<h2>My Setup</h2>
+<p>The native LSP plugin is the right choice. Simple and effective.</p>
+<p><strong>Install:</strong></p>
+<pre><code class="language-bash">/plugin marketplace add anthropics/claude-plugins-official
+/plugin install gopls-lsp@claude-plugins-official
+/plugin install typescript-lsp@claude-plugins-official
+/plugin install pyright-lsp@claude-plugins-official
+/plugin install jdtls-lsp@claude-plugins-official
+</code></pre>
+<p><strong>Note:</strong> Plugins require the language server installed on your system:</p>
+<ul>
+<li>Go: <code>gopls</code> (via <code>go install golang.org/x/tools/gopls@latest</code>)</li>
+<li>TypeScript: <code>@vtsls/language-server</code> (via <code>npm install -g @vtsls/language-server typescript</code>)</li>
+<li>Python: <code>pyright</code> (via <code>pip install pyright</code> or <code>npm install -g pyright</code>)</li>
+<li>Java: <code>jdtls</code> (via <code>brew install jdtls</code>, requires Java 21+)</li>
+</ul>
+<p>That&#39;s it. Claude now has semantic code navigation automatically.</p>
+<h2>Practical Example: Safe Refactoring</h2>
+<p>Renaming <code>UserService.Create</code> to <code>UserService.CreateUser</code>.</p>
+<p><strong>Standard behavior with grep:</strong></p>
+<pre><code class="language-bash">grep -r &quot;\.Create(&quot; .
+# Also finds: OrderService.Create, io.Create, template.Create...
+</code></pre>
+<p><strong>With native LSP:</strong>
+Claude automatically uses <code>findReferences</code> and finds only the 3 exact spots to modify. No false positives. No manual filtering.</p>
+<h2>What You Can Actually Do</h2>
+<p>LSP gives Claude semantic understanding of your code. Here&#39;s what changes in practice:</p>
+<p><strong>Safe refactoring:</strong>
+&quot;Rename all occurrences of <code>processPayment</code> to <code>handlePayment</code>&quot;
+Claude finds only the actual function calls, not strings or comments containing &quot;processPayment&quot;.</p>
+<p><strong>Impact analysis:</strong>
+&quot;If I change the signature of <code>UserService.authenticate</code>, what breaks?&quot;
+Claude finds all real usages across the codebase, including ones in test files.</p>
+<p><strong>Jump through abstractions:</strong>
+&quot;Show me where <code>DatabaseConnection.query</code> is actually implemented&quot;
+Claude navigates through interfaces and base classes to the concrete implementation.</p>
+<p><strong>Understand dependencies:</strong>
+&quot;What methods does <code>OrderController</code> use from <code>PaymentService</code>?&quot;
+Claude traces the actual method calls, not just text matches in imports.</p>
+<p>The key difference: Claude sees your code structure, not just text. No more false positives from comments, strings, or similar names in different contexts.</p>
+<h2>Supported Languages</h2>
+<p>The <code>claude-plugins-official</code> marketplace covers the main languages:</p>
+<table>
+<thead>
+<tr>
+<th>Language</th>
+<th>Plugin</th>
+<th>Language Server</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Go</td>
+<td><code>gopls-lsp@claude-plugins-official</code></td>
+<td>gopls</td>
+</tr>
+<tr>
+<td>TypeScript/JS</td>
+<td><code>typescript-lsp@claude-plugins-official</code></td>
+<td>vtsls</td>
+</tr>
+<tr>
+<td>Rust</td>
+<td><code>rust-analyzer-lsp@claude-plugins-official</code></td>
+<td>rust-analyzer</td>
+</tr>
+</tbody></table>
+<p>And many others: Python (pyright), Java, C/C++, C#, PHP, Kotlin, Ruby, HTML/CSS.</p>
+<h2>When Serena Still Makes Sense</h2>
+<p>Honestly? Almost never now.</p>
+<p>The only edge cases left:</p>
+<ul>
+<li><strong>Huge codebases</strong> (500k+ LOC) where Serena&#39;s centralized indexing <em>might</em> be more efficient</li>
+<li><strong>Unsupported languages</strong> if you use something exotic not in the list above</li>
+</ul>
+<p>But for 99% of developers? Native LSP plugins cover everything.</p>
+<h2>How Symbol Indexing Works</h2>
+<p>This is the key architectural difference between the two approaches.</p>
+<h3>Native LSP Approach</h3>
+<p>gopls and other language servers work <strong>on-demand</strong>. When Claude asks for references, gopls analyzes the code right then and caches results in memory for your session. No persistent symbol map. Fast startup, slightly slower first query.</p>
+<p><strong>Flow:</strong></p>
+<ol>
+<li>Claude calls <code>findReferences</code></li>
+<li>gopls analyzes the codebase on-the-fly</li>
+<li>Results cached in memory</li>
+<li>Cache clears when session ends</li>
+</ol>
+<p><strong>Performance:</strong></p>
+<ul>
+<li>Fast startup (no pre-computation)</li>
+<li>First lookup slightly slower (must analyze)</li>
+<li>Subsequent lookups fast (cached)</li>
+<li>Memory efficient</li>
+</ul>
+<h3>Serena&#39;s Approach</h3>
+<p>Serena builds a <strong>pre-computed index</strong> of all symbols upfront. Every function, type, reference is mapped before you make any queries. Slower startup, but blazing fast lookups. The index persists across sessions.</p>
+<p><strong>Flow:</strong></p>
+<ol>
+<li>Serena builds complete symbol index at startup</li>
+<li>Index includes all symbols, references, implementations</li>
+<li>Queries hit the pre-computed index (very fast)</li>
+<li>Index maintained across sessions</li>
+</ol>
+<p><strong>Performance:</strong></p>
+<ul>
+<li>Slower startup (builds index)</li>
+<li>All lookups blazing fast (index lookup)</li>
+<li>Higher memory footprint (persistent index)</li>
+<li>Better for huge codebases with constant queries</li>
+</ul>
+<h3>When Each Wins</h3>
+<p>For most projects, on-demand analysis is faster overall. You save time on startup and only pay for analysis when you actually need it.</p>
+<p>Pre-indexing only wins on massive codebases (500k+ LOC) where you&#39;re constantly querying symbols across the entire project. The upfront cost pays off over time.</p>
+<h2>What I Learned</h2>
+<p>The evolution was:</p>
+<ol>
+<li><strong>2024</strong>: grep + file reading (works, but imprecise)</li>
+<li><strong>Early 2025</strong>: Serena MCP (powerful, but complex)</li>
+<li><strong>Late 2025</strong>: Native LSP with 11 languages supported</li>
+</ol>
+<p>Serena did its job. It solved a real problem when Claude Code had no native LSP support. Now Anthropic integrated it directly into the product, with plugins for all mainstream languages.</p>
+<p>Two commands. Zero MCP servers. Zero JSON config. It works.</p>
+<p>Keep it simple. The platform matured. Let it do its job.</p>
+<hr>
+<p><em>Updated January 2026: With Claude Code 2.0.74+, native LSP support covers 11 languages. Serena MCP is effectively obsolete for most use cases.</em></p>
+
+    </article>
+    <nav><a href="/">&larr; Back to straus.it</a></nav>
+  </noscript>
+</body>
+</html>

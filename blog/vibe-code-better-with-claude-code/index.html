@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>8 Ways to Vibe-Code Better with Claude Code | Stefano Straus</title>
+  <meta name="description" content="The system around the prompt matters more than the prompt itself">
+  <meta name="author" content="Stefano Straus">
+  <link rel="canonical" href="https://straus.it/blog/vibe-code-better-with-claude-code/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="8 Ways to Vibe-Code Better with Claude Code">
+  <meta property="og:description" content="The system around the prompt matters more than the prompt itself">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://straus.it/blog/vibe-code-better-with-claude-code/">
+  <meta property="og:image" content="https://straus.it/img/profile.jpg">
+  <meta property="og:site_name" content="Stefano Straus">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@StefanoStraus">
+  <meta name="twitter:title" content="8 Ways to Vibe-Code Better with Claude Code">
+  <meta name="twitter:description" content="The system around the prompt matters more than the prompt itself">
+  <meta name="twitter:image" content="https://straus.it/img/profile.jpg">
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "8 Ways to Vibe-Code Better with Claude Code",
+  "description": "The system around the prompt matters more than the prompt itself",
+  "author": {
+    "@type": "Person",
+    "name": "Stefano Straus",
+    "url": "https://straus.it"
+  },
+  "datePublished": "2026-01-10",
+  "dateModified": "2026-01-10",
+  "publisher": {
+    "@type": "Person",
+    "name": "Stefano Straus"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://straus.it/blog/vibe-code-better-with-claude-code/"
+  },
+  "keywords": "ai, claude-code, vibe-coding, productivity, development"
+}
+  </script>
+
+  <!-- Redirect JS users to terminal view -->
+  <script>window.location.replace('/#read/vibe-code-better-with-claude-code');</script>
+
+  <style>
+    body { font-family: system-ui, -apple-system, sans-serif; max-width: 720px; margin: 2rem auto; padding: 0 1rem; line-height: 1.6; color: #222; }
+    a { color: #0066cc; }
+    .back { margin-bottom: 2rem; }
+    article img { max-width: 100%; }
+    time { color: #666; }
+    h1 { margin-bottom: 0.25rem; }
+    pre { background: #f5f5f5; padding: 1rem; overflow-x: auto; border-radius: 4px; }
+    code { font-family: 'JetBrains Mono', monospace; font-size: 0.9em; }
+    blockquote { border-left: 3px solid #ddd; margin-left: 0; padding-left: 1rem; color: #555; }
+    table { border-collapse: collapse; width: 100%; }
+    th, td { border: 1px solid #ddd; padding: 0.5rem; text-align: left; }
+    th { background: #f5f5f5; }
+  </style>
+</head>
+<body>
+  <noscript>
+    <nav class="back"><a href="/">&larr; straus.it</a></nav>
+    <article>
+      <h1>8 Ways to Vibe-Code Better with Claude Code</h1>
+      <time datetime="2026-01-10">January 10, 2026</time>
+<h1>8 Ways to Vibe-Code Better with Claude Code</h1>
+<p>Vibe coding works. But not the way most people do it.</p>
+<p>It doesn&#39;t matter which IDE you use. It doesn&#39;t matter if you prefer Cursor, RooCode, or the terminals (Claude Code, Codex, OpenCode). The tools change every month. What matters is how you set up the relationship between you and the model.</p>
+<p>The difference between frustrating sessions and productive ones isn&#39;t the prompt. It&#39;s the system around the prompt.</p>
+<p>Here are seven things that actually move the needle.</p>
+<h2>1. Start with a README that teaches Claude who you are</h2>
+<p>Before skills. Before memory layers. Before anything else.</p>
+<p>Write a <code>CLAUDE.md</code> file that explains how you work. Your conventions. Your preferences. What you hate. What you expect. This is the foundation everything else builds on.</p>
+<p>Claude reads this file at the start of every session. It&#39;s your chance to turn a generic assistant into a teammate who understands your codebase.</p>
+<p>Include:</p>
+<ul>
+<li>Coding style rules</li>
+<li>Architecture patterns you follow</li>
+<li>What &quot;done&quot; means in your projects</li>
+<li>Things Claude should never do</li>
+</ul>
+<p>This single file prevents more problems than any other technique on this list.</p>
+<h2>2. Use a tasks file as your shared backlog</h2>
+<p>Chats are terrible backlogs. You lose track of what&#39;s done, what&#39;s blocked, what&#39;s next.</p>
+<p>A simple <code>tasks.md</code> becomes the source of truth. Claude reads it. Updates it. Plans against it. You both look at the same list.</p>
+<p>This externalizes state. It prevents the classic &quot;what were we doing again?&quot; problem that kills long sessions. When context resets, the tasks file doesn&#39;t.</p>
+<h2>3. Integrate automated pipelines</h2>
+<p>Manual copy-paste breaks flow. Every time you leave Claude to run a test manually, you lose momentum.</p>
+<p>Wire Claude into pipelines that run automatically:</p>
+<ul>
+<li>Tests after code changes</li>
+<li>Linters before commits</li>
+<li>Formatters on save</li>
+<li>Type checkers in the background</li>
+</ul>
+<p>The feedback loop should be fast and mechanical. Claude proposes changes. The system validates them. When something breaks, skills and agents are there to fix it. This keeps reasoning focused on design, not syntax cleanup.</p>
+<p>For repetitive fixes, the <a href="/read/ralph-wiggum-autonomous-loops">Ralph Wiggum technique</a> takes this further. Wrap the whole thing in a loop and let Claude iterate until tests pass.</p>
+<h2>4. Connect to real services via MCP</h2>
+<p>Claude becomes far more useful when it can talk to real systems.</p>
+<p>Model Context Protocol lets you expose APIs, databases, repos, and internal tools safely. This shifts Claude from speculative coding to grounded engineering. It can check actual data. Query real schemas. Verify assumptions against reality.</p>
+<p>Fewer hallucinations. More intent-aware changes.</p>
+<p>The best MCP servers I use daily:</p>
+<ul>
+<li><strong>Context7</strong>: Up-to-date documentation for any library</li>
+<li><strong>Chrome DevTools</strong>: Browser automation and debugging</li>
+<li><strong>Serena</strong>: Code intelligence and symbol search</li>
+</ul>
+<h2>5. Use Claude Skills deliberately</h2>
+<p>Skills are not decorations. They are behavioral constraints.</p>
+<p>A good skill definition reduces ambiguity. Narrows the solution space. Prevents stylistic drift. Instead of restating rules in every prompt, encode expectations once and let them persist.</p>
+<p>This is how you get consistency across long sessions and complex refactors. The skill tells Claude what kind of work this is and how to approach it.</p>
+<p>Write skills for:</p>
+<ul>
+<li>Code review standards</li>
+<li>Test generation patterns</li>
+<li>Documentation style</li>
+<li>Specific framework conventions</li>
+</ul>
+<h2>6. Add a memory layer</h2>
+<p>Stateless prompting kills momentum.</p>
+<p>A lightweight memory layer changes everything. Store decisions, conventions, rejected approaches, active assumptions. Feed them back selectively.</p>
+<p>The goal is not perfect recall. It&#39;s continuity. When Claude remembers why something exists, it stops fighting your architecture and starts extending it.</p>
+<p>Options:</p>
+<ul>
+<li>Journal files Claude writes to and reads from</li>
+<li>Beads for structured task memory with dependencies</li>
+<li>Custom MCP servers that persist context</li>
+</ul>
+<p>The format matters less than having something. Any persistent memory beats starting fresh every session.</p>
+<h2>7. Deploy multiple agents on repetitive work</h2>
+<p>Don&#39;t waste your main agent on mechanical tasks.</p>
+<p>Spin up focused agents for:</p>
+<ul>
+<li>Refactors across many files</li>
+<li>Test generation for existing code</li>
+<li>Documentation updates</li>
+<li>Data migrations</li>
+<li>Code review from different angles</li>
+</ul>
+<p>Parallelism is where AI actually saves time. One agent thinks. Others grind. You can run 5-10 agents on repetitive work while keeping your main session focused on design decisions.</p>
+<p>Claude Code&#39;s subagent system makes this easy. Define the task. Let it run. Check the results.</p>
+<h2>8. Create a workspace and run multi-terminals</h2>
+<p>Claude works best when embedded in a real workspace.</p>
+<p>Multiple terminals running side by side. Services. Logs. Tests. Builds. All visible at once. This mirrors how senior engineers actually think. Context is spatial, not just textual.</p>
+<p>The model performs better when the environment reflects reality. It can see what&#39;s running. Check logs in real time. Understand the full picture instead of guessing from fragments.</p>
+<p>Set up your workspace like you would for a pairing session. Because that&#39;s what this is.</p>
+<h2>The Pattern</h2>
+<p>Notice what these have in common: none of them are about prompting better.</p>
+<p>They&#39;re about building a system where Claude can do its best work:</p>
+<ol>
+<li><strong>Persistent context</strong> - README, tasks file, memory layer</li>
+<li><strong>Real feedback</strong> - automated pipelines, MCP connections</li>
+<li><strong>Clear constraints</strong> - skills that define behavior</li>
+<li><strong>Parallel execution</strong> - multiple agents for throughput</li>
+</ol>
+<p>Vibe coding isn&#39;t about letting an LLM run wild. It&#39;s about creating conditions where the model stays in flow, keeps context, and compounds usefulness instead of generating noise.</p>
+<p>Set up the system. Then let it work.</p>
+
+    </article>
+    <nav><a href="/">&larr; Back to straus.it</a></nav>
+  </noscript>
+</body>
+</html>

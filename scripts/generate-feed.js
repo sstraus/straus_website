@@ -55,8 +55,8 @@ const items = index.articles.map(article => {
 
   return `    <item>
       <title>${escapeXml(article.title)}</title>
-      <link>https://straus.it/#read/${article.slug}</link>
-      <guid isPermaLink="true">https://straus.it/#read/${article.slug}</guid>
+      <link>https://straus.it/blog/${article.slug}/</link>
+      <guid isPermaLink="true">https://straus.it/blog/${article.slug}/</guid>
       <pubDate>${formatRssDate(article.date)}</pubDate>
       <description>${escapeXml(article.description)}</description>
       <content:encoded><![CDATA[${html}]]></content:encoded>

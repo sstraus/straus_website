@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MiniMax, Kimi, and the End of the US-Only AI Narrative | Stefano Straus</title>
+  <meta name="description" content="On the benchmarks that matter for AI-driven software systems, Chinese models are no longer trailing. Model selection is now a workload decision.">
+  <meta name="author" content="Stefano Straus">
+  <link rel="canonical" href="https://straus.it/blog/minimax-kimi-multipolar-ai/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="MiniMax, Kimi, and the End of the US-Only AI Narrative">
+  <meta property="og:description" content="On the benchmarks that matter for AI-driven software systems, Chinese models are no longer trailing. Model selection is now a workload decision.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://straus.it/blog/minimax-kimi-multipolar-ai/">
+  <meta property="og:image" content="https://straus.it/img/profile.jpg">
+  <meta property="og:site_name" content="Stefano Straus">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@StefanoStraus">
+  <meta name="twitter:title" content="MiniMax, Kimi, and the End of the US-Only AI Narrative">
+  <meta name="twitter:description" content="On the benchmarks that matter for AI-driven software systems, Chinese models are no longer trailing. Model selection is now a workload decision.">
+  <meta name="twitter:image" content="https://straus.it/img/profile.jpg">
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "MiniMax, Kimi, and the End of the US-Only AI Narrative",
+  "description": "On the benchmarks that matter for AI-driven software systems, Chinese models are no longer trailing. Model selection is now a workload decision.",
+  "author": {
+    "@type": "Person",
+    "name": "Stefano Straus",
+    "url": "https://straus.it"
+  },
+  "datePublished": "2026-02-13",
+  "dateModified": "2026-02-13",
+  "publisher": {
+    "@type": "Person",
+    "name": "Stefano Straus"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://straus.it/blog/minimax-kimi-multipolar-ai/"
+  },
+  "keywords": "ai, benchmarks, minimax, kimi, model-selection"
+}
+  </script>
+
+  <!-- Redirect JS users to terminal view -->
+  <script>window.location.replace('/#read/minimax-kimi-multipolar-ai');</script>
+
+  <style>
+    body { font-family: system-ui, -apple-system, sans-serif; max-width: 720px; margin: 2rem auto; padding: 0 1rem; line-height: 1.6; color: #222; }
+    a { color: #0066cc; }
+    .back { margin-bottom: 2rem; }
+    article img { max-width: 100%; }
+    time { color: #666; }
+    h1 { margin-bottom: 0.25rem; }
+    pre { background: #f5f5f5; padding: 1rem; overflow-x: auto; border-radius: 4px; }
+    code { font-family: 'JetBrains Mono', monospace; font-size: 0.9em; }
+    blockquote { border-left: 3px solid #ddd; margin-left: 0; padding-left: 1rem; color: #555; }
+    table { border-collapse: collapse; width: 100%; }
+    th, td { border: 1px solid #ddd; padding: 0.5rem; text-align: left; }
+    th { background: #f5f5f5; }
+  </style>
+</head>
+<body>
+  <noscript>
+    <nav class="back"><a href="/">&larr; straus.it</a></nav>
+    <article>
+      <h1>MiniMax, Kimi, and the End of the US-Only AI Narrative</h1>
+      <time datetime="2026-02-13">February 13, 2026</time>
+<h1>MiniMax, Kimi, and the End of the US-Only AI Narrative</h1>
+<p>Last week I was setting up a new agent pipeline for a side project and caught myself doing something I would not have done six months ago. I was reading comments on X about Kimi K2.5&#39;s benchmark results alongside Claude&#39;s. Not out of curiosity. Out of genuine uncertainty about which model would handle the tool-calling layer better. Because the better these models get, the higher the expectations grow, and somehow it is never enough.</p>
+<p>That moment stuck with me, because it broke a habit I did not even know I had. For the past year, model selection in my work has been a two-body problem: Anthropic or OpenAI, occasionally Google. The rest was noise. Interesting noise, sometimes impressive noise, but not something I would seriously evaluate for production workflows.</p>
+<p>That assumption no longer holds.</p>
+<h2>The numbers that matter</h2>
+<p>I am not going to walk through every benchmark. Most of them measure things that do not affect how I build software. But a handful of benchmarks do matter for teams running AI-driven development pipelines, and on those, the results have converged in ways that should change how you think about model selection.</p>
+<p><strong>SWE-Bench Verified</strong> measures whether a model can fix real bugs in real GitHub repositories, validated by running the actual test suite. This is the closest thing we have to a benchmark that reflects day-to-day engineering work.</p>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th>Score</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Opus 4.6</td>
+<td>80.9</td>
+</tr>
+<tr>
+<td>MiniMax M2.5</td>
+<td>80.2</td>
+</tr>
+<tr>
+<td>GPT-5.2</td>
+<td>80.0</td>
+</tr>
+<tr>
+<td>Kimi K2.5</td>
+<td>76.8</td>
+</tr>
+</tbody></table>
+<p>MiniMax is essentially tied with Anthropic and OpenAI. Kimi from Moonshot AI is slightly below the top cluster, but still in the same performance tier. For an open model iterating at this speed, that 4-point gap is strategically small. And Kimi&#39;s variants tell a deeper story: 73.0% on SWE-Bench Multilingual and 50.7% on SWE-Bench Pro, indicating robustness that extends well beyond standard English-language repositories.</p>
+<p><strong>BFCL</strong> evaluates structured tool use and API integration across multiple turns. If you are building agent systems, orchestration layers, or anything that chains tool calls, this is the benchmark that predicts real-world reliability.</p>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th>Score</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>MiniMax M2.5</td>
+<td>76.8</td>
+</tr>
+<tr>
+<td>Opus 4.6</td>
+<td>68.0</td>
+</tr>
+<tr>
+<td>GPT-5.2</td>
+<td>61.0</td>
+</tr>
+</tbody></table>
+<p>MiniMax wins clearly. The gap is not marginal. It translates into fewer tool-call failures and less corrective scaffolding in production. Kimi K2.5 does not have a standardised BFCL score yet, but approaches the problem from a different angle. Its Agent Swarm architecture coordinates up to 100 parallel sub-agents for decomposition, retrieval, and tool chaining. That is not a function-calling benchmark. It is a different execution model entirely, and one that traditional single-pass scoring does not capture.</p>
+<p><strong>Multi-SWE-Bench</strong> measures bug fixing across multiple heterogeneous codebases, testing whether a model generalises beyond the repositories it was likely trained on.</p>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th>Score</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>MiniMax M2.5</td>
+<td>51.3</td>
+</tr>
+<tr>
+<td>Opus 4.6</td>
+<td>50.3</td>
+</tr>
+<tr>
+<td>Gemini 3 Pro</td>
+<td>42.7</td>
+</tr>
+</tbody></table>
+<p>MiniMax edges out Opus and significantly outperforms Google. This matters the moment you move beyond well-known open-source projects into the kind of proprietary, messy codebases most companies actually maintain.</p>
+<h2>Where the models diverge</h2>
+<p>The picture gets more interesting when you move beyond pure code benchmarks.</p>
+<p>On <strong>BrowseComp</strong>, which measures web comprehension and multi-step reasoning over online content, the ranking shifts:</p>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th>Score</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Opus 4.6</td>
+<td>84.0</td>
+</tr>
+<tr>
+<td>MiniMax M2.5</td>
+<td>76.3</td>
+</tr>
+<tr>
+<td>Kimi K2.5</td>
+<td>74.9</td>
+</tr>
+</tbody></table>
+<p>Opus leads here. For tasks that require deep narrative comprehension and long-form semantic integration, western frontier models retain an edge. But Kimi at 74.9 is close enough to MiniMax that the difference between them is noise, and both are within striking distance of Opus.</p>
+<p>On <strong>Humanity&#39;s Last Exam with tools</strong>, which evaluates long-horizon reasoning with active tool usage, the ranking inverts:</p>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th>Score</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Kimi K2.5</td>
+<td>50.2</td>
+</tr>
+<tr>
+<td>GPT-5.2</td>
+<td>45.5</td>
+</tr>
+<tr>
+<td>Opus 4.5</td>
+<td>32.0</td>
+</tr>
+</tbody></table>
+<p>Kimi leads by a wide margin. This is where the Agent Swarm architecture pays off. Tasks that require decomposition, parallel retrieval, and multi-step tool chaining play to Kimi&#39;s structural strengths. For anyone building autonomous systems rather than chat-based copilots, this benchmark matters more than SWE-Bench.</p>
+<h2>What this actually means</h2>
+<p>The pattern is not that one model wins everywhere. The pattern is that different models win on different workloads, and the winners are no longer exclusively American.</p>
+<p>MiniMax competes at the absolute top tier for real bug fixing and structured tool orchestration. Kimi is slightly behind on raw SWE-Bench Verified but leads on agentic reasoning and shows strong multilingual generalisation. Anthropic still leads on deep web reasoning and narrative comprehension. OpenAI remains competitive across the board but no longer holds a clear structural margin on engineering-heavy tasks.</p>
+<p>For teams building AI-native development platforms, autonomous remediation systems, or multi-agent toolchains, model selection is no longer a regional decision. It is a workload decision.</p>
+<p>I have been running my entire development workflow through Anthropic for the past year. I still think Claude is the best general-purpose model for the way I work. But I can no longer say that with the certainty I had six months ago, and I find myself testing alternatives in ways I previously considered a waste of time.</p>
+<p>Anthropic still leads with Opus, but the margin is thin and getting thinner. Improving at the top of the performance curve is exponentially harder than catching up from behind. Each incremental point on SWE-Bench costs more research, more compute, more time. The challengers do not have that problem yet. They are still on the steep part of the curve, where iteration is fast and gains are large. If Anthropic&#39;s release cadence does not accelerate, the lead could evaporate within a few quarters.</p>
+<p>The benchmark layer is now multipolar. If you are still defaulting to US-only models without evaluating MiniMax or Kimi for your specific workload, you are making a decision based on habit rather than data.</p>
+<p>2026 could be the year the map gets redrawn entirely. It is going to be an interesting race.</p>
+
+    </article>
+    <nav><a href="/">&larr; Back to straus.it</a></nav>
+  </noscript>
+</body>
+</html>

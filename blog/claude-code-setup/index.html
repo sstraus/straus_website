@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Claude Code Setup | Stefano Straus</title>
+  <meta name="description" content="A complete walkthrough of how I configure Claude Code">
+  <meta name="author" content="Stefano Straus">
+  <link rel="canonical" href="https://straus.it/blog/claude-code-setup/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="My Claude Code Setup">
+  <meta property="og:description" content="A complete walkthrough of how I configure Claude Code">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://straus.it/blog/claude-code-setup/">
+  <meta property="og:image" content="https://straus.it/img/profile.jpg">
+  <meta property="og:site_name" content="Stefano Straus">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@StefanoStraus">
+  <meta name="twitter:title" content="My Claude Code Setup">
+  <meta name="twitter:description" content="A complete walkthrough of how I configure Claude Code">
+  <meta name="twitter:image" content="https://straus.it/img/profile.jpg">
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "My Claude Code Setup",
+  "description": "A complete walkthrough of how I configure Claude Code",
+  "author": {
+    "@type": "Person",
+    "name": "Stefano Straus",
+    "url": "https://straus.it"
+  },
+  "datePublished": "2025-11-01",
+  "dateModified": "2025-11-01",
+  "publisher": {
+    "@type": "Person",
+    "name": "Stefano Straus"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://straus.it/blog/claude-code-setup/"
+  },
+  "keywords": "ai, claude-code, setup, development"
+}
+  </script>
+
+  <!-- Redirect JS users to terminal view -->
+  <script>window.location.replace('/#read/claude-code-setup');</script>
+
+  <style>
+    body { font-family: system-ui, -apple-system, sans-serif; max-width: 720px; margin: 2rem auto; padding: 0 1rem; line-height: 1.6; color: #222; }
+    a { color: #0066cc; }
+    .back { margin-bottom: 2rem; }
+    article img { max-width: 100%; }
+    time { color: #666; }
+    h1 { margin-bottom: 0.25rem; }
+    pre { background: #f5f5f5; padding: 1rem; overflow-x: auto; border-radius: 4px; }
+    code { font-family: 'JetBrains Mono', monospace; font-size: 0.9em; }
+    blockquote { border-left: 3px solid #ddd; margin-left: 0; padding-left: 1rem; color: #555; }
+    table { border-collapse: collapse; width: 100%; }
+    th, td { border: 1px solid #ddd; padding: 0.5rem; text-align: left; }
+    th { background: #f5f5f5; }
+  </style>
+</head>
+<body>
+  <noscript>
+    <nav class="back"><a href="/">&larr; straus.it</a></nav>
+    <article>
+      <h1>My Claude Code Setup</h1>
+      <time datetime="2025-11-01">November 1, 2025</time>
+<h1>My Claude Code Setup</h1>
+<p>A complete walkthrough of how I configure Claude Code for maximum productivity.</p>
+<h2>What is Claude Code?</h2>
+<p>Claude Code is Anthropic&#39;s official CLI tool that brings Claude directly into your terminal. It&#39;s not just a chatbot—it can read files, execute commands, edit code, and integrate with external tools via MCP (Model Context Protocol).</p>
+<h2>Installation</h2>
+<pre><code class="language-bash">npm install -g @anthropic-ai/claude-code
+</code></pre>
+<p>Or if you prefer:</p>
+<pre><code class="language-bash">brew install claude-code
+</code></pre>
+<h2>Configuration Files</h2>
+<p>Claude Code uses several configuration files in <code>~/.claude/</code>:</p>
+<h3>settings.json</h3>
+<p>This is the main configuration file. Here&#39;s what matters:</p>
+<pre><code class="language-json">{
+  &quot;model&quot;: &quot;opus&quot;,
+  &quot;alwaysThinkingEnabled&quot;: true,
+  &quot;max_turns&quot;: 100,
+  &quot;includeCoAuthoredBy&quot;: false
+}
+</code></pre>
+<p>Key settings:</p>
+<ul>
+<li><strong>model</strong>: I use <code>opus</code> for complex tasks (expensive but reliable), <code>sonnet</code> for everyday work</li>
+<li><strong>alwaysThinkingEnabled</strong>: Without thinking even Opus is weak</li>
+<li><strong>max_turns</strong>: How many back-and-forth turns before stopping</li>
+<li><strong>includeCoAuthoredBy</strong>: Avoid having &quot;Co-authored-by&quot; added to git commits</li>
+</ul>
+<h3>Permissions</h3>
+<p>Claude Code has a robust permission system. I prefer a permissive setup with explicit allows:</p>
+<pre><code class="language-json">{
+  &quot;permissions&quot;: {
+    &quot;allow&quot;: [
+      &quot;*&quot;,
+      &quot;Bash(go build:*)&quot;,
+      &quot;Bash(go test:*)&quot;,
+      &quot;Bash(git commit:*)&quot;,
+      &quot;Bash(make:*)&quot;
+    ],
+    &quot;defaultMode&quot;: &quot;default&quot;
+  }
+}
+</code></pre>
+<p>The <code>*</code> allows most operations, but you can be more restrictive.</p>
+<p>Usually I run Claude with:</p>
+<pre><code class="language-bash">claude --dangerously-skip-permissions --resume --chrome
+</code></pre>
+<p>I know, it&#39;s dangerous, but I commit continuously and have good backup strategies. This will speed up your work by 10x.</p>
+<p>Resume is usefull for a list of previous esession to continue and --chrome will allow browser acces to understand the web content you&#39;re building (you need the Claude extension).</p>
+<h3>CLAUDE.md</h3>
+<p>This file lives in <code>~/.claude/CLAUDE.md</code> (global) or in your project root (project-specific). It&#39;s your way to give Claude persistent instructions.</p>
+<p>My global CLAUDE.md:</p>
+<pre><code class="language-markdown"># Style
+Apply KISS, YAGNI, DRY and SOLID coding principles.
+Always respond in English.
+
+# Rules
+- Do not duplicate logic
+- Do NOT stop until all tasks are complete
+- Check your todo list after each step
+- Never skip failing tests. Fix them!
+</code></pre>
+<h2>MCP Servers</h2>
+<p>MCP (Model Context Protocol) extends Claude&#39;s capabilities. I use three:</p>
+<h3>mcp.json</h3>
+<pre><code class="language-json">{
+  &quot;mcpServers&quot;: {
+    &quot;serena&quot;: {
+      &quot;type&quot;: &quot;stdio&quot;,
+      &quot;command&quot;: &quot;uvx&quot;,
+      &quot;args&quot;: [&quot;--from&quot;, &quot;git+https://github.com/oraios/serena&quot;, &quot;serena-mcp-server&quot;]
+    },
+    &quot;chrome-devtools&quot;: {
+      &quot;type&quot;: &quot;stdio&quot;,
+      &quot;command&quot;: &quot;npx&quot;,
+      &quot;args&quot;: [&quot;chrome-devtools-mcp@latest&quot;]
+    },
+    &quot;context7&quot;: {
+      &quot;type&quot;: &quot;stdio&quot;,
+      &quot;command&quot;: &quot;npx&quot;,
+      &quot;args&quot;: [&quot;-y&quot;, &quot;@upai/mcp-server-context7&quot;]
+    }
+  }
+}
+</code></pre>
+<p><strong>What each does:</strong></p>
+<ul>
+<li><strong>Serena</strong>: Code intelligence—symbol search, references, project navigation</li>
+<li><strong>Chrome DevTools</strong>: Browser automation and debugging</li>
+<li><strong>Context7</strong>: Up-to-date documentation lookup for any library</li>
+</ul>
+<h2>Plugins</h2>
+<p>Claude Code has a plugin system. My enabled plugins:</p>
+<table>
+<thead>
+<tr>
+<th>Plugin</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>context7</td>
+<td>Documentation lookup</td>
+</tr>
+<tr>
+<td>feature-dev</td>
+<td>Guided feature development</td>
+</tr>
+<tr>
+<td>frontend-design</td>
+<td>UI/UX design assistance</td>
+</tr>
+<tr>
+<td>ralph-wiggum</td>
+<td>Automated iteration loops</td>
+</tr>
+<tr>
+<td>claude-hud</td>
+<td>Status line display</td>
+</tr>
+</tbody></table>
+<p>Enable in settings:</p>
+<pre><code class="language-json">{
+  &quot;enabledPlugins&quot;: {
+    &quot;context7@claude-plugins-official&quot;: true,
+    &quot;feature-dev@claude-plugins-official&quot;: true,
+    &quot;claude-hud@claude-hud&quot;: true
+  }
+}
+</code></pre>
+<h2>Hooks</h2>
+<p>Hooks let you run commands before/after Claude actions. I use them for automatic git-ai checkpoints:</p>
+<pre><code class="language-json">{
+  &quot;hooks&quot;: {
+    &quot;PostToolUse&quot;: [
+      {
+        &quot;matcher&quot;: &quot;Write|Edit|MultiEdit&quot;,
+        &quot;hooks&quot;: [
+          {
+            &quot;type&quot;: &quot;command&quot;,
+            &quot;command&quot;: &quot;git-ai checkpoint claude --hook-input stdin&quot;
+          }
+        ]
+      }
+    ]
+  }
+}
+</code></pre>
+<p>This creates automatic checkpoints to distinguish when AI edited the code and when it was a human activity. Thanks to <a href="https://github.com/acunniffe/git-ai">https://github.com/acunniffe/git-ai</a></p>
+<h2>Status Line</h2>
+<p>The status line shows useful info while Claude works. I use claude-hud(<a href="https://github.com/jarrodwatts/claude-hud">https://github.com/jarrodwatts/claude-hud</a>):</p>
+<pre><code class="language-json">{
+  &quot;statusLine&quot;: {
+    &quot;type&quot;: &quot;command&quot;,
+    &quot;command&quot;: &quot;bash -c &#39;node \&quot;$(ls -td ~/.claude/plugins/cache/claude-hud/claude-hud/*/ | head -1)dist/index.js\&quot;&#39;&quot;
+  }
+}
+</code></pre>
+<h2>iTerm 2 Notifications</h2>
+<p>Never miss when Claude completes a task. In iTerm 2:</p>
+<ol>
+<li>Open <strong>Preferences → Profiles → Terminal</strong></li>
+<li>Enable <strong>&quot;Silence bell&quot;</strong></li>
+<li>Select <strong>&quot;Send escape sequence-generated alerts&quot;</strong></li>
+<li>Set your preferred notification delay</li>
+</ol>
+<p>This sends a system notification when Claude finishes long-running tasks.</p>
+<h2>Makefile Patterns</h2>
+<p>Every project gets a Makefile. It&#39;s the universal interface that Claude understands immediately.</p>
+<p>Key patterns:</p>
+<ul>
+<li><strong>Self-documenting help</strong>: <code>make help</code> parses <code>## target: description</code> comments</li>
+<li><strong>Consistent targets</strong>: <code>build</code>, <code>test</code>, <code>deploy</code>, <code>clean</code> work the same everywhere</li>
+<li><strong>Environment loading</strong>: Auto-include <code>.env</code> files when present</li>
+</ul>
+<p>The value is consistency. Claude reads <code>make deploy</code> and knows what to do—no explaining build systems per project.</p>
+<h2>Tips for Daily Use</h2>
+<ol>
+<li><strong>Almost always use Plan mode</strong> - Let Claude think before acting</li>
+<li><strong>Give Claude verification methods</strong> - Unit tests, Chrome extension, or simulators</li>
+<li><strong>Hold the same bar for human and Claude code</strong> - Use <code>/code-review</code> to automate review</li>
+<li><strong>Press Shift+Tab</strong> - Toggle auto-accept for file edits, reduces friction</li>
+<li><strong>Use opus for complex tasks</strong> - Worth the cost for architecture decisions</li>
+<li><strong>Check the todo list</strong> - Claude tracks its own progress, review it</li>
+<li><strong>Leverage MCP</strong> - Context7 for docs, Serena for code navigation</li>
+<li><strong>Trust but verify</strong> - Always review generated code before committing</li>
+</ol>
+<h2>Project-Specific Config</h2>
+<p>Each project can have its own <code>.claude/CLAUDE.md</code> with specific instructions:</p>
+<pre><code class="language-markdown"># Project: MyApp
+
+## Stack
+- Go 1.22
+- PostgreSQL 15
+- React 18
+
+## Commands
+- `make test` - Run tests
+- `make build` - Build binary
+
+## Conventions
+- Use hexagonal architecture
+- All errors must be wrapped with context
+</code></pre>
+<h2>Conclusion</h2>
+<p>Claude Code is more than a coding assistant—it&#39;s a development environment that understands context, follows instructions, and integrates with your tools. The key is configuration: take time to set up your CLAUDE.md, permissions, and MCP servers.</p>
+<p>The investment pays off exponentially.</p>
+
+    </article>
+    <nav><a href="/">&larr; Back to straus.it</a></nav>
+  </noscript>
+</body>
+</html>

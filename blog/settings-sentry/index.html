@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SettingsSentry - Never Lose Your macOS Settings Again | Stefano Straus</title>
+  <meta name="description" content="A lightweight tool to backup and restore macOS application settings">
+  <meta name="author" content="Stefano Straus">
+  <link rel="canonical" href="https://straus.it/blog/settings-sentry/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="SettingsSentry - Never Lose Your macOS Settings Again">
+  <meta property="og:description" content="A lightweight tool to backup and restore macOS application settings">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://straus.it/blog/settings-sentry/">
+  <meta property="og:image" content="https://straus.it/img/profile.jpg">
+  <meta property="og:site_name" content="Stefano Straus">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@StefanoStraus">
+  <meta name="twitter:title" content="SettingsSentry - Never Lose Your macOS Settings Again">
+  <meta name="twitter:description" content="A lightweight tool to backup and restore macOS application settings">
+  <meta name="twitter:image" content="https://straus.it/img/profile.jpg">
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "SettingsSentry - Never Lose Your macOS Settings Again",
+  "description": "A lightweight tool to backup and restore macOS application settings",
+  "author": {
+    "@type": "Person",
+    "name": "Stefano Straus",
+    "url": "https://straus.it"
+  },
+  "datePublished": "2025-08-15",
+  "dateModified": "2025-08-15",
+  "publisher": {
+    "@type": "Person",
+    "name": "Stefano Straus"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://straus.it/blog/settings-sentry/"
+  },
+  "keywords": "macos, tools, backup, open-source"
+}
+  </script>
+
+  <!-- Redirect JS users to terminal view -->
+  <script>window.location.replace('/#read/settings-sentry');</script>
+
+  <style>
+    body { font-family: system-ui, -apple-system, sans-serif; max-width: 720px; margin: 2rem auto; padding: 0 1rem; line-height: 1.6; color: #222; }
+    a { color: #0066cc; }
+    .back { margin-bottom: 2rem; }
+    article img { max-width: 100%; }
+    time { color: #666; }
+    h1 { margin-bottom: 0.25rem; }
+    pre { background: #f5f5f5; padding: 1rem; overflow-x: auto; border-radius: 4px; }
+    code { font-family: 'JetBrains Mono', monospace; font-size: 0.9em; }
+    blockquote { border-left: 3px solid #ddd; margin-left: 0; padding-left: 1rem; color: #555; }
+    table { border-collapse: collapse; width: 100%; }
+    th, td { border: 1px solid #ddd; padding: 0.5rem; text-align: left; }
+    th { background: #f5f5f5; }
+  </style>
+</head>
+<body>
+  <noscript>
+    <nav class="back"><a href="/">&larr; straus.it</a></nav>
+    <article>
+      <h1>SettingsSentry - Never Lose Your macOS Settings Again</h1>
+      <time datetime="2025-08-15">August 15, 2025</time>
+<h1>SettingsSentry - Never Lose Your macOS Settings Again</h1>
+<p>If you&#39;ve ever reinstalled macOS or migrated to a new Mac, you know the pain: hours spent reconfiguring apps, losing custom settings, trying to remember how you had things set up.</p>
+<p>I built <a href="https://github.com/sstraus/SettingsSentry">SettingsSentry</a> to solve this.</p>
+<h2>The Problem with Existing Tools</h2>
+<p>Mackup was the go-to solution for years, but it has issues:</p>
+<ul>
+<li><strong>Symlink risks</strong> - Can overwrite settings unexpectedly</li>
+<li><strong>macOS Sonoma compatibility</strong> - Breaks with recent macOS versions</li>
+<li><strong>No versioning</strong> - One backup, no history</li>
+</ul>
+<h2>What SettingsSentry Does Different</h2>
+<p>SettingsSentry takes a simpler, safer approach:</p>
+<ul>
+<li><strong>Copy, don&#39;t symlink</strong> - Your original files stay untouched</li>
+<li><strong>Versioned backups</strong> - Timestamped directories (YYYYMMDD-HHMMSS)</li>
+<li><strong>Dry-run mode</strong> - Preview before executing</li>
+<li><strong>Encryption</strong> - AES-256-GCM for sensitive configs</li>
+<li><strong>iCloud integration</strong> - Backups sync automatically</li>
+</ul>
+<h2>How It Works</h2>
+<p>Define what to back up in simple <code>.cfg</code> files:</p>
+<pre><code class="language-ini">[Settings]
+name = VSCode
+files = ${HOME}/Library/Application Support/Code/User/settings.json
+        ${HOME}/Library/Application Support/Code/User/keybindings.json
+</code></pre>
+<p>Then run:</p>
+<pre><code class="language-bash"># Backup
+settingssentry backup
+
+# Restore on new machine
+settingssentry restore
+
+# Preview first
+settingssentry backup --dry-run
+</code></pre>
+<h2>My Use Case</h2>
+<p>I run it automatically at reboot via cron. Every time my Mac restarts, my settings are backed up to iCloud. When I got a new MacBook, restoration took 5 minutes instead of 5 hours.</p>
+<h2>Key Features</h2>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Benefit</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Versioned backups</td>
+<td>Roll back to any point</td>
+</tr>
+<tr>
+<td>Encryption</td>
+<td>Safe for sensitive configs</td>
+</tr>
+<tr>
+<td>Environment variables</td>
+<td><code>${HOME}</code>, <code>${APP_NAME}</code> expansion</td>
+</tr>
+<tr>
+<td>Pre/post commands</td>
+<td>Run scripts before/after operations</td>
+</tr>
+<tr>
+<td>ZIP archives</td>
+<td>Compressed, portable backups</td>
+</tr>
+</tbody></table>
+<h2>Get Started</h2>
+<pre><code class="language-bash">git clone https://github.com/sstraus/SettingsSentry
+cd SettingsSentry
+./settingssentry backup
+</code></pre>
+<p>Check the <a href="https://github.com/sstraus/SettingsSentry">GitHub repo</a> for full documentation and example configs.</p>
+
+    </article>
+    <nav><a href="/">&larr; Back to straus.it</a></nav>
+  </noscript>
+</body>
+</html>

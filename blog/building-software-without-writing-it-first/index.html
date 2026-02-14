@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Building Software Without Writing It First | Stefano Straus</title>
+  <meta name="description" content="Twelve Months Inside AI-Driven Development">
+  <meta name="author" content="Stefano Straus">
+  <link rel="canonical" href="https://straus.it/blog/building-software-without-writing-it-first/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Building Software Without Writing It First">
+  <meta property="og:description" content="Twelve Months Inside AI-Driven Development">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://straus.it/blog/building-software-without-writing-it-first/">
+  <meta property="og:image" content="https://straus.it/img/profile.jpg">
+  <meta property="og:site_name" content="Stefano Straus">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@StefanoStraus">
+  <meta name="twitter:title" content="Building Software Without Writing It First">
+  <meta name="twitter:description" content="Twelve Months Inside AI-Driven Development">
+  <meta name="twitter:image" content="https://straus.it/img/profile.jpg">
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Building Software Without Writing It First",
+  "description": "Twelve Months Inside AI-Driven Development",
+  "author": {
+    "@type": "Person",
+    "name": "Stefano Straus",
+    "url": "https://straus.it"
+  },
+  "datePublished": "2026-01-01",
+  "dateModified": "2026-01-01",
+  "publisher": {
+    "@type": "Person",
+    "name": "Stefano Straus"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://straus.it/blog/building-software-without-writing-it-first/"
+  },
+  "keywords": "ai, development, llm, vibe-coding"
+}
+  </script>
+
+  <!-- Redirect JS users to terminal view -->
+  <script>window.location.replace('/#read/building-software-without-writing-it-first');</script>
+
+  <style>
+    body { font-family: system-ui, -apple-system, sans-serif; max-width: 720px; margin: 2rem auto; padding: 0 1rem; line-height: 1.6; color: #222; }
+    a { color: #0066cc; }
+    .back { margin-bottom: 2rem; }
+    article img { max-width: 100%; }
+    time { color: #666; }
+    h1 { margin-bottom: 0.25rem; }
+    pre { background: #f5f5f5; padding: 1rem; overflow-x: auto; border-radius: 4px; }
+    code { font-family: 'JetBrains Mono', monospace; font-size: 0.9em; }
+    blockquote { border-left: 3px solid #ddd; margin-left: 0; padding-left: 1rem; color: #555; }
+    table { border-collapse: collapse; width: 100%; }
+    th, td { border: 1px solid #ddd; padding: 0.5rem; text-align: left; }
+    th { background: #f5f5f5; }
+  </style>
+</head>
+<body>
+  <noscript>
+    <nav class="back"><a href="/">&larr; straus.it</a></nav>
+    <article>
+      <h1>Building Software Without Writing It First</h1>
+      <time datetime="2026-01-01">January 1, 2026</time>
+<h1>Building Software Without Writing It First</h1>
+<p><strong>Twelve Months Inside AI-Driven Development</strong></p>
+<p>Over the past year, I have been building software without following a traditional code-first development path. Not by abandoning programming, but by shifting focus from writing code to observing and shaping systems as they are being built.</p>
+<p>This is not about replacing programming skills, but about changing where leverage comes from.</p>
+<h2>The Beginning</h2>
+<p>With the rise of modern large language models, I immediately saw the potential and started exploring what is often referred to as <em>vibe coding</em>.</p>
+<p>This space is evolving rapidly. Initially, it was primarily helpful in analyzing or refining small scripts and workflows. Today, it is mature enough to support significantly more complex systems.</p>
+<h2>How I Work Now</h2>
+<p>I now work almost entirely from the terminal. Every project starts from a concrete need, not from an academic exercise. I spin something up, grow it quickly, test it, and inevitably break it. Real learning happens precisely when something stops working. Errors reveal what I do not yet fully understand, not what I am incapable of doing.</p>
+<p>I no longer write most code by hand. Instead, I work through a large number of prompts of varying complexity, switching between models such as Sonnet and Opus depending on the task and cost constraints.</p>
+<p>The goal is not syntax, but understanding how pieces fit together:</p>
+<ul>
+<li>Data flows</li>
+<li>Dependencies</li>
+<li>Failure points</li>
+<li>Implicit conventions</li>
+</ul>
+<p>Carefully reading the generated output is often more educational than writing code manually. Over time, patterns emerge, become reusable, and differ meaningfully depending on the model in use.</p>
+<h2>Tools and Models</h2>
+<p>Anthropic is the leader here—very expensive but absolutely the way to go for reliable results. But keep an eye on the evolution of models and tools. I changed many times in the last year because every week we have a discovery, a new MCP, or a new IDE that performs way better than the others. Now I&#39;m with Claude Code, but tomorrow who knows?</p>
+<h2>What I&#39;ve Built</h2>
+<p>During this period, I have built a wide range of things:
+Personal tools, Small internal products, Analytical systems, Automations, Interfaces, Prototypes to a full application layer that one of my teams is now adapting for production readiness</p>
+<p>Some of these projects reached production. Others were abandoned without hesitation. <strong>Fast discard is part of the process.</strong> The value is not the artifact itself, but the understanding accumulated along the way.</p>
+<h2>The Method</h2>
+<p>The method is consistent:</p>
+<ol>
+<li>Start with a vague idea</li>
+<li>Clarify it by asking questions</li>
+<li>Define what must exist and what must not</li>
+<li>Let the system take shape</li>
+<li>Intervene only to correct direction, not to micromanage</li>
+<li>Force the LLM to test, observe, and iterate</li>
+</ol>
+<p>Each project improves the next. Successes are recorded and documented as they happen. In practice, the LLM handles most of this automatically, making the process fast and low-friction.</p>
+<h2>What Matters Most</h2>
+<p>Over time, it became clear that <strong>discipline matters more than raw technical skill</strong>. Essential elements include:</p>
+<ul>
+<li>Repeatable rules</li>
+<li>Clear conventions</li>
+<li>Automated tests</li>
+<li>Configurations that persist across projects</li>
+</ul>
+<p>Not to follow best practices dogmatically, but to avoid repeating the same avoidable mistakes.</p>
+<p>This approach enables work from anywhere. The boundary between writing code and using software becomes increasingly blurred. The system responds, adapts, and is guided. I focus on outcomes, not on syntax.</p>
+<h2>A New Abstraction Layer</h2>
+<p>Rather than learning a new language, I am learning a new abstraction layer.</p>
+<p>In the past, this was no-code: visual tools connected together with minimal code to glue logic. Today, it is interaction with systems capable of building other systems. The core skill is not memorizing rules, but:</p>
+<ul>
+<li>Framing problems</li>
+<li>Providing context</li>
+<li>Recognizing sound solutions</li>
+</ul>
+<p>I moved from small projects with a few hundred lines of code (translators, productivity tools) to a multi-backend data abstraction layer spanning an aggregate of <strong>more than four million lines of code</strong> (tests included).</p>
+<h2>Continuous Learning</h2>
+<p>Following how the community of engineers working with LLMs evolves accelerates everything. Reddit, Discord, and X are my sources of knowledge, and I spend at least one hour a day to keep up the pace.</p>
+<p>Studying open source software, taking it apart, adapting it—this challenges the assumption that complex architectures are always necessary. <strong>Simplicity works more often than expected.</strong> (KISS is my opening prompt every time)</p>
+<p>In many cases, solutions proposed by LLMs exceed what I have learned over decades of experience. New patterns, approaches I would not have considered, or would not have explored due to time constraints. Entire stacks assembled in hours instead of weeks. Not perfect, but already beyond what all my teams could realistically produce in the same timeframe.</p>
+<h2>Language Agnostic</h2>
+<p>The choice of programming language is no longer a limiting factor.</p>
+<p>Initially, I tried to stay within languages I knew well: C#, TypeScript, and Python. Eventually, it became clear that the language should serve the goal, not my prior familiarity.</p>
+<p>You do not need to master every nuance of a language, but you do need to understand how systems evolve and which patterns tend to fail. From there, selecting the right language for the product matters more. This is how I transitioned to Go and Rust, reaching strong productivity within weeks of focused practice.</p>
+<h2>Embracing Errors</h2>
+<p>I am not building large-scale, mission-critical infrastructure. Errors are acceptable and often necessary. Each bug exposes a boundary of understanding and suggests how to avoid it next time. Even seemingly trivial concepts only become obvious when you collide with a real constraint.</p>
+<p>The key is being explicit about style and expectations—not only in terms of results, but also in how those results should be achieved.</p>
+<h2>Practical Strategies</h2>
+<p>This way of working is fundamentally different from traditional programming education. It does not start from abstract exercises, but from real systems. Anyone already familiar with architectures, workflows, and products will find immediate leverage.</p>
+<p>Key practices:</p>
+<ul>
+<li><strong>Continuous testing</strong> – Test-driven development is critical for long-term sustainability</li>
+<li><strong>Logging everywhere</strong> – The primary way an LLM can observe application behavior and apply corrective actions</li>
+<li><strong>Start monolithic</strong> – A monolithic architecture that can be decomposed later often works best</li>
+<li><strong>Hexagonal architecture</strong> – This was a major turning point for me</li>
+</ul>
+<p>Once you establish your own working framework, no software feels unreachable. You can prompt it, test it, break it, and understand it. Naive questions are not a weakness. They are the engine of progress when there is no external judgment.</p>
+<h2>What This Is</h2>
+<p>This is not improvisation, and it is not classical programming either. It is a new form of technical competence that does not yet have a precise name. It does not require perfection, only curiosity and tolerance for failure.</p>
+<p>The process feels closer to play than to formal study. Rapid exploration, low cost, constant experimentation. Ideas do not need to be good to be useful. They only need to exist long enough to teach something.</p>
+<p>Learning, in this context, means building beyond your current capability and accepting failure before trying again. You just need to pick a system, use it seriously, and stop searching for the perfect one.</p>
+<h2>Conclusion</h2>
+<p>In the end, what matters is reducing friction between an idea and its realization. Everything else is noise.</p>
+<p><strong>Plan, fail, understand, repeat.</strong></p>
+<p>That is how I am relearning how to work with code.</p>
+<p><em>Originally published on <a href="https://medium.com/@stefanostraus/building-software-without-writing-it-first-59cf6c71337b">Medium</a>.</em></p>
+
+    </article>
+    <nav><a href="/">&larr; Back to straus.it</a></nav>
+  </noscript>
+</body>
+</html>

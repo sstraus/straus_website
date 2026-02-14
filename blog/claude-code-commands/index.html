@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Custom Slash Commands for Claude Code | Stefano Straus</title>
+  <meta name="description" content="Building productivity workflows with custom slash commands">
+  <meta name="author" content="Stefano Straus">
+  <link rel="canonical" href="https://straus.it/blog/claude-code-commands/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Custom Slash Commands for Claude Code">
+  <meta property="og:description" content="Building productivity workflows with custom slash commands">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://straus.it/blog/claude-code-commands/">
+  <meta property="og:image" content="https://straus.it/img/profile.jpg">
+  <meta property="og:site_name" content="Stefano Straus">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@StefanoStraus">
+  <meta name="twitter:title" content="Custom Slash Commands for Claude Code">
+  <meta name="twitter:description" content="Building productivity workflows with custom slash commands">
+  <meta name="twitter:image" content="https://straus.it/img/profile.jpg">
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Custom Slash Commands for Claude Code",
+  "description": "Building productivity workflows with custom slash commands",
+  "author": {
+    "@type": "Person",
+    "name": "Stefano Straus",
+    "url": "https://straus.it"
+  },
+  "datePublished": "2025-10-11",
+  "dateModified": "2025-10-11",
+  "publisher": {
+    "@type": "Person",
+    "name": "Stefano Straus"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://straus.it/blog/claude-code-commands/"
+  },
+  "keywords": "ai, claude-code, productivity, automation"
+}
+  </script>
+
+  <!-- Redirect JS users to terminal view -->
+  <script>window.location.replace('/#read/claude-code-commands');</script>
+
+  <style>
+    body { font-family: system-ui, -apple-system, sans-serif; max-width: 720px; margin: 2rem auto; padding: 0 1rem; line-height: 1.6; color: #222; }
+    a { color: #0066cc; }
+    .back { margin-bottom: 2rem; }
+    article img { max-width: 100%; }
+    time { color: #666; }
+    h1 { margin-bottom: 0.25rem; }
+    pre { background: #f5f5f5; padding: 1rem; overflow-x: auto; border-radius: 4px; }
+    code { font-family: 'JetBrains Mono', monospace; font-size: 0.9em; }
+    blockquote { border-left: 3px solid #ddd; margin-left: 0; padding-left: 1rem; color: #555; }
+    table { border-collapse: collapse; width: 100%; }
+    th, td { border: 1px solid #ddd; padding: 0.5rem; text-align: left; }
+    th { background: #f5f5f5; }
+  </style>
+</head>
+<body>
+  <noscript>
+    <nav class="back"><a href="/">&larr; straus.it</a></nav>
+    <article>
+      <h1>Custom Slash Commands for Claude Code</h1>
+      <time datetime="2025-10-11">October 11, 2025</time>
+<h1>Custom Slash Commands for Claude Code</h1>
+<p>Slash commands are one of Claude Code&#39;s most powerful features. They let you define reusable prompts that execute with a single <code>/command</code>.</p>
+<h2>Where Commands Live</h2>
+<p>Commands are markdown files in <code>~/.claude/commands/</code>. Each file becomes a slash command:</p>
+<pre><code>~/.claude/commands/
+├── fix.md           → /fix
+├── prime.md         → /prime
+├── commit-and-push.md → /commit-and-push
+├── code-review.md   → /code-review
+├── coverage.md      → /coverage
+├── ultrathink.md    → /ultrathink
+└── build-planning.md → /build-planning
+</code></pre>
+<h2>My Command Collection</h2>
+<h3>/fix — Debug Loop</h3>
+<p>The simplest but most used command:</p>
+<pre><code class="language-markdown">READ the output from the terminal command to understand the error.
+THEN FIX the error. Use context7 and brave-search MCPs to understand it.
+THEN re-run the command. If there&#39;s another error, repeat.
+</code></pre>
+<p><strong>Usage</strong>: Run a command, see an error, type <code>/fix</code>. Claude reads the terminal, understands the error, fixes it, and re-runs. Repeat until it works.</p>
+<h3>/prime — Project Understanding</h3>
+<p>When starting a new session:</p>
+<pre><code class="language-markdown">## 1. Project Overview
+- READ the README.md file
+- RUN `git ls-files` to understand structure
+- EXAMINE directory patterns
+
+## 2. Core Documentation
+- READ PLANNING.md for architecture
+- READ TASKS.md for current status
+
+## 3. Testing &amp; Quality
+- EXAMINE test files for patterns
+
+## 4. Development Workflow
+- CHECK CI/CD pipelines
+- CHECK dev environment setup
+</code></pre>
+<p><strong>Usage</strong>: Start every session with <code>/prime</code>. Claude builds a mental model of the project before doing anything.</p>
+<h3>/commit-and-push — Smart Git Workflow</h3>
+<p>More than just <code>git commit</code>:</p>
+<pre><code class="language-markdown">ADD all modified and new files to git.
+- Review the diff for problems and bugs
+- Check if completed tasks in TASKS.md are actually done
+- Check if tests are proper (not placeholders)
+- Report if functionality was removed
+- Raise concerns/recommendations
+THEN commit with conventional commit notation.
+THEN push to origin.
+</code></pre>
+<p><strong>Usage</strong>: When you&#39;re ready to commit, <code>/commit-and-push</code> does a mini code review first.</p>
+<h3>/code-review — Full Codebase Analysis</h3>
+<p>Comprehensive review with prioritized findings:</p>
+<pre><code class="language-markdown">Analyze the codebase for:
+- 🔴 Critical: Security vulnerabilities, breaking bugs
+- 🟠 High: Code quality issues, architectural problems
+- 🟡 Medium: Minor bugs, missing tests
+- 🟢 Low: Documentation, minor optimizations
+
+Update TASKS.md with actionable items.
+</code></pre>
+<p><strong>Usage</strong>: Run <code>/code-review</code> periodically or before major releases.</p>
+<h3>/coverage — Test Gap Filler</h3>
+<pre><code class="language-markdown">UNDERSTAND code coverage percentages for each function.
+THEN add unit tests to functions without 100% coverage.
+Include negative and edge cases.
+ALWAYS use mocks for external functionality.
+THEN re-run coverage and repeat as necessary.
+</code></pre>
+<p><strong>Usage</strong>: After implementing a feature, <code>/coverage</code> fills in missing tests.</p>
+<h3>/build-planning — Project Bootstrap</h3>
+<p>Creates structured documentation for new projects:</p>
+<pre><code class="language-markdown">Build PLANNING.md with:
+- Project Overview
+- Architecture (Core components, Data Model)
+- API endpoints
+- Technology stack
+- Testing strategy
+- Development commands
+- Security considerations
+- Future considerations
+
+Build TASKS.md with categorized tasks.
+</code></pre>
+<p><strong>Usage</strong>: Start new projects with <code>/build-planning</code> to establish structure.</p>
+<h3>/ultrathink — Craftsman Mode</h3>
+<p>My favorite. Changes Claude&#39;s entire approach:</p>
+<pre><code class="language-markdown">**ultrathink** - We&#39;re not here to write code.
+We&#39;re here to make a dent in the universe.
+
+1. **Think Different** - Question every assumption
+2. **Obsess Over Details** - Read the codebase like a masterpiece
+3. **Plan Like Da Vinci** - Sketch architecture before coding
+4. **Craft, Don&#39;t Code** - Every function name should sing
+5. **Iterate Relentlessly** - First version is never good enough
+6. **Simplify Ruthlessly** - Remove complexity without losing power
+</code></pre>
+<p><strong>Usage</strong>: When you need exceptional quality, not just working code.</p>
+<h3>/docs-consolidate — Documentation Cleanup</h3>
+<pre><code class="language-markdown">Consolidates all markdown files into a clean docs folder.
+- Identify meaningful documentation vs temporary notes
+- Move relevant files to docs/ structure
+- Remove redundant files and completed status updates
+- Protect README.md and schema files
+</code></pre>
+<p><strong>Usage</strong>: After a sprint, clean up scattered documentation.</p>
+<h2>Creating Your Own Commands</h2>
+<h3>Basic Structure</h3>
+<pre><code class="language-markdown">---
+description: Short description shown in /help
+---
+
+Your prompt instructions here.
+Use imperative verbs: READ, WRITE, ANALYZE, FIX.
+Reference tools: context7, bash, git.
+</code></pre>
+<h3>Tips for Good Commands</h3>
+<ol>
+<li><strong>Be specific</strong> - &quot;READ the error&quot; not &quot;understand what happened&quot;</li>
+<li><strong>Chain actions</strong> - &quot;THEN&quot; connects sequential steps</li>
+<li><strong>Loop when needed</strong> - &quot;repeat this process&quot; for iterative tasks</li>
+<li><strong>Reference tools</strong> - Mention MCPs and capabilities explicitly</li>
+<li><strong>Set expectations</strong> - Tell Claude what output you want</li>
+</ol>
+<h3>Example: Custom Deploy Command</h3>
+<pre><code class="language-markdown">---
+description: Deploy to production with safety checks
+---
+
+1. RUN `make test` - all tests must pass
+2. RUN `make build` - verify build succeeds
+3. CHECK git status - no uncommitted changes
+4. READ CHANGELOG.md - verify version bump
+5. RUN `make deploy`
+6. VERIFY deployment by checking health endpoint
+7. Report success or rollback instructions
+</code></pre>
+<h2>Project-Specific Commands</h2>
+<p>Commands can also live in <code>.claude/commands/</code> within a project:</p>
+<pre><code>my-project/
+└── .claude/
+    └── commands/
+        └── db-migrate.md    → /db-migrate (project only)
+</code></pre>
+<p>These override global commands and can reference project-specific tools.</p>
+<h2>The Power of Commands</h2>
+<p>Commands transform Claude Code from a chatbot into a <strong>workflow automation tool</strong>. Instead of explaining what you want every time, you define it once and invoke it with a word.</p>
+<p>The best commands encode your team&#39;s best practices. They ensure consistency, reduce errors, and let you focus on the actual problem instead of the process.</p>
+<p>Start with <code>/fix</code> and <code>/prime</code>. Add more as patterns emerge.</p>
+
+    </article>
+    <nav><a href="/">&larr; Back to straus.it</a></nav>
+  </noscript>
+</body>
+</html>

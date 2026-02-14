@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ralph Wiggum - Autonomous Loops for Claude Code | Stefano Straus</title>
+  <meta name="description" content="The bash loop technique that took over AI development">
+  <meta name="author" content="Stefano Straus">
+  <link rel="canonical" href="https://straus.it/blog/ralph-wiggum-autonomous-loops/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Ralph Wiggum - Autonomous Loops for Claude Code">
+  <meta property="og:description" content="The bash loop technique that took over AI development">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://straus.it/blog/ralph-wiggum-autonomous-loops/">
+  <meta property="og:image" content="https://straus.it/img/profile.jpg">
+  <meta property="og:site_name" content="Stefano Straus">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@StefanoStraus">
+  <meta name="twitter:title" content="Ralph Wiggum - Autonomous Loops for Claude Code">
+  <meta name="twitter:description" content="The bash loop technique that took over AI development">
+  <meta name="twitter:image" content="https://straus.it/img/profile.jpg">
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Ralph Wiggum - Autonomous Loops for Claude Code",
+  "description": "The bash loop technique that took over AI development",
+  "author": {
+    "@type": "Person",
+    "name": "Stefano Straus",
+    "url": "https://straus.it"
+  },
+  "datePublished": "2026-01-09",
+  "dateModified": "2026-01-09",
+  "publisher": {
+    "@type": "Person",
+    "name": "Stefano Straus"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://straus.it/blog/ralph-wiggum-autonomous-loops/"
+  },
+  "keywords": "ai, claude-code, ralph-wiggum, automation, development"
+}
+  </script>
+
+  <!-- Redirect JS users to terminal view -->
+  <script>window.location.replace('/#read/ralph-wiggum-autonomous-loops');</script>
+
+  <style>
+    body { font-family: system-ui, -apple-system, sans-serif; max-width: 720px; margin: 2rem auto; padding: 0 1rem; line-height: 1.6; color: #222; }
+    a { color: #0066cc; }
+    .back { margin-bottom: 2rem; }
+    article img { max-width: 100%; }
+    time { color: #666; }
+    h1 { margin-bottom: 0.25rem; }
+    pre { background: #f5f5f5; padding: 1rem; overflow-x: auto; border-radius: 4px; }
+    code { font-family: 'JetBrains Mono', monospace; font-size: 0.9em; }
+    blockquote { border-left: 3px solid #ddd; margin-left: 0; padding-left: 1rem; color: #555; }
+    table { border-collapse: collapse; width: 100%; }
+    th, td { border: 1px solid #ddd; padding: 0.5rem; text-align: left; }
+    th { background: #f5f5f5; }
+  </style>
+</head>
+<body>
+  <noscript>
+    <nav class="back"><a href="/">&larr; straus.it</a></nav>
+    <article>
+      <h1>Ralph Wiggum - Autonomous Loops for Claude Code</h1>
+      <time datetime="2026-01-09">January 9, 2026</time>
+<h1>Ralph Wiggum: Autonomous Loops for Claude Code</h1>
+<p>The idea isn&#39;t new. Developers have been wrapping AI agents in while loops since GPT-4. Feed a prompt, check the output, repeat until done. Simple.</p>
+<p>But when Claude Code shipped with an official Ralph Wiggum plugin, the technique exploded. Suddenly everyone was running autonomous loops. Blog posts everywhere. Hackathon teams shipping overnight. The Simpsons meme took over AI Twitter.</p>
+<p>What changed? Claude Code made it easy. No more duct-taping scripts together. One command and you&#39;re looping.</p>
+<h2>What It Actually Is</h2>
+<p>Ralph Wiggum is a bash loop. That&#39;s it.</p>
+<p>You give Claude Code a task. It works on it. When it tries to exit, a hook blocks the exit and feeds the same prompt back in. The files it changed are still there. Each iteration builds on the last.</p>
+<p>Named after the Simpsons character, it embodies a simple philosophy: keep trying until it works.</p>
+<h2>Why It Works</h2>
+<p>The key insight: each iteration isn&#39;t starting fresh.</p>
+<p>Claude sees what it built in the last round. It reviews its own code. Notices what&#39;s broken. Fixes it. The loop creates a self-correcting feedback system.</p>
+<p>This is different from running the same prompt multiple times. The context accumulates. Errors get fixed. Tests start passing. The code improves with each round.</p>
+<h2>How to Use It</h2>
+<p>The official Claude Code plugin makes this easy:</p>
+<pre><code class="language-bash">/ralph-loop &quot;Implement feature X&quot; --max-iterations 20
+</code></pre>
+<p>Always set a max iteration limit. This is your safety net. Without it, you&#39;ll burn through tokens or hit rate limits.</p>
+<p>The loop will:</p>
+<ol>
+<li>Run your prompt</li>
+<li>Let Claude work until it thinks it&#39;s done</li>
+<li>Block the exit</li>
+<li>Feed the prompt back in</li>
+<li>Repeat until max iterations or success</li>
+</ol>
+<h2>When to Use It</h2>
+<p>Ralph shines for batch operations:</p>
+<ul>
+<li><strong>Large refactors</strong> across many files</li>
+<li><strong>Test coverage</strong> improvements</li>
+<li><strong>Documentation</strong> generation</li>
+<li><strong>Bug fixing</strong> with clear reproduction steps</li>
+<li><strong>Migration</strong> tasks</li>
+</ul>
+<p>The pattern works because these tasks have clear success criteria. Tests pass or they don&#39;t. The refactor compiles or it doesn&#39;t. Claude can measure its own progress.</p>
+<h2>When Not to Use It</h2>
+<p>Don&#39;t use Ralph for:</p>
+<ul>
+<li>Exploratory work where requirements are unclear</li>
+<li>Tasks that need human judgment at each step</li>
+<li>Anything involving external APIs with rate limits</li>
+<li>Work where &quot;good enough&quot; is subjective</li>
+</ul>
+<p>The loop assumes there&#39;s a measurable finish line. If you can&#39;t define done, Ralph can&#39;t help.</p>
+<h2>Cost Reality</h2>
+<p>Autonomous loops burn tokens. A 50-iteration loop on a large codebase can cost $50-100+ in API credits. On a Claude Code subscription, you&#39;ll hit usage limits faster.</p>
+<p>Start small. Test your prompt on a limited scope. Once it works, scale up.</p>
+<h2>The Setup</h2>
+<p>If you want to build your own Ralph loop instead of using the plugin:</p>
+<pre><code class="language-bash">while true; do
+  claude &quot;Your task prompt here&quot; # choose any tool
+  # Add exit conditions as needed
+done
+</code></pre>
+<p>The plugin adds safety features: iteration limits, exit detection, better logging. But the core idea is just a while loop.</p>
+<h2>Real Results</h2>
+<p>Geoffrey Huntley, who created the technique, ran a 3-month loop that built a complete programming language.</p>
+<p>YC hackathon teams shipped 6+ repos overnight for $297 in API costs.</p>
+<p>The technique works. Not because it&#39;s clever, but because persistence beats perfection.</p>
+<h2>My Take</h2>
+<p>Ralph Wiggum changed how I approach tedious tasks. Things I used to avoid because they were boring and repetitive are now &quot;set up the loop and check back in an hour&quot; problems.</p>
+<p>The mental shift matters. You stop trying to write the perfect prompt. Instead, you write a good-enough prompt and let iteration handle the rest.</p>
+<p>Don&#39;t aim for perfect on the first try. Let the loop refine the work.</p>
+
+    </article>
+    <nav><a href="/">&larr; Back to straus.it</a></nav>
+  </noscript>
+</body>
+</html>

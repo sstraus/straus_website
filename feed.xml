@@ -17,8 +17,8 @@
 
     <item>
       <title>MiniMax, Kimi, and the End of the US-Only AI Narrative</title>
-      <link>https://straus.it/#read/minimax-kimi-multipolar-ai</link>
-      <guid isPermaLink="true">https://straus.it/#read/minimax-kimi-multipolar-ai</guid>
+      <link>https://straus.it/blog/minimax-kimi-multipolar-ai/</link>
+      <guid isPermaLink="true">https://straus.it/blog/minimax-kimi-multipolar-ai/</guid>
       <pubDate>Fri, 13 Feb 2026 00:00:00 +0000</pubDate>
       <description>On the benchmarks that matter for AI-driven software systems, Chinese models are no longer trailing. Model selection is now a workload decision.</description>
       <content:encoded><![CDATA[<h1>MiniMax, Kimi, and the End of the US-Only AI Narrative</h1>
@@ -156,8 +156,8 @@
 
     <item>
       <title>The SaaSpocalypse Is a Clarification, Not a Collapse</title>
-      <link>https://straus.it/#read/saaspocalypse-thin-application-layer</link>
-      <guid isPermaLink="true">https://straus.it/#read/saaspocalypse-thin-application-layer</guid>
+      <link>https://straus.it/blog/saaspocalypse-thin-application-layer/</link>
+      <guid isPermaLink="true">https://straus.it/blog/saaspocalypse-thin-application-layer/</guid>
       <pubDate>Wed, 04 Feb 2026 00:00:00 +0000</pubDate>
       <description>What the market panic over Anthropic&apos;s releases reveals about where defensibility actually lives</description>
       <content:encoded><![CDATA[<p>The so-called SaaSpocalypse is not about AI replacing software. It&#39;s about discovering how thin the application layer really is.</p>
@@ -185,8 +185,8 @@
 
     <item>
       <title>The Noise Problem Nobody Talks About</title>
-      <link>https://straus.it/#read/keyboards-survive-voice-computing</link>
-      <guid isPermaLink="true">https://straus.it/#read/keyboards-survive-voice-computing</guid>
+      <link>https://straus.it/blog/keyboards-survive-voice-computing/</link>
+      <guid isPermaLink="true">https://straus.it/blog/keyboards-survive-voice-computing/</guid>
       <pubDate>Thu, 29 Jan 2026 00:00:00 +0000</pubDate>
       <description>Christian Klein predicts keyboards will disappear in three years. The constraint is social, not technical.</description>
       <content:encoded><![CDATA[<h1>The Noise Problem Nobody Talks About</h1>
@@ -208,8 +208,8 @@
 
     <item>
       <title>The Junior Developer Problem</title>
-      <link>https://straus.it/#read/the-junior-developer-problem</link>
-      <guid isPermaLink="true">https://straus.it/#read/the-junior-developer-problem</guid>
+      <link>https://straus.it/blog/the-junior-developer-problem/</link>
+      <guid isPermaLink="true">https://straus.it/blog/the-junior-developer-problem/</guid>
       <pubDate>Sun, 25 Jan 2026 00:00:00 +0000</pubDate>
       <description>Why investing in junior developers no longer makes sense for many companies, and what newcomers must do to survive</description>
       <content:encoded><![CDATA[<h1>The Junior Developer Problem</h1>
@@ -239,8 +239,8 @@
 
     <item>
       <title>Interpreting 2025 Tech Layoffs Without the Hype</title>
-      <link>https://straus.it/#read/interpreting-2025-tech-layoffs</link>
-      <guid isPermaLink="true">https://straus.it/#read/interpreting-2025-tech-layoffs</guid>
+      <link>https://straus.it/blog/interpreting-2025-tech-layoffs/</link>
+      <guid isPermaLink="true">https://straus.it/blog/interpreting-2025-tech-layoffs/</guid>
       <pubDate>Sun, 18 Jan 2026 00:00:00 +0000</pubDate>
       <description>What the data actually shows when you check the numbers behind the narrative</description>
       <content:encoded><![CDATA[<h1>Interpreting 2025 Tech Layoffs Without the Hype</h1>
@@ -272,8 +272,8 @@
 
     <item>
       <title>What n8n Actually Teaches You About Automation</title>
-      <link>https://straus.it/#read/what-n8n-teaches-about-automation</link>
-      <guid isPermaLink="true">https://straus.it/#read/what-n8n-teaches-about-automation</guid>
+      <link>https://straus.it/blog/what-n8n-teaches-about-automation/</link>
+      <guid isPermaLink="true">https://straus.it/blog/what-n8n-teaches-about-automation/</guid>
       <pubDate>Sat, 17 Jan 2026 00:00:00 +0000</pubDate>
       <description>The constraints and disciplines that separate automation systems that survive from those that collapse</description>
       <content:encoded><![CDATA[<h1>What <strong>n8n</strong> Actually Teaches You About Automation</h1>
@@ -331,8 +331,8 @@
 
     <item>
       <title>From Code to Intent - Why Software Development Is Changing Its Core Model</title>
-      <link>https://straus.it/#read/from-code-to-intent</link>
-      <guid isPermaLink="true">https://straus.it/#read/from-code-to-intent</guid>
+      <link>https://straus.it/blog/from-code-to-intent/</link>
+      <guid isPermaLink="true">https://straus.it/blog/from-code-to-intent/</guid>
       <pubDate>Fri, 16 Jan 2026 00:00:00 +0000</pubDate>
       <description>The shift from instruction-based programming to intent-based systems and what it means for developers</description>
       <content:encoded><![CDATA[<h1>From Code to Intent: Why Software Development Is Changing Its Core Model</h1>
@@ -382,8 +382,8 @@
 
     <item>
       <title>The Option+P Trap: Why Claude Code&apos;s Model Switcher Doesn&apos;t Work on macOS</title>
-      <link>https://straus.it/#read/option-key-model-switcher</link>
-      <guid isPermaLink="true">https://straus.it/#read/option-key-model-switcher</guid>
+      <link>https://straus.it/blog/option-key-model-switcher/</link>
+      <guid isPermaLink="true">https://straus.it/blog/option-key-model-switcher/</guid>
       <pubDate>Thu, 15 Jan 2026 00:00:00 +0000</pubDate>
       <description>Why Option+P produces π instead of switching models and how to fix it</description>
       <content:encoded><![CDATA[<h1>The Option+P Trap: Why Claude Code&#39;s Model Switcher Doesn&#39;t Work on macOS</h1>
@@ -427,8 +427,8 @@ Add to <code>~/.config/ghostty/config</code>:</p>
 
     <item>
       <title>8 Ways to Vibe-Code Better with Claude Code</title>
-      <link>https://straus.it/#read/vibe-code-better-with-claude-code</link>
-      <guid isPermaLink="true">https://straus.it/#read/vibe-code-better-with-claude-code</guid>
+      <link>https://straus.it/blog/vibe-code-better-with-claude-code/</link>
+      <guid isPermaLink="true">https://straus.it/blog/vibe-code-better-with-claude-code/</guid>
       <pubDate>Sat, 10 Jan 2026 00:00:00 +0000</pubDate>
       <description>The system around the prompt matters more than the prompt itself</description>
       <content:encoded><![CDATA[<h1>8 Ways to Vibe-Code Better with Claude Code</h1>
@@ -528,8 +528,8 @@ Add to <code>~/.config/ghostty/config</code>:</p>
 
     <item>
       <title>Ralph Wiggum - Autonomous Loops for Claude Code</title>
-      <link>https://straus.it/#read/ralph-wiggum-autonomous-loops</link>
-      <guid isPermaLink="true">https://straus.it/#read/ralph-wiggum-autonomous-loops</guid>
+      <link>https://straus.it/blog/ralph-wiggum-autonomous-loops/</link>
+      <guid isPermaLink="true">https://straus.it/blog/ralph-wiggum-autonomous-loops/</guid>
       <pubDate>Fri, 09 Jan 2026 00:00:00 +0000</pubDate>
       <description>The bash loop technique that took over AI development</description>
       <content:encoded><![CDATA[<h1>Ralph Wiggum: Autonomous Loops for Claude Code</h1>
@@ -600,8 +600,8 @@ done
 
     <item>
       <title>Native LSP in Claude Code: The End of Serena and Workarounds</title>
-      <link>https://straus.it/#read/native-lsp-in-claude-code</link>
-      <guid isPermaLink="true">https://straus.it/#read/native-lsp-in-claude-code</guid>
+      <link>https://straus.it/blog/native-lsp-in-claude-code/</link>
+      <guid isPermaLink="true">https://straus.it/blog/native-lsp-in-claude-code/</guid>
       <pubDate>Thu, 08 Jan 2026 00:00:00 +0000</pubDate>
       <description>How native LSP support in Claude Code 2.0.74 makes Serena MCP and manual gopls commands obsolete</description>
       <content:encoded><![CDATA[<h1>Native LSP in Claude Code: The End of Serena and Workarounds</h1>
@@ -804,8 +804,8 @@ Claude traces the actual method calls, not just text matches in imports.</p>
 
     <item>
       <title>Claude Code Subagents: The Hidden Superpower You&apos;re Not Using</title>
-      <link>https://straus.it/#read/claude-code-subagents-hidden-superpower</link>
-      <guid isPermaLink="true">https://straus.it/#read/claude-code-subagents-hidden-superpower</guid>
+      <link>https://straus.it/blog/claude-code-subagents-hidden-superpower/</link>
+      <guid isPermaLink="true">https://straus.it/blog/claude-code-subagents-hidden-superpower/</guid>
       <pubDate>Thu, 08 Jan 2026 00:00:00 +0000</pubDate>
       <description>How to use competing subagents for better code reviews and why a little pressure makes AI work harder</description>
       <content:encoded><![CDATA[<h1>Claude Code Subagents: The Hidden Superpower You&#39;re Not Using</h1>
@@ -944,8 +944,8 @@ They&#39;re competing to prove each other wrong.
 
     <item>
       <title>Beads - External Memory for AI Agents</title>
-      <link>https://straus.it/#read/beads-task-tracking-for-ai-agents</link>
-      <guid isPermaLink="true">https://straus.it/#read/beads-task-tracking-for-ai-agents</guid>
+      <link>https://straus.it/blog/beads-task-tracking-for-ai-agents/</link>
+      <guid isPermaLink="true">https://straus.it/blog/beads-task-tracking-for-ai-agents/</guid>
       <pubDate>Wed, 07 Jan 2026 00:00:00 +0000</pubDate>
       <description>The task tracker that gives AI agents persistent memory across sessions</description>
       <content:encoded><![CDATA[<h1>Beads: External Memory for AI Agents</h1>
@@ -1041,8 +1041,8 @@ go install github.com/steveyegge/beads/cmd/bd@latest
 
     <item>
       <title>Welcome to My Terminal</title>
-      <link>https://straus.it/#read/welcome-to-my-terminal</link>
-      <guid isPermaLink="true">https://straus.it/#read/welcome-to-my-terminal</guid>
+      <link>https://straus.it/blog/welcome-to-my-terminal/</link>
+      <guid isPermaLink="true">https://straus.it/blog/welcome-to-my-terminal/</guid>
       <pubDate>Sun, 04 Jan 2026 00:00:00 +0000</pubDate>
       <description>An introduction to this unusual website and why I built it this way</description>
       <content:encoded><![CDATA[<h1>Welcome to My Terminal</h1>
@@ -1087,8 +1087,8 @@ go install github.com/steveyegge/beads/cmd/bd@latest
 
     <item>
       <title>Building Software Without Writing It First</title>
-      <link>https://straus.it/#read/building-software-without-writing-it-first</link>
-      <guid isPermaLink="true">https://straus.it/#read/building-software-without-writing-it-first</guid>
+      <link>https://straus.it/blog/building-software-without-writing-it-first/</link>
+      <guid isPermaLink="true">https://straus.it/blog/building-software-without-writing-it-first/</guid>
       <pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
       <description>Twelve Months Inside AI-Driven Development</description>
       <content:encoded><![CDATA[<h1>Building Software Without Writing It First</h1>
@@ -1180,8 +1180,8 @@ Personal tools, Small internal products, Analytical systems, Automations, Interf
 
     <item>
       <title>My Claude Code Setup</title>
-      <link>https://straus.it/#read/claude-code-setup</link>
-      <guid isPermaLink="true">https://straus.it/#read/claude-code-setup</guid>
+      <link>https://straus.it/blog/claude-code-setup/</link>
+      <guid isPermaLink="true">https://straus.it/blog/claude-code-setup/</guid>
       <pubDate>Sat, 01 Nov 2025 00:00:00 +0000</pubDate>
       <description>A complete walkthrough of how I configure Claude Code</description>
       <content:encoded><![CDATA[<h1>My Claude Code Setup</h1>
@@ -1396,8 +1396,8 @@ Always respond in English.
 
     <item>
       <title>Custom Slash Commands for Claude Code</title>
-      <link>https://straus.it/#read/claude-code-commands</link>
-      <guid isPermaLink="true">https://straus.it/#read/claude-code-commands</guid>
+      <link>https://straus.it/blog/claude-code-commands/</link>
+      <guid isPermaLink="true">https://straus.it/blog/claude-code-commands/</guid>
       <pubDate>Sat, 11 Oct 2025 00:00:00 +0000</pubDate>
       <description>Building productivity workflows with custom slash commands</description>
       <content:encoded><![CDATA[<h1>Custom Slash Commands for Claude Code</h1>
@@ -1555,8 +1555,8 @@ description: Deploy to production with safety checks
 
     <item>
       <title>SettingsSentry - Never Lose Your macOS Settings Again</title>
-      <link>https://straus.it/#read/settings-sentry</link>
-      <guid isPermaLink="true">https://straus.it/#read/settings-sentry</guid>
+      <link>https://straus.it/blog/settings-sentry/</link>
+      <guid isPermaLink="true">https://straus.it/blog/settings-sentry/</guid>
       <pubDate>Fri, 15 Aug 2025 00:00:00 +0000</pubDate>
       <description>A lightweight tool to backup and restore macOS application settings</description>
       <content:encoded><![CDATA[<h1>SettingsSentry - Never Lose Your macOS Settings Again</h1>
@@ -1637,8 +1637,8 @@ cd SettingsSentry
 
     <item>
       <title>My macOS Developer Toolkit</title>
-      <link>https://straus.it/#read/my-macos-dev-toolkit</link>
-      <guid isPermaLink="true">https://straus.it/#read/my-macos-dev-toolkit</guid>
+      <link>https://straus.it/blog/my-macos-dev-toolkit/</link>
+      <guid isPermaLink="true">https://straus.it/blog/my-macos-dev-toolkit/</guid>
       <pubDate>Sun, 20 Jul 2025 00:00:00 +0000</pubDate>
       <description>A curated collection of Homebrew tools that power my daily workflow</description>
       <content:encoded><![CDATA[<h1>My macOS Developer Toolkit</h1>
@@ -1745,8 +1745,8 @@ cd SettingsSentry
 
     <item>
       <title>Finicky - Take Control of Your URLs</title>
-      <link>https://straus.it/#read/finicky-url-routing</link>
-      <guid isPermaLink="true">https://straus.it/#read/finicky-url-routing</guid>
+      <link>https://straus.it/blog/finicky-url-routing/</link>
+      <guid isPermaLink="true">https://straus.it/blog/finicky-url-routing/</guid>
       <pubDate>Thu, 13 Feb 2025 00:00:00 +0000</pubDate>
       <description>How I use Finicky to route URLs, strip tracking, and bypass paywalls</description>
       <content:encoded><![CDATA[<h1>Finicky - Take Control of Your URLs</h1>
@@ -1926,8 +1926,8 @@ After: <code>example.com/page</code></p>
 
     <item>
       <title>Bland.ai - The End of Call Centers As We Know Them</title>
-      <link>https://straus.it/#read/bland-ai-call-centers</link>
-      <guid isPermaLink="true">https://straus.it/#read/bland-ai-call-centers</guid>
+      <link>https://straus.it/blog/bland-ai-call-centers/</link>
+      <guid isPermaLink="true">https://straus.it/blog/bland-ai-call-centers/</guid>
       <pubDate>Fri, 26 Apr 2024 00:00:00 +0000</pubDate>
       <description>AI phone operators that sound human are about to transform an industry</description>
       <content:encoded><![CDATA[<h1>Bland.ai - The End of Call Centers As We Know Them</h1>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>What n8n Actually Teaches You About Automation | Stefano Straus</title>
+  <meta name="description" content="The constraints and disciplines that separate automation systems that survive from those that collapse">
+  <meta name="author" content="Stefano Straus">
+  <link rel="canonical" href="https://straus.it/blog/what-n8n-teaches-about-automation/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="What n8n Actually Teaches You About Automation">
+  <meta property="og:description" content="The constraints and disciplines that separate automation systems that survive from those that collapse">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://straus.it/blog/what-n8n-teaches-about-automation/">
+  <meta property="og:image" content="https://straus.it/img/profile.jpg">
+  <meta property="og:site_name" content="Stefano Straus">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@StefanoStraus">
+  <meta name="twitter:title" content="What n8n Actually Teaches You About Automation">
+  <meta name="twitter:description" content="The constraints and disciplines that separate automation systems that survive from those that collapse">
+  <meta name="twitter:image" content="https://straus.it/img/profile.jpg">
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "What n8n Actually Teaches You About Automation",
+  "description": "The constraints and disciplines that separate automation systems that survive from those that collapse",
+  "author": {
+    "@type": "Person",
+    "name": "Stefano Straus",
+    "url": "https://straus.it"
+  },
+  "datePublished": "2026-01-17",
+  "dateModified": "2026-01-17",
+  "publisher": {
+    "@type": "Person",
+    "name": "Stefano Straus"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://straus.it/blog/what-n8n-teaches-about-automation/"
+  },
+  "keywords": "automation, n8n, workflows, systems-thinking"
+}
+  </script>
+
+  <!-- Redirect JS users to terminal view -->
+  <script>window.location.replace('/#read/what-n8n-teaches-about-automation');</script>
+
+  <style>
+    body { font-family: system-ui, -apple-system, sans-serif; max-width: 720px; margin: 2rem auto; padding: 0 1rem; line-height: 1.6; color: #222; }
+    a { color: #0066cc; }
+    .back { margin-bottom: 2rem; }
+    article img { max-width: 100%; }
+    time { color: #666; }
+    h1 { margin-bottom: 0.25rem; }
+    pre { background: #f5f5f5; padding: 1rem; overflow-x: auto; border-radius: 4px; }
+    code { font-family: 'JetBrains Mono', monospace; font-size: 0.9em; }
+    blockquote { border-left: 3px solid #ddd; margin-left: 0; padding-left: 1rem; color: #555; }
+    table { border-collapse: collapse; width: 100%; }
+    th, td { border: 1px solid #ddd; padding: 0.5rem; text-align: left; }
+    th { background: #f5f5f5; }
+  </style>
+</head>
+<body>
+  <noscript>
+    <nav class="back"><a href="/">&larr; straus.it</a></nav>
+    <article>
+      <h1>What n8n Actually Teaches You About Automation</h1>
+      <time datetime="2026-01-17">January 17, 2026</time>
+<h1>What <strong>n8n</strong> Actually Teaches You About Automation</h1>
+<p>Automation as a System, Not as a Shortcut</p>
+<p>For years I ran my entire home automation on Node-RED instead of Home Assistant as everyone else. Not because I&#39;m a masochist, but because the mental model was fundamentally different. I think in terms of conditions, state, and context. I prefer processes that adapt based on what is happening in the surrounding system, rather than workflows that behave like simple on-off switches. If you&#39;re still treating automation as glorified button-pushing, you&#39;re missing the fundamental difference between executing actions and building systems that think.</p>
+<p>The same approach has shaped how I look at automation in professional environments. I&#39;m not particularly interested in chaining actions together. I&#39;m interested in building mechanisms that are aware of where they are in a process, what has already happened, and what is reasonable to do next.</p>
+<p>Over the years, I have often suggested <strong>n8n</strong> to colleagues as a solution for data transformation and workflow automation problems, even before using it extensively myself. It was clear that the tool had strong foundations, but for a long time it felt more suitable for linear automations than for truly adaptive processes.</p>
+<p>That changed over the last year with the introduction of AI nodes. Not because they magically add intelligence, but because they allow workflows to interpret input, classify data, and make contextual decisions. This is the point where <strong>n8n</strong> stops being just an automation engine and becomes a platform for building adaptive, state-aware processes.</p>
+<p>Recently, I decided to put it to the test myself and use <strong>n8n</strong> to address some concrete problems we are facing in the company. As with any new tool, the main difficulty was not making things work, but understanding how to design workflows that remain understandable, controllable, and maintainable over time.</p>
+<p>What follows is not a guide on how to use <strong>n8n</strong>. It is a set of constraints that emerged while actually building with it. These are the things that consistently determine whether a workflow stays usable or slowly collapses under its own weight.</p>
+<p>⸻</p>
+<h2>Data Shape Is the Real Contract</h2>
+<p>Here&#39;s what actually happens. You build a workflow that processes webhook data. It works perfectly for weeks. Then one day it explodes because someone on the other end decided to send <code>null</code> instead of an empty string, or wrapped a single value in an array, or nested the payload one level deeper.</p>
+<p>Most workflows don&#39;t break because they are complex. They break because the shape of the data is never fixed. Data flows in however it wants, assumptions pile up silently, and everything works until it doesn&#39;t.</p>
+<p>The workflows that survive all do the same unglamorous thing early on. <em>They normalize input aggressively.</em> They don&#39;t try to be clever. They force data into a predictable shape immediately. Once that&#39;s done, everything downstream becomes trivial.</p>
+<p>Skip this step and you&#39;re building fragility with a countdown timer.</p>
+<p>⸻</p>
+<h2>Decisions Must Be Visible, Not Embedded</h2>
+<p>I&#39;ve debugged too many workflows where the interesting logic was buried inside a Function node or hidden in a complex expression. The canvas looked clean, but understanding what actually happened required opening every node and reading code.</p>
+<p><em>Decisions that matter must be visible on the canvas.</em> If a workflow branches based on conditions, I should see that branch. If data gets transformed in a way that changes behavior, that transformation should be explicit, not hidden in a clever expression.</p>
+<p>The temptation is to keep the canvas clean by stuffing logic into expressions. This feels efficient until you need to debug it at 11 PM because something broke in production.</p>
+<p>⸻</p>
+<h2>Stop Rerunning Everything</h2>
+<p>The turning point for me was realizing I could pin data at any node and work from there. Instead of triggering the entire workflow every time I wanted to test a change, I could freeze the output of the first few nodes and just work on the downstream logic.</p>
+<p><em>Pinning data is not a debugging shortcut. It is a construction technique.</em> Once you start working this way, you stop depending on webhooks firing, APIs responding, or external systems being available. You&#39;re working with frozen, known data. Changes become instant to test.</p>
+<p>This completely changes how fast you can iterate. No more waiting for triggers. No more hoping the API is in the right state. Just frozen data and immediate feedback.</p>
+<p>⸻</p>
+<h2>Debugging Lives in Executions, Not in Theory</h2>
+<p>When something breaks in production, don&#39;t rerun the workflow with test data. Go to the executions tab and reload the actual execution that failed. <em>This changes everything.</em> You&#39;re no longer guessing what might have gone wrong. You&#39;re looking at exactly what did go wrong, with the actual data that caused the failure.</p>
+<p>Most bugs don&#39;t show up with your carefully crafted test payloads. They show up when the API returns an empty array instead of null, or when a field you assumed was always present is suddenly missing, or when someone upstream decides to change their data structure without telling anyone.</p>
+<p>If you&#39;re only testing with clean data, you&#39;re rehearsing success while production is failing in ways you haven&#39;t imagined.</p>
+<p>⸻</p>
+<h2>Test and Production Are Different States of Mind</h2>
+<p>I&#39;ve accidentally sent production emails while testing workflows more times than I&#39;d like to admit. Webhooks make this especially easy because there&#39;s often no visual distinction between &quot;I&#39;m experimenting&quot; and &quot;this is live.&quot;</p>
+<p><em>Clear context prevents accidental damage.</em> If your workflow accepts webhooks, consider separate test and production instances. Or at minimum, add a manual trigger with test data so you&#39;re not constantly poking production systems while iterating.</p>
+<p>The cost of confusion here is not a failed test. It&#39;s corrupted data, duplicate notifications sent to real users, or actions taken in production that cannot be undone. Ask me how I know.</p>
+<p>⸻</p>
+<h2>Readability Is a Form of Reliability</h2>
+<p>Nothing ages worse than a workflow full of nodes named &quot;HTTP Request 1&quot;, &quot;Function 3&quot;, &quot;Set 7&quot;. Three months later, you open it and have no idea what any of it does without executing every node.</p>
+<p><em>A workflow that can be read cold, without executing anything, is one you can safely maintain.</em> Name nodes based on what they do: &quot;Normalize webhook payload&quot;, &quot;Check if user exists&quot;, &quot;Send error notification&quot;. It takes five extra seconds per node and saves hours later.</p>
+<p>When something breaks at 3 AM, the difference between understanding the workflow in 30 seconds versus 30 minutes is the difference between fixing it and giving up until morning.</p>
+<p>⸻</p>
+<h2>Production Is a Consequence, Not a Phase</h2>
+<p>I&#39;ve seen people add retry logic, error handlers, and monitoring to workflows that barely work. The result is a robust system that reliably does the wrong thing.</p>
+<p>Get the workflow working correctly first. Make sure it handles the actual data shapes you&#39;re receiving. Verify the logic makes sense. Then add the production hardening.</p>
+<p>The workflows that last start out simple, sometimes ugly, but structurally honest. Once they prove themselves, you add retries, alerts, and error handling. Doing it the other way around just locks in bad assumptions with better logging.</p>
+<p>⸻</p>
+<h2>Clarity Over Cleverness</h2>
+<p><strong>n8n</strong> rewards clarity, not cleverness. The workflows that survive are the ones where you can look at the canvas and immediately understand what&#39;s happening. Where decisions are visible, data shapes are enforced, and nodes have meaningful names.</p>
+<p>The clever workflows with elegant expressions and minimal nodes? Those are the ones you dread opening six months later. They work until they don&#39;t, and when they break, fixing them requires archaeology.</p>
+<p><strong>n8n</strong> will happily let you build vague, implicit workflows. But it will make you pay for that vagueness later, in debugging time and production incidents. That&#39;s not a flaw. That&#39;s the discipline talking.</p>
+<p>Now is your turn, tell me what you built.</p>
+
+    </article>
+    <nav><a href="/">&larr; Back to straus.it</a></nav>
+  </noscript>
+</body>
+</html>

@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Finicky - Take Control of Your URLs | Stefano Straus</title>
+  <meta name="description" content="How I use Finicky to route URLs, strip tracking, and bypass paywalls">
+  <meta name="author" content="Stefano Straus">
+  <link rel="canonical" href="https://straus.it/blog/finicky-url-routing/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Finicky - Take Control of Your URLs">
+  <meta property="og:description" content="How I use Finicky to route URLs, strip tracking, and bypass paywalls">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://straus.it/blog/finicky-url-routing/">
+  <meta property="og:image" content="https://straus.it/img/profile.jpg">
+  <meta property="og:site_name" content="Stefano Straus">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@StefanoStraus">
+  <meta name="twitter:title" content="Finicky - Take Control of Your URLs">
+  <meta name="twitter:description" content="How I use Finicky to route URLs, strip tracking, and bypass paywalls">
+  <meta name="twitter:image" content="https://straus.it/img/profile.jpg">
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Finicky - Take Control of Your URLs",
+  "description": "How I use Finicky to route URLs, strip tracking, and bypass paywalls",
+  "author": {
+    "@type": "Person",
+    "name": "Stefano Straus",
+    "url": "https://straus.it"
+  },
+  "datePublished": "2025-02-13",
+  "dateModified": "2025-02-13",
+  "publisher": {
+    "@type": "Person",
+    "name": "Stefano Straus"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://straus.it/blog/finicky-url-routing/"
+  },
+  "keywords": "macos, tools, productivity, automation"
+}
+  </script>
+
+  <!-- Redirect JS users to terminal view -->
+  <script>window.location.replace('/#read/finicky-url-routing');</script>
+
+  <style>
+    body { font-family: system-ui, -apple-system, sans-serif; max-width: 720px; margin: 2rem auto; padding: 0 1rem; line-height: 1.6; color: #222; }
+    a { color: #0066cc; }
+    .back { margin-bottom: 2rem; }
+    article img { max-width: 100%; }
+    time { color: #666; }
+    h1 { margin-bottom: 0.25rem; }
+    pre { background: #f5f5f5; padding: 1rem; overflow-x: auto; border-radius: 4px; }
+    code { font-family: 'JetBrains Mono', monospace; font-size: 0.9em; }
+    blockquote { border-left: 3px solid #ddd; margin-left: 0; padding-left: 1rem; color: #555; }
+    table { border-collapse: collapse; width: 100%; }
+    th, td { border: 1px solid #ddd; padding: 0.5rem; text-align: left; }
+    th { background: #f5f5f5; }
+  </style>
+</head>
+<body>
+  <noscript>
+    <nav class="back"><a href="/">&larr; straus.it</a></nav>
+    <article>
+      <h1>Finicky - Take Control of Your URLs</h1>
+      <time datetime="2025-02-13">February 13, 2025</time>
+<h1>Finicky - Take Control of Your URLs</h1>
+<p>Every link you click goes somewhere. But where? On macOS, the answer is usually &quot;whatever your default browser is.&quot; Finicky changes that.</p>
+<p><a href="https://github.com/johnste/finicky">Finicky</a> is a URL router for macOS. It intercepts every link before it opens and lets you decide—programmatically—what happens next.</p>
+<h2>Why You Need This</h2>
+<ul>
+<li>Work links in your work browser, personal in personal</li>
+<li>Strip tracking parameters automatically</li>
+<li>Open Zoom links directly in the Zoom app</li>
+<li>Bypass paywalls with alternative frontends</li>
+<li>Clean up Microsoft SafeLinks mess</li>
+</ul>
+<p>Let me walk through my actual configuration.</p>
+<h2>Basic Setup</h2>
+<p>First, define your browsers:</p>
+<pre><code class="language-javascript">const work = {
+  name: &quot;Microsoft Edge&quot;,
+};
+
+const personal = {
+  name: &quot;Safari&quot;,
+};
+
+export default {
+  defaultBrowser: &quot;Safari&quot;,
+  // ...
+};
+</code></pre>
+<p>Safari is my default. Edge is for work. Simple foundation.</p>
+<h2>Stripping Tracking Parameters</h2>
+<p>Every marketing link is polluted with tracking garbage. This rewrite rule cleans them:</p>
+<pre><code class="language-javascript">rewrite: [{
+  match: () =&gt; true, // Apply to ALL URLs
+  url: ({ url }) =&gt; {
+    const removeKeysStartingWith = [&quot;utm_&quot;, &quot;uta_&quot;];
+    const removeKeys = [&quot;fbclid&quot;, &quot;gclid&quot;];
+
+    const search = url.search
+      .split(&quot;&amp;&quot;)
+      .map((parameter) =&gt; parameter.split(&quot;=&quot;))
+      .filter(([key]) =&gt; !removeKeysStartingWith.some(
+        (startingWith) =&gt; key.startsWith(startingWith)
+      ))
+      .filter(([key]) =&gt; !removeKeys.some(
+        (removeKey) =&gt; key === removeKey
+      ));
+
+    return {
+      ...url,
+      search: search.map((parameter) =&gt; parameter.join(&quot;=&quot;)).join(&quot;&amp;&quot;),
+    };
+  },
+}]
+</code></pre>
+<p>Before: <code>example.com/page?utm_source=twitter&amp;utm_campaign=launch&amp;fbclid=abc123</code>
+After: <code>example.com/page</code></p>
+<p>Every click, automatically cleaned.</p>
+<h2>Decoding Microsoft SafeLinks</h2>
+<p>Microsoft wraps URLs in &quot;SafeLinks&quot; that are impossible to read. This extracts the actual URL:</p>
+<pre><code class="language-javascript">{
+  match: /statics\.teams\.cdn\.office\.net\/evergreen-assets\/safelinks\/.*url=(https%3A%2F%2F(?:[a-zA-Z]+\.)zoom\.us.*)&amp;locale=.*/,
+  url: ({ url }) =&gt; {
+    const match = url.search.match(/url=([^&amp;]*)/);
+    if (match &amp;&amp; match[1]) {
+      const decodedUrl = decodeURIComponent(match[1]);
+      // Parse and return clean URL components
+      // ...
+    }
+    return { ...url };
+  },
+}
+</code></pre>
+<p>Zoom links wrapped in Teams SafeLinks now work properly.</p>
+<h2>Opening Zoom in the Zoom App</h2>
+<p>Web Zoom is terrible. The app is better. This converts web URLs to app URLs:</p>
+<pre><code class="language-javascript">{
+  match: ({ url }) =&gt; url.host.includes(&quot;zoom.us&quot;) &amp;&amp; url.pathname.includes(&quot;/j/&quot;),
+  url({ url }) {
+    try {
+      var pass = &#39;&amp;pwd=&#39; + url.search.match(/pwd=(\w*)/)[1];
+    } catch {
+      var pass = &quot;&quot;
+    }
+    var conf = &#39;confno=&#39; + url.pathname.match(/\/j\/(\d+)/)[1];
+    return {
+      search: conf + pass,
+      pathname: &#39;/join&#39;,
+      protocol: &quot;zoommtg&quot;  // This triggers the Zoom app
+    }
+  }
+}
+</code></pre>
+<p>Click a Zoom link → Zoom app opens directly. No browser detour.</p>
+<h2>Bypassing Medium Paywalls</h2>
+<p>Medium&#39;s paywall is annoying. Freedium provides the same content without it:</p>
+<pre><code class="language-javascript">{
+  match: /medium.com/,
+  url: ({ url }) =&gt; {
+    return {
+      pathname: &quot;/&quot; + url.host + &quot;/&quot; + url.pathname,
+      host: &quot;freedium.cfd&quot;
+    }
+  }
+}
+</code></pre>
+<p>Every Medium link redirects to Freedium automatically.</p>
+<h2>Privacy-Respecting TikTok</h2>
+<p>TikTok tracking is aggressive. ProxiTok provides a privacy-respecting frontend:</p>
+<pre><code class="language-javascript">{
+  match: ({ url }) =&gt;
+    (url.host.endsWith(&quot;tiktok.com&quot;) &amp;&amp; url.pathname.startsWith(&#39;/@&#39;)) ||
+    url.host.endsWith(&quot;vm.tiktok.com&quot;),
+  url: ({ url }) =&gt; {
+    const selectRandomTikTokProxy = () =&gt; {
+      const TIKTOK_PROXIES = [
+        &quot;proxitok.pabloferreiro.es&quot;,
+        &quot;tok.habedieeh.re&quot;,
+        &quot;tt.vern.cc&quot;,
+        // ... more instances
+      ]
+      return TIKTOK_PROXIES[Math.floor(Math.random() * TIKTOK_PROXIES.length)]
+    }
+    return {
+      protocol: &quot;https&quot;,
+      host: selectRandomTikTokProxy(),
+      pathname: url.pathname.startsWith(&#39;/@&#39;) ? url.pathname : `/@placeholder/video${url.pathname}`
+    }
+  }
+}
+</code></pre>
+<p>Random proxy selection distributes load and improves reliability.</p>
+<h2>Browser Handlers</h2>
+<p>After URL rewriting, handlers decide which browser opens the link:</p>
+<pre><code class="language-javascript">handlers: [
+  {
+    // Teams links open in Teams
+    match: /^https?:\/\/teams\.microsoft\.com\/l\/meetup\-join\/.*$/,
+    browser: &quot;Microsoft Teams&quot;
+  },
+  {
+    // Zoom links open in Zoom app
+    match: /zoom\.us\/join/,
+    browser: &quot;us.zoom.xos&quot;
+  },
+  {
+    // Work sites go to Edge
+    match: [
+      /lansweeper/,
+      /app\.datadoghq\.eu/,
+      /lattice(hq)?\.com/,
+      /honeycomb\.io/,
+      /powerbi\.com/,
+      /office\.com/,
+      /miro\.com/,
+      /clickup\.com/
+    ],
+    browser: work
+  },
+  {
+    // Links FROM Outlook always open in work browser
+    match: ({ opener }) =&gt; opener.bundleId === &quot;com.microsoft.Outlook&quot;,
+    browser: work
+  },
+]
+</code></pre>
+<p>The <code>opener</code> context is powerful—you can route based on <em>which app</em> is opening the link, not just the URL itself.</p>
+<h2>Installation</h2>
+<pre><code class="language-bash">brew install --cask finicky
+</code></pre>
+<p>Create <code>~/.finicky.js</code> with your configuration. Finicky loads it automatically.</p>
+<h2>The Philosophy</h2>
+<p>URLs are data. Finicky lets you transform that data before it becomes action. Strip tracking, fix broken links, route to the right place, bypass annoyances.</p>
+<p>Once configured, it&#39;s invisible. Links just work—the way they should.</p>
+
+    </article>
+    <nav><a href="/">&larr; Back to straus.it</a></nav>
+  </noscript>
+</body>
+</html>

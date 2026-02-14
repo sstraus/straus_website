@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Beads - External Memory for AI Agents | Stefano Straus</title>
+  <meta name="description" content="The task tracker that gives AI agents persistent memory across sessions">
+  <meta name="author" content="Stefano Straus">
+  <link rel="canonical" href="https://straus.it/blog/beads-task-tracking-for-ai-agents/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Beads - External Memory for AI Agents">
+  <meta property="og:description" content="The task tracker that gives AI agents persistent memory across sessions">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://straus.it/blog/beads-task-tracking-for-ai-agents/">
+  <meta property="og:image" content="https://straus.it/img/profile.jpg">
+  <meta property="og:site_name" content="Stefano Straus">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@StefanoStraus">
+  <meta name="twitter:title" content="Beads - External Memory for AI Agents">
+  <meta name="twitter:description" content="The task tracker that gives AI agents persistent memory across sessions">
+  <meta name="twitter:image" content="https://straus.it/img/profile.jpg">
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Beads - External Memory for AI Agents",
+  "description": "The task tracker that gives AI agents persistent memory across sessions",
+  "author": {
+    "@type": "Person",
+    "name": "Stefano Straus",
+    "url": "https://straus.it"
+  },
+  "datePublished": "2026-01-07",
+  "dateModified": "2026-01-07",
+  "publisher": {
+    "@type": "Person",
+    "name": "Stefano Straus"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://straus.it/blog/beads-task-tracking-for-ai-agents/"
+  },
+  "keywords": "ai, claude-code, beads, task-tracking, development"
+}
+  </script>
+
+  <!-- Redirect JS users to terminal view -->
+  <script>window.location.replace('/#read/beads-task-tracking-for-ai-agents');</script>
+
+  <style>
+    body { font-family: system-ui, -apple-system, sans-serif; max-width: 720px; margin: 2rem auto; padding: 0 1rem; line-height: 1.6; color: #222; }
+    a { color: #0066cc; }
+    .back { margin-bottom: 2rem; }
+    article img { max-width: 100%; }
+    time { color: #666; }
+    h1 { margin-bottom: 0.25rem; }
+    pre { background: #f5f5f5; padding: 1rem; overflow-x: auto; border-radius: 4px; }
+    code { font-family: 'JetBrains Mono', monospace; font-size: 0.9em; }
+    blockquote { border-left: 3px solid #ddd; margin-left: 0; padding-left: 1rem; color: #555; }
+    table { border-collapse: collapse; width: 100%; }
+    th, td { border: 1px solid #ddd; padding: 0.5rem; text-align: left; }
+    th { background: #f5f5f5; }
+  </style>
+</head>
+<body>
+  <noscript>
+    <nav class="back"><a href="/">&larr; straus.it</a></nav>
+    <article>
+      <h1>Beads - External Memory for AI Agents</h1>
+      <time datetime="2026-01-07">January 7, 2026</time>
+<h1>Beads: External Memory for AI Agents</h1>
+<p>I found <a href="https://github.com/steveyegge/beads">Beads</a> last week, and it solved a problem I didn&#39;t know how to fix.</p>
+<p>It&#39;s not a new AI model. Not a new IDE. It&#39;s a task tracker. But it completely changes how AI agents handle long projects.</p>
+<h2>The Problem I Had</h2>
+<p>Markdown TODO lists don&#39;t work with AI agents. They work fine for me. I can remember context between sessions, track dependencies in my head. But agents can&#39;t.</p>
+<p>Here&#39;s what kept happening: I&#39;d be 200 messages deep in a session. The agent had finished half my plan. I&#39;d ask &quot;what&#39;s next?&quot; and it would either:</p>
+<ol>
+<li>Hope the markdown TODO was still in its context window</li>
+<li>Ask me to paste it again</li>
+<li>Guess</li>
+</ol>
+<p>Then I&#39;d hit the context limit. Or switch git branches. Or close my laptop and come back tomorrow. The plan would fall apart. Early tasks would be forgotten. Dependencies were just text notes like &quot;TODO: fix auth (blocked on bd-3)&quot;. The agent couldn&#39;t actually query what was ready to work on.</p>
+<p>This drove me crazy. I was using markdown as write-only memory. The agent could write tasks down but couldn&#39;t effectively read them back. Completely backwards.</p>
+<h2>What Beads Actually Is</h2>
+<p>Beads is an issue tracker that lives in git. It acts like a database but stores everything as files in your repo. So you get both: the ability to query tasks <strong>and</strong> full version control.</p>
+<p>Think of it as external memory for AI agents. Memory they can actually search.</p>
+<p>Here&#39;s how it works:</p>
+<ul>
+<li>Tasks stored in <code>.beads/</code> directory as JSON files</li>
+<li>SQLite cache for fast queries</li>
+<li>Background sync daemon</li>
+<li>IDs that never collide across branches</li>
+<li>Everything outputs JSON</li>
+</ul>
+<p>But here&#39;s the clever part: dependencies are real relationships, not text. You don&#39;t write &quot;blocked by X&quot; in a comment. You create an actual link between tasks. When you find a bug while building a feature, you create an issue and link it with <code>discovered-from</code>. The dependency graph shows how work actually unfolded, not just a flat list.</p>
+<h2>How I Use It</h2>
+<p>The setup is simple. I tell Claude Code:</p>
+<blockquote>
+<p>&quot;We track work in Beads instead of Markdown. Run bd quickstart to see how.&quot;</p>
+</blockquote>
+<p>That&#39;s it. No config files. No long explanations. No system prompts.</p>
+<p>Claude figures it out immediately. It starts running <code>bd ready --json</code> to find what&#39;s not blocked. Creates tasks with <code>bd create</code>. Updates status. Links dependencies. All without me explaining the commands.</p>
+<p>Why does this work so well? Because Beads was built for how agents actually think.</p>
+<p><strong>Agents can query, not just read</strong>
+Instead of reading markdown and trying to parse text, Claude runs <code>bd ready --json</code> and gets a clear list. The difference is huge. It&#39;s querying real data, not interpreting text.</p>
+<p><strong>Sessions don&#39;t lose context</strong>
+When I close my laptop and come back tomorrow, the work is still there. Claude doesn&#39;t need me to paste the TODO list again. It just runs <code>bd ready --json</code> and picks up where it left off.</p>
+<p><strong>Multiple agents don&#39;t conflict</strong>
+With markdown, two agents would fight over the same TODO list and duplicate work. With Beads, both query the same database (through git), see what&#39;s in progress, and pick different tasks. Simple.</p>
+<p><strong>It works across machines</strong>
+I can have agents on different computers sharing the same task database through git. Even if they create tasks on different branches with the same ID, git handles the merge. No collisions.</p>
+<p><strong>Full history</strong>
+When a task updates, it&#39;s logged with a timestamp and who did it. Claude can see the history. With markdown, you&#39;d need to check git blame, and even then you only see line changes, not &quot;status changed from open to in_progress.&quot;</p>
+<h2>A Real Example</h2>
+<p>Steve Yegge built Beads. He shared a story that shows how well this works:</p>
+<p>He installed Beads on an old computer. Installed Sourcegraph Amp. Asked it to file issues for his decade-old TODO list for a project called Wyvern.</p>
+<p><strong>30 seconds</strong>: Amp understood the system and started filing issues.</p>
+<p><strong>30 minutes later</strong>: 128 issues created. Six main categories. Five sub-categories. All the dependencies mapped out.</p>
+<p>Then he could ask &quot;what are the top priority tasks I can work on right now?&quot; and get an instant, correct answer.</p>
+<p>That&#39;s the difference. You can create issues fast. Update them in batches. Split them. Merge them. You always know what&#39;s open, what&#39;s blocked, what matters most.</p>
+<p><strong>And your agents know too.</strong></p>
+<p>For me, this changes how I work on long projects. I can give Claude Code work that takes days, across multiple sessions, across git branches. It doesn&#39;t lose track. It doesn&#39;t ask me to explain again. It just runs <code>bd ready --json</code> and continues.</p>
+<h2>How to Install It</h2>
+<p>You can install Beads through npm, Homebrew, or Go:</p>
+<pre><code class="language-bash"># npm
+npm install -g @beads/bd
+
+# Homebrew
+brew install steveyegge/beads/bd
+
+# Go
+go install github.com/steveyegge/beads/cmd/bd@latest
+</code></pre>
+<p>Works on Linux, macOS, and Windows.</p>
+<p>Then run this in your project:</p>
+<pre><code class="language-bash">bd quickstart
+</code></pre>
+<p>The quickstart is interactive. Takes about two minutes to learn everything.</p>
+<h2>Why This Matters</h2>
+<p>The problem with AI development isn&#39;t the models anymore. It&#39;s the infrastructure around them.</p>
+<p>Specifically: how do agents keep track of long-term plans without you constantly reminding them?</p>
+<p>Markdown doesn&#39;t scale. GitHub Issues are built for humans, not agents. JIRA is too heavy.</p>
+<p>Beads solves something different: <strong>external working memory for agents</strong>.</p>
+<p>Here&#39;s what agents actually need:</p>
+<ol>
+<li><strong>Data they can query</strong> - not text they have to read and understand</li>
+<li><strong>Memory across sessions</strong> - the plan survives when you close your laptop</li>
+<li><strong>Real dependency graphs</strong> - not dependencies written in comments</li>
+<li><strong>Multi-agent coordination</strong> - several agents working without stepping on each other</li>
+<li><strong>Git integration</strong> - version control for the tasks themselves</li>
+</ol>
+<p>Beads does all of this. And it&#39;s small enough that agents learn it just from reading <code>bd --help</code>.</p>
+<p>This is what good infrastructure looks like. Not flashy. Not marketed. Just solving a real problem that was blocking real work.</p>
+<h2>What I Think</h2>
+<p>Beads changed how I work with AI. Not because it&#39;s exciting, but because it removed friction I didn&#39;t know I had.</p>
+<p>If you&#39;re using Claude Code, Cursor, or any AI assistant for real projects, you need task persistence. Markdown doesn&#39;t work. Beads does.</p>
+<p>Try it. Run <code>bd quickstart</code>. Watch how Claude behaves when it has actual memory.</p>
+<p>You won&#39;t go back.</p>
+
+    </article>
+    <nav><a href="/">&larr; Back to straus.it</a></nav>
+  </noscript>
+</body>
+</html>
