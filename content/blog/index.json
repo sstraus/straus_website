@@ -1,6 +1,22 @@
 {
   "articles": [
     {
+      "slug": "the-accountability-gap",
+      "title": "The Accountability Gap",
+      "date": "2026-02-21",
+      "description": "AI collapses the cost of building software. It does not collapse the cost of being accountable when it breaks.",
+      "tags": ["ai", "enterprise", "saas", "governance", "accountability"],
+      "file": "2026-02-21-the-accountability-gap.md"
+    },
+    {
+      "slug": "the-blog-post-selloff",
+      "title": "The Blog Post Selloff",
+      "date": "2026-02-21",
+      "description": "When Anthropic publishes a blog post, billions in market cap evaporate. The market conflates a well-designed skill with a fully displaced platform.",
+      "tags": ["ai", "markets", "anthropic", "saas", "cybersecurity", "market-dynamics"],
+      "file": "2026-02-21-the-blog-post-selloff.md"
+    },
+    {
       "slug": "minimax-kimi-multipolar-ai",
       "title": "MiniMax, Kimi, and the End of the US-Only AI Narrative",
       "date": "2026-02-13",

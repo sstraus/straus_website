@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://straus.it/</loc>
-    <lastmod>2026-02-13</lastmod>
+    <lastmod>2026-02-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -14,7 +14,7 @@
   </url>
   <url>
     <loc>https://straus.it/#blog</loc>
-    <lastmod>2026-02-13</lastmod>
+    <lastmod>2026-02-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -32,11 +32,23 @@
   </url>
   <url>
     <loc>https://straus.it/feed.xml</loc>
-    <lastmod>2026-02-13</lastmod>
+    <lastmod>2026-02-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <!-- Blog posts -->
+  <url>
+    <loc>https://straus.it/blog/the-accountability-gap/</loc>
+    <lastmod>2026-02-21</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://straus.it/blog/the-blog-post-selloff/</loc>
+    <lastmod>2026-02-21</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
   <url>
     <loc>https://straus.it/blog/minimax-kimi-multipolar-ai/</loc>
     <lastmod>2026-02-13</lastmod>

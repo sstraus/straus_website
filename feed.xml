@@ -7,13 +7,89 @@
     <link>https://straus.it</link>
     <description>Engineering Manager specializing in AI-driven development, software architecture, and developer productivity. Insights on intent-based programming, Claude Code, and modern development patterns.</description>
     <language>en</language>
-    <lastBuildDate>Fri, 13 Feb 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 21 Feb 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://straus.it/feed.xml" rel="self" type="application/rss+xml"/>
     <image>
       <url>https://straus.it/img/profile.jpg</url>
       <title>Stefano Straus</title>
       <link>https://straus.it</link>
     </image>
+
+    <item>
+      <title>The Accountability Gap</title>
+      <link>https://straus.it/blog/the-accountability-gap/</link>
+      <guid isPermaLink="true">https://straus.it/blog/the-accountability-gap/</guid>
+      <pubDate>Sat, 21 Feb 2026 00:00:00 +0000</pubDate>
+      <description>AI collapses the cost of building software. It does not collapse the cost of being accountable when it breaks.</description>
+      <content:encoded><![CDATA[<h1>The Accountability Gap</h1>
+<p>Over the past weeks I have been speaking with several leaders in enterprise IT. Different industries, different company sizes, different maturity levels. Yet the same tension keeps surfacing in every conversation.</p>
+<p>Publicly, the debate looks technical. Can AI really replace SaaS? Will companies rebuild Salesforce, SAP, or Office with coding agents? Is &quot;vibe coding&quot; good enough for production systems? Is governance ready for hundreds of AI agents committing code?</p>
+<p>But after enough private discussions, a clearer pattern emerges. The common denominator is not capability. It is accountability.</p>
+<h2>The build curve has shifted</h2>
+<p>AI has materially reduced the marginal cost of building software. That is no longer hype. With modern coding agents, teams can assemble workflows, internal tools, even structured vertical systems in weeks instead of quarters. I see it in my own work every day, and I hear it from every engineering leader I talk to. The production curve has shifted.</p>
+<p>What has not shifted at the same speed is the cost of organisational risk.</p>
+<p>Enterprise IT leaders are not primarily worried about whether something can be built. They know it can. Many of them already run pilots where AI is generating code, tests, infrastructure, even documentation. The capability is real and getting more real every quarter.</p>
+<p>The question they keep returning to is different: who owns it when it breaks?</p>
+<h2>Why SaaS actually won</h2>
+<p>SaaS did not win because enterprises forgot how to build. It won because it externalised responsibility.</p>
+<p>Uptime. Security patches. Compliance. Audit trails. Regulatory updates. Support escalation. And perhaps most importantly, political cover when something fails. When your Salesforce instance goes down, that is Salesforce&#39;s problem. When your internally built CRM goes down at 2 AM, that is your team&#39;s problem, your VP&#39;s problem, your name on the incident report.</p>
+<p>SaaS bundled software with accountability. The subscription fee was never just for the features. It was for the transfer of operational risk from the buyer to the vendor. Every enterprise IT leader I have spoken to understands this implicitly, even if they rarely articulate it in those terms.</p>
+<h2>The gap</h2>
+<p>AI reopens the build option, but it does not automatically repackage the responsibility layer. When an internal AI-built system fails, the liability does not sit with a vendor. It sits with the organisation. With a named executive. With a team that may or may not have the operational maturity to handle what they have built.</p>
+<p>That is why brand still matters in enterprise procurement. That is why SLAs still matter. That is why &quot;no one gets fired for buying IBM&quot; remains a real dynamic in 2026, decades after anyone thought IBM was the most innovative option. The risk is not theoretical. It is personal and structural.</p>
+<p>I have seen this play out directly. A team builds something impressive with AI in three weeks. It works in staging. It handles the demo beautifully. Then it hits production and encounters an edge case that the original prompts never anticipated. Suddenly there is no vendor to call, no SLA to invoke, no contractual obligation forcing someone else to fix it by morning. The team that built it is the team that owns it, and they discover at the worst possible moment that building fast and operating reliably are two very different skills.</p>
+<h2>The governance surface</h2>
+<p>There is also a second-order effect emerging that not enough people are talking about. As enterprises experiment with fleets of AI agents generating and committing changes, the governance surface expands rapidly.</p>
+<p>Leaders are starting to see a potential governance gap. Capability is scaling faster than control frameworks. Hundreds of autonomous or semi-autonomous agents modifying production systems is not just a tooling problem. It is an operating model problem.</p>
+<p>Who reviews what an agent commits? Who approves the architectural decisions an agent makes at 3 AM? Who is responsible when an agent introduces a subtle security vulnerability that passes all the automated checks but would have been caught by a senior engineer during code review? These are not hypothetical questions. They are questions I hear in every conversation with CTOs and VPs of engineering who are running these pilots right now.</p>
+<p>The organisations that figure this out first will have a genuine competitive advantage. But figuring it out means building internal governance infrastructure that is, ironically, just as complex as the SaaS platforms they are trying to replace.</p>
+<h2>Two curves diverging</h2>
+<p>So the debate is not &quot;AI versus SaaS&quot;. It is about the divergence between two curves.</p>
+<p>The cost of building is collapsing. The cost of being accountable is not.</p>
+<p>Until those curves realign, enterprises will not simply abandon SaaS, and they will not blindly internalise everything either. What will change is pricing power and expectations. Vendors that relied on inertia and contractual lock-in will struggle. Vendors that genuinely absorb operational complexity will remain relevant. Internal teams that choose to build will need to professionalise governance to a level historically associated with platform vendors.</p>
+<p>After speaking with multiple enterprise IT leaders, I am convinced the next battleground is not model quality. It is not even feature parity. It is operational accountability.</p>
+<p>AI changes how fast we can build. It does not change who is responsible when something goes wrong. And in enterprise environments, that is the variable that actually drives decisions.</p>
+]]></content:encoded>
+    </item>
+
+    <item>
+      <title>The Blog Post Selloff</title>
+      <link>https://straus.it/blog/the-blog-post-selloff/</link>
+      <guid isPermaLink="true">https://straus.it/blog/the-blog-post-selloff/</guid>
+      <pubDate>Sat, 21 Feb 2026 00:00:00 +0000</pubDate>
+      <description>When Anthropic publishes a blog post, billions in market cap evaporate. The market conflates a well-designed skill with a fully displaced platform.</description>
+      <content:encoded><![CDATA[<h1>The Blog Post Selloff</h1>
+<p>There is something almost comical about watching billions in market cap evaporate because a company published a blog post.</p>
+<p>Not a new public company. Not a regulated product rollout with SLAs, insurance and procurement cycles attached. A blog post describing a new capability inside an existing product. Anthropic does this regularly now, and the pattern has become predictable enough that I find myself checking stock tickers on announcement days just to see how far the ripple goes.</p>
+<p>The most recent example is <a href="https://www.anthropic.com/news/claude-code-security">Claude Code Security</a>. Technically, what Anthropic shipped is a structured workflow. A carefully engineered composition of prompts, tool calls, guardrails and evaluation loops integrated into their coding assistant. It scans codebases for vulnerabilities and suggests patches for human review. Useful. Impressive, even. But fundamentally, it is a skill. A well-designed automation script with a model behind it.</p>
+<p>The market reaction treated it like a platform kill shot.</p>
+<h2>The numbers</h2>
+<p>CrowdStrike traded down about 7 to 8 percent. Okta fell close to 9 percent. GitLab dropped roughly 8 percent. JFrog saw a much sharper reaction, over 20 percent at peak intraday pressure. The broader cybersecurity ETF moved lower as well, signalling that this was not company-specific news but a sector repricing.</p>
+<p>I wrote about a similar pattern <a href="/blog/saaspocalypse-thin-application-layer">three weeks ago</a> when Anthropic&#39;s legal automation announcement sent European information and data companies tumbling. RELX traded down roughly 10 to 12 percent. Wolters Kluwer fell around 8 to 13 percent. Other professional data names moved in sympathy. Nothing changed in their contracts that morning. No enterprise ripped out their compliance stack. But the narrative was enough.</p>
+<p>Same movie, different vertical.</p>
+<h2>The category error</h2>
+<p>Here is what actually happened in the security case. A model integrated in the coding loop can now scan for vulnerabilities and suggest patches for human review. That is a genuine capability advancement. But it is not a replacement for endpoint agents, identity infrastructure, managed detection pipelines, audit frameworks, procurement contracts and liability structures. The distance between &quot;a model can find CVEs in a controlled environment&quot; and &quot;a public company&#39;s revenue is structurally impaired&quot; is not zero. The market often behaves as if it is.</p>
+<p>I keep coming back to this because it reveals a fundamental confusion about what AI companies are actually shipping. When you look under the hood, there is no proprietary security reasoning engine hiding behind the curtain. No secret vulnerability corpus. No deeply fine-tuned vertical model. The product is a structured agentic workflow: prompts, tools, sub-agents, guardrails and control logic wrapped around Claude. Anthropic even published their approach openly.</p>
+<p>In other words, it is the same class of system that dedicated security teams have been building internally for months.</p>
+<h2>The pattern</h2>
+<p>The uncomfortable truth is that it is cheap for a frontier lab to attack any vertical rhetorically. Legal today. Security tomorrow. Finance next week. Support after that. The marginal cost of shipping a new narrative shock is low. It is largely prompt engineering, orchestration and evaluation wrapped in a compelling announcement.</p>
+<p>Public markets price the end state immediately.</p>
+<p>Five to fifteen percent drawdowns on announcement days are now almost routine. Adjacent tool vendors can see 20 percent or more intraday volatility if perceived as feature-level exposed. Then, weeks later, earnings arrive. Revenue has not collapsed. Churn has not exploded. Guidance remains intact. Part of the selloff retraces. Often 50 to 80 percent of the initial drop is recovered over the following months if fundamentals prove resilient.</p>
+<p>I am not denying disruption. Models are improving fast. They will pressure margins. They will compress feature-level differentiation. They will automate parts of workflows that used to justify standalone products. I argued exactly this in my SaaSpocalypse piece, and I stand by it.</p>
+<p>But there is a difference between &quot;the application layer is thinner than we thought&quot; and &quot;a blog post just destroyed an enterprise security company&#39;s business model.&quot; The first is a structural insight about where defensibility lives. The second is a category error that conflates a well-designed skill with a fully displaced platform.</p>
+<h2>What a prompt does not replace</h2>
+<p>A prompt can replicate behaviour. It does not instantly replicate embedded trust.</p>
+<p>Enterprise software is not only functionality. It is integration depth, compliance evidence, data gravity, switching cost, governance, operational accountability and risk transfer. A CISO does not rip out CrowdStrike because a coding assistant can flag buffer overflows. A general counsel does not cancel a Wolters Kluwer contract because Claude can draft an NDA summary.</p>
+<p>The gap between demo and deployment in regulated, high-stakes environments is enormous. I have seen enough enterprise procurement cycles to know that the last mile is not a technical problem. It is an organisational, legal and political problem. And that gap is exactly where incumbents still have years of accumulated advantage.</p>
+<h2>The trade</h2>
+<p>If you are an investor, the pattern suggests a mechanical opportunity. Buy the dip on announcement days for companies with genuine data moats, deep integrations and sticky enterprise relationships. Wait for earnings to confirm what the narrative denied. This is not financial advice and I have no position in any of these names, but the pattern is becoming almost too predictable to ignore.</p>
+<p>If you are a builder, the lesson is different. The market is telling you that feature-level differentiation is not a moat. If your product is mostly orchestration around someone else&#39;s model, every Anthropic blog post is an existential threat. If your value is rooted in proprietary data, institutional trust and domain-specific accountability, the bar is rising but the ground is still solid.</p>
+<h2>The real risk</h2>
+<p>The real risk is not that markets overreact on announcement day. They will keep doing that. The real risk is that the overreaction becomes self-fulfilling. If incumbents spend the next twelve months in defensive mode, cutting R&amp;D to protect margins, issuing bland reassurances about &quot;AI integration&quot; without actually shipping differentiated capability, the narrative starts to become reality.</p>
+<p>The companies that survive this cycle will be the ones that treat every Anthropic blog post not as an existential crisis but as a product spec. &quot;They can do X now? Good. We need to do X plus the ten things around X that require our data, our compliance stack, and our customer relationships.&quot;</p>
+<p>The disruption is real. The timeline is not what announcement-day trading suggests. And conflating a skill with a fully displaced platform is a shortcut that, in public markets, tends to be expensive for everyone involved.</p>
+]]></content:encoded>
+    </item>
 
     <item>
       <title>MiniMax, Kimi, and the End of the US-Only AI Narrative</title>
