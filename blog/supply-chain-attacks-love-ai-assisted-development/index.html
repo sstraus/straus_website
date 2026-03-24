@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Supply Chain Attacks Love AI-Assisted Development | Stefano Straus</title>
+  <meta name="description" content="AI-assisted development optimizes for speed, not trust. The LiteLLM incident shows what happens when nobody reads the dependency graph anymore.">
+  <meta name="author" content="Stefano Straus">
+  <link rel="canonical" href="https://straus.it/blog/supply-chain-attacks-love-ai-assisted-development/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Supply Chain Attacks Love AI-Assisted Development">
+  <meta property="og:description" content="AI-assisted development optimizes for speed, not trust. The LiteLLM incident shows what happens when nobody reads the dependency graph anymore.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://straus.it/blog/supply-chain-attacks-love-ai-assisted-development/">
+  <meta property="og:image" content="https://straus.it/img/profile.jpg">
+  <meta property="og:site_name" content="Stefano Straus">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@StefanoStraus">
+  <meta name="twitter:title" content="Supply Chain Attacks Love AI-Assisted Development">
+  <meta name="twitter:description" content="AI-assisted development optimizes for speed, not trust. The LiteLLM incident shows what happens when nobody reads the dependency graph anymore.">
+  <meta name="twitter:image" content="https://straus.it/img/profile.jpg">
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Supply Chain Attacks Love AI-Assisted Development",
+  "description": "AI-assisted development optimizes for speed, not trust. The LiteLLM incident shows what happens when nobody reads the dependency graph anymore.",
+  "author": {
+    "@type": "Person",
+    "name": "Stefano Straus",
+    "url": "https://straus.it"
+  },
+  "datePublished": "2026-03-24",
+  "dateModified": "2026-03-24",
+  "publisher": {
+    "@type": "Person",
+    "name": "Stefano Straus"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://straus.it/blog/supply-chain-attacks-love-ai-assisted-development/"
+  },
+  "keywords": "ai, security, software-engineering"
+}
+  </script>
+
+  <!-- Redirect JS users to terminal view -->
+  <script>window.location.replace('/#read/supply-chain-attacks-love-ai-assisted-development');</script>
+
+  <style>
+    body { font-family: system-ui, -apple-system, sans-serif; max-width: 720px; margin: 2rem auto; padding: 0 1rem; line-height: 1.6; color: #222; }
+    a { color: #0066cc; }
+    .back { margin-bottom: 2rem; }
+    article img { max-width: 100%; }
+    time { color: #666; }
+    h1 { margin-bottom: 0.25rem; }
+    pre { background: #f5f5f5; padding: 1rem; overflow-x: auto; border-radius: 4px; }
+    code { font-family: 'JetBrains Mono', monospace; font-size: 0.9em; }
+    blockquote { border-left: 3px solid #ddd; margin-left: 0; padding-left: 1rem; color: #555; }
+    table { border-collapse: collapse; width: 100%; }
+    th, td { border: 1px solid #ddd; padding: 0.5rem; text-align: left; }
+    th { background: #f5f5f5; }
+  </style>
+</head>
+<body>
+  <noscript>
+    <nav class="back"><a href="/">&larr; straus.it</a></nav>
+    <article>
+      <h1>Supply Chain Attacks Love AI-Assisted Development</h1>
+      <time datetime="2026-03-24">March 24, 2026</time>
+<h1>Supply Chain Attacks Love AI-Assisted Development</h1>
+<p>Every junior developer can now build a full application in an afternoon. AI assistants generate code, suggest packages, wire up integrations. The barrier to shipping has never been lower. And that is genuinely exciting, until you look at what is happening underneath.</p>
+<h2>The trust decision nobody makes</h2>
+<p>When an AI suggests <code>pip install litellm</code> or <code>npm install some-wrapper</code>, it does not evaluate the dependency graph. It does not check who maintains the package, how many transitive dependencies it pulls in, or whether the supply chain is trustworthy. It suggests what works. The developer accepts, because the code runs, and moves on to the next prompt.</p>
+<p>This is creating a new category of software. Applications assembled from hundreds of packages by people who have never read a single line of what they are importing. Not out of laziness. Out of workflow. The AI-assisted development loop optimizes for speed and functionality. Security, dependency hygiene, trust evaluation. None of these are part of the feedback cycle.</p>
+<h2>One hour, one package, thousands of builds</h2>
+<p>The LiteLLM incident made this concrete. Someone published a poisoned version of a widely used Python package. It lived on PyPI for less than an hour.</p>
+<p>No exploit chain. No social engineering. A developer typed <code>pip install litellm</code> and that was enough.</p>
+<p>The package sits close to API keys and model routing by design. It is infrastructure glue that naturally has visibility into the highest-value material in a system. When you compromise something like this, you do not need privilege escalation. The privileges are already there.</p>
+<p>And nobody installs it in isolation. Something like DSPy pulls it in transitively, and the trust boundary expands without the developer even knowing. You are not trusting one maintainer. You are trusting hundreds, recursively.</p>
+<p>One hour sounds short until you think about CI/CD. Pipelines run continuously. Containers spin up fresh. One hour is enough to land inside thousands of builds globally.</p>
+<h2>Not smash-and-grab. Key harvesting.</h2>
+<p>The payload did not go after application data. It harvested identity material:</p>
+<ul>
+<li>SSH private keys</li>
+<li>Cloud credentials across AWS, GCP, Azure</li>
+<li>Kubernetes kubeconfigs</li>
+<li>API keys from environment variables</li>
+<li>Shell history</li>
+<li>TLS private keys</li>
+</ul>
+<p>Long-lived tokens that can be replayed weeks later in a completely different context. The attacker was not trying to win immediately. They were building an inventory.</p>
+<p>The discovery was accidental. The payload had a bug that crashed a machine. Without that bug, the exfiltration would have stayed silent. Most developer machines and CI environments have no outbound monitoring at all. High privilege, zero observability. Exactly backwards.</p>
+<h2>An ecosystem designed for velocity, not trust</h2>
+<p>Python and Node share the same structural problem. Publishing is frictionless. Version resolution is dynamic at install time. Lockfiles are optional in practice. Transitive dependencies are almost never audited.</p>
+<p>These are trade-offs for velocity, and they made sense when the average developer understood what they were importing. They make less sense when the assembly is automated and the assembler has no concept of trust.</p>
+<p>The attack surface is also worth more now. Ten years ago, environment variables might hold a database password. Today they hold LLM provider keys, cloud admin roles, access to production models. The stakes changed. The security model did not.</p>
+<h2>Shrinking the trust surface</h2>
+<p>There is a wide middle ground of glue code and thin wrappers where a dependency adds more attack surface than actual functionality. If a function is 40 lines and stable, copying it into your project is not a technical decision. It is a risk decision. The principle of reuse assumed a trust model that AI-assisted development is quietly dissolving.</p>
+<p>For everything else, some patterns are becoming baseline rather than optional:</p>
+<ul>
+<li><strong>Pin everything</strong>, including transitive dependencies. Treat lockfiles as artifacts, not suggestions. If a version changes, that should be a conscious event, not something that happens because a CI job ran at a different time.</li>
+<li><strong>Separate build-time from run-time environments.</strong> The machine that installs dependencies should not have access to production credentials. If exfiltration happens there, it should yield nothing useful.</li>
+<li><strong>Assume install-time code has full access to the machine.</strong> Because it does. Post-install hooks, setup scripts, dynamic imports. All execution points.</li>
+<li><strong>Minimize what lives in the environment.</strong> If your shell history contains secrets or your home directory holds long-lived keys, you are pre-loading the attacker&#39;s loot.</li>
+<li><strong>Treat every AI-suggested dependency as a trust decision</strong>, not a convenience.</li>
+</ul>
+<p>The attacker needed one publish, one hour, and one widely trusted node in the graph. That was enough.</p>
+
+    </article>
+    <nav><a href="/">&larr; Back to straus.it</a></nav>
+  </noscript>
+</body>
+</html>

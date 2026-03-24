@@ -1,6 +1,14 @@
 {
   "articles": [
     {
+      "slug": "supply-chain-attacks-love-ai-assisted-development",
+      "title": "Supply Chain Attacks Love AI-Assisted Development",
+      "date": "2026-03-24",
+      "description": "AI-assisted development optimizes for speed, not trust. The LiteLLM incident shows what happens when nobody reads the dependency graph anymore.",
+      "tags": ["ai", "security", "software-engineering"],
+      "file": "2026-03-24-supply-chain-attacks-love-ai-assisted-development.md"
+    },
+    {
       "slug": "the-accountability-gap",
       "title": "The Accountability Gap",
       "date": "2026-02-21",

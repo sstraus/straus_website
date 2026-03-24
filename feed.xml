@@ -7,13 +7,60 @@
     <link>https://straus.it</link>
     <description>Engineering Manager specializing in AI-driven development, software architecture, and developer productivity. Insights on intent-based programming, Claude Code, and modern development patterns.</description>
     <language>en</language>
-    <lastBuildDate>Sat, 21 Feb 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 24 Mar 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://straus.it/feed.xml" rel="self" type="application/rss+xml"/>
     <image>
       <url>https://straus.it/img/profile.jpg</url>
       <title>Stefano Straus</title>
       <link>https://straus.it</link>
     </image>
+
+    <item>
+      <title>Supply Chain Attacks Love AI-Assisted Development</title>
+      <link>https://straus.it/blog/supply-chain-attacks-love-ai-assisted-development/</link>
+      <guid isPermaLink="true">https://straus.it/blog/supply-chain-attacks-love-ai-assisted-development/</guid>
+      <pubDate>Tue, 24 Mar 2026 00:00:00 +0000</pubDate>
+      <description>AI-assisted development optimizes for speed, not trust. The LiteLLM incident shows what happens when nobody reads the dependency graph anymore.</description>
+      <content:encoded><![CDATA[<h1>Supply Chain Attacks Love AI-Assisted Development</h1>
+<p>Every junior developer can now build a full application in an afternoon. AI assistants generate code, suggest packages, wire up integrations. The barrier to shipping has never been lower. And that is genuinely exciting, until you look at what is happening underneath.</p>
+<h2>The trust decision nobody makes</h2>
+<p>When an AI suggests <code>pip install litellm</code> or <code>npm install some-wrapper</code>, it does not evaluate the dependency graph. It does not check who maintains the package, how many transitive dependencies it pulls in, or whether the supply chain is trustworthy. It suggests what works. The developer accepts, because the code runs, and moves on to the next prompt.</p>
+<p>This is creating a new category of software. Applications assembled from hundreds of packages by people who have never read a single line of what they are importing. Not out of laziness. Out of workflow. The AI-assisted development loop optimizes for speed and functionality. Security, dependency hygiene, trust evaluation. None of these are part of the feedback cycle.</p>
+<h2>One hour, one package, thousands of builds</h2>
+<p>The LiteLLM incident made this concrete. Someone published a poisoned version of a widely used Python package. It lived on PyPI for less than an hour.</p>
+<p>No exploit chain. No social engineering. A developer typed <code>pip install litellm</code> and that was enough.</p>
+<p>The package sits close to API keys and model routing by design. It is infrastructure glue that naturally has visibility into the highest-value material in a system. When you compromise something like this, you do not need privilege escalation. The privileges are already there.</p>
+<p>And nobody installs it in isolation. Something like DSPy pulls it in transitively, and the trust boundary expands without the developer even knowing. You are not trusting one maintainer. You are trusting hundreds, recursively.</p>
+<p>One hour sounds short until you think about CI/CD. Pipelines run continuously. Containers spin up fresh. One hour is enough to land inside thousands of builds globally.</p>
+<h2>Not smash-and-grab. Key harvesting.</h2>
+<p>The payload did not go after application data. It harvested identity material:</p>
+<ul>
+<li>SSH private keys</li>
+<li>Cloud credentials across AWS, GCP, Azure</li>
+<li>Kubernetes kubeconfigs</li>
+<li>API keys from environment variables</li>
+<li>Shell history</li>
+<li>TLS private keys</li>
+</ul>
+<p>Long-lived tokens that can be replayed weeks later in a completely different context. The attacker was not trying to win immediately. They were building an inventory.</p>
+<p>The discovery was accidental. The payload had a bug that crashed a machine. Without that bug, the exfiltration would have stayed silent. Most developer machines and CI environments have no outbound monitoring at all. High privilege, zero observability. Exactly backwards.</p>
+<h2>An ecosystem designed for velocity, not trust</h2>
+<p>Python and Node share the same structural problem. Publishing is frictionless. Version resolution is dynamic at install time. Lockfiles are optional in practice. Transitive dependencies are almost never audited.</p>
+<p>These are trade-offs for velocity, and they made sense when the average developer understood what they were importing. They make less sense when the assembly is automated and the assembler has no concept of trust.</p>
+<p>The attack surface is also worth more now. Ten years ago, environment variables might hold a database password. Today they hold LLM provider keys, cloud admin roles, access to production models. The stakes changed. The security model did not.</p>
+<h2>Shrinking the trust surface</h2>
+<p>There is a wide middle ground of glue code and thin wrappers where a dependency adds more attack surface than actual functionality. If a function is 40 lines and stable, copying it into your project is not a technical decision. It is a risk decision. The principle of reuse assumed a trust model that AI-assisted development is quietly dissolving.</p>
+<p>For everything else, some patterns are becoming baseline rather than optional:</p>
+<ul>
+<li><strong>Pin everything</strong>, including transitive dependencies. Treat lockfiles as artifacts, not suggestions. If a version changes, that should be a conscious event, not something that happens because a CI job ran at a different time.</li>
+<li><strong>Separate build-time from run-time environments.</strong> The machine that installs dependencies should not have access to production credentials. If exfiltration happens there, it should yield nothing useful.</li>
+<li><strong>Assume install-time code has full access to the machine.</strong> Because it does. Post-install hooks, setup scripts, dynamic imports. All execution points.</li>
+<li><strong>Minimize what lives in the environment.</strong> If your shell history contains secrets or your home directory holds long-lived keys, you are pre-loading the attacker&#39;s loot.</li>
+<li><strong>Treat every AI-suggested dependency as a trust decision</strong>, not a convenience.</li>
+</ul>
+<p>The attacker needed one publish, one hour, and one widely trusted node in the graph. That was enough.</p>
+]]></content:encoded>
+    </item>
 
     <item>
       <title>The Accountability Gap</title>
