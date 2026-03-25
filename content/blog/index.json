@@ -1,6 +1,14 @@
 {
   "articles": [
     {
+      "slug": "turboquant-end-of-gpu-scarcity",
+      "title": "TurboQuant and the End of GPU Scarcity",
+      "date": "2026-03-25",
+      "description": "Google's TurboQuant compresses model memory by 6x with no retraining. When one GPU does the work of six, the economics of AI change for everyone.",
+      "tags": ["ai", "google", "quantization", "infrastructure"],
+      "file": "2026-03-25-turboquant-end-of-gpu-scarcity.md"
+    },
+    {
       "slug": "supply-chain-attacks-love-ai-assisted-development",
       "title": "Supply Chain Attacks Love AI-Assisted Development",
       "date": "2026-03-24",
