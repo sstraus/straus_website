@@ -1,6 +1,14 @@
 {
   "articles": [
     {
+      "slug": "claude-code-source-leak-anatomy",
+      "title": "Anatomy of the Claude Code Source Leak: What 512K Lines of TypeScript Reveal",
+      "date": "2026-04-01",
+      "description": "A source map left in the npm package exposed Claude Code's full architecture. Prompt caching, context management, dual telemetry, security hardening, and the internal/external bifurcation.",
+      "tags": ["ai", "claude-code", "security", "software-engineering", "anthropic"],
+      "file": "2026-04-01-claude-code-source-leak-anatomy.md"
+    },
+    {
       "slug": "turboquant-end-of-gpu-scarcity",
       "title": "TurboQuant and the End of GPU Scarcity",
       "date": "2026-03-25",

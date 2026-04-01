@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://straus.it/</loc>
-    <lastmod>2026-03-25</lastmod>
+    <lastmod>2026-04-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -37,6 +37,12 @@
     <priority>0.5</priority>
   </url>
   <!-- Blog posts -->
+  <url>
+    <loc>https://straus.it/blog/claude-code-source-leak-anatomy/</loc>
+    <lastmod>2026-04-01</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
   <url>
     <loc>https://straus.it/blog/the-accountability-gap/</loc>
     <lastmod>2026-02-21</lastmod>
