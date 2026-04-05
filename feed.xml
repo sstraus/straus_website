@@ -7,13 +7,43 @@
     <link>https://straus.it</link>
     <description>Engineering Manager specializing in AI-driven development, software architecture, and developer productivity. Insights on intent-based programming, Claude Code, and modern development patterns.</description>
     <language>en</language>
-    <lastBuildDate>Wed, 01 Apr 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 05 Apr 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://straus.it/feed.xml" rel="self" type="application/rss+xml"/>
     <image>
       <url>https://straus.it/img/profile.jpg</url>
       <title>Stefano Straus</title>
       <link>https://straus.it</link>
     </image>
+
+    <item>
+      <title>I Built Claude&apos;s Computer Use Before Claude Did. Then I Forgot to Tell Anyone.</title>
+      <link>https://straus.it/blog/mcpmaccontrol-computer-use-before-claude/</link>
+      <guid isPermaLink="true">https://straus.it/blog/mcpmaccontrol-computer-use-before-claude/</guid>
+      <pubDate>Sun, 05 Apr 2026 00:00:00 +0000</pubDate>
+      <description>MCPMacControl is an MCP server that gives Claude real eyes and hands on macOS, not just the browser. Why the token bill does not explode, the safety layer that tells you when the AI is driving, and the macOS permissions detail that shaped the architecture.</description>
+      <content:encoded><![CDATA[<h1>I Built Claude&#39;s Computer Use Before Claude Did. Then I Forgot to Tell Anyone.</h1>
+<p>Every AI lab is racing to ship &quot;agentic computer use&quot; right now. Anthropic introduced it, then refined it. The narrative is that AI driving your desktop is a new frontier.</p>
+<p>It is not new for me. I have been using it for months. I built the thing myself, in Go, because I needed it to ship other software. It is called MCPMacControl, it is on GitHub under MIT, and the story of why it exists is more interesting than the tool itself.</p>
+<h2>The problem nobody talks about</h2>
+<p>When I started building TUICommander, I hit a wall that every desktop developer knows. Testing a TUI application is hard. Testing a native macOS app is harder. The web has Playwright, Cypress, Puppeteer, and a decade of mature tooling. The desktop has nothing comparable. You either write brittle AppleScript, pay for commercial QA tools built for the enterprise treadmill, or you test by hand at 11 PM before a release and pray.</p>
+<p>I tried testing by hand. It does not scale. Every time I changed a keybinding in tuicommander, I had to manually walk through 20 flows. Ask me how many times I shipped a bug because I skipped a flow I thought was unrelated.</p>
+<p>So I built an MCP server that gives Claude actual eyes and hands on my Mac. Not in a browser. On the whole machine. Screen Recording permission, Accessibility permission, signed and notarized .app bundle, the full thing. I wanted Claude to be able to open tuicommander, drive it, read the screen, and tell me what broke. That is what it does now.</p>
+<h2>Why the token bill does not explode</h2>
+<p>Everyone who tries Anthropic&#39;s computer use out of the box has the same complaint. It works, but the token consumption is brutal. A twenty-minute QA session can burn through a serious chunk of the monthly budget. The reason is straightforward: screenshots are huge, and vision models charge by the pixel.</p>
+<p>I ran into this wall early and decided the only sane approach was to be aggressive about what gets sent to the model. MCPMacControl defaults screenshots to WebP lossy format at quality 25. That is not a typo. Twenty-five. Claude reads UI elements, menus, and text perfectly fine at that quality, and the files are an order of magnitude smaller than PNG. For small glyphs or icons you can bump it to 50 per call. You rarely need more.</p>
+<p>Then there is region capture. Instead of screenshotting the whole 5K display every time, take a screenshot of the 400x300 region where the action is happening. Coordinates are preserved. Clicks still land where they should. The image shrinks dramatically and so does the token cost. Screenshots are also scaled to window point dimensions rather than native pixels, which means Retina displays do not quietly quadruple your bill.</p>
+<p>None of these choices is clever. They are just the decisions you make when you are the one paying the bill and watching the counter go up in real time.</p>
+<h2>The safety layer I care about most</h2>
+<p>Giving an AI mouse and keyboard control of the machine you are currently sitting at is genuinely unnerving the first time. A misfired keystroke at the wrong moment can type a prompt into your bank tab. A misplaced click can nuke a file. I was not willing to use something without knowing exactly when it was acting.</p>
+<p>So every automated action gets three signals. A menu bar icon that lights up. A native popover describing the current operation. And, the one I insisted on, an orange border flash around the entire screen, plus a sound the instant before input is sent. You cannot miss it. If I see the flash and I did not expect it, I can yank my hands off the keyboard before anything lands.</p>
+<p>There is also a less visible safety check. Before any keystroke goes out, the tool verifies that the target app is actually focused. If Claude asks to type into Xcode but Slack grabbed focus half a second ago, the input is blocked. This sounds obvious until you realize that almost no automation framework does it.</p>
+<h2>The annoying macOS detail that shaped the architecture</h2>
+<p>One thing I learned the hard way: macOS grants Screen Recording and Accessibility permissions per application, not per binary. If you run a plain Go binary from iTerm, macOS attributes the permission to iTerm itself, not to your binary. Rebuild the binary, permissions evaporate. Switch terminals, grant them again. There is no entry in System Settings for your tool because, as far as macOS is concerned, your tool does not exist.</p>
+<p>The only way out is to wrap the binary in a signed .app bundle. Then macOS gives it its own identity, permissions persist across updates, and users can actually manage them. That is why MCPMacControl is shipped as <code>/Applications/MCPMacControl.app</code> rather than as a binary in <code>/usr/local/bin</code>. It still talks stdio like any MCP server. The bundle is purely a permissions trick.</p>
+<p>I wish someone had told me this before I spent a weekend debugging disappearing permissions.</p>
+<p>Repo: <a href="https://github.com/sstraus/McpMacControl">github.com/sstraus/McpMacControl</a></p>
+]]></content:encoded>
+    </item>
 
     <item>
       <title>Anatomy of the Claude Code Source Leak: What 512K Lines of TypeScript Reveal</title>
@@ -28,7 +58,7 @@
 <h2>Not a thin wrapper</h2>
 <p>The first thing that becomes clear from reading the source is that Claude Code is not a thin API wrapper. It is a full application. The stack: Bun as runtime, React Ink for the terminal UI, TypeScript throughout, Anthropic SDK for API calls, OAuth 2.0 for auth, and MCP for tool communication.</p>
 <p>The codebase has roughly 55 directories under <code>src/</code>. The entry point, <code>main.tsx</code>, is 800 KB alone. Tools are defined with JSON schemas, input validation, and per-tool permission logic. This is a serious, modular system. It has more in common with an IDE than with a chatbot interface.</p>
-<p>One detail worth noting: feature flags use <code>bun:bundle</code> for dead code elimination at build time. When a flag like <code>feature('KAIROS')</code> is inactive, the entire code path disappears from the bundle. This is how they keep unreleased features in the same codebase without shipping them to users.</p>
+<p>One detail worth noting: feature flags use <code>bun:bundle</code> for dead code elimination at build time. When a flag like <code>feature(&#39;KAIROS&#39;)</code> is inactive, the entire code path disappears from the bundle. This is how they keep unreleased features in the same codebase without shipping them to users.</p>
 <h2>The prompt caching strategy</h2>
 <p>This is the most technically interesting part of the leak. It explains why Claude Code feels fast even when handling massive system prompts.</p>
 <p>The file <code>constants/prompts.ts</code> contains a marker that splits the system prompt into two halves. Everything before the marker is identical for every Claude Code user on the planet: roughly 40 to 50K tokens of static instructions. This half is cached with a <code>global</code> scope, keyed by a single Blake2b hash. Anthropic reports cache hit rates above 90%.</p>
@@ -64,18 +94,29 @@
 <p>Second, beyond the expected Datadog integration, there is an entire first-party logging infrastructure built on OpenTelemetry. It exports batched events to <code>/api/event_logging/batch</code> on Anthropic&#39;s servers. This pipeline is completely separate from Datadog and is not documented anywhere in the product.</p>
 <p>A/B testing runs silently via GrowthBook with automatic assignment. Anthropic employees can force any feature flag through <code>CLAUDE_INTERNAL_FC_OVERRIDES</code>, bypassing network, cache, and remote assignment. External users cannot.</p>
 <h2>The internal/external bifurcation</h2>
-<p>The code distinguishes two user types: <code>external</code> (everyone) and <code>ant</code> (Anthropic employees), checked via <code>process.env.USER_TYPE === 'ant'</code>.</p>
+<p>The code distinguishes two user types: <code>external</code> (everyone) and <code>ant</code> (Anthropic employees), checked via <code>process.env.USER_TYPE === &#39;ant&#39;</code>.</p>
 <p>For internal users, many commands that are blocked externally are allowed: <code>curl</code>, <code>wget</code>, <code>gh api</code>, <code>kubectl</code>, <code>aws</code>, <code>gcloud</code>, <code>gsutil</code>, <code>git</code> operations. There is also a mock rate limiting harness in <code>services/mockRateLimits.ts</code> with 18+ error scenarios that lets Anthropic engineers test rate limit behavior without hitting the real API.</p>
 <p>The bypass permissions mode skips user confirmations, but it is not a backdoor. It requires a verified Docker container or sandbox environment. The permission model is granular and context-aware, not a simple on/off switch.</p>
 <h2>The unreleased roadmap</h2>
-<p>Feature flags paint a clear picture of what is coming: Bagel (integrated web browser), Tungsten (tmux integration, noted as incompatible with multi-agent), Chicago (Computer Use via MCP), Kairos (proactive agent with GitHub webhooks), Voice Mode, Bridge Mode (remote control), Daemon (background server), and Ultraplan (cloud-based planning).</p>
+<p>Feature flags paint a clear picture of what is coming:</p>
+<ul>
+<li><strong>Bagel</strong>: integrated web browser in the terminal</li>
+<li><strong>Tungsten</strong>: tmux integration for virtual terminals (noted as incompatible with multi-agent execution)</li>
+<li><strong>Chicago</strong>: Computer Use via MCP</li>
+<li><strong>Kairos</strong>: proactive agent that acts without waiting for user input, with GitHub webhook subscriptions and an assistant mode</li>
+<li><strong>Voice Mode</strong>: voice input</li>
+<li><strong>Bridge Mode</strong>: remote control</li>
+<li><strong>Daemon</strong>: background server mode</li>
+<li><strong>Ultraplan</strong>: advanced cloud-based planning</li>
+</ul>
 <p>Kairos is the most significant. A Claude Code that monitors your GitHub events and acts proactively without a prompt represents a fundamental shift from reactive tool to active collaborator.</p>
 <h2>What this actually means</h2>
 <p>The code contains no API keys, no cryptographic secrets, no exploitable vulnerabilities. It is a client application. You still need a valid token to talk to the API. The damage is not operational. It is strategic.</p>
 <p>Anthropic&#39;s unreleased product roadmap is now public. Their internal model codenames are known. Their telemetry architecture, including an undocumented first-party pipeline, is documented by reverse engineers instead of by their own product team. The security posture differences between internal and external users are visible.</p>
 <p>The deeper lesson is about build pipelines as attack surface. This is the second source map leak in under a year. The fix is trivial: <code>&quot;sourceMap&quot;: false</code> in tsconfig, or a CI gate that rejects <code>.map</code> files in publishable artifacts. The fact that it happened twice suggests the fix needs to live in process, not in individual memory.</p>
 <p>I still use Claude Code. I will keep using it. The engineering inside is genuinely impressive, and the prompt caching strategy alone is worth studying. But I now use it with eyes open about what telemetry it collects and how differently it behaves depending on who is running it.</p>
-<p>The most dangerous code is not the code you write. It is the code you publish by accident.</p>]]></content:encoded>
+<p>The most dangerous code is not the code you write. It is the code you publish by accident.</p>
+]]></content:encoded>
     </item>
 
     <item>

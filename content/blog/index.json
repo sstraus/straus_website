@@ -1,6 +1,14 @@
 {
   "articles": [
     {
+      "slug": "mcpmaccontrol-computer-use-before-claude",
+      "title": "I Built Claude's Computer Use Before Claude Did. Then I Forgot to Tell Anyone.",
+      "date": "2026-04-05",
+      "description": "MCPMacControl is an MCP server that gives Claude real eyes and hands on macOS, not just the browser. Why the token bill does not explode, the safety layer that tells you when the AI is driving, and the macOS permissions detail that shaped the architecture.",
+      "tags": ["ai", "claude-code", "mcp", "macos", "automation", "agents"],
+      "file": "2026-04-05-mcpmaccontrol-computer-use-before-claude.md"
+    },
+    {
       "slug": "claude-code-source-leak-anatomy",
       "title": "Anatomy of the Claude Code Source Leak: What 512K Lines of TypeScript Reveal",
       "date": "2026-04-01",

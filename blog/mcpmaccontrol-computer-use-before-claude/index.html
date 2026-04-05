@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>I Built Claude's Computer Use Before Claude Did. Then I Forgot to Tell Anyone. | Stefano Straus</title>
+  <meta name="description" content="MCPMacControl is an MCP server that gives Claude real eyes and hands on macOS, not just the browser. Why the token bill does not explode, the safety layer that tells you when the AI is driving, and the macOS permissions detail that shaped the architecture.">
+  <meta name="author" content="Stefano Straus">
+  <link rel="canonical" href="https://straus.it/blog/mcpmaccontrol-computer-use-before-claude/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="I Built Claude's Computer Use Before Claude Did. Then I Forgot to Tell Anyone.">
+  <meta property="og:description" content="MCPMacControl is an MCP server that gives Claude real eyes and hands on macOS, not just the browser. Why the token bill does not explode, the safety layer that tells you when the AI is driving, and the macOS permissions detail that shaped the architecture.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://straus.it/blog/mcpmaccontrol-computer-use-before-claude/">
+  <meta property="og:image" content="https://straus.it/img/profile.jpg">
+  <meta property="og:site_name" content="Stefano Straus">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@StefanoStraus">
+  <meta name="twitter:title" content="I Built Claude's Computer Use Before Claude Did. Then I Forgot to Tell Anyone.">
+  <meta name="twitter:description" content="MCPMacControl is an MCP server that gives Claude real eyes and hands on macOS, not just the browser. Why the token bill does not explode, the safety layer that tells you when the AI is driving, and the macOS permissions detail that shaped the architecture.">
+  <meta name="twitter:image" content="https://straus.it/img/profile.jpg">
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "I Built Claude's Computer Use Before Claude Did. Then I Forgot to Tell Anyone.",
+  "description": "MCPMacControl is an MCP server that gives Claude real eyes and hands on macOS, not just the browser. Why the token bill does not explode, the safety layer that tells you when the AI is driving, and the macOS permissions detail that shaped the architecture.",
+  "author": {
+    "@type": "Person",
+    "name": "Stefano Straus",
+    "url": "https://straus.it"
+  },
+  "datePublished": "2026-04-05",
+  "dateModified": "2026-04-05",
+  "publisher": {
+    "@type": "Person",
+    "name": "Stefano Straus"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://straus.it/blog/mcpmaccontrol-computer-use-before-claude/"
+  },
+  "keywords": "ai, claude-code, mcp, macos, automation, agents"
+}
+  </script>
+
+  <!-- Redirect JS users to terminal view -->
+  <script>window.location.replace('/#read/mcpmaccontrol-computer-use-before-claude');</script>
+
+  <style>
+    body { font-family: system-ui, -apple-system, sans-serif; max-width: 720px; margin: 2rem auto; padding: 0 1rem; line-height: 1.6; color: #222; }
+    a { color: #0066cc; }
+    .back { margin-bottom: 2rem; }
+    article img { max-width: 100%; }
+    time { color: #666; }
+    h1 { margin-bottom: 0.25rem; }
+    pre { background: #f5f5f5; padding: 1rem; overflow-x: auto; border-radius: 4px; }
+    code { font-family: 'JetBrains Mono', monospace; font-size: 0.9em; }
+    blockquote { border-left: 3px solid #ddd; margin-left: 0; padding-left: 1rem; color: #555; }
+    table { border-collapse: collapse; width: 100%; }
+    th, td { border: 1px solid #ddd; padding: 0.5rem; text-align: left; }
+    th { background: #f5f5f5; }
+  </style>
+</head>
+<body>
+  <noscript>
+    <nav class="back"><a href="/">&larr; straus.it</a></nav>
+    <article>
+      <h1>I Built Claude's Computer Use Before Claude Did. Then I Forgot to Tell Anyone.</h1>
+      <time datetime="2026-04-05">April 5, 2026</time>
+<h1>I Built Claude&#39;s Computer Use Before Claude Did. Then I Forgot to Tell Anyone.</h1>
+<p>Every AI lab is racing to ship &quot;agentic computer use&quot; right now. Anthropic introduced it, then refined it. The narrative is that AI driving your desktop is a new frontier.</p>
+<p>It is not new for me. I have been using it for months. I built the thing myself, in Go, because I needed it to ship other software. It is called MCPMacControl, it is on GitHub under MIT, and the story of why it exists is more interesting than the tool itself.</p>
+<h2>The problem nobody talks about</h2>
+<p>When I started building TUICommander, I hit a wall that every desktop developer knows. Testing a TUI application is hard. Testing a native macOS app is harder. The web has Playwright, Cypress, Puppeteer, and a decade of mature tooling. The desktop has nothing comparable. You either write brittle AppleScript, pay for commercial QA tools built for the enterprise treadmill, or you test by hand at 11 PM before a release and pray.</p>
+<p>I tried testing by hand. It does not scale. Every time I changed a keybinding in tuicommander, I had to manually walk through 20 flows. Ask me how many times I shipped a bug because I skipped a flow I thought was unrelated.</p>
+<p>So I built an MCP server that gives Claude actual eyes and hands on my Mac. Not in a browser. On the whole machine. Screen Recording permission, Accessibility permission, signed and notarized .app bundle, the full thing. I wanted Claude to be able to open tuicommander, drive it, read the screen, and tell me what broke. That is what it does now.</p>
+<h2>Why the token bill does not explode</h2>
+<p>Everyone who tries Anthropic&#39;s computer use out of the box has the same complaint. It works, but the token consumption is brutal. A twenty-minute QA session can burn through a serious chunk of the monthly budget. The reason is straightforward: screenshots are huge, and vision models charge by the pixel.</p>
+<p>I ran into this wall early and decided the only sane approach was to be aggressive about what gets sent to the model. MCPMacControl defaults screenshots to WebP lossy format at quality 25. That is not a typo. Twenty-five. Claude reads UI elements, menus, and text perfectly fine at that quality, and the files are an order of magnitude smaller than PNG. For small glyphs or icons you can bump it to 50 per call. You rarely need more.</p>
+<p>Then there is region capture. Instead of screenshotting the whole 5K display every time, take a screenshot of the 400x300 region where the action is happening. Coordinates are preserved. Clicks still land where they should. The image shrinks dramatically and so does the token cost. Screenshots are also scaled to window point dimensions rather than native pixels, which means Retina displays do not quietly quadruple your bill.</p>
+<p>None of these choices is clever. They are just the decisions you make when you are the one paying the bill and watching the counter go up in real time.</p>
+<h2>The safety layer I care about most</h2>
+<p>Giving an AI mouse and keyboard control of the machine you are currently sitting at is genuinely unnerving the first time. A misfired keystroke at the wrong moment can type a prompt into your bank tab. A misplaced click can nuke a file. I was not willing to use something without knowing exactly when it was acting.</p>
+<p>So every automated action gets three signals. A menu bar icon that lights up. A native popover describing the current operation. And, the one I insisted on, an orange border flash around the entire screen, plus a sound the instant before input is sent. You cannot miss it. If I see the flash and I did not expect it, I can yank my hands off the keyboard before anything lands.</p>
+<p>There is also a less visible safety check. Before any keystroke goes out, the tool verifies that the target app is actually focused. If Claude asks to type into Xcode but Slack grabbed focus half a second ago, the input is blocked. This sounds obvious until you realize that almost no automation framework does it.</p>
+<h2>The annoying macOS detail that shaped the architecture</h2>
+<p>One thing I learned the hard way: macOS grants Screen Recording and Accessibility permissions per application, not per binary. If you run a plain Go binary from iTerm, macOS attributes the permission to iTerm itself, not to your binary. Rebuild the binary, permissions evaporate. Switch terminals, grant them again. There is no entry in System Settings for your tool because, as far as macOS is concerned, your tool does not exist.</p>
+<p>The only way out is to wrap the binary in a signed .app bundle. Then macOS gives it its own identity, permissions persist across updates, and users can actually manage them. That is why MCPMacControl is shipped as <code>/Applications/MCPMacControl.app</code> rather than as a binary in <code>/usr/local/bin</code>. It still talks stdio like any MCP server. The bundle is purely a permissions trick.</p>
+<p>I wish someone had told me this before I spent a weekend debugging disappearing permissions.</p>
+<p>Repo: <a href="https://github.com/sstraus/McpMacControl">github.com/sstraus/McpMacControl</a></p>
+
+    </article>
+    <nav><a href="/">&larr; Back to straus.it</a></nav>
+  </noscript>
+</body>
+</html>
