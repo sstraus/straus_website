@@ -1,6 +1,14 @@
 {
   "articles": [
     {
+      "slug": "design-in-2026-when-everything-looks-the-same",
+      "title": "Converge or Disappear: AI Is Flattening Design Into Irrelevance",
+      "date": "2026-04-06",
+      "description": "AI collapsed the barrier to building. Now the competitive advantage is judgment, taste, and visible intention.",
+      "tags": ["design", "ai", "product", "craft"],
+      "file": "2026-04-06-design-in-2026-when-everything-looks-the-same.md"
+    },
+    {
       "slug": "mcpmaccontrol-computer-use-before-claude",
       "title": "I Built Claude's Computer Use Before Claude Did. Then I Forgot to Tell Anyone.",
       "date": "2026-04-05",

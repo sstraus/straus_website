@@ -36,7 +36,7 @@ export const config = {
   site: {
     name: 'straus.it',
     author: 'Stefano Straus',
-    version: '1.3.7',
+    version: '1.3.8',
   },
 
   // Debug mode
