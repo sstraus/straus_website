@@ -36,6 +36,43 @@
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
+  <!-- Apps -->
+  <url>
+    <loc>https://straus.it/apps/steps/</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://straus.it/apps/steps/privacy.html</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://straus.it/apps/steps/support.html</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://straus.it/apps/photobanana/</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://straus.it/apps/photobanana/privacy.html</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://straus.it/apps/photobanana/support.html</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
   <!-- Blog posts -->
   <url>
     <loc>https://straus.it/blog/design-in-2026-when-everything-looks-the-same/</loc>
