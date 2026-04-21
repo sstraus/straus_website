@@ -49,13 +49,10 @@
 }
   </script>
 
-  <!-- Redirect JS users to terminal view -->
-  <script>window.location.replace('/#read/finicky-url-routing');</script>
-
   <style>
-    body { font-family: system-ui, -apple-system, sans-serif; max-width: 720px; margin: 2rem auto; padding: 0 1rem; line-height: 1.6; color: #222; }
+    body { font-family: system-ui, -apple-system, sans-serif; max-width: 720px; margin: 2rem auto; padding: 0 1rem; line-height: 1.6; color: #222; background: #fff; }
     a { color: #0066cc; }
-    .back { margin-bottom: 2rem; }
+    .site-nav { margin-bottom: 2rem; display: flex; gap: 1rem; font-size: 0.9em; }
     article img { max-width: 100%; }
     time { color: #666; }
     h1 { margin-bottom: 0.25rem; }
@@ -65,14 +62,26 @@
     table { border-collapse: collapse; width: 100%; }
     th, td { border: 1px solid #ddd; padding: 0.5rem; text-align: left; }
     th { background: #f5f5f5; }
+    .terminal-link { margin-top: 2rem; padding: 0.75rem 1rem; background: #f5f5f5; border-radius: 4px; font-size: 0.9em; }
+    @media (prefers-color-scheme: dark) {
+      body { background: #0d1117; color: #c9d1d9; }
+      a { color: #58a6ff; }
+      time { color: #8b949e; }
+      pre, th { background: #161b22; }
+      td, th { border-color: #30363d; }
+      blockquote { border-color: #30363d; color: #8b949e; }
+      .terminal-link { background: #161b22; }
+    }
   </style>
 </head>
 <body>
-  <noscript>
-    <nav class="back"><a href="/">&larr; straus.it</a></nav>
-    <article>
-      <h1>Finicky - Take Control of Your URLs</h1>
-      <time datetime="2025-02-13">February 13, 2025</time>
+  <nav class="site-nav">
+    <a href="/">&larr; straus.it</a>
+    <a href="/#blog">blog</a>
+  </nav>
+  <article>
+    <h1>Finicky - Take Control of Your URLs</h1>
+    <time datetime="2025-02-13">February 13, 2025</time>
 <h1>Finicky - Take Control of Your URLs</h1>
 <p>Every link you click goes somewhere. But where? On macOS, the answer is usually &quot;whatever your default browser is.&quot; Finicky changes that.</p>
 <p><a href="https://github.com/johnste/finicky">Finicky</a> is a URL router for macOS. It intercepts every link before it opens and lets you decide—programmatically—what happens next.</p>
@@ -246,8 +255,10 @@ After: <code>example.com/page</code></p>
 <p>URLs are data. Finicky lets you transform that data before it becomes action. Strip tracking, fix broken links, route to the right place, bypass annoyances.</p>
 <p>Once configured, it&#39;s invisible. Links just work—the way they should.</p>
 
-    </article>
-    <nav><a href="/">&larr; Back to straus.it</a></nav>
-  </noscript>
+  </article>
+  <div class="terminal-link">
+    Read this in the <a href="/#read/finicky-url-routing">terminal view</a>
+  </div>
+  <nav class="site-nav" style="margin-top:2rem"><a href="/">&larr; straus.it</a></nav>
 </body>
 </html>

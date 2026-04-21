@@ -15,6 +15,7 @@ body {
   min-height: 100vh;
   background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 20px;
@@ -31,6 +32,44 @@ body.light-theme {
   width: 100%;
   max-width: var(--window-max-width);
   margin: 0 auto;
+}
+
+.site-footer {
+  width: 100%;
+  max-width: var(--window-max-width);
+  margin: 12px auto 0;
+  padding: 0 4px;
+  display: flex;
+  justify-content: center;
+}
+
+.site-footer nav {
+  display: flex;
+  gap: 1.5em;
+  font-family: var(--font-mono);
+  font-size: 12px;
+}
+
+.site-footer a {
+  color: var(--term-text-dim);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.site-footer a:hover {
+  color: var(--term-link);
+}
+
+.seo-content {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 /* Selection */
@@ -84,5 +123,9 @@ body.light-theme {
   .container {
     max-width: none;
     height: 100%;
+  }
+
+  .site-footer {
+    display: none;
   }
 }

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>NightRecovery — Privacy Policy | straus.it</title>
+  <meta name="description" content="Privacy Policy for NightRecovery. No accounts, no trackers, on-device processing only.">
+  <meta name="author" content="Stefano Straus">
+  <link rel="canonical" href="https://straus.it/apps/nightrecovery/privacy.html">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <meta name="theme-color" content="#0d1117">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../app.css">
+</head>
+<body>
+  <div class="mac-window">
+    <div class="window-titlebar">
+      <div class="traffic-lights" aria-hidden="true">
+        <span class="traffic-light traffic-light--close"></span>
+        <span class="traffic-light traffic-light--minimize"></span>
+        <span class="traffic-light traffic-light--expand"></span>
+      </div>
+      <div class="window-title">nightrecovery — privacy.md</div>
+      <div class="window-spacer"></div>
+    </div>
+    <main class="terminal">
+      <div class="prompt-line"><span class="cmd">cat nightrecovery/privacy.md</span></div>
+
+      <h1>Privacy Policy</h1>
+      <p class="meta">Last updated: April 21, 2026</p>
+
+      <h2>Why we access Health &amp; Fitness data</h2>
+      <p>
+        NightRecovery reads the following data from Apple Health to compute a personalized
+        overnight recovery score:
+      </p>
+      <ul>
+        <li><strong>Heart Rate Variability (HRV SDNN)</strong> — used as the primary recovery signal, weighted at 40% of the score.</li>
+        <li><strong>Resting Heart Rate</strong> — used to detect cardiovascular stress and fatigue, weighted at 25%.</li>
+        <li><strong>Sleep Analysis (stages and duration)</strong> — used to assess sleep quality and efficiency, weighted at 25%.</li>
+        <li><strong>Respiratory Rate</strong> — used as a secondary recovery signal, weighted at 10%.</li>
+      </ul>
+      <p>
+        Each metric is compared against your personal 30-day rolling baseline to produce the
+        recovery score. The app requests <strong>read-only</strong> access to Apple Health.
+        It never writes data to HealthKit. No other health or fitness categories are accessed.
+      </p>
+
+      <h2>On-device only, no cloud services</h2>
+      <p>
+        All computation happens entirely on your device. NightRecovery has no backend server,
+        makes no network requests, and connects to no cloud services of any kind. Recovery scores,
+        baselines, and all derived data are stored locally on your device. Nothing is uploaded,
+        synced, or transmitted anywhere.
+      </p>
+
+      <h2>What we don't do</h2>
+      <ul>
+        <li>No account is required.</li>
+        <li>No analytics, advertising SDKs, or third-party trackers are used.</li>
+        <li>No personal data is sold, shared, or disclosed to data brokers or any third party.</li>
+        <li>No data leaves your device, ever.</li>
+      </ul>
+
+      <h2>Revoking access</h2>
+      <p>
+        If you revoke Health access in iOS Settings, the app can no longer read your health data
+        and will not compute new recovery scores. Previously computed scores remain on your device
+        until you delete the app. You can re-enable access at any time.
+      </p>
+
+      <p>
+        For any inquiry, reach me through the contact channels on <a href="https://straus.it/#contact">straus.it/#contact</a>.
+      </p>
+
+      <div class="nav">
+        <a href="./">nightrecovery</a>
+        <a href="./support.html">support</a>
+        <a href="/">straus.it</a>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

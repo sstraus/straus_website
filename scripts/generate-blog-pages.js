@@ -117,13 +117,10 @@ function generatePage(article) {
 ${jsonLd}
   </script>
 
-  <!-- Redirect JS users to terminal view -->
-  <script>window.location.replace('/#read/${article.slug}');</script>
-
   <style>
-    body { font-family: system-ui, -apple-system, sans-serif; max-width: 720px; margin: 2rem auto; padding: 0 1rem; line-height: 1.6; color: #222; }
+    body { font-family: system-ui, -apple-system, sans-serif; max-width: 720px; margin: 2rem auto; padding: 0 1rem; line-height: 1.6; color: #222; background: #fff; }
     a { color: #0066cc; }
-    .back { margin-bottom: 2rem; }
+    .site-nav { margin-bottom: 2rem; display: flex; gap: 1rem; font-size: 0.9em; }
     article img { max-width: 100%; }
     time { color: #666; }
     h1 { margin-bottom: 0.25rem; }
@@ -133,18 +130,32 @@ ${jsonLd}
     table { border-collapse: collapse; width: 100%; }
     th, td { border: 1px solid #ddd; padding: 0.5rem; text-align: left; }
     th { background: #f5f5f5; }
+    .terminal-link { margin-top: 2rem; padding: 0.75rem 1rem; background: #f5f5f5; border-radius: 4px; font-size: 0.9em; }
+    @media (prefers-color-scheme: dark) {
+      body { background: #0d1117; color: #c9d1d9; }
+      a { color: #58a6ff; }
+      time { color: #8b949e; }
+      pre, th { background: #161b22; }
+      td, th { border-color: #30363d; }
+      blockquote { border-color: #30363d; color: #8b949e; }
+      .terminal-link { background: #161b22; }
+    }
   </style>
 </head>
 <body>
-  <noscript>
-    <nav class="back"><a href="/">&larr; straus.it</a></nav>
-    <article>
-      <h1>${article.title}</h1>
-      <time datetime="${article.date}">${formatDate(article.date)}</time>
+  <nav class="site-nav">
+    <a href="/">&larr; straus.it</a>
+    <a href="/#blog">blog</a>
+  </nav>
+  <article>
+    <h1>${article.title}</h1>
+    <time datetime="${article.date}">${formatDate(article.date)}</time>
 ${html}
-    </article>
-    <nav><a href="/">&larr; Back to straus.it</a></nav>
-  </noscript>
+  </article>
+  <div class="terminal-link">
+    Read this in the <a href="/#read/${article.slug}">terminal view</a>
+  </div>
+  <nav class="site-nav" style="margin-top:2rem"><a href="/">&larr; straus.it</a></nav>
 </body>
 </html>
 `;

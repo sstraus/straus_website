@@ -49,13 +49,10 @@
 }
   </script>
 
-  <!-- Redirect JS users to terminal view -->
-  <script>window.location.replace('/#read/from-code-to-intent');</script>
-
   <style>
-    body { font-family: system-ui, -apple-system, sans-serif; max-width: 720px; margin: 2rem auto; padding: 0 1rem; line-height: 1.6; color: #222; }
+    body { font-family: system-ui, -apple-system, sans-serif; max-width: 720px; margin: 2rem auto; padding: 0 1rem; line-height: 1.6; color: #222; background: #fff; }
     a { color: #0066cc; }
-    .back { margin-bottom: 2rem; }
+    .site-nav { margin-bottom: 2rem; display: flex; gap: 1rem; font-size: 0.9em; }
     article img { max-width: 100%; }
     time { color: #666; }
     h1 { margin-bottom: 0.25rem; }
@@ -65,14 +62,26 @@
     table { border-collapse: collapse; width: 100%; }
     th, td { border: 1px solid #ddd; padding: 0.5rem; text-align: left; }
     th { background: #f5f5f5; }
+    .terminal-link { margin-top: 2rem; padding: 0.75rem 1rem; background: #f5f5f5; border-radius: 4px; font-size: 0.9em; }
+    @media (prefers-color-scheme: dark) {
+      body { background: #0d1117; color: #c9d1d9; }
+      a { color: #58a6ff; }
+      time { color: #8b949e; }
+      pre, th { background: #161b22; }
+      td, th { border-color: #30363d; }
+      blockquote { border-color: #30363d; color: #8b949e; }
+      .terminal-link { background: #161b22; }
+    }
   </style>
 </head>
 <body>
-  <noscript>
-    <nav class="back"><a href="/">&larr; straus.it</a></nav>
-    <article>
-      <h1>From Code to Intent - Why Software Development Is Changing Its Core Model</h1>
-      <time datetime="2026-01-16">January 16, 2026</time>
+  <nav class="site-nav">
+    <a href="/">&larr; straus.it</a>
+    <a href="/#blog">blog</a>
+  </nav>
+  <article>
+    <h1>From Code to Intent - Why Software Development Is Changing Its Core Model</h1>
+    <time datetime="2026-01-16">January 16, 2026</time>
 <h1>From Code to Intent: Why Software Development Is Changing Its Core Model</h1>
 <p>We&#39;re been watching something fundamental change in how we build software.</p>
 <p>For decades, programming meant translating ideas into precise instructions. You write exactly how the system should behave. The code is the artifact. The code is what you review. The code is what you own.</p>
@@ -116,8 +125,10 @@
 <p>This is not an optimization of existing development workflows. It&#39;s a shift in the level at which software is conceived and governed.</p>
 <p>And it&#39;s happening now.</p>
 
-    </article>
-    <nav><a href="/">&larr; Back to straus.it</a></nav>
-  </noscript>
+  </article>
+  <div class="terminal-link">
+    Read this in the <a href="/#read/from-code-to-intent">terminal view</a>
+  </div>
+  <nav class="site-nav" style="margin-top:2rem"><a href="/">&larr; straus.it</a></nav>
 </body>
 </html>

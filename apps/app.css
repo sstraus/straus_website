@@ -216,6 +216,51 @@ body {
 .terminal .nav a { border-bottom: none; }
 .terminal .nav a::before { content: '→ '; color: var(--term-prompt); }
 
+.terminal .project-card {
+  margin: 1em 0;
+  padding: 1em 1.2em;
+  border: 1px solid var(--term-border);
+  border-radius: 6px;
+  background: var(--term-code-bg);
+}
+
+.terminal .project-card h3 {
+  margin-top: 0;
+  font-size: 1rem;
+}
+
+.terminal .project-card h3::before {
+  content: none;
+}
+
+.terminal .project-card h3 a {
+  color: var(--term-heading);
+  border-bottom: none;
+}
+
+.terminal .project-card h3 a:hover {
+  color: var(--term-link);
+}
+
+.terminal .project-tags {
+  color: var(--term-text-dim);
+  font-size: 0.8em;
+  margin: 0.25em 0 0.5em;
+}
+
+.terminal .project-links {
+  display: flex;
+  gap: 1.2em;
+  font-size: 0.85em;
+  margin-top: 0.5em;
+  margin-bottom: 0;
+}
+
+.terminal .project-links a::before {
+  content: '> ';
+  color: var(--term-prompt);
+}
+
 @media (max-width: 768px) {
   body { padding: 0; }
   .mac-window { border-radius: 0; min-height: 100vh; box-shadow: none; }

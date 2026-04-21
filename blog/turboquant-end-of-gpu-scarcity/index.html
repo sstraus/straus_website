@@ -49,13 +49,10 @@
 }
   </script>
 
-  <!-- Redirect JS users to terminal view -->
-  <script>window.location.replace('/#read/turboquant-end-of-gpu-scarcity');</script>
-
   <style>
-    body { font-family: system-ui, -apple-system, sans-serif; max-width: 720px; margin: 2rem auto; padding: 0 1rem; line-height: 1.6; color: #222; }
+    body { font-family: system-ui, -apple-system, sans-serif; max-width: 720px; margin: 2rem auto; padding: 0 1rem; line-height: 1.6; color: #222; background: #fff; }
     a { color: #0066cc; }
-    .back { margin-bottom: 2rem; }
+    .site-nav { margin-bottom: 2rem; display: flex; gap: 1rem; font-size: 0.9em; }
     article img { max-width: 100%; }
     time { color: #666; }
     h1 { margin-bottom: 0.25rem; }
@@ -65,14 +62,26 @@
     table { border-collapse: collapse; width: 100%; }
     th, td { border: 1px solid #ddd; padding: 0.5rem; text-align: left; }
     th { background: #f5f5f5; }
+    .terminal-link { margin-top: 2rem; padding: 0.75rem 1rem; background: #f5f5f5; border-radius: 4px; font-size: 0.9em; }
+    @media (prefers-color-scheme: dark) {
+      body { background: #0d1117; color: #c9d1d9; }
+      a { color: #58a6ff; }
+      time { color: #8b949e; }
+      pre, th { background: #161b22; }
+      td, th { border-color: #30363d; }
+      blockquote { border-color: #30363d; color: #8b949e; }
+      .terminal-link { background: #161b22; }
+    }
   </style>
 </head>
 <body>
-  <noscript>
-    <nav class="back"><a href="/">&larr; straus.it</a></nav>
-    <article>
-      <h1>TurboQuant and the End of GPU Scarcity</h1>
-      <time datetime="2026-03-25">March 25, 2026</time>
+  <nav class="site-nav">
+    <a href="/">&larr; straus.it</a>
+    <a href="/#blog">blog</a>
+  </nav>
+  <article>
+    <h1>TurboQuant and the End of GPU Scarcity</h1>
+    <time datetime="2026-03-25">March 25, 2026</time>
 <h1>TurboQuant and the End of GPU Scarcity</h1>
 <p>Every few months something lands in the AI space that is not just an improvement but a category change. Google&#39;s <a href="https://research.google/blog/turboquant-redefining-ai-efficiency-with-extreme-compression/">TurboQuant</a> is one of those.</p>
 <p>Quantization is not new. I have been watching the progression for years. FP32 to FP16, then INT8, sometimes INT4 in constrained environments. Each step came with trade-offs: accuracy degradation, instability, narrow applicability. You could compress, but you always paid for it.</p>
@@ -99,8 +108,10 @@
 <p>If you can extract six to eight times more effective capacity from the same hardware, the frontier does not just move forward. It widens. More actors can reach it, more experiments can be run, iteration cycles compress. The pace of applied AI accelerates not because models are fundamentally smarter, but because they are cheaper to think with.</p>
 <p>That is why this is not just an optimization milestone. It is a change in the economic structure of AI systems. And those changes tend to compound.</p>
 
-    </article>
-    <nav><a href="/">&larr; Back to straus.it</a></nav>
-  </noscript>
+  </article>
+  <div class="terminal-link">
+    Read this in the <a href="/#read/turboquant-end-of-gpu-scarcity">terminal view</a>
+  </div>
+  <nav class="site-nav" style="margin-top:2rem"><a href="/">&larr; straus.it</a></nav>
 </body>
 </html>

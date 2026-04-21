@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Projects | Stefano Straus</title>
+  <meta name="description" content="iOS apps, developer tools, and open source projects by Stefano Straus.">
+  <meta name="author" content="Stefano Straus">
+  <link rel="canonical" href="https://straus.it/apps/">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <meta name="theme-color" content="#0d1117">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="app.css">
+</head>
+<body>
+  <div class="mac-window">
+    <div class="window-titlebar">
+      <div class="traffic-lights" aria-hidden="true">
+        <span class="traffic-light traffic-light--close"></span>
+        <span class="traffic-light traffic-light--minimize"></span>
+        <span class="traffic-light traffic-light--expand"></span>
+      </div>
+      <div class="window-title">projects — stefano＠straus.it</div>
+      <div class="window-spacer"></div>
+    </div>
+    <main class="terminal">
+      <div class="prompt-line"><span class="cmd">ls -la ~/projects/</span></div>
+
+      <h1>Projects</h1>
+      <p class="meta">iOS apps, developer tools, and open source by Stefano Straus</p>
+
+      <!-- iOS Apps -->
+      <h2>iOS Apps</h2>
+
+      <div class="project-card">
+        <h3><a href="./nightrecovery/">NightRecovery</a></h3>
+        <p class="project-tags">Swift · SwiftUI · HealthKit · iOS</p>
+        <p>
+          Personalized overnight recovery score from Apple Health data. Reads HRV, resting heart rate,
+          sleep stages, and respiratory rate, then computes a 0&ndash;100 score against your 30-day
+          rolling baseline. Like Whoop or Oura, but running entirely on-device with no subscription.
+        </p>
+        <p class="project-links">
+          <a href="./nightrecovery/">details</a>
+          <a href="./nightrecovery/privacy.html">privacy</a>
+        </p>
+      </div>
+
+      <div class="project-card">
+        <h3><a href="./photobanana/">PhotoBanana</a></h3>
+        <p class="project-tags">Swift · Vision · Apple Photos · Mac · iPad · iPhone</p>
+        <p>
+          On-device AI finds duplicate photos in your Apple Photos library, picks the best shot
+          in each group using face detection and quality scoring, and fixes wrong EXIF orientations.
+          No cloud, no account, no subscription.
+        </p>
+        <p class="project-links">
+          <a href="./photobanana/">details</a>
+          <a href="./photobanana/privacy.html">privacy</a>
+        </p>
+      </div>
+
+      <div class="project-card">
+        <h3><a href="./steps/">Live Steps</a></h3>
+        <p class="project-tags">Swift · HealthKit · WidgetKit · Live Activities · iOS</p>
+        <p>
+          Lightweight step counter that reads daily steps from Apple Health and shows them
+          in the app, Home Screen widgets, and Live Activities with Dynamic Island support.
+        </p>
+        <p class="project-links">
+          <a href="./steps/">details</a>
+          <a href="./steps/privacy.html">privacy</a>
+        </p>
+      </div>
+
+      <div class="project-card">
+        <h3>CopyTranslate</h3>
+        <p class="project-tags">Swift · macOS · Translation</p>
+        <p>
+          macOS menu bar app that translates clipboard contents on the fly.
+          Copy text in any language, get instant translation without leaving your workflow.
+        </p>
+        <p class="project-links">
+          <a href="https://copytranslate.straus.it">website</a>
+        </p>
+      </div>
+
+      <!-- Developer Tools -->
+      <h2>Developer Tools</h2>
+
+      <div class="project-card">
+        <h3><a href="https://tuicommander.com">TUICommander</a></h3>
+        <p class="project-tags">TypeScript · Rust · Tauri · SolidJS · xterm.js</p>
+        <p>
+          AI-native terminal IDE for orchestrating multiple coding agents in parallel.
+          Auto-detects 10+ agents (Claude Code, Aider, Codex, Gemini CLI, Amp, Cursor),
+          tracks rate limits with countdown timers, manages git worktrees per agent, and
+          aggregates MCP servers into a single proxy hub. Includes a mobile companion PWA,
+          CI auto-heal, speech-to-text via whisper-rs, and up to 50 concurrent PTY sessions.
+        </p>
+        <p class="project-links">
+          <a href="https://tuicommander.com">website</a>
+          <a href="https://github.com/sstraus/tuicommander">github</a>
+        </p>
+      </div>
+
+      <div class="project-card">
+        <h3><a href="https://github.com/sstraus/mdkb">mdkb</a></h3>
+        <p class="project-tags">Rust · SQLite · BM25 · tree-sitter · MCP</p>
+        <p>
+          Local hybrid search engine and persistent memory layer for AI coding assistants,
+          exposed as an MCP server. Combines BM25 full-text and semantic vector search
+          over markdown docs and source code. Includes code intelligence via tree-sitter
+          across 13 languages, lifecycle hooks for Claude Code and Codex CLI, and markdown-native
+          memory export for git tracking.
+        </p>
+        <p class="project-links">
+          <a href="https://github.com/sstraus/mdkb">github</a>
+        </p>
+      </div>
+
+      <div class="project-card">
+        <h3><a href="https://github.com/sstraus/McpMacControl">McpMacControl</a></h3>
+        <p class="project-tags">Go · macOS Accessibility · MCP</p>
+        <p>
+          MCP server that gives any AI assistant eyes and hands on macOS. Screenshots, mouse,
+          keyboard, window management, and PTY shell sessions across any application.
+          Signed and notarized .app bundle with visual feedback, input safety verification,
+          and auto-exit on client disconnect.
+        </p>
+        <p class="project-links">
+          <a href="https://github.com/sstraus/McpMacControl">github</a>
+        </p>
+      </div>
+
+      <div class="project-card">
+        <h3><a href="https://github.com/sstraus/SettingsSentry">SettingsSentry</a></h3>
+        <p class="project-tags">Go · macOS · CLI</p>
+        <p>
+          macOS CLI tool to backup and restore application preferences with versioned archives,
+          optional AES-GCM encryption, and cron automation. Built as a Mackup replacement
+          after it broke under macOS Sonoma.
+        </p>
+        <p class="project-links">
+          <a href="https://github.com/sstraus/SettingsSentry">github</a>
+        </p>
+      </div>
+
+      <!-- Libraries & Utilities -->
+      <h2>Libraries &amp; Utilities</h2>
+
+      <div class="project-card">
+        <h3><a href="https://github.com/sstraus/toon_go">toon_go</a></h3>
+        <p class="project-tags">Go · Data Format · LLM Optimization</p>
+        <p>
+          Go implementation of TOON (Token-Oriented Object Notation), a compact data format
+          that reduces LLM token usage by 30&ndash;60% compared to JSON while staying
+          human-readable. Full encoder/decoder compliant with TOON spec v3.0, passing
+          all 340 official test fixtures.
+        </p>
+        <p class="project-links">
+          <a href="https://github.com/sstraus/toon_go">github</a>
+        </p>
+      </div>
+
+      <div class="project-card">
+        <h3><a href="https://github.com/sstraus/safe.gitignore">safe.gitignore</a></h3>
+        <p class="project-tags">Shell · Git Hook</p>
+        <p>
+          Git post-commit hook that automatically backs up <code>.gitignore</code>d files
+          tagged with <code>#safe</code> to a private repository. Supports global and
+          per-project config, optional git-crypt encryption, and one-liner install.
+        </p>
+        <p class="project-links">
+          <a href="https://github.com/sstraus/safe.gitignore">github</a>
+        </p>
+      </div>
+
+      <div class="nav">
+        <a href="/">straus.it</a>
+        <a href="https://github.com/sstraus">github</a>
+        <a href="https://straus.it/#contact">contact</a>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

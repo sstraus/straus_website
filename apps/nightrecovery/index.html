@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>NightRecovery | straus.it</title>
+  <meta name="description" content="NightRecovery — a personalized overnight recovery score from Apple Health data: HRV, resting heart rate, sleep stages, and respiratory rate.">
+  <meta name="author" content="Stefano Straus">
+  <link rel="canonical" href="https://straus.it/apps/nightrecovery/">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <meta name="theme-color" content="#0d1117">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../app.css">
+</head>
+<body>
+  <div class="mac-window">
+    <div class="window-titlebar">
+      <div class="traffic-lights" aria-hidden="true">
+        <span class="traffic-light traffic-light--close"></span>
+        <span class="traffic-light traffic-light--minimize"></span>
+        <span class="traffic-light traffic-light--expand"></span>
+      </div>
+      <div class="window-title">nightrecovery — stefano＠straus.it</div>
+      <div class="window-spacer"></div>
+    </div>
+    <main class="terminal">
+      <div class="prompt-line"><span class="cmd">cat nightrecovery/README.md</span></div>
+
+      <h1>NightRecovery</h1>
+      <p class="meta">iPhone · Apple Health · Recovery Score · HRV · Sleep</p>
+
+      <p>
+        <strong>Wake up to a recovery score built from your own overnight trends.</strong>
+      </p>
+      <p>
+        NightRecovery reads HRV, resting heart rate, sleep stages, and respiratory rate
+        from Apple Health and computes a personalized recovery score (0&ndash;100) every morning.
+        Think Whoop or Oura, but running entirely on your iPhone with no subscriptions,
+        no account, and no data leaving your device.
+      </p>
+
+      <h2>Core features</h2>
+      <ul>
+        <li><strong>Recovery Score</strong> — weighted composite of HRV, resting HR, sleep, and respiration against your 30-day rolling baseline.</li>
+        <li><strong>Signal breakdown</strong> — per-metric rows showing raw value vs. baseline delta with individual sub-scores.</li>
+        <li><strong>Drivers &amp; explanations</strong> — human-readable notes on what moved your score up or down.</li>
+        <li><strong>7-day trend chart</strong> — track recovery patterns over the past week.</li>
+        <li><strong>Background sync</strong> — anchored HealthKit observer queries keep data updated automatically.</li>
+        <li><strong>6 languages</strong> — English, Italian, German, French, Spanish, Portuguese.</li>
+      </ul>
+
+      <h2>How scoring works</h2>
+      <ul>
+        <li>HRV (SDNN) — 40% weight</li>
+        <li>Resting Heart Rate — 25% weight</li>
+        <li>Sleep duration + efficiency — 25% weight</li>
+        <li>Respiratory rate — 10% weight</li>
+      </ul>
+      <p>
+        Each signal is z-scored against a 30-day median baseline using robust statistics.
+        Scores are provisional until 14 valid nights, with a minimum of 7 nights before any score appears.
+      </p>
+
+      <h2>Privacy</h2>
+      <ul>
+        <li>All processing happens on-device. No cloud, no backend, no network calls.</li>
+        <li>Read-only HealthKit access. The app never writes to Apple Health.</li>
+        <li>No account, no analytics, no trackers, no ads.</li>
+      </ul>
+
+      <h2>Links</h2>
+      <ul>
+        <li><a href="./privacy.html">Privacy Policy</a></li>
+        <li><a href="./support.html">Support</a></li>
+      </ul>
+
+      <div class="nav">
+        <a href="/">straus.it</a>
+        <a href="./privacy.html">privacy</a>
+        <a href="./support.html">support</a>
+      </div>
+    </main>
+  </div>
+</body>
+</html>
