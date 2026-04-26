@@ -8,7 +8,7 @@
   </url>
   <url>
     <loc>https://straus.it/apps/</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -52,6 +52,24 @@
   <url>
     <loc>https://straus.it/apps/photobanana/support.html</loc>
     <lastmod>2026-04-20</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://straus.it/apps/aquaup/</loc>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://straus.it/apps/aquaup/privacy.html</loc>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://straus.it/apps/aquaup/support.html</loc>
+    <lastmod>2026-04-26</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
