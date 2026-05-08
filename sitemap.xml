@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://straus.it/</loc>
-    <lastmod>2026-05-05</lastmod>
+    <lastmod>2026-05-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -14,7 +14,7 @@
   </url>
   <url>
     <loc>https://straus.it/feed.xml</loc>
-    <lastmod>2026-05-05</lastmod>
+    <lastmod>2026-05-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -92,6 +92,12 @@
     <priority>0.5</priority>
   </url>
   <!-- Blog posts -->
+  <url>
+    <loc>https://straus.it/blog/the-ultimate-prompt-myth-or-reality/</loc>
+    <lastmod>2026-05-08</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
   <url>
     <loc>https://straus.it/blog/subq-sparse-attention-new-regime/</loc>
     <lastmod>2026-05-05</lastmod>

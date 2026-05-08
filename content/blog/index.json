@@ -1,6 +1,14 @@
 {
   "articles": [
     {
+      "slug": "the-ultimate-prompt-myth-or-reality",
+      "title": "The Ultimate Prompt: Myth or Reality?",
+      "date": "2026-05-08",
+      "description": "The golden prompt does not exist. What prompts like these actually do is compress uncertainty, amplify confidence, and degrade collaborative reasoning.",
+      "tags": ["ai", "prompting", "llm", "misconceptions"],
+      "file": "2026-05-08-the-ultimate-prompt-myth-or-reality.md"
+    },
+    {
       "slug": "subq-sparse-attention-new-regime",
       "title": "SubQ and the End of Quadratic Attention: Breakthrough or Familiar Promise?",
       "date": "2026-05-05",
