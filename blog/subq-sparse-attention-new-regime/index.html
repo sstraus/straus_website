@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SubQ and the End of Quadratic Attention: Breakthrough or Familiar Promise? | Stefano Straus</title>
+  <meta name="description" content="A seed-stage startup claims to have solved quadratic attention at frontier scale. The benchmarks are aggressive, the history is brutal, and the implications are structural.">
+  <meta name="author" content="Stefano Straus">
+  <link rel="canonical" href="https://straus.it/blog/subq-sparse-attention-new-regime/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="SubQ and the End of Quadratic Attention: Breakthrough or Familiar Promise?">
+  <meta property="og:description" content="A seed-stage startup claims to have solved quadratic attention at frontier scale. The benchmarks are aggressive, the history is brutal, and the implications are structural.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://straus.it/blog/subq-sparse-attention-new-regime/">
+  <meta property="og:image" content="https://straus.it/img/profile.jpg">
+  <meta property="og:site_name" content="Stefano Straus">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@StefanoStraus">
+  <meta name="twitter:title" content="SubQ and the End of Quadratic Attention: Breakthrough or Familiar Promise?">
+  <meta name="twitter:description" content="A seed-stage startup claims to have solved quadratic attention at frontier scale. The benchmarks are aggressive, the history is brutal, and the implications are structural.">
+  <meta name="twitter:image" content="https://straus.it/img/profile.jpg">
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "SubQ and the End of Quadratic Attention: Breakthrough or Familiar Promise?",
+  "description": "A seed-stage startup claims to have solved quadratic attention at frontier scale. The benchmarks are aggressive, the history is brutal, and the implications are structural.",
+  "author": {
+    "@type": "Person",
+    "name": "Stefano Straus",
+    "url": "https://straus.it"
+  },
+  "datePublished": "2026-05-05",
+  "dateModified": "2026-05-05",
+  "publisher": {
+    "@type": "Person",
+    "name": "Stefano Straus"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://straus.it/blog/subq-sparse-attention-new-regime/"
+  },
+  "keywords": "ai, architecture, attention, infrastructure, model-design"
+}
+  </script>
+
+  <style>
+    body { font-family: system-ui, -apple-system, sans-serif; max-width: 720px; margin: 2rem auto; padding: 0 1rem; line-height: 1.6; color: #222; background: #fff; }
+    a { color: #0066cc; }
+    .site-nav { margin-bottom: 2rem; display: flex; gap: 1rem; font-size: 0.9em; }
+    article img { max-width: 100%; }
+    time { color: #666; }
+    h1 { margin-bottom: 0.25rem; }
+    pre { background: #f5f5f5; padding: 1rem; overflow-x: auto; border-radius: 4px; }
+    code { font-family: 'JetBrains Mono', monospace; font-size: 0.9em; }
+    blockquote { border-left: 3px solid #ddd; margin-left: 0; padding-left: 1rem; color: #555; }
+    table { border-collapse: collapse; width: 100%; }
+    th, td { border: 1px solid #ddd; padding: 0.5rem; text-align: left; }
+    th { background: #f5f5f5; }
+    .terminal-link { margin-top: 2rem; padding: 0.75rem 1rem; background: #f5f5f5; border-radius: 4px; font-size: 0.9em; }
+    @media (prefers-color-scheme: dark) {
+      body { background: #0d1117; color: #c9d1d9; }
+      a { color: #58a6ff; }
+      time { color: #8b949e; }
+      pre, th { background: #161b22; }
+      td, th { border-color: #30363d; }
+      blockquote { border-color: #30363d; color: #8b949e; }
+      .terminal-link { background: #161b22; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="site-nav">
+    <a href="/">&larr; straus.it</a>
+    <a href="/#blog">blog</a>
+  </nav>
+  <article>
+    <h1>SubQ and the End of Quadratic Attention: Breakthrough or Familiar Promise?</h1>
+    <time datetime="2026-05-05">May 5, 2026</time>
+<h1>SubQ and the End of Quadratic Attention: Breakthrough or Familiar Promise?</h1>
+<p>I have been waiting for this one. Not for SubQ specifically, but for the moment someone would credibly claim they cracked the quadratic attention problem at frontier scale. Today a startup called Subquadratic launched with $29M in seed funding and a model that, if the claims hold, changes the cost structure of everything we build on top of LLMs.</p>
+<p>The pitch is straightforward. Current transformer models spend most of their compute on relationships between tokens that do not matter. Every token attends to every other token. Double the context, quadruple the cost. This is the reason frontier models cap out around one or two million tokens even when they claim more. It is elegant math that scales terribly.</p>
+<p>SubQ replaces this with what they call Sparse Sub-Quadratic Attention. Instead of evaluating all pairwise interactions, it selects the subset that carries signal and skips the rest. Not an approximation of dense attention. A different execution model where compute grows linearly with context length.</p>
+<h2>The numbers they are claiming</h2>
+<p>The headline benchmarks are aggressive. On RULER 128K, SubQ scores 95% accuracy at a reported cost of $8, compared to 94.8% accuracy and roughly $2,600 for Claude Opus. Their sparse attention mechanism is 52x faster than FlashAttention at one million tokens with 63% less compute. At 12 million tokens, the research model claims nearly 1,000x reduction in attention compute.</p>
+<p>On SWE-Bench Verified they report 81.8, slightly ahead of Opus 4.6 at 80.8 and DeepSeek 4.0 Pro at 80.0. On MRCR v2, the retrieval and reasoning benchmark, their research result hits 83 versus GPT 5.5 at 74 and Claude Opus 4.7 at 32.2. The production model, third-party verified, sits at 65.9.</p>
+<p>These numbers would be remarkable from an established lab. From a seed-stage startup, they demand scrutiny.</p>
+<h2>Why this is architecturally different</h2>
+<p>I have written before about efficiency gains in AI infrastructure. TurboQuant, DeepSeek&#39;s MLA, various quantization breakthroughs. Those are optimizations within the existing paradigm. They make the same computation cheaper.</p>
+<p>SubQ claims something different. Not the same computation done faster, but less computation needed in the first place. If most token-to-token interactions are irrelevant, then dense attention is overcomputing by design. The question shifts from &quot;how big can the model get&quot; to &quot;how much work is actually needed.&quot;</p>
+<p>This matters because of what it implies for system design. Right now, we build entire engineering stacks around the scarcity of context. We chunk documents. We build retrieval pipelines. We prune aggressively. We maintain elaborate indexing systems to compensate for the fact that models cannot see enough at once. Not because these approaches are optimal, but because attention makes full-context processing too expensive.</p>
+<p>If a model can genuinely operate on millions of tokens without quadratic explosion, most of that infrastructure becomes unnecessary overhead. Instead of partial views and clever retrieval, you feed the full corpus. Instead of short-lived sessions with context management, you maintain continuity. Instead of optimizing prompts for compression, you optimize for completeness.</p>
+<p>Their SubQ Code product leans into this directly. A CLI coding agent that loads entire codebases into a single context window. No chunking, no multi-agent coordination, no retrieval layer. One call, full repository. If it works as described, it eliminates an entire category of engineering complexity that we have spent the last two years building.</p>
+<h2>The skepticism is well-earned</h2>
+<p>Here is where I have to be honest about the history. We have been here before.</p>
+<p>Mamba promised linear complexity. It delivers it mathematically, but underperforms quadratic attention at frontier scale. RWKV followed the same trajectory. Kimi Linear achieves linear attention on 75% of its layers but still needs quadratic Multi-Latent Attention on the remaining 25% because, as their own paper states, &quot;pure Linear Attention still struggles with precise memory retrieval and exact copying.&quot; DeepSeek Sparse Attention&#39;s lightning indexer component is itself quadratic, making the overall system quadratic despite the marketing.</p>
+<p>A thorough LessWrong analysis from January concluded that every subquadratic attention mechanism that works in practice either remains quadratic in implementation, improving efficiency by only a constant factor, or underperforms on downstream benchmarks at frontier scale. The author&#39;s summary is blunt: these are &quot;incremental improvements to the transformer architecture,&quot; not paradigm shifts.</p>
+<p>SubQ claims to break this pattern. Fully subquadratic from first principles, no hybrid fallback to quadratic layers, frontier-competitive benchmarks. If true, they have solved a problem that Google, Meta, and every major lab has been working on for years. With $29M and a team of eleven researchers.</p>
+<p>That is either extraordinary or implausible. Possibly both.</p>
+<h2>The real test</h2>
+<p>The technical risk is specific and well understood. Sparse selection must be stable. If the model decides a token relationship is unimportant and skips it, but that relationship was actually critical for reasoning, the output degrades silently. Dense attention is wasteful but robust. It never misses a dependency because it computes all of them. Sparse attention is efficient but fragile. The failure mode is not slowness. It is subtle errors in reasoning that do not show up on standard benchmarks but surface in production under adversarial or unusual inputs.</p>
+<p>This is why benchmarks alone cannot validate the architecture. RULER, SWE-Bench, MRCR. These measure average-case performance on known distributions. The question that matters is edge-case stability. What happens at 3 AM when the model encounters a dependency pattern that the sparse selector did not anticipate? Dense attention would compute it anyway. Sparse attention might not.</p>
+<p>The team behind SubQ is credible. PhDs from Meta, Google, Oxford, Cambridge, ByteDance. Alex Whedon, the CTO, led generative AI at TribeAI with over 40 enterprise implementations. Justin Dangel, the CEO, is a five-time founder. The investors include early backers of Anthropic and OpenAI. This is not a weekend project.</p>
+<p>But credibility and correctness are different things. The model is not yet publicly available. Independent benchmarks have not been run. The production version scores significantly below the research version on MRCR (65.9 versus 83), which suggests the gap between lab results and deployed performance is real and meaningful.</p>
+<h2>What changes if it works</h2>
+<p>If SubQ&#39;s architecture holds up under independent evaluation, the implications are not incremental.</p>
+<p>Cost curves flatten. At 5% of Opus pricing with comparable quality, the economics of LLM-powered systems change for every company running inference at scale. Context stops being something to manage and becomes something to use directly. The entire retrieval-augmented generation stack, which consumes significant engineering effort across the industry, becomes an optimization for a constraint that no longer exists.</p>
+<p>More importantly, it introduces a new scaling axis. So far, progress has been driven by more parameters and more data. SubQ suggests a third direction: reducing the amount of useless work the model does. If that scales, the competition shifts from &quot;who has the most GPUs&quot; to &quot;who wastes the least compute.&quot; That is a very different game, and one where incumbents do not necessarily have the advantage.</p>
+<h2>Waiting with informed skepticism</h2>
+<p>I am not going to pretend I know whether SubQ delivers what it promises. The claims are extraordinary. The history of subquadratic attention is a graveyard of promising ideas that did not survive contact with frontier scale. And the gap between research results and production numbers in their own benchmarks suggests the team knows they are not fully there yet.</p>
+<p>But the direction is correct. Dense attention computing every pairwise interaction at quadratic cost is objectively wasteful. The question was always whether you could be selective without losing critical signal. If SubQ has found a way to do that reliably, it is not just another model release. It is a structural break in how LLMs use compute.</p>
+<p>I have requested early access. When it arrives, I will test it the way I test everything. Not on benchmarks, but on real work. Load a full codebase, run a complex refactor, check whether the output holds up when the context is adversarial rather than cooperative.</p>
+<p>Until then, cautious attention. Which, ironically, is exactly what SubQ is selling.</p>
+
+  </article>
+  <div class="terminal-link">
+    Read this in the <a href="/#read/subq-sparse-attention-new-regime">terminal view</a>
+  </div>
+  <nav class="site-nav" style="margin-top:2rem"><a href="/">&larr; straus.it</a></nav>
+</body>
+</html>
