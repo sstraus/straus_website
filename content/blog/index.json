@@ -1,6 +1,22 @@
 {
   "articles": [
     {
+      "slug": "github-stars-marketing-metric",
+      "title": "GitHub Stars Are Becoming a Marketing Metric, Not a Quality Signal",
+      "date": "2026-06-02",
+      "description": "There is now an open market selling GitHub stars, forks, and engagement. Stars increasingly measure launch execution, not engineering quality. Here is what I read instead before trusting a repository.",
+      "tags": ["open-source", "github", "metrics", "engineering"],
+      "file": "2026-06-02-github-stars-marketing-metric.md"
+    },
+    {
+      "slug": "asking-ai-to-destroy-its-own-ideas",
+      "title": "How We Started Asking AI To Destroy Its Own Ideas",
+      "date": "2026-05-21",
+      "description": "Most AI workflows are built around constructive reasoning. The shift to adversarial prompting, asking the model how its own proposals fail, produces completely different and often more valuable reasoning.",
+      "tags": ["ai", "prompting", "strategy", "adversarial-reasoning"],
+      "file": "2026-05-21-asking-ai-to-destroy-its-own-ideas.md"
+    },
+    {
       "slug": "the-ultimate-prompt-myth-or-reality",
       "title": "The Ultimate Prompt: Myth or Reality?",
       "date": "2026-05-08",

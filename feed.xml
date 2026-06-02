@@ -7,13 +7,233 @@
     <link>https://straus.it</link>
     <description>Engineering Manager specializing in AI-driven development, software architecture, and developer productivity. Insights on intent-based programming, Claude Code, and modern development patterns.</description>
     <language>en</language>
-    <lastBuildDate>Mon, 06 Apr 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 02 Jun 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://straus.it/feed.xml" rel="self" type="application/rss+xml"/>
     <image>
       <url>https://straus.it/img/profile.jpg</url>
       <title>Stefano Straus</title>
       <link>https://straus.it</link>
     </image>
+
+    <item>
+      <title>GitHub Stars Are Becoming a Marketing Metric, Not a Quality Signal</title>
+      <link>https://straus.it/blog/github-stars-marketing-metric/</link>
+      <guid isPermaLink="true">https://straus.it/blog/github-stars-marketing-metric/</guid>
+      <pubDate>Tue, 02 Jun 2026 00:00:00 +0000</pubDate>
+      <description>There is now an open market selling GitHub stars, forks, and engagement. Stars increasingly measure launch execution, not engineering quality. Here is what I read instead before trusting a repository.</description>
+      <content:encoded><![CDATA[<h1>GitHub Stars Are Becoming a Marketing Metric, Not a Quality Signal</h1>
+<p>I have mostly stopped trusting the star count on a GitHub repository, and it took me longer than I would like to admit to get there. For years that number did real work in my head. It was never precise, and nobody serious treated it as if it were, but it correlated with something useful. A project sitting at tens of thousands of stars usually came with active contributors, a steady stream of releases, and issue threads where people argued about edge cases. The number was shorthand for &quot;people are actually here.&quot;</p>
+<p>A proxy like that is fine as long as it keeps pointing in the same direction as the thing it stands for. That is exactly what stopped happening. The number and the reality underneath it quietly came apart, and the reason is not mysterious. Stars turned into a currency. And the moment a metric becomes a currency, a market grows around it whether anyone wants one or not.</p>
+<h2>The market is not hiding anymore</h2>
+<p>It used to feel like something that happened in the disreputable corners of the internet. Not anymore. Spend ten minutes on Telegram, Fiverr, or a handful of purpose-built marketplaces and you will find vendors selling stars, forks, followers, and entire engagement packages with the same calm confidence as a SaaS pricing page.</p>
+<p>The competent ones have learned not to dump a number on you overnight, because that pattern is precisely what gets flagged. So they drip the stars out over a week or two, until the graph looks like something that grew rather than something that was poured. Pay a little more and they will layer in issues and comments, giving the repository the texture of a place where people genuinely show up.</p>
+<p>This is not a few lonely developers padding their vanity numbers. It is a supply chain, and supply chains exist because demand is durable. Investors read GitHub activity as traction. Journalists reach for it when a story needs a number to stand on. Developers doing the evaluating, myself very much included, use the star count as a first-pass filter before reading a single line of source. When everyone holding a budget or a byline is staring at the same figure, that figure gets a price. And the people most willing to pay it tend to be the ones with the most pressing reason to look successful before they actually are.</p>
+<h2>Why it is hard to stop</h2>
+<p>It would be cheap to pretend GitHub is just ignoring this. They have put real engineering into detecting manipulation, and the problem genuinely resists a clean fix. The campaigns that matter look nothing like the bot farms of a decade ago. They run across real accounts belonging to real people, amplified by influencers with genuine audiences, pushed through newsletters and launch communities and paid promotion that, at the level of a single click, is indistinguishable from honest enthusiasm.</p>
+<p>There is also an awkward truth sitting underneath the technical difficulty. Engagement is good for GitHub. Activity brings users, discussion, and attention regardless of where it came from. Asking the platform to aggressively suppress the behavior that inflates its own headline numbers is asking it to push against its own gravity, and gravity usually wins.</p>
+<h2>What the number measures now</h2>
+<p>So you end up with a metric that measures launch execution far more faithfully than it measures engineering quality. That does not make it worthless, and I do not want to overcorrect into pretending it tells you nothing. A repository at forty thousand stars did, at minimum, run a campaign that worked, which says something real about a team&#39;s ability to manufacture attention. It just does not answer the question I used to think it answered: whether the thing underneath is any good.</p>
+<blockquote>
+<p>A high star count tells you a launch worked. Whether the code works is a different question, and the number was never the one answering it.</p>
+</blockquote>
+<p>Those are separate questions now. I have stumbled into some of the most solid engineering of the last few years in repositories with a few hundred or a few thousand stars, projects that never had a launch moment and never tried to engineer one. And I have wired up the popular option, the one with the slick README and the launch thread that made the rounds, only to spend two evenings discovering that almost nobody outside the original author had ever touched it. Open issues from a year ago. Pull requests sitting unreviewed. A lot of attention, very little life. Ask me how I know.</p>
+<h2>Reading the repository instead of the number</h2>
+<p>I read these projects differently now, and the shift is less about finding a better single number than about refusing to lean on any single number at all. The signals that survive scrutiny are the ones that are expensive to fake in combination, and most of them sit one click below the star count:</p>
+<ul>
+<li>How many genuinely distinct people are contributing, not the raw commit total, because one prolific author produces a lot of activity that vanishes the day they lose interest.</li>
+<li>Whether the history has continuity, whether the project outlived the enthusiasm of whoever started it.</li>
+<li>Whether maintainers answer hard questions in the issues or just triage and close.</li>
+<li>Release cadence, but only insofar as releases fix problems real users actually reported.</li>
+<li>Contributor diversity across different organizations, which is hard to fake convincingly.</li>
+<li>The quiet evidence of production use: dependents, postmortems, blog posts written by people who clearly run the thing under load and have the scars to show for it.</li>
+</ul>
+<p>None of these is conclusive alone. Together they are far harder to buy than a number.</p>
+<p>If I had to keep one rough heuristic, it would be the gap between attention and participation, because that gap is where the manufactured cases give themselves away. A repository with tens of thousands of stars and almost no contribution from anyone outside the original author is worth a second look. Not because that proves anything on its own, since plenty of excellent single-author tools simply do not invite outside work, but because a project thousands of people supposedly love and yet nobody has ever bothered to send a fix to is telling two different stories about its popularity and its actual use. The distance between those stories usually says more than the star count sitting on top of them.</p>
+<h2>The same arc as everything else</h2>
+<p>None of this is really specific to GitHub. It is the same path every public metric on the internet eventually walks: useful signal, then optimized target, then openly gamed number. Follower counts went through it. Likes went through it. Search rankings and app store reviews went through it. There was never much reason to expect stars to be the exception.</p>
+<p>The metric still exists, and it still carries information. What degraded is the signal-to-noise ratio, quietly, while the number itself kept climbing. For anyone deciding what to actually build on, that shift is not academic. The cost of trusting the wrong number gets paid later and in private, in the evenings you spend discovering that the popular thing was popular for reasons that had nothing to do with whether it works.</p>
+]]></content:encoded>
+    </item>
+
+    <item>
+      <title>How We Started Asking AI To Destroy Its Own Ideas</title>
+      <link>https://straus.it/blog/asking-ai-to-destroy-its-own-ideas/</link>
+      <guid isPermaLink="true">https://straus.it/blog/asking-ai-to-destroy-its-own-ideas/</guid>
+      <pubDate>Thu, 21 May 2026 00:00:00 +0000</pubDate>
+      <description>Most AI workflows are built around constructive reasoning. The shift to adversarial prompting, asking the model how its own proposals fail, produces completely different and often more valuable reasoning.</description>
+      <content:encoded><![CDATA[<h1>How We Started Asking AI To Destroy Its Own Ideas</h1>
+<p>For a long time, most AI workflows have been built around a simple assumption: if the model produces a coherent answer, the reasoning behind it is probably solid enough.</p>
+<p>That assumption is starting to collapse.</p>
+<p>Every day people use AI to generate software architectures, marketing strategies, business plans, operational processes, pricing models, investment decks, sales campaigns and internal decision documents. The interaction pattern is almost always identical. We ask for a solution, the model produces a plausible answer, we refine it slightly, and then we move forward assuming the reasoning is sound.</p>
+<p>The problem is that large language models are extremely good at completing narratives. Much better than they are at challenging them.</p>
+<p>An LLM naturally tries to preserve coherence. It fills missing gaps, stabilizes assumptions, reduces ambiguity and converges quickly toward an answer that &quot;looks right&quot;. Even when the underlying logic is fragile.</p>
+<p>This becomes dangerous the moment AI stops being a writing assistant and starts influencing real operational decisions.</p>
+<p>Because most failures do not come from obviously bad ideas.</p>
+<p>They come from hidden assumptions.</p>
+<p>A market assumption that turns out false six months later. A customer behavior nobody validated. A dependency on a platform policy that suddenly changes. A pricing strategy based on unrealistic conversion expectations. A growth model that only works under perfect conditions. A rollout plan that collapses once real human behavior enters the system.</p>
+<h2>The instinct experienced operators already have</h2>
+<p>The interesting part is that experienced operators already reason this way instinctively.</p>
+<p>The best strategists, engineers, founders and operators rarely react by saying &quot;good idea&quot;. They immediately start probing for failure:</p>
+<ul>
+<li>What assumption are we making without noticing?</li>
+<li>What breaks first?</li>
+<li>What only works in ideal conditions?</li>
+<li>What external dependency can suddenly invalidate the plan?</li>
+</ul>
+<p>At some point we realized something important.</p>
+<p>We could ask the AI to behave the same way.</p>
+<p>So we changed the prompting strategy entirely.</p>
+<p>Instead of asking the model to improve a solution, we started asking it to assume the solution had already failed and explain exactly how it happened.</p>
+<p>That single change produces completely different reasoning.</p>
+<p>The model stops defending the proposal and starts attacking it.</p>
+<h2>A marketing campaign that looked perfect on paper</h2>
+<p>A simple example came from a marketing campaign strategy generated by AI. The initial proposal looked convincing: strong positioning, aggressive social amplification, influencer partnerships and AI-generated content pipelines to accelerate production.</p>
+<p>Then we asked:</p>
+<p>&quot;Assume this campaign failed after six months. Explain why.&quot;</p>
+<p>The reasoning immediately changed direction.</p>
+<p>The model identified that the entire strategy depended on short-term engagement metrics instead of durable audience trust. It highlighted content saturation risks, declining authenticity perception, rising acquisition costs and overdependence on algorithmic visibility from platforms the company did not control.</p>
+<p>None of that appeared in the original proposal.</p>
+<h2>An expansion plan that optimized for the wrong thing</h2>
+<p>Another example came from a SaaS expansion plan.</p>
+<p>The model generated a very detailed roadmap for entering multiple European markets simultaneously. On paper it looked efficient: centralized operations, unified messaging and shared onboarding flows.</p>
+<p>Then we asked:</p>
+<p>&quot;Assume the expansion created operational chaos instead of growth. What assumption failed first?&quot;</p>
+<p>Suddenly the model started reasoning about localization complexity, support fragmentation, regulatory divergence, inconsistent buyer expectations and internal coordination costs between sales, onboarding and customer success teams.</p>
+<p>The original reasoning optimized for execution speed. The adversarial reasoning optimized for survivability.</p>
+<h2>The same pattern shows up everywhere</h2>
+<p>The same thing happens constantly in software and infrastructure.</p>
+<p>Ask an LLM to design a deployment workflow and it optimizes efficiency. Ask it how the system causes a cascading outage and suddenly it starts reasoning about rollback impossibilities, hidden coupling and operational blind spots.</p>
+<p>Ask it to generate a business model and it optimizes growth. Ask it how the company dies and it starts reasoning about customer concentration, platform dependency, margin erosion and market timing risk.</p>
+<p>Ask it to design an AI agent workflow and it optimizes autonomy. Ask it how the system slowly degrades over a year and it starts discussing prompt drift, hidden state accumulation and feedback loop corruption.</p>
+<h2>Constructive reasoning is the default. It should not be the only mode.</h2>
+<p>Most AI prompting today is still built around constructive reasoning. We ask models to build, optimize, improve and complete.</p>
+<p>But some of the most valuable reasoning in business and engineering has always been destructive.</p>
+<p>Premortems work this way. Chaos engineering works this way. Security red-teaming works this way. Good boardrooms work this way.</p>
+<p>Strong organizations are not built around proving ideas work. They are built around discovering how ideas fail before reality does it for them.</p>
+<p>AI should probably work the same way.</p>
+<h2>The hostile phase</h2>
+<p>Today, whenever the model generates a strategy, an architecture, a business plan, a campaign or an operational workflow, we add a second phase to the process.</p>
+<p>A hostile phase.</p>
+<p>We ask the model to attack every assumption it just made. To identify the first condition that would trigger collapse. To explain which dependency is most likely to fail within the next year.</p>
+<p>Or sometimes we ask an even simpler question:</p>
+<p>&quot;How does this project die?&quot;</p>
+<p>Very often, the answers become more valuable than the original proposal itself.</p>
+<h2>Generation is cheap. Validation is not.</h2>
+<p>AI generation is rapidly becoming cheap.</p>
+<p>Adversarial validation is not.</p>
+<p>The organizations that will benefit the most from AI are probably not the ones generating faster. They will be the ones learning how to challenge generated reasoning before acting on it.</p>
+<p>We should stop treating AI outputs as answers.</p>
+<p>They are hypotheses.</p>
+<p>And hypotheses should survive hostile questioning before humans trust them.</p>
+]]></content:encoded>
+    </item>
+
+    <item>
+      <title>The Ultimate Prompt: Myth or Reality?</title>
+      <link>https://straus.it/blog/the-ultimate-prompt-myth-or-reality/</link>
+      <guid isPermaLink="true">https://straus.it/blog/the-ultimate-prompt-myth-or-reality/</guid>
+      <pubDate>Fri, 08 May 2026 00:00:00 +0000</pubDate>
+      <description>The golden prompt does not exist. What prompts like these actually do is compress uncertainty, amplify confidence, and degrade collaborative reasoning.</description>
+      <content:encoded><![CDATA[<h1>The Ultimate Prompt: Myth or Reality?</h1>
+<p>Every day on X I see someone selling the new &quot;golden prompt&quot;.</p>
+<p>A supposedly revolutionary system prompt that can transform any LLM into a brutally honest genius, a world-class expert, a flawless reasoning machine capable of correcting all the weaknesses of the model underneath.</p>
+<p>A few years ago this discussion actually made sense. With early models, prompting genuinely mattered a lot because the systems were unstable, poorly aligned, weakly instruction-tuned, and their behavioral space was still largely unexplored. Small prompt variations could produce surprisingly different outputs because nobody fully understood where the boundaries were yet.</p>
+<p>But today the situation is completely different.</p>
+<p>Modern frontier models are trained, aligned, instruction-tuned, evaluated, red-teamed, benchmarked, and optimized on an absurd scale. The idea that a random &quot;master prompt&quot; posted on social media can suddenly unlock hidden intelligence that OpenAI, Anthropic, or Google somehow forgot to activate is honestly difficult to take seriously.</p>
+<p>But the real issue goes much deeper than that. Because prompts like these do not just fail technically. They reveal a widespread misunderstanding of how modern LLMs actually work.</p>
+<h2>Let&#39;s analyze one as an example</h2>
+<p>I picked one that has been circulating recently. It is roughly two thousand words long and full of directives like &quot;you are a world-class expert in all domains&quot;, &quot;never hallucinate&quot;, &quot;be provocative&quot;, &quot;do not hedge&quot;, &quot;think like the smartest people in the world&quot;.</p>
+<p>It looks sophisticated because it uses absolute, assertive, anti-corporate language. But in practice it adds very little real value to model behavior.</p>
+<p>The main problem is that it confuses style with capability.</p>
+<p>An LLM does not become more intelligent because you tell it &quot;you are a world-class expert&quot;. It does not gain better reasoning, deeper knowledge, or stronger factual verification. What changes is mostly the tone of the response. And this is exactly where the illusion starts: these prompts increase the perception of authority far more than they increase reliability.</p>
+<h2>&quot;Never hallucinate&quot; does not reduce hallucinations</h2>
+<p>Saying &quot;never hallucinate&quot; does not meaningfully reduce hallucinations. Modern models are already heavily optimized for factuality, uncertainty handling, and refusal behavior. If the model invents something, the issue is not that it was not &quot;ordered strongly enough&quot; to stop. The issue is architectural: probabilistic generation, incomplete retrieval, ambiguity, weak grounding, missing context.</p>
+<p>In many cases, prompts like this actually make the problem worse.</p>
+<p>When you force aggressive tone, high confidence, &quot;do not hedge&quot;, &quot;lead with strongest counterargument&quot;, &quot;do not apologize&quot;, &quot;be provocative&quot;, you are implicitly encouraging the model to compress uncertainty.</p>
+<p>And compressed uncertainty produces outputs that sound smarter while being less calibrated.</p>
+<p>These prompts tend to increase:</p>
+<ul>
+<li>Overconfidence</li>
+<li>Reduction of nuance</li>
+<li>Stronger wording around weak evidence</li>
+<li>Rhetorical coherence instead of epistemic rigor</li>
+</ul>
+<p>In practice, the model stops sounding cautious, but it does not become more accurate.</p>
+<p>That distinction matters. &quot;There is confidence in the answer&quot; is not the same thing as &quot;the answer is correct&quot;.</p>
+<h2>Semantically vague, operationally meaningless</h2>
+<p>Another major issue is that most instructions in these prompts are semantically vague or operationally meaningless.</p>
+<p>Statements like &quot;think like the smartest people in the world&quot;, &quot;world-class expert in all domains&quot;, &quot;verify your own work&quot;, &quot;generate independent estimates&quot;, &quot;never anchor on user numbers&quot; sound profound. But for the model they are weakly actionable abstractions.</p>
+<p>LLMs respond well to structure, constraints, examples, schemas, decomposition, grounding, contextual specificity. They respond much worse to identity roleplay, personality directives, abstract intellectual posturing, and instructions to &quot;be brilliant&quot;.</p>
+<p>This is why the prompts that actually improve quality are usually much more boring. Better context. Precise objectives. Explicit constraints. Examples of good output. Retrieval. Iterative refinement. Tool usage. Decomposition of complex tasks.</p>
+<p>&quot;Be brutally honest&quot; rarely changes anything important.</p>
+<h2>The collaborative reasoning problem</h2>
+<p>There is also a visible side effect in real workflows: prompts like this often degrade collaborative reasoning.</p>
+<p>Why? Because they push the model into a rigid argumentative identity.</p>
+<p>The result is often performative contrarianism, conflict framing, over-indexing on critique, dismissal of uncertainty, premature certainty. The response feels sharper, but the reasoning process becomes less adaptive.</p>
+<p>This becomes even more problematic in agentic systems. Agents collaborating with other agents work better when they preserve uncertainty calibration, revise assumptions incrementally, expose confidence honestly, avoid early overcommitment, and maintain flexible reasoning paths. Not when they are roleplaying &quot;the brutally honest genius&quot;.</p>
+<p>This is why real production system prompts are extremely dry. They focus on tool usage, execution policy, formatting, memory behavior, safety boundaries, grounding, orchestration. Not on constructing a pseudo-intellectual personality.</p>
+<h2>The perception trap</h2>
+<p>The ironic part is that many users perceive these prompts as &quot;making the model smarter&quot; simply because they remove linguistic signals of caution.</p>
+<p>If you eliminate &quot;possibly&quot;, &quot;likely&quot;, &quot;it depends&quot;, &quot;one interpretation is&quot;, &quot;confidence low&quot;, the output sounds more authoritative. But authoritative tone is not the same thing as epistemic quality. In many cases, it is the opposite.</p>
+<p>I have seen this pattern repeatedly in my own work. The moments where an LLM says &quot;I&#39;m not sure about this&quot; or &quot;there are multiple interpretations&quot; are often the moments where it is being most useful. It is telling you where the actual complexity lives. Stripping that signal away does not simplify the problem. It just hides it.</p>
+<h2>What actually works</h2>
+<p>Ultimately, prompts like this are mostly style modifiers, confidence amplifiers, and tone shapers. Not real intelligence multipliers.</p>
+<p>The actual quality of modern LLM systems depends far more on the underlying model, context quality, retrieval systems, tool access, decomposition strategies, verification loops, memory architecture, and evaluation pipelines than on slogans like &quot;accuracy is your success metric&quot;.</p>
+<p>If you want better outputs, the path is boring and effective:</p>
+<ul>
+<li>Give the model better context, not a better personality</li>
+<li>Define the task precisely instead of demanding brilliance</li>
+<li>Show examples of what good output looks like</li>
+<li>Break complex problems into smaller steps</li>
+<li>Use tools and retrieval instead of asking the model to know everything</li>
+<li>Build verification into the workflow instead of ordering the model not to make mistakes</li>
+</ul>
+<p>The golden prompt does not exist. What exists is the discipline of giving the model what it actually needs to do good work. And that looks nothing like a two-thousand-word personality manifesto posted on X for engagement farming.</p>
+]]></content:encoded>
+    </item>
+
+    <item>
+      <title>SubQ and the End of Quadratic Attention: Breakthrough or Familiar Promise?</title>
+      <link>https://straus.it/blog/subq-sparse-attention-new-regime/</link>
+      <guid isPermaLink="true">https://straus.it/blog/subq-sparse-attention-new-regime/</guid>
+      <pubDate>Tue, 05 May 2026 00:00:00 +0000</pubDate>
+      <description>A seed-stage startup claims to have solved quadratic attention at frontier scale. The benchmarks are aggressive, the history is brutal, and the implications are structural.</description>
+      <content:encoded><![CDATA[<h1>SubQ and the End of Quadratic Attention: Breakthrough or Familiar Promise?</h1>
+<p>I have been waiting for this one. Not for SubQ specifically, but for the moment someone would credibly claim they cracked the quadratic attention problem at frontier scale. Today a startup called Subquadratic launched with $29M in seed funding and a model that, if the claims hold, changes the cost structure of everything we build on top of LLMs.</p>
+<p>The pitch is straightforward. Current transformer models spend most of their compute on relationships between tokens that do not matter. Every token attends to every other token. Double the context, quadruple the cost. This is the reason frontier models cap out around one or two million tokens even when they claim more. It is elegant math that scales terribly.</p>
+<p>SubQ replaces this with what they call Sparse Sub-Quadratic Attention. Instead of evaluating all pairwise interactions, it selects the subset that carries signal and skips the rest. Not an approximation of dense attention. A different execution model where compute grows linearly with context length.</p>
+<h2>The numbers they are claiming</h2>
+<p>The headline benchmarks are aggressive. On RULER 128K, SubQ scores 95% accuracy at a reported cost of $8, compared to 94.8% accuracy and roughly $2,600 for Claude Opus. Their sparse attention mechanism is 52x faster than FlashAttention at one million tokens with 63% less compute. At 12 million tokens, the research model claims nearly 1,000x reduction in attention compute.</p>
+<p>On SWE-Bench Verified they report 81.8, slightly ahead of Opus 4.6 at 80.8 and DeepSeek 4.0 Pro at 80.0. On MRCR v2, the retrieval and reasoning benchmark, their research result hits 83 versus GPT 5.5 at 74 and Claude Opus 4.7 at 32.2. The production model, third-party verified, sits at 65.9.</p>
+<p>These numbers would be remarkable from an established lab. From a seed-stage startup, they demand scrutiny.</p>
+<h2>Why this is architecturally different</h2>
+<p>I have written before about efficiency gains in AI infrastructure. TurboQuant, DeepSeek&#39;s MLA, various quantization breakthroughs. Those are optimizations within the existing paradigm. They make the same computation cheaper.</p>
+<p>SubQ claims something different. Not the same computation done faster, but less computation needed in the first place. If most token-to-token interactions are irrelevant, then dense attention is overcomputing by design. The question shifts from &quot;how big can the model get&quot; to &quot;how much work is actually needed.&quot;</p>
+<p>This matters because of what it implies for system design. Right now, we build entire engineering stacks around the scarcity of context. We chunk documents. We build retrieval pipelines. We prune aggressively. We maintain elaborate indexing systems to compensate for the fact that models cannot see enough at once. Not because these approaches are optimal, but because attention makes full-context processing too expensive.</p>
+<p>If a model can genuinely operate on millions of tokens without quadratic explosion, most of that infrastructure becomes unnecessary overhead. Instead of partial views and clever retrieval, you feed the full corpus. Instead of short-lived sessions with context management, you maintain continuity. Instead of optimizing prompts for compression, you optimize for completeness.</p>
+<p>Their SubQ Code product leans into this directly. A CLI coding agent that loads entire codebases into a single context window. No chunking, no multi-agent coordination, no retrieval layer. One call, full repository. If it works as described, it eliminates an entire category of engineering complexity that we have spent the last two years building.</p>
+<h2>The skepticism is well-earned</h2>
+<p>Here is where I have to be honest about the history. We have been here before.</p>
+<p>Mamba promised linear complexity. It delivers it mathematically, but underperforms quadratic attention at frontier scale. RWKV followed the same trajectory. Kimi Linear achieves linear attention on 75% of its layers but still needs quadratic Multi-Latent Attention on the remaining 25% because, as their own paper states, &quot;pure Linear Attention still struggles with precise memory retrieval and exact copying.&quot; DeepSeek Sparse Attention&#39;s lightning indexer component is itself quadratic, making the overall system quadratic despite the marketing.</p>
+<p>A thorough LessWrong analysis from January concluded that every subquadratic attention mechanism that works in practice either remains quadratic in implementation, improving efficiency by only a constant factor, or underperforms on downstream benchmarks at frontier scale. The author&#39;s summary is blunt: these are &quot;incremental improvements to the transformer architecture,&quot; not paradigm shifts.</p>
+<p>SubQ claims to break this pattern. Fully subquadratic from first principles, no hybrid fallback to quadratic layers, frontier-competitive benchmarks. If true, they have solved a problem that Google, Meta, and every major lab has been working on for years. With $29M and a team of eleven researchers.</p>
+<p>That is either extraordinary or implausible. Possibly both.</p>
+<h2>The real test</h2>
+<p>The technical risk is specific and well understood. Sparse selection must be stable. If the model decides a token relationship is unimportant and skips it, but that relationship was actually critical for reasoning, the output degrades silently. Dense attention is wasteful but robust. It never misses a dependency because it computes all of them. Sparse attention is efficient but fragile. The failure mode is not slowness. It is subtle errors in reasoning that do not show up on standard benchmarks but surface in production under adversarial or unusual inputs.</p>
+<p>This is why benchmarks alone cannot validate the architecture. RULER, SWE-Bench, MRCR. These measure average-case performance on known distributions. The question that matters is edge-case stability. What happens at 3 AM when the model encounters a dependency pattern that the sparse selector did not anticipate? Dense attention would compute it anyway. Sparse attention might not.</p>
+<p>The team behind SubQ is credible. PhDs from Meta, Google, Oxford, Cambridge, ByteDance. Alex Whedon, the CTO, led generative AI at TribeAI with over 40 enterprise implementations. Justin Dangel, the CEO, is a five-time founder. The investors include early backers of Anthropic and OpenAI. This is not a weekend project.</p>
+<p>But credibility and correctness are different things. The model is not yet publicly available. Independent benchmarks have not been run. The production version scores significantly below the research version on MRCR (65.9 versus 83), which suggests the gap between lab results and deployed performance is real and meaningful.</p>
+<h2>What changes if it works</h2>
+<p>If SubQ&#39;s architecture holds up under independent evaluation, the implications are not incremental.</p>
+<p>Cost curves flatten. At 5% of Opus pricing with comparable quality, the economics of LLM-powered systems change for every company running inference at scale. Context stops being something to manage and becomes something to use directly. The entire retrieval-augmented generation stack, which consumes significant engineering effort across the industry, becomes an optimization for a constraint that no longer exists.</p>
+<p>More importantly, it introduces a new scaling axis. So far, progress has been driven by more parameters and more data. SubQ suggests a third direction: reducing the amount of useless work the model does. If that scales, the competition shifts from &quot;who has the most GPUs&quot; to &quot;who wastes the least compute.&quot; That is a very different game, and one where incumbents do not necessarily have the advantage.</p>
+<h2>Waiting with informed skepticism</h2>
+<p>I am not going to pretend I know whether SubQ delivers what it promises. The claims are extraordinary. The history of subquadratic attention is a graveyard of promising ideas that did not survive contact with frontier scale. And the gap between research results and production numbers in their own benchmarks suggests the team knows they are not fully there yet.</p>
+<p>But the direction is correct. Dense attention computing every pairwise interaction at quadratic cost is objectively wasteful. The question was always whether you could be selective without losing critical signal. If SubQ has found a way to do that reliably, it is not just another model release. It is a structural break in how LLMs use compute.</p>
+<p>I have requested early access. When it arrives, I will test it the way I test everything. Not on benchmarks, but on real work. Load a full codebase, run a complex refactor, check whether the output holds up when the context is adversarial rather than cooperative.</p>
+<p>Until then, cautious attention. Which, ironically, is exactly what SubQ is selling.</p>
+]]></content:encoded>
+    </item>
 
     <item>
       <title>Converge or Disappear: AI Is Flattening Design Into Irrelevance</title>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How We Started Asking AI To Destroy Its Own Ideas | Stefano Straus</title>
+  <meta name="description" content="Most AI workflows are built around constructive reasoning. The shift to adversarial prompting, asking the model how its own proposals fail, produces completely different and often more valuable reasoning.">
+  <meta name="author" content="Stefano Straus">
+  <link rel="canonical" href="https://straus.it/blog/asking-ai-to-destroy-its-own-ideas/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="How We Started Asking AI To Destroy Its Own Ideas">
+  <meta property="og:description" content="Most AI workflows are built around constructive reasoning. The shift to adversarial prompting, asking the model how its own proposals fail, produces completely different and often more valuable reasoning.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://straus.it/blog/asking-ai-to-destroy-its-own-ideas/">
+  <meta property="og:image" content="https://straus.it/img/profile.jpg">
+  <meta property="og:site_name" content="Stefano Straus">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@StefanoStraus">
+  <meta name="twitter:title" content="How We Started Asking AI To Destroy Its Own Ideas">
+  <meta name="twitter:description" content="Most AI workflows are built around constructive reasoning. The shift to adversarial prompting, asking the model how its own proposals fail, produces completely different and often more valuable reasoning.">
+  <meta name="twitter:image" content="https://straus.it/img/profile.jpg">
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "How We Started Asking AI To Destroy Its Own Ideas",
+  "description": "Most AI workflows are built around constructive reasoning. The shift to adversarial prompting, asking the model how its own proposals fail, produces completely different and often more valuable reasoning.",
+  "author": {
+    "@type": "Person",
+    "name": "Stefano Straus",
+    "url": "https://straus.it"
+  },
+  "datePublished": "2026-05-21",
+  "dateModified": "2026-05-21",
+  "publisher": {
+    "@type": "Person",
+    "name": "Stefano Straus"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://straus.it/blog/asking-ai-to-destroy-its-own-ideas/"
+  },
+  "keywords": "ai, prompting, strategy, adversarial-reasoning"
+}
+  </script>
+
+  <style>
+    body { font-family: system-ui, -apple-system, sans-serif; max-width: 720px; margin: 2rem auto; padding: 0 1rem; line-height: 1.6; color: #222; background: #fff; }
+    a { color: #0066cc; }
+    .site-nav { margin-bottom: 2rem; display: flex; gap: 1rem; font-size: 0.9em; }
+    article img { max-width: 100%; }
+    time { color: #666; }
+    h1 { margin-bottom: 0.25rem; }
+    pre { background: #f5f5f5; padding: 1rem; overflow-x: auto; border-radius: 4px; }
+    code { font-family: 'JetBrains Mono', monospace; font-size: 0.9em; }
+    blockquote { border-left: 3px solid #ddd; margin-left: 0; padding-left: 1rem; color: #555; }
+    table { border-collapse: collapse; width: 100%; }
+    th, td { border: 1px solid #ddd; padding: 0.5rem; text-align: left; }
+    th { background: #f5f5f5; }
+    .terminal-link { margin-top: 2rem; padding: 0.75rem 1rem; background: #f5f5f5; border-radius: 4px; font-size: 0.9em; }
+    @media (prefers-color-scheme: dark) {
+      body { background: #0d1117; color: #c9d1d9; }
+      a { color: #58a6ff; }
+      time { color: #8b949e; }
+      pre, th { background: #161b22; }
+      td, th { border-color: #30363d; }
+      blockquote { border-color: #30363d; color: #8b949e; }
+      .terminal-link { background: #161b22; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="site-nav">
+    <a href="/">&larr; straus.it</a>
+    <a href="/#blog">blog</a>
+  </nav>
+  <article>
+    <h1>How We Started Asking AI To Destroy Its Own Ideas</h1>
+    <time datetime="2026-05-21">May 21, 2026</time>
+<h1>How We Started Asking AI To Destroy Its Own Ideas</h1>
+<p>For a long time, most AI workflows have been built around a simple assumption: if the model produces a coherent answer, the reasoning behind it is probably solid enough.</p>
+<p>That assumption is starting to collapse.</p>
+<p>Every day people use AI to generate software architectures, marketing strategies, business plans, operational processes, pricing models, investment decks, sales campaigns and internal decision documents. The interaction pattern is almost always identical. We ask for a solution, the model produces a plausible answer, we refine it slightly, and then we move forward assuming the reasoning is sound.</p>
+<p>The problem is that large language models are extremely good at completing narratives. Much better than they are at challenging them.</p>
+<p>An LLM naturally tries to preserve coherence. It fills missing gaps, stabilizes assumptions, reduces ambiguity and converges quickly toward an answer that &quot;looks right&quot;. Even when the underlying logic is fragile.</p>
+<p>This becomes dangerous the moment AI stops being a writing assistant and starts influencing real operational decisions.</p>
+<p>Because most failures do not come from obviously bad ideas.</p>
+<p>They come from hidden assumptions.</p>
+<p>A market assumption that turns out false six months later. A customer behavior nobody validated. A dependency on a platform policy that suddenly changes. A pricing strategy based on unrealistic conversion expectations. A growth model that only works under perfect conditions. A rollout plan that collapses once real human behavior enters the system.</p>
+<h2>The instinct experienced operators already have</h2>
+<p>The interesting part is that experienced operators already reason this way instinctively.</p>
+<p>The best strategists, engineers, founders and operators rarely react by saying &quot;good idea&quot;. They immediately start probing for failure:</p>
+<ul>
+<li>What assumption are we making without noticing?</li>
+<li>What breaks first?</li>
+<li>What only works in ideal conditions?</li>
+<li>What external dependency can suddenly invalidate the plan?</li>
+</ul>
+<p>At some point we realized something important.</p>
+<p>We could ask the AI to behave the same way.</p>
+<p>So we changed the prompting strategy entirely.</p>
+<p>Instead of asking the model to improve a solution, we started asking it to assume the solution had already failed and explain exactly how it happened.</p>
+<p>That single change produces completely different reasoning.</p>
+<p>The model stops defending the proposal and starts attacking it.</p>
+<h2>A marketing campaign that looked perfect on paper</h2>
+<p>A simple example came from a marketing campaign strategy generated by AI. The initial proposal looked convincing: strong positioning, aggressive social amplification, influencer partnerships and AI-generated content pipelines to accelerate production.</p>
+<p>Then we asked:</p>
+<p>&quot;Assume this campaign failed after six months. Explain why.&quot;</p>
+<p>The reasoning immediately changed direction.</p>
+<p>The model identified that the entire strategy depended on short-term engagement metrics instead of durable audience trust. It highlighted content saturation risks, declining authenticity perception, rising acquisition costs and overdependence on algorithmic visibility from platforms the company did not control.</p>
+<p>None of that appeared in the original proposal.</p>
+<h2>An expansion plan that optimized for the wrong thing</h2>
+<p>Another example came from a SaaS expansion plan.</p>
+<p>The model generated a very detailed roadmap for entering multiple European markets simultaneously. On paper it looked efficient: centralized operations, unified messaging and shared onboarding flows.</p>
+<p>Then we asked:</p>
+<p>&quot;Assume the expansion created operational chaos instead of growth. What assumption failed first?&quot;</p>
+<p>Suddenly the model started reasoning about localization complexity, support fragmentation, regulatory divergence, inconsistent buyer expectations and internal coordination costs between sales, onboarding and customer success teams.</p>
+<p>The original reasoning optimized for execution speed. The adversarial reasoning optimized for survivability.</p>
+<h2>The same pattern shows up everywhere</h2>
+<p>The same thing happens constantly in software and infrastructure.</p>
+<p>Ask an LLM to design a deployment workflow and it optimizes efficiency. Ask it how the system causes a cascading outage and suddenly it starts reasoning about rollback impossibilities, hidden coupling and operational blind spots.</p>
+<p>Ask it to generate a business model and it optimizes growth. Ask it how the company dies and it starts reasoning about customer concentration, platform dependency, margin erosion and market timing risk.</p>
+<p>Ask it to design an AI agent workflow and it optimizes autonomy. Ask it how the system slowly degrades over a year and it starts discussing prompt drift, hidden state accumulation and feedback loop corruption.</p>
+<h2>Constructive reasoning is the default. It should not be the only mode.</h2>
+<p>Most AI prompting today is still built around constructive reasoning. We ask models to build, optimize, improve and complete.</p>
+<p>But some of the most valuable reasoning in business and engineering has always been destructive.</p>
+<p>Premortems work this way. Chaos engineering works this way. Security red-teaming works this way. Good boardrooms work this way.</p>
+<p>Strong organizations are not built around proving ideas work. They are built around discovering how ideas fail before reality does it for them.</p>
+<p>AI should probably work the same way.</p>
+<h2>The hostile phase</h2>
+<p>Today, whenever the model generates a strategy, an architecture, a business plan, a campaign or an operational workflow, we add a second phase to the process.</p>
+<p>A hostile phase.</p>
+<p>We ask the model to attack every assumption it just made. To identify the first condition that would trigger collapse. To explain which dependency is most likely to fail within the next year.</p>
+<p>Or sometimes we ask an even simpler question:</p>
+<p>&quot;How does this project die?&quot;</p>
+<p>Very often, the answers become more valuable than the original proposal itself.</p>
+<h2>Generation is cheap. Validation is not.</h2>
+<p>AI generation is rapidly becoming cheap.</p>
+<p>Adversarial validation is not.</p>
+<p>The organizations that will benefit the most from AI are probably not the ones generating faster. They will be the ones learning how to challenge generated reasoning before acting on it.</p>
+<p>We should stop treating AI outputs as answers.</p>
+<p>They are hypotheses.</p>
+<p>And hypotheses should survive hostile questioning before humans trust them.</p>
+
+  </article>
+  <div class="terminal-link">
+    Read this in the <a href="/#read/asking-ai-to-destroy-its-own-ideas">terminal view</a>
+  </div>
+  <nav class="site-nav" style="margin-top:2rem"><a href="/">&larr; straus.it</a></nav>
+</body>
+</html>
