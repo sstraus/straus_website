@@ -1,6 +1,14 @@
 {
   "articles": [
     {
+      "slug": "mistral-strategy-not-scale",
+      "title": "Mistral Did Not Lose Because Europe Cannot Build AI",
+      "date": "2026-06-14",
+      "description": "Europe's AI champion did not stumble for lack of GPUs or funding. Mistral chose to compete in OpenAI's arena instead of owning the one position only a European company could hold: the trusted enterprise platform.",
+      "tags": ["ai", "mistral", "europe", "strategy", "enterprise"],
+      "file": "2026-06-14-mistral-strategy-not-scale.md"
+    },
+    {
       "slug": "github-stars-marketing-metric",
       "title": "GitHub Stars Are Becoming a Marketing Metric, Not a Quality Signal",
       "date": "2026-06-02",
