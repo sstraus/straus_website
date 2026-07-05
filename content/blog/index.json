@@ -1,6 +1,14 @@
 {
   "articles": [
     {
+      "slug": "personal-guarantee-keeps-italy-small",
+      "title": "The Personal Guarantee That Keeps Italy Small",
+      "date": "2026-07-05",
+      "description": "A conversation about Italy's stagnant productivity keeps returning to firm size, and to the personal guarantees and family legacy that quietly keep companies small on purpose.",
+      "tags": ["italy", "productivity", "entrepreneurship", "economics", "business"],
+      "file": "2026-07-05-personal-guarantee-keeps-italy-small.md"
+    },
+    {
       "slug": "mistral-strategy-not-scale",
       "title": "Mistral Did Not Lose Because Europe Cannot Build AI",
       "date": "2026-06-14",
