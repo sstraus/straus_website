@@ -4,7 +4,7 @@
       "slug": "training-ai-to-talk-to-ai",
       "title": "Are We Training AI To Talk Only To Other AI?",
       "date": "2026-08-03",
-      "description": "The more capable coding models become, the less pleasant they are to work with. As training and evaluation shift from human feedback to models judging other models, the optimization target quietly moves from communicating with people to communicating with machines.",
+      "description": "The more capable coding models become, the less pleasant they are to work with. From RLHF to RLAIF, Constitutional AI and verifier-based reinforcement learning, the evaluation chain is increasingly made of models judging models, and the optimization target quietly moves from communicating with people to communicating with machines.",
       "tags": ["ai", "llm", "training", "rlhf", "product"],
       "file": "2026-08-03-training-ai-to-talk-to-ai.md"
     },
