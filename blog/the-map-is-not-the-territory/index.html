@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light">
+  <title>The Map Is Not the Territory | Stefano Straus</title>
+  <meta name="description" content="A working prototype and a production system look alike, which is exactly the trap. AI collapsed the cost of drawing the map while the territory stayed as hard as ever, and that is why experience is becoming more valuable, not less.">
+  <meta name="author" content="Stefano Straus">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="canonical" href="https://straus.it/blog/the-map-is-not-the-territory/">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/rss+xml" title="Stefano Straus" href="/feed.xml">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="The Map Is Not the Territory">
+  <meta property="og:description" content="A working prototype and a production system look alike, which is exactly the trap. AI collapsed the cost of drawing the map while the territory stayed as hard as ever, and that is why experience is becoming more valuable, not less.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://straus.it/blog/the-map-is-not-the-territory/">
+  <meta property="og:image" content="https://straus.it/img/profile.jpg">
+  <meta property="og:image:alt" content="Stefano Straus">
+  <meta property="og:site_name" content="Stefano Straus">
+  <meta property="article:published_time" content="2026-07-07">
+  <meta property="article:author" content="https://straus.it">
+  <meta property="article:tag" content="ai">
+  <meta property="article:tag" content="software-engineering">
+  <meta property="article:tag" content="production">
+  <meta property="article:tag" content="experience">
+  <meta property="article:tag" content="engineering">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@StefanoStraus">
+  <meta name="twitter:title" content="The Map Is Not the Territory">
+  <meta name="twitter:description" content="A working prototype and a production system look alike, which is exactly the trap. AI collapsed the cost of drawing the map while the territory stayed as hard as ever, and that is why experience is becoming more valuable, not less.">
+  <meta name="twitter:image" content="https://straus.it/img/profile.jpg">
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "The Map Is Not the Territory",
+  "description": "A working prototype and a production system look alike, which is exactly the trap. AI collapsed the cost of drawing the map while the territory stayed as hard as ever, and that is why experience is becoming more valuable, not less.",
+  "url": "https://straus.it/blog/the-map-is-not-the-territory/",
+  "image": "https://straus.it/img/profile.jpg",
+  "author": {
+    "@type": "Person",
+    "name": "Stefano Straus",
+    "url": "https://straus.it"
+  },
+  "datePublished": "2026-07-07",
+  "dateModified": "2026-07-07",
+  "publisher": {
+    "@type": "Person",
+    "name": "Stefano Straus"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://straus.it/blog/the-map-is-not-the-territory/"
+  },
+  "keywords": "ai, software-engineering, production, experience, engineering"
+}
+  </script>
+
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #ffffff; --fg: #1f2328; --muted: #656d76; --accent: #0066cc;
+      --surface: #f6f8fa; --border: #d0d7de;
+      --mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+    }
+    * { box-sizing: border-box; }
+    html { background: #ffffff; }
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+      max-width: 780px; margin: 0 auto; padding: 0 1.25rem 3rem;
+      line-height: 1.7; color: var(--fg); background: var(--bg);
+      font-size: 1rem;
+    }
+    article p, article li { font-size: 1em; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .site-nav {
+      display: flex; gap: 1.25rem; align-items: baseline;
+      padding: 1.25rem 0; margin-bottom: 2rem;
+      border-bottom: 1px solid var(--border);
+      font-family: var(--mono); font-size: 1rem;
+    }
+    .site-nav .brand { font-weight: 700; color: var(--fg); }
+    .site-nav .brand:hover { color: var(--accent); text-decoration: none; }
+    .post-header { margin-bottom: 2.5rem; }
+    .post-header h1 {
+      font-size: 2.5rem; line-height: 1.2; margin: 0 0 0.75rem;
+      letter-spacing: -0.02em;
+    }
+    .post-meta {
+      display: flex; flex-wrap: wrap; gap: 0.5rem 1rem; align-items: baseline;
+      font-family: var(--mono); font-size: 0.95rem; color: var(--muted);
+    }
+    .tag { color: var(--accent); }
+    article h2 { font-size: 1.75rem; margin-top: 2.5rem; letter-spacing: -0.01em; }
+    article h3 { font-size: 1.4rem; margin-top: 2rem; }
+    article img { max-width: 100%; border-radius: 6px; }
+    article hr { border: 0; border-top: 1px solid var(--border); margin: 2.5rem 0; }
+    pre {
+      background: var(--surface); border: 1px solid var(--border);
+      padding: 1rem; overflow-x: auto; border-radius: 6px; line-height: 1.5;
+    }
+    code { font-family: var(--mono); font-size: 0.875em; }
+    :not(pre) > code {
+      background: var(--surface); border: 1px solid var(--border);
+      padding: 0.1em 0.35em; border-radius: 4px;
+    }
+    blockquote {
+      border-left: 3px solid var(--accent); margin: 1.75rem 0;
+      padding: 0.5rem 1.25rem; color: var(--accent); font-style: italic;
+      background: rgba(0, 102, 204, 0.06); border-radius: 0 6px 6px 0;
+    }
+    table { border-collapse: collapse; width: 100%; }
+    th, td { border: 1px solid var(--border); padding: 0.5rem; text-align: left; }
+    th { background: var(--surface); }
+    .terminal-link {
+      margin-top: 3rem; padding: 0.875rem 1.25rem;
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 6px; font-family: var(--mono); font-size: 1rem;
+    }
+    .terminal-link::before { content: '$ '; color: var(--muted); }
+    .post-nav {
+      display: flex; justify-content: space-between; gap: 1rem;
+      margin-top: 1.5rem;
+    }
+    .post-nav-link {
+      display: block; max-width: 48%; font-size: 1rem; line-height: 1.4;
+    }
+    .post-nav-link span {
+      display: block; font-family: var(--mono); font-size: 0.85rem;
+      color: var(--muted); margin-bottom: 0.25rem;
+    }
+    .post-nav-link.next { text-align: right; margin-left: auto; }
+    .site-footer {
+      margin-top: 3rem; padding-top: 1.25rem;
+      border-top: 1px solid var(--border);
+      font-family: var(--mono); font-size: 0.9rem; color: var(--muted);
+      display: flex; gap: 1.25rem;
+    }
+  </style>
+</head>
+<body>
+  <nav class="site-nav">
+    <a class="brand" href="/">stefano@straus.it:~$</a>
+    <a href="/#blog">blog</a>
+    <a href="/feed.xml">rss</a>
+  </nav>
+  <article>
+    <header class="post-header">
+      <h1>The Map Is Not the Territory</h1>
+      <div class="post-meta">
+        <time datetime="2026-07-07">July 7, 2026</time>
+        <span>4 min read</span>
+        <span class="tag">#ai</span> <span class="tag">#software-engineering</span> <span class="tag">#production</span> <span class="tag">#experience</span> <span class="tag">#engineering</span>
+      </div>
+    </header>
+<p>One of the strangest misconceptions AI coding tools have created is the belief that a proof of concept and a production system sit on the same timeline. If the prototype came together in two hours over the weekend, the reasoning goes, then production should take roughly another two. I watch this play out inside companies constantly. Someone builds something genuinely impressive on Saturday with Claude or ChatGPT or whatever model they happen to trust, and walks into engineering on Monday asking why it cannot ship by Wednesday.</p>
+<p>The demo works. Nobody is arguing otherwise, and that is exactly what makes the conversation so hard. A working prototype is the most persuasive artifact in software, because it looks finished. It responds, it renders, it does the thing. What it hides is that a working demo and a product are two different objects that only happen to resemble each other.</p>
+<h2>The 80% that got cheap</h2>
+<p>Today&#39;s models are remarkably good at assembling code that solves the problem you put in front of them. They generate the APIs, the interfaces, the tests, sometimes an entire application that behaves exactly as described. For validating an idea this is close to miraculous, and it happens to be the part of the work that used to be slow. Building the first 80% of almost anything has become trivial.</p>
+<p>Production is a different problem, and it always was. That code has to fit inside an architecture that already exists. It has to talk to dozens of other services, respect security boundaries, fail gracefully instead of catastrophically, expose telemetry someone can actually read, integrate with authentication and authorization, comply with standards the company did not invent for fun, survive version upgrades, hold up under load, and remain legible to engineers who will never see the prompt that produced it. Very little of that is about writing code. Almost all of it is about understanding the system the code has to live in.</p>
+<h2>Map and territory</h2>
+<p>There is an old phrase that captures the gap better than anything else I have found. The map is not the territory.</p>
+<blockquote>
+<p>A prototype is the map. Production is the territory it quietly left out.</p>
+</blockquote>
+<p>The map earns its power precisely by leaving things out. It represents the destination well enough to prove the route exists, and no more. The territory is made of everything the map omitted on purpose: the existing architecture, the technical debt, the operational constraints, the observability, the compliance requirements, the deployment pipeline, the rollback strategy, the backward compatibility, and the thousand small interactions that only surface once real users and real data are involved.</p>
+<p>The paradox is that AI has collapsed the cost of drawing the map while the territory has barely moved. If anything the territory has grown harder, because every new feature now has to coexist with years of decisions nobody wants to revisit. So a PoC takes two hours and the production version takes months, and the reason is not that engineers slowed down. The reason is that the real work only starts once the demo has already succeeded.</p>
+<h2>Where the value moved</h2>
+<p>I think this is one of the more important shifts AI is bringing to software engineering, and it is easy to misread. Building the first version of almost anything is now close to free. The remaining fraction, the part that turns a convincing demo into something you can actually run, is where most of the engineering value has quietly relocated. AI is accelerating implementation. It is not eliminating engineering, and the distance between those two claims is the whole argument.</p>
+<p>This is also why I keep coming back to the idea that experience is becoming more valuable, not less. The map is easy to draw now, so drawing it is no longer where anyone&#39;s advantage lives. Reading the territory is. Knowing which failure modes matter, which constraints are real and which are cargo cult, where the debt is buried and what breaks when you touch it, none of that comes from the model. It comes from having been through it. The engineer who has watched a clean prototype disintegrate on contact with production is worth more today than they were two years ago, not less, because the scarce skill is no longer producing the code. It is understanding the ground the code has to survive on.</p>
+<p>None of this makes the demos worthless. They are the most useful they have ever been, and being able to validate an idea in an afternoon genuinely changes what is worth trying at all. It only means we should stop mistaking the map for the arrival. The two hours it took to build the prototype were real. So are the months it takes to turn it into something you can trust, and pretending those months are optional is exactly how good demos become bad products.</p>
+
+  </article>
+  <div class="terminal-link">
+    Read this in the <a href="/#read/the-map-is-not-the-territory">terminal view</a>
+  </div>
+  <nav class="post-nav" aria-label="Post navigation">
+    <a class="post-nav-link prev" href="/blog/personal-guarantee-keeps-italy-small/" rel="prev"><span>&larr; Older</span>The Personal Guarantee That Keeps Italy Small</a>
+    <a class="post-nav-link next" href="/blog/training-ai-to-talk-to-ai/" rel="next"><span>Newer &rarr;</span>Are We Training AI To Talk Only To Other AI?</a>
+  </nav>
+  <footer class="site-footer">
+    <a href="/">&larr; straus.it</a>
+    <span>&copy; Stefano Straus</span>
+  </footer>
+</body>
+</html>

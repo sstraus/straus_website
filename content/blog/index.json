@@ -1,6 +1,22 @@
 {
   "articles": [
     {
+      "slug": "training-ai-to-talk-to-ai",
+      "title": "Are We Training AI To Talk Only To Other AI?",
+      "date": "2026-08-03",
+      "description": "The more capable coding models become, the less pleasant they are to work with. As training and evaluation shift from human feedback to models judging other models, the optimization target quietly moves from communicating with people to communicating with machines.",
+      "tags": ["ai", "llm", "training", "rlhf", "product"],
+      "file": "2026-08-03-training-ai-to-talk-to-ai.md"
+    },
+    {
+      "slug": "the-map-is-not-the-territory",
+      "title": "The Map Is Not the Territory",
+      "date": "2026-07-07",
+      "description": "A working prototype and a production system look alike, which is exactly the trap. AI collapsed the cost of drawing the map while the territory stayed as hard as ever, and that is why experience is becoming more valuable, not less.",
+      "tags": ["ai", "software-engineering", "production", "experience", "engineering"],
+      "file": "2026-07-07-the-map-is-not-the-territory.md"
+    },
+    {
       "slug": "personal-guarantee-keeps-italy-small",
       "title": "The Personal Guarantee That Keeps Italy Small",
       "date": "2026-07-05",

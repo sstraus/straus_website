@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://straus.it/</loc>
-    <lastmod>2026-07-05</lastmod>
+    <lastmod>2026-08-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -14,7 +14,7 @@
   </url>
   <url>
     <loc>https://straus.it/feed.xml</loc>
-    <lastmod>2026-07-05</lastmod>
+    <lastmod>2026-08-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -92,6 +92,18 @@
     <priority>0.5</priority>
   </url>
   <!-- Blog posts -->
+  <url>
+    <loc>https://straus.it/blog/training-ai-to-talk-to-ai/</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://straus.it/blog/the-map-is-not-the-territory/</loc>
+    <lastmod>2026-07-07</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
   <url>
     <loc>https://straus.it/blog/personal-guarantee-keeps-italy-small/</loc>
     <lastmod>2026-07-05</lastmod>
