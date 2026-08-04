@@ -7,13 +7,43 @@
     <link>https://straus.it</link>
     <description>Engineering Manager specializing in AI-driven development, software architecture, and developer productivity. Insights on intent-based programming, Claude Code, and modern development patterns.</description>
     <language>en</language>
-    <lastBuildDate>Mon, 03 Aug 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 04 Aug 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://straus.it/feed.xml" rel="self" type="application/rss+xml"/>
     <image>
       <url>https://straus.it/img/profile.jpg</url>
       <title>Stefano Straus</title>
       <link>https://straus.it</link>
     </image>
+
+    <item>
+      <title>Coding AI Is No Longer a One-Horse Race</title>
+      <link>https://straus.it/blog/coding-ai-one-horse-race/</link>
+      <guid isPermaLink="true">https://straus.it/blog/coding-ai-one-horse-race/</guid>
+      <pubDate>Tue, 04 Aug 2026 00:00:00 +0000</pubDate>
+      <description>Anthropic is no longer the only reference for AI-assisted development. Codex, Grok 4.5 and the strongest Chinese models are now genuinely competitive, and the real advantage comes from orchestrating several of them, each doing the work it is best suited for.</description>
+      <content:encoded><![CDATA[<h1>Coding AI Is No Longer a One-Horse Race</h1>
+<p>For a long time, Anthropic was the undisputed reference for AI-assisted software development. Today the landscape looks very different. Every few weeks a new model appears that is genuinely competitive, and this is no longer just about Chinese labs trying to catch up.</p>
+<p>OpenAI has done an excellent job with Codex and the Sol and Luna models. Beyond benchmark scores, what impressed me most is the overall experience of using them every day. They are fast, responsive and consistently produce high-quality code. In direct comparison, I currently find them ahead mainly because of execution speed and interaction quality while staying at a comparable cost.</p>
+<h2>The metric nobody measures</h2>
+<p>One aspect that still receives surprisingly little attention is user experience. Benchmarks appear almost daily, but very few people measure what it actually feels like to spend eight or ten hours working with a model. Response latency, reasoning flow, how often you need to rephrase prompts, how well the model keeps context, or how pleasant it is to iterate on a complex task all have a huge impact on productivity.</p>
+<p>This is also where xAI is making remarkable progress. Following the Cursor acquisition, Grok 4.5 seems to have improved dramatically. I still don&#39;t think it reaches the level of the current leaders in raw coding capability, but the cost is only a fraction of most competitors, it has become genuinely enjoyable to use, and its research capabilities are excellent. That combination makes it much more interesting than benchmark tables alone would suggest.</p>
+<h2>The four Chinese models worth watching</h2>
+<p>Then come what I currently consider the four strongest Chinese models.</p>
+<p>Kimi M3 is probably the most competitive overall, although its biggest weakness is speed. It often feels noticeably slower than the alternatives.</p>
+<p>GLM 5.3 is perhaps the most balanced option. It delivers solid quality, excellent cost efficiency and is a very practical model for day-to-day engineering work.</p>
+<p>Minimax H3 and DeepSeek V4 are the two models I have not tested deeply enough to draw firm conclusions yet. Still, both look extremely promising, especially considering how quickly open-weight models continue to evolve in terms of efficiency, reasoning and inference speed.</p>
+<h2>One orchestrator, many specialists</h2>
+<p>The interesting part is that I no longer think in terms of choosing a single model.</p>
+<p>The best results come from combining several models, each with a specific role. I typically use one orchestrator, in my case Sol, to coordinate the workflow, while delegating implementation, research, review and validation to different specialized models depending on their strengths.</p>
+<p>The review stage is particularly important. Having independent models validate assumptions, inspect code quality and challenge implementation choices usually produces far more robust results than relying on a single model from start to finish.</p>
+<p>In professional environments the difference is substantial. You reduce costs, shorten execution time and often obtain better quality simply because every model is doing the work it is best suited for.</p>
+<h2>Why I built TUICommander</h2>
+<p>The obvious question then becomes how to orchestrate all these models efficiently.</p>
+<p>General-purpose AI clients certainly work, but they often hide many of the native capabilities that differentiate providers. This is particularly true for the newest models, which increasingly rely on their own agent frameworks and native tools.</p>
+<p>For this reason I built TUICommander, and it has become the environment I use every day. It is much more than an AI orchestrator. It is a complete AI-first coding environment designed to replace traditional development tools while making multi-model orchestration feel natural. Every provider keeps its native capabilities, agent tools and MCP channels, while TUICommander brings everything together into a single workflow with a comprehensive set of productivity features built specifically for AI-assisted development.</p>
+<p>After working this way for months, I find it difficult to go back. Using the right model for the right task consistently delivers better code, lower costs and faster execution than relying on a single provider. If you are serious about AI-assisted development, I encourage you to give TUICommander a try. Whether you use two models or ten, it gives you a practical way to orchestrate them without giving up the strengths of their native environments. I&#39;d love to hear your feedback and learn how it fits into your workflow.</p>
+]]></content:encoded>
+    </item>
 
     <item>
       <title>Are We Training AI To Talk Only To Other AI?</title>

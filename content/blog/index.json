@@ -1,6 +1,14 @@
 {
   "articles": [
     {
+      "slug": "coding-ai-one-horse-race",
+      "title": "Coding AI Is No Longer a One-Horse Race",
+      "date": "2026-08-04",
+      "description": "Anthropic is no longer the only reference for AI-assisted development. Codex, Grok 4.5 and the strongest Chinese models are now genuinely competitive, and the real advantage comes from orchestrating several of them, each doing the work it is best suited for.",
+      "tags": ["ai", "llm", "coding", "tooling", "orchestration"],
+      "file": "2026-08-04-coding-ai-one-horse-race.md"
+    },
+    {
       "slug": "training-ai-to-talk-to-ai",
       "title": "Are We Training AI To Talk Only To Other AI?",
       "date": "2026-08-03",
