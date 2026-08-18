@@ -1,6 +1,14 @@
 {
   "articles": [
     {
+      "slug": "measured-codex-claude-grok-one-defect",
+      "title": "I Left Grok Out of the Last Benchmark",
+      "date": "2026-08-18",
+      "description": "A coding-agent benchmark on reasoning, finding stale claims in text, then time and cost. The first ranking was Codex versus Claude. Grok was not in the table. On the same harness it went 10/10.",
+      "tags": ["ai", "llm", "coding", "benchmarks", "grok", "claude", "codex"],
+      "file": "2026-08-18-measured-codex-claude-grok-one-defect.md"
+    },
+    {
       "slug": "coding-ai-one-horse-race",
       "title": "Coding AI Is No Longer a One-Horse Race",
       "date": "2026-08-04",

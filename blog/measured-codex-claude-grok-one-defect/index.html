@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light">
+  <title>I Left Grok Out of the Last Benchmark | Stefano Straus</title>
+  <meta name="description" content="A coding-agent benchmark on reasoning, finding stale claims in text, then time and cost. The first ranking was Codex versus Claude. Grok was not in the table. On the same harness it went 10/10.">
+  <meta name="author" content="Stefano Straus">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="canonical" href="https://straus.it/blog/measured-codex-claude-grok-one-defect/">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/rss+xml" title="Stefano Straus" href="/feed.xml">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="I Left Grok Out of the Last Benchmark">
+  <meta property="og:description" content="A coding-agent benchmark on reasoning, finding stale claims in text, then time and cost. The first ranking was Codex versus Claude. Grok was not in the table. On the same harness it went 10/10.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://straus.it/blog/measured-codex-claude-grok-one-defect/">
+  <meta property="og:image" content="https://straus.it/img/profile.jpg">
+  <meta property="og:image:alt" content="Stefano Straus">
+  <meta property="og:site_name" content="Stefano Straus">
+  <meta property="article:published_time" content="2026-08-18">
+  <meta property="article:author" content="https://straus.it">
+  <meta property="article:tag" content="ai">
+  <meta property="article:tag" content="llm">
+  <meta property="article:tag" content="coding">
+  <meta property="article:tag" content="benchmarks">
+  <meta property="article:tag" content="grok">
+  <meta property="article:tag" content="claude">
+  <meta property="article:tag" content="codex">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@StefanoStraus">
+  <meta name="twitter:title" content="I Left Grok Out of the Last Benchmark">
+  <meta name="twitter:description" content="A coding-agent benchmark on reasoning, finding stale claims in text, then time and cost. The first ranking was Codex versus Claude. Grok was not in the table. On the same harness it went 10/10.">
+  <meta name="twitter:image" content="https://straus.it/img/profile.jpg">
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "I Left Grok Out of the Last Benchmark",
+  "description": "A coding-agent benchmark on reasoning, finding stale claims in text, then time and cost. The first ranking was Codex versus Claude. Grok was not in the table. On the same harness it went 10/10.",
+  "url": "https://straus.it/blog/measured-codex-claude-grok-one-defect/",
+  "image": "https://straus.it/img/profile.jpg",
+  "author": {
+    "@type": "Person",
+    "name": "Stefano Straus",
+    "url": "https://straus.it"
+  },
+  "datePublished": "2026-08-18",
+  "dateModified": "2026-08-18",
+  "publisher": {
+    "@type": "Person",
+    "name": "Stefano Straus"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://straus.it/blog/measured-codex-claude-grok-one-defect/"
+  },
+  "keywords": "ai, llm, coding, benchmarks, grok, claude, codex"
+}
+  </script>
+
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #ffffff; --fg: #1f2328; --muted: #656d76; --accent: #0066cc;
+      --surface: #f6f8fa; --border: #d0d7de;
+      --mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+    }
+    * { box-sizing: border-box; }
+    html { background: #ffffff; }
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+      max-width: 780px; margin: 0 auto; padding: 0 1.25rem 3rem;
+      line-height: 1.7; color: var(--fg); background: var(--bg);
+      font-size: 1rem;
+    }
+    article p, article li { font-size: 1em; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .site-nav {
+      display: flex; gap: 1.25rem; align-items: baseline;
+      padding: 1.25rem 0; margin-bottom: 2rem;
+      border-bottom: 1px solid var(--border);
+      font-family: var(--mono); font-size: 1rem;
+    }
+    .site-nav .brand { font-weight: 700; color: var(--fg); }
+    .site-nav .brand:hover { color: var(--accent); text-decoration: none; }
+    .post-header { margin-bottom: 2.5rem; }
+    .post-header h1 {
+      font-size: 2.5rem; line-height: 1.2; margin: 0 0 0.75rem;
+      letter-spacing: -0.02em;
+    }
+    .post-meta {
+      display: flex; flex-wrap: wrap; gap: 0.5rem 1rem; align-items: baseline;
+      font-family: var(--mono); font-size: 0.95rem; color: var(--muted);
+    }
+    .tag { color: var(--accent); }
+    article h2 { font-size: 1.75rem; margin-top: 2.5rem; letter-spacing: -0.01em; }
+    article h3 { font-size: 1.4rem; margin-top: 2rem; }
+    article img { max-width: 100%; border-radius: 6px; }
+    article hr { border: 0; border-top: 1px solid var(--border); margin: 2.5rem 0; }
+    pre {
+      background: var(--surface); border: 1px solid var(--border);
+      padding: 1rem; overflow-x: auto; border-radius: 6px; line-height: 1.5;
+    }
+    code { font-family: var(--mono); font-size: 0.875em; }
+    :not(pre) > code {
+      background: var(--surface); border: 1px solid var(--border);
+      padding: 0.1em 0.35em; border-radius: 4px;
+    }
+    blockquote {
+      border-left: 3px solid var(--accent); margin: 1.75rem 0;
+      padding: 0.5rem 1.25rem; color: var(--accent); font-style: italic;
+      background: rgba(0, 102, 204, 0.06); border-radius: 0 6px 6px 0;
+    }
+    table { border-collapse: collapse; width: 100%; }
+    th, td { border: 1px solid var(--border); padding: 0.5rem; text-align: left; }
+    th { background: var(--surface); }
+    .terminal-link {
+      margin-top: 3rem; padding: 0.875rem 1.25rem;
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 6px; font-family: var(--mono); font-size: 1rem;
+    }
+    .terminal-link::before { content: '$ '; color: var(--muted); }
+    .post-nav {
+      display: flex; justify-content: space-between; gap: 1rem;
+      margin-top: 1.5rem;
+    }
+    .post-nav-link {
+      display: block; max-width: 48%; font-size: 1rem; line-height: 1.4;
+    }
+    .post-nav-link span {
+      display: block; font-family: var(--mono); font-size: 0.85rem;
+      color: var(--muted); margin-bottom: 0.25rem;
+    }
+    .post-nav-link.next { text-align: right; margin-left: auto; }
+    .site-footer {
+      margin-top: 3rem; padding-top: 1.25rem;
+      border-top: 1px solid var(--border);
+      font-family: var(--mono); font-size: 0.9rem; color: var(--muted);
+      display: flex; gap: 1.25rem;
+    }
+  </style>
+</head>
+<body>
+  <nav class="site-nav">
+    <a class="brand" href="/">stefano@straus.it:~$</a>
+    <a href="/#blog">blog</a>
+    <a href="/feed.xml">rss</a>
+  </nav>
+  <article>
+    <header class="post-header">
+      <h1>I Left Grok Out of the Last Benchmark</h1>
+      <div class="post-meta">
+        <time datetime="2026-08-18">August 18, 2026</time>
+        <span>8 min read</span>
+        <span class="tag">#ai</span> <span class="tag">#llm</span> <span class="tag">#coding</span> <span class="tag">#benchmarks</span> <span class="tag">#grok</span> <span class="tag">#claude</span> <span class="tag">#codex</span>
+      </div>
+    </header>
+<p>This is a benchmark of coding agents. Same task, same rubric, isolated CLIs, five trials each. It does not ask who can write the most code. It asks three things I actually use agents for: can they reason through a hard constraint, can they find the problems in the text, and what does that cost in time and money.</p>
+<p>The first published ranking was <a href="https://publishwith.ai/t/publishwithai/a/claude-code-vs-codex-cli-measured-cost-and-quality/">Codex against Claude</a>. Sol matched Opus at a lower price. Terra and Sonnet tied on the same miss. Luna was the value row. Haiku was the unsafe one. Grok was not in the run. It was not even a footnote.</p>
+<p>Two weeks later I wrote that <a href="/blog/coding-ai-one-horse-race/">the field was no longer a one-horse race</a>. Grok 4.5 showed up there as the cheap, pleasant third: enjoyable, good at research, <em>not</em> at the level of the leaders in raw coding. That was a daily-use impression. It was not this benchmark, and it treated Grok as atmosphere around a Codex versus Claude story.</p>
+<p>I then put Grok 4.5 and 4.6 on the same harness as everyone else. They were the result.</p>
+<h2>How it runs</h2>
+<p>Eleven conditions. Five isolated trials each. High reasoning effort. Deterministic 10-point rubric. No model judged another model. Codex and Claude ran on 10 August. Grok ran on 17 August and was combined without rescoring. That delay is why Grok was missing from the first table, not a reason to keep it off this one.</p>
+<p>The workload is a small repository, not a coding contest. The implementation of an attention sound is already correct and must not move. The user-facing text is stale: two docs overclaim that native and browser timing are identical, and an MCP schema still calls the sound a &quot;low three-pulse buzzer&quot;. The agent has to see the mismatch, repair every descriptive surface, leave the runtime alone, and stop. An agent that starts rewriting the synthesizer has already failed the benchmark.</p>
+<h2>Reasoning</h2>
+<p>The constraint is the test. The implementation stays. An agent that &quot;fixes&quot; the code to match the stale docs has not reasoned. It has inverted the problem.</p>
+<p>Haiku did that in one trial. It changed runtime behavior to make the old documentation true, which is the one move the prompt prohibited. That is not a small miss. It is a failure to hold a rule while editing the surrounding text.</p>
+<p>The rest of the field shows the same split in a quieter way. Opus and Sonnet spent about 13 turns exploring, burned 171k to 270k accounted tokens, and still did not close the loop. Sol sat in a short band and was usually complete. Grok used four or five turns and stopped. Grok 4.5 finished in 71k tokens with almost no run-to-run variation.</p>
+<p>More search is not more reasoning. Claude looked longer and still dropped the constraint or the secondary surface. Grok looked at fewer files because it had already decided what mattered, and then it did not flinch.</p>
+<p><em>Reasoning here is the ability to hold a prohibition while you repair the text around it. Grok held it every time.</em></p>
+<h2>Finding the problems in the text</h2>
+<p>This is the part ordinary coding leaderboards skip, and it is the part that decided the score. It is also the part Grok was never scored on in public, because Grok was never in the table.</p>
+<p>The rubric gives two points for repairing the MCP schema, two for removing the false timing-equivalence claims, two for keeping the exact motif in user-facing text, two for leaving runtime files byte-identical, one for an accurate <code>RESULT.md</code>, and one for staying inside the expected surfaces.</p>
+<p>Almost everyone touches the files that look like documentation. The schema is the surface that tells you whether the agent actually read the whole artifact. Agents that only follow the obvious filenames walk past it.</p>
+<p>Claude did this systematically. Opus missed the schema or the exact motif on every trial and never produced a perfect result. Sonnet managed one perfect trial out of five. Haiku missed the schema in all five. Codex is close: Sol API and Terra went 4/5, and their misses were usually wording, not a rewritten implementation.</p>
+<p>Grok found every stale claim, every time. Not the schema, not the motif, not the runtime boundary. 4.5 and 4.6 were the only conditions that went 5/5. That is not a rounding error. That is the row the last ranking did not have.</p>
+<p><em>The easy text is not the test. The less obvious surface is. Grok was the only family that never missed it.</em></p>
+<h2>Time and cost</h2>
+<p><img src="/img/measured-agents-card.png" alt="The last ranking left Grok out"></p>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th align="right">Mean score</th>
+<th align="right">Perfect</th>
+<th align="right">Mean time</th>
+<th align="right">Mean cost</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Grok 4.5</td>
+<td align="right">10.0</td>
+<td align="right">5/5</td>
+<td align="right">45 s</td>
+<td align="right">$0.027</td>
+</tr>
+<tr>
+<td>Grok 4.6</td>
+<td align="right">10.0</td>
+<td align="right">5/5</td>
+<td align="right">66 s</td>
+<td align="right">$0.017</td>
+</tr>
+<tr>
+<td>Terra</td>
+<td align="right">9.8</td>
+<td align="right">4/5</td>
+<td align="right">78 s</td>
+<td align="right">n/a</td>
+</tr>
+<tr>
+<td>Sol API</td>
+<td align="right">9.6</td>
+<td align="right">4/5</td>
+<td align="right">50 s</td>
+<td align="right">$0.193</td>
+</tr>
+<tr>
+<td>Sol subscription Fast</td>
+<td align="right">9.4</td>
+<td align="right">3/5</td>
+<td align="right">64 s</td>
+<td align="right">n/a</td>
+</tr>
+<tr>
+<td>Sol API Fast</td>
+<td align="right">9.0</td>
+<td align="right">2/5</td>
+<td align="right">26 s</td>
+<td align="right">$0.360</td>
+</tr>
+<tr>
+<td>Sol subscription</td>
+<td align="right">9.0</td>
+<td align="right">2/5</td>
+<td align="right">88 s</td>
+<td align="right">n/a</td>
+</tr>
+<tr>
+<td>Luna</td>
+<td align="right">7.2</td>
+<td align="right">1/5</td>
+<td align="right">85 s</td>
+<td align="right">n/a</td>
+</tr>
+<tr>
+<td>Opus 5</td>
+<td align="right">7.0</td>
+<td align="right">0/5</td>
+<td align="right">79 s</td>
+<td align="right">$0.343</td>
+</tr>
+<tr>
+<td>Sonnet 5</td>
+<td align="right">6.2</td>
+<td align="right">1/5</td>
+<td align="right">89 s</td>
+<td align="right">$0.280</td>
+</tr>
+<tr>
+<td>Haiku 4.5</td>
+<td align="right">4.0</td>
+<td align="right">0/5</td>
+<td align="right">54 s</td>
+<td align="right">$0.080</td>
+</tr>
+</tbody></table>
+<p>Grok cost is what its CLI reports for a grok.com subscription login, not a separable invoice line. Subscription Codex rows have no per-call API spend, so I refuse to invent one. Sol API and Claude costs are calculated or CLI-reported under standard list prices. The August Sonnet promotion is ignored.</p>
+<p>On the priced rows the spread is not subtle. Grok 4.5 finished complete in 45 seconds at a CLI-reported $0.027. Grok 4.6 was slower and cheaper, 66 seconds at $0.017, still 5/5. Sol API was almost as fast, 50 seconds, at $0.193, and missed one trial. Opus took 79 seconds, cost $0.343, and never finished the set. Sonnet was slower still at 89 seconds and $0.280, with one perfect trial in five.</p>
+<p>In the earlier Codex-versus-Claude ranking, Sol was the premium win because it matched Opus at a lower price. That comparison was real. It was also incomplete. Once Grok is in the same benchmark, Sol is no longer the cheap complete row. It is the expensive almost-complete one.</p>
+<p>Fast mode is the other result I did not expect. Sol API Fast finishes in 26 seconds instead of 50. It also drops from 4/5 perfect to 2/5, and the calculated cost rises from $0.193 to $0.360 because the Fast rate card is $10 / $1 / $60 per million tokens instead of $5 / $0.50 / $30. You pay more to be worse, just sooner. If the pitch is &quot;same model, same quality, less waiting&quot;, this benchmark does not support it. The requested tier is Fast. The Codex stream does not currently expose the API&#39;s effective <code>service_tier</code>, so I am describing the condition I asked for, not an independently confirmed server response.</p>
+<p>I am not going to pretend Grok&#39;s CLI number and Sol&#39;s calculated API number are the same kind of dollar. I am going to notice that they are not even in the same band. Completeness, wall-clock, and spend moved together for Grok. They came apart for Fast, and they came apart for Claude.</p>
+<p>The per-trial score sequences, the failed-criterion matrix, and the full eleven-condition table are in the <a href="https://publishwith.ai/t/publishwithai/a/agentic-coding-intelligence-grok-vs-gpt-56-vs-claude/">complete report</a>.</p>
+<h2>What I am not claiming</h2>
+<p>One task and five trials cannot establish a universal ranking. The harness says this out loud, and it is still true. A documentation-consistency workload rewards careful reading and scope discipline. It does not tell you who writes the better service, who reviews a gnarly refactor, or who survives a long session in a real repository. It does tell you that leaving Grok out of a benchmark like this is no longer a neutral omission.</p>
+<p>An earlier three-trial run on the same task had Sol and Opus both at 10/10. This five-trial run, with stricter CLI isolation, does not. I am not going to turn that into a story about Opus collapsing. Small samples swing, model snapshots move, and a cleaner harness can remove help that a personal Claude config was quietly providing. The stable pattern is simpler: on this benchmark Claude keeps missing the less obvious surface, Codex is usually complete, and Grok, once it is actually in the run, is complete every time.</p>
+<p>I also cannot claim exact Grok spend, and I will not convert subscription Codex tokens into imaginary API invoices. Token taxonomies differ. Latency includes launcher and authentication work. Date every rate card before you buy anything.</p>
+<h2>What I am changing anyway</h2>
+<p>I still orchestrate. One model for coordination, others for implementation, review, and validation. That part of the earlier post holds. What changes is the hole I had left in the lineup.</p>
+<p>When the work is &quot;read this, find every stale claim, do not touch the runtime&quot;, that job now goes to Grok first. Sol API or Terra if I want a second independent pass. I am no longer routing that class of edit to Opus by default, and I am not routing constraint-sensitive edits to Haiku at all. Fast stays off unless I am measuring it.</p>
+<p>Two weeks ago I ranked Grok below the leaders because it felt that way in the chair, and because the only table I had published did not contain it. Feeling is how I start. A benchmark with an empty row is a bad way to finish.</p>
+<p><em>The last ranking was incomplete. The missing row went 10/10.</em></p>
+
+  </article>
+  <div class="terminal-link">
+    Read this in the <a href="/#read/measured-codex-claude-grok-one-defect">terminal view</a>
+  </div>
+  <nav class="post-nav" aria-label="Post navigation">
+    <a class="post-nav-link prev" href="/blog/coding-ai-one-horse-race/" rel="prev"><span>&larr; Older</span>Coding AI Is No Longer a One-Horse Race</a>
+    <span></span>
+  </nav>
+  <footer class="site-footer">
+    <a href="/">&larr; straus.it</a>
+    <span>&copy; Stefano Straus</span>
+  </footer>
+</body>
+</html>

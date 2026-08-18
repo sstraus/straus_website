@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Measured agents</title>
+  <style>
+    @font-face {
+      font-family: 'JetBrains Mono';
+      src: url('../assets/fonts/jetbrains-mono/JetBrainsMono-Regular.woff2') format('woff2');
+      font-weight: 400;
+    }
+    @font-face {
+      font-family: 'JetBrains Mono';
+      src: url('../assets/fonts/jetbrains-mono/JetBrainsMono-Bold.woff2') format('woff2');
+      font-weight: 700;
+    }
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 1200px;
+      height: 675px;
+      overflow: hidden;
+      background: #0d1117;
+      color: #c9d1d9;
+      font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+    }
+    .card {
+      box-sizing: border-box;
+      width: 1200px;
+      height: 675px;
+      padding: 36px 44px 28px;
+      display: flex;
+      flex-direction: column;
+    }
+    .kicker {
+      color: #8b949e;
+      font-size: 15px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    h1 {
+      margin: 0 0 8px;
+      font-size: 30px;
+      line-height: 1.2;
+      color: #f0f6fc;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+    .sub {
+      color: #8b949e;
+      font-size: 15px;
+      margin-bottom: 22px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 15px;
+    }
+    th {
+      text-align: left;
+      color: #8b949e;
+      font-weight: 400;
+      font-size: 12px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 0 10px 8px 0;
+      border-bottom: 1px solid #30363d;
+    }
+    th.num, td.num { text-align: right; }
+    td {
+      padding: 6px 10px 6px 0;
+      border-bottom: 1px solid #21262d;
+    }
+    tr.win td { color: #3fb950; }
+    tr.mid td { color: #c9d1d9; }
+    tr.low td { color: #f85149; }
+    .name { color: #f0f6fc; font-weight: 700; }
+    tr.win .name { color: #3fb950; }
+    .foot {
+      margin-top: auto;
+      display: flex;
+      justify-content: space-between;
+      color: #8b949e;
+      font-size: 13px;
+      padding-top: 16px;
+    }
+    .foot strong { color: #79c0ff; font-weight: 400; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="kicker">Coding-agent benchmark · 18 Aug 2026</div>
+    <h1>The last ranking left Grok out.</h1>
+    <div class="sub">Same harness. Reasoning, reading the text, then cost. Grok 4.5 and 4.6 were the only 5/5.</div>
+    <table>
+      <thead>
+        <tr>
+          <th>Model</th>
+          <th class="num">Score</th>
+          <th class="num">Perfect</th>
+          <th class="num">Time</th>
+          <th class="num">Cost</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="win"><td class="name">Grok 4.5</td><td class="num">10.0</td><td class="num">5/5</td><td class="num">45s</td><td class="num">$0.027</td></tr>
+        <tr class="win"><td class="name">Grok 4.6</td><td class="num">10.0</td><td class="num">5/5</td><td class="num">66s</td><td class="num">$0.017</td></tr>
+        <tr class="mid"><td class="name">Terra</td><td class="num">9.8</td><td class="num">4/5</td><td class="num">78s</td><td class="num">n/a</td></tr>
+        <tr class="mid"><td class="name">Sol API</td><td class="num">9.6</td><td class="num">4/5</td><td class="num">50s</td><td class="num">$0.193</td></tr>
+        <tr class="mid"><td class="name">Sol Fast</td><td class="num">9.0</td><td class="num">2/5</td><td class="num">26s</td><td class="num">$0.360</td></tr>
+        <tr class="low"><td class="name">Opus 5</td><td class="num">7.0</td><td class="num">0/5</td><td class="num">79s</td><td class="num">$0.343</td></tr>
+        <tr class="low"><td class="name">Sonnet 5</td><td class="num">6.2</td><td class="num">1/5</td><td class="num">89s</td><td class="num">$0.280</td></tr>
+        <tr class="low"><td class="name">Haiku 4.5</td><td class="num">4.0</td><td class="num">0/5</td><td class="num">54s</td><td class="num">$0.080</td></tr>
+      </tbody>
+    </table>
+    <div class="foot">
+      <span>Grok $ = CLI-reported subscription accounting · Codex subscription = no API invoice</span>
+      <span><strong>straus.it</strong> / measured-codex-claude-grok-one-defect</span>
+    </div>
+  </div>
+</body>
+</html>
