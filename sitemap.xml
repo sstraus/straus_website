@@ -99,6 +99,12 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://straus.it/blog/measured-codex-claude-grok-one-defect/report.html</loc>
+    <lastmod>2026-08-18</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://straus.it/blog/coding-ai-one-horse-race/</loc>
     <lastmod>2026-08-04</lastmod>
     <changefreq>yearly</changefreq>

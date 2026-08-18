@@ -74,7 +74,7 @@ Fast mode is the other result I did not expect. Sol API Fast finishes in 26 seco
 
 I am not going to pretend Grok's CLI number and Sol's calculated API number are the same kind of dollar. I am going to notice that they are not even in the same band. Completeness, wall-clock, and spend moved together for Grok. They came apart for Fast, and they came apart for Claude.
 
-The per-trial score sequences, the failed-criterion matrix, and the full eleven-condition table are in the [complete report](https://publishwith.ai/t/publishwithai/a/agentic-coding-intelligence-grok-vs-gpt-56-vs-claude/).
+The per-trial score sequences, the failed-criterion matrix, and the full eleven-condition table are in the [complete report](/blog/measured-codex-claude-grok-one-defect/report.html).
 
 ## What I am not claiming
 

@@ -14,6 +14,7 @@ const path = require('path');
 
 const ROOT = path.join(__dirname, '..');
 const BLOG_DIR = path.join(ROOT, 'blog');
+const ATTACHMENTS_DIR = path.join(ROOT, 'content/blog/attachments');
 const BASE_URL = 'https://straus.it';
 
 // Load marked from vendor (same pattern as generate-feed.js)
@@ -272,6 +273,15 @@ ${html}
 `;
 }
 
+// Copy companion files shipped with a post (e.g. a standalone report page).
+// blog/ is wiped on every run, so they are authored under
+// content/blog/attachments/{slug}/ and served at /blog/{slug}/{file}
+function copyAttachments(slug, destDir) {
+  const src = path.join(ATTACHMENTS_DIR, slug);
+  if (!fs.existsSync(src)) return;
+  fs.cpSync(src, destDir, { recursive: true });
+}
+
 // Clean and regenerate blog/ directory
 if (fs.existsSync(BLOG_DIR)) {
   fs.rmSync(BLOG_DIR, { recursive: true });
@@ -285,6 +295,7 @@ index.articles.forEach((article, i) => {
   const dir = path.join(BLOG_DIR, article.slug);
   fs.mkdirSync(dir, { recursive: true });
   fs.writeFileSync(path.join(dir, 'index.html'), generatePage(article, prev, next));
+  copyAttachments(article.slug, dir);
   count++;
 });
 
@@ -297,10 +308,11 @@ sitemap = sitemap.replace(
   /https:\/\/straus\.it\/#read\//g,
   'https://straus.it/blog/'
 );
-// Add trailing slash to blog URLs that don't have one
+// Add trailing slash to blog URLs that don't have one. File URLs such as
+// an attachment's report.html keep their name and must stay untouched.
 sitemap = sitemap.replace(
   /<loc>https:\/\/straus\.it\/blog\/([^<]+?)(?<!\/)(?=<\/loc>)/g,
-  '<loc>https://straus.it/blog/$1/'
+  (match, urlPath) => (path.extname(urlPath) ? match : `<loc>https://straus.it/blog/${urlPath}/`)
 );
 fs.writeFileSync(sitemapPath, sitemap);
 console.log('Updated sitemap.xml with /blog/ URLs');

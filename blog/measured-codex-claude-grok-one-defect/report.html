@@ -1,0 +1,525 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Eleven coding-agent conditions on one deterministic documentation-repair fixture, five trials each. Grok was missing from the first ranking. On the same harness it scored 10/10 in every trial.">
+  <title>The Missing Row: Grok vs Codex vs Claude | Stefano Straus</title>
+  <link rel="canonical" href="https://straus.it/blog/measured-codex-claude-grok-one-defect/report.html">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <meta name="author" content="Stefano Straus">
+  <style>
+    :root {
+      color-scheme: light dark;
+      --bg: #f6f3ec;
+      --surface: #fffdf8;
+      --surface-2: #ece8de;
+      --ink: #191918;
+      --muted: #66635c;
+      --line: #d8d2c6;
+      --grok: #4b3f9e;
+      --grok-soft: #e3dff5;
+      --openai: #116c5d;
+      --openai-soft: #d8eee8;
+      --claude: #b5522e;
+      --claude-soft: #f4dfd3;
+      --accent: #293f73;
+      --good: #17663a;
+      --bad: #a33a20;
+      --shadow: 0 18px 45px rgb(38 31 21 / 8%);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at 8% 2%, rgb(75 63 158 / 11%), transparent 26rem),
+        radial-gradient(circle at 93% 8%, rgb(181 82 46 / 9%), transparent 24rem),
+        var(--bg);
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.55;
+    }
+
+    a { color: var(--accent); }
+    strong { font-weight: 700; }
+
+    .page {
+      width: min(1160px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 32px 0 72px;
+    }
+
+    .hero {
+      padding: clamp(34px, 7vw, 78px) clamp(24px, 6vw, 70px);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      background: color-mix(in srgb, var(--surface) 94%, transparent);
+      box-shadow: var(--shadow);
+    }
+
+    .eyebrow {
+      margin: 0 0 18px;
+      color: var(--muted);
+      font-size: .76rem;
+      font-weight: 750;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+
+    h1, h2, h3 { line-height: 1.08; letter-spacing: -.035em; }
+    h1 { max-width: 930px; margin: 0; font-size: clamp(2.45rem, 7vw, 5.8rem); }
+    h2 { margin: 0 0 12px; font-size: clamp(1.7rem, 3.6vw, 3rem); }
+    h3 { margin: 0 0 8px; font-size: 1.15rem; }
+
+    .lede {
+      max-width: 800px;
+      margin: 26px 0 0;
+      color: var(--muted);
+      font-size: clamp(1.04rem, 2vw, 1.3rem);
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 22px;
+      margin-top: 32px;
+      color: var(--muted);
+      font-size: .92rem;
+    }
+
+    .hero-meta span::before { content: "•"; margin-right: 9px; color: var(--accent); }
+
+    section { margin-top: clamp(56px, 8vw, 96px); }
+    .section-intro { max-width: 760px; margin: 0 0 28px; color: var(--muted); }
+
+    .headline-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 28px;
+    }
+
+    .headline-card {
+      min-height: 220px;
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      background: var(--surface);
+    }
+
+    .headline-card .number {
+      display: block;
+      margin: 8px 0 18px;
+      font-size: clamp(2.3rem, 5vw, 4rem);
+      font-weight: 800;
+      letter-spacing: -.06em;
+      line-height: 1;
+    }
+
+    .headline-card p { margin: 0; color: var(--muted); }
+    .grok-text { color: var(--grok); }
+    .openai-text { color: var(--openai); }
+    .claude-text { color: var(--claude); }
+
+    .method-grid {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 18px;
+    }
+
+    .panel {
+      padding: clamp(22px, 4vw, 36px);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      background: var(--surface);
+    }
+
+    .panel p:last-child { margin-bottom: 0; }
+    .task-list { padding-left: 1.3rem; }
+    .task-list li + li { margin-top: 9px; }
+
+    .rubric {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 0;
+      margin-top: 18px;
+      border-top: 1px solid var(--line);
+    }
+
+    .rubric div { padding: 11px 0; border-bottom: 1px solid var(--line); }
+    .rubric .points { font-weight: 750; text-align: right; }
+
+    .rank-stack { display: grid; gap: 10px; }
+
+    .model-row {
+      display: grid;
+      grid-template-columns: minmax(190px, 1.15fr) minmax(240px, 3fr) 74px 66px;
+      gap: 16px;
+      align-items: center;
+      padding: 12px 18px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: var(--surface);
+    }
+
+    .model-name { font-weight: 750; }
+    .model-detail { display: block; margin-top: 2px; color: var(--muted); font-size: .82rem; font-weight: 500; }
+    .bar-track { height: 19px; overflow: hidden; border-radius: 99px; background: var(--surface-2); }
+    .bar { height: 100%; border-radius: inherit; }
+    .bar.grok { background: var(--grok); }
+    .bar.openai { background: var(--openai); }
+    .bar.claude { background: var(--claude); }
+    .score { text-align: right; font-size: 1.15rem; font-weight: 800; font-variant-numeric: tabular-nums; }
+    .perfect-count { color: var(--muted); font-size: .84rem; text-align: right; font-variant-numeric: tabular-nums; }
+
+    .mode-table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 20px; background: var(--surface); }
+    table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
+    th, td { padding: 14px 16px; border-bottom: 1px solid var(--line); text-align: right; white-space: nowrap; }
+    th:first-child, td:first-child { text-align: left; }
+    th { color: var(--muted); font-size: .73rem; letter-spacing: .06em; text-transform: uppercase; }
+    tbody tr:last-child td { border-bottom: 0; }
+    td.miss { color: var(--bad); font-weight: 750; background: color-mix(in srgb, var(--claude-soft) 60%, transparent); }
+    td.clean { color: var(--good); font-weight: 700; }
+
+    .callout {
+      margin-top: 20px;
+      padding: 22px 24px;
+      border-left: 5px solid var(--grok);
+      border-radius: 0 16px 16px 0;
+      background: var(--grok-soft);
+      color: #211c47;
+    }
+
+    .callout.warm { border-left-color: var(--claude); background: var(--claude-soft); color: #4a2416; }
+    .callout strong { display: block; margin-bottom: 6px; }
+
+    .trial-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+
+    .trial-card { padding: 20px; border: 1px solid var(--line); border-radius: 18px; background: var(--surface); }
+    .trial-card p { margin: 0 0 13px; color: var(--muted); font-size: .86rem; }
+    .score-strip { display: grid; grid-template-columns: repeat(5, 1fr); gap: 7px; }
+    .score-chip { display: grid; aspect-ratio: 1; place-items: center; border-radius: 10px; background: var(--surface-2); font-weight: 800; }
+    .score-chip.perfect { background: var(--grok-soft); color: var(--grok); }
+
+    .conclusion {
+      padding: clamp(28px, 6vw, 56px);
+      border-radius: 26px;
+      background: #1b1930;
+      color: #f4f2eb;
+    }
+
+    .conclusion p { max-width: 820px; color: #cfccdd; font-size: 1.06rem; }
+    .conclusion p:last-child { margin-bottom: 0; }
+
+    .limits { padding-left: 1.3rem; max-width: 820px; color: var(--muted); }
+    .limits li + li { margin-top: 10px; }
+
+    footer {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: 48px;
+      padding-top: 24px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: .84rem;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #131215;
+        --surface: #1c1b22;
+        --surface-2: #282732;
+        --ink: #f1f0ea;
+        --muted: #b4b2bc;
+        --line: #3b3947;
+        --grok: #a99cf5;
+        --grok-soft: #2e2952;
+        --openai: #65c6b0;
+        --openai-soft: #173d35;
+        --claude: #ef9875;
+        --claude-soft: #4a2d22;
+        --accent: #9eb9ff;
+        --good: #99e2b2;
+        --bad: #f0a68d;
+        --shadow: none;
+      }
+      .callout { color: #e6e2ff; }
+      .callout.warm { color: #ffe2d4; }
+    }
+
+    @media (max-width: 800px) {
+      .headline-grid, .trial-grid { grid-template-columns: 1fr; }
+      .method-grid { grid-template-columns: 1fr; }
+      .model-row { grid-template-columns: 1fr 62px 58px; gap: 8px 12px; }
+      .bar-track { grid-column: 1 / -1; grid-row: 2; }
+      .score { grid-column: 2; grid-row: 1; }
+      .perfect-count { grid-column: 3; grid-row: 1; }
+    }
+
+    @media print {
+      body { background: white; }
+      .page { width: 100%; padding: 0; }
+      .hero, .panel, .model-row, .trial-card, .mode-table-wrap { box-shadow: none; break-inside: avoid; }
+      section { margin-top: 44px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="hero">
+      <p class="eyebrow">55 controlled agent runs · 11 conditions · August 2026</p>
+      <h1>The row the last ranking did not have.</h1>
+      <p class="lede">One deterministic documentation-repair fixture, one scorer, five trials per condition. The first published ranking was Codex against Claude. Grok was not in the table. Run on the same harness, both Grok models scored 10/10 in every single trial.</p>
+      <div class="hero-meta" aria-label="Benchmark parameters">
+        <span>5 trials each</span>
+        <span>High reasoning effort</span>
+        <span>Concurrency 1</span>
+        <span>No multi-agent execution</span>
+        <span>No model judged another model</span>
+      </div>
+    </header>
+
+    <section aria-labelledby="headline-title">
+      <p class="eyebrow">Headline results</p>
+      <h2 id="headline-title">Two conditions never missed a criterion. Neither was in the first table.</h2>
+      <div class="headline-grid">
+        <article class="headline-card">
+          <span class="eyebrow">Only perfect rows</span>
+          <span class="number grok-text">10/10</span>
+          <p><strong>Grok 4.5 and Grok 4.6</strong> scored a perfect 10 in all five trials each. Every other condition dropped at least one criterion.</p>
+        </article>
+        <article class="headline-card">
+          <span class="eyebrow">Cheapest complete run</span>
+          <span class="number grok-text">$0.017</span>
+          <p><strong>Grok 4.6</strong> per trial, CLI-reported. Sol API cost $0.193 per trial and missed one, Opus 5 cost $0.343 and never finished the set.</p>
+        </article>
+        <article class="headline-card">
+          <span class="eyebrow">Loop shape</span>
+          <span class="number claude-text">13.0</span>
+          <p><strong>Claude Opus 5</strong> agent-loop iterations against 4.0 for Grok 4.5. More search did not become a higher score.</p>
+        </article>
+      </div>
+    </section>
+
+    <section aria-labelledby="method-title">
+      <p class="eyebrow">What was actually tested?</p>
+      <h2 id="method-title">Read the whole artifact, repair the text, do not touch the runtime.</h2>
+      <p class="section-intro">The fixture is a small repository whose implementation is already correct and must stay byte-identical. The user-facing text is stale. Success requires inspecting several surfaces, inferring real behavior from the implementation, resolving contradictory descriptions, preserving exact values, and stopping. An agent that rewrites the synthesizer to match the old documentation has inverted the problem.</p>
+      <div class="method-grid">
+        <article class="panel">
+          <h3>The task</h3>
+          <ul class="task-list">
+            <li>Replace a stale MCP schema description of a “low three-pulse buzzer” with the real triangle-wave <strong>G4→G4→E5</strong> motif.</li>
+            <li>Correct two documents that falsely claimed identical native and browser timing.</li>
+            <li>Preserve two nominal 75 ms notes, a nominal 140 ms rise, configured 50 ms gaps, and 0.8 gain.</li>
+            <li>Explain that each playback engine applies its own envelope.</li>
+            <li>Leave both runtime implementation files byte-identical.</li>
+          </ul>
+        </article>
+        <article class="panel">
+          <h3>The deterministic 10-point rubric</h3>
+          <div class="rubric" aria-label="Scoring rubric">
+            <div>c1 · MCP schema terminology</div><div class="points">2</div>
+            <div>c2 · Both timing descriptions</div><div class="points">2</div>
+            <div>c3 · Exact motif and values</div><div class="points">2</div>
+            <div>c4 · Runtime unchanged</div><div class="points">2</div>
+            <div>c5 · Accurate result note</div><div class="points">1</div>
+            <div>c6 · Minimal file scope</div><div class="points">1</div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section aria-labelledby="rank-title">
+      <p class="eyebrow">Eleven conditions, one fixture</p>
+      <h2 id="rank-title">The full ranking, with Grok in it.</h2>
+      <p class="section-intro">Bars show mean score on the same 10-point rubric. Codex and Claude ran on 10 August, Grok on 17 August; the two runs were combined by reference without rescoring.</p>
+      <div class="rank-stack">
+        <div class="model-row">
+          <div class="model-name grok-text">Grok 4.6<span class="model-detail">Subscription CLI · 65.9 s mean · 88,051 tokens</span></div>
+          <div class="bar-track"><div class="bar grok" style="width:100%"></div></div>
+          <div class="score">10.0</div><div class="perfect-count">5/5</div>
+        </div>
+        <div class="model-row">
+          <div class="model-name grok-text">Grok 4.5<span class="model-detail">Subscription CLI · 45.2 s mean · 71,130 tokens</span></div>
+          <div class="bar-track"><div class="bar grok" style="width:100%"></div></div>
+          <div class="score">10.0</div><div class="perfect-count">5/5</div>
+        </div>
+        <div class="model-row">
+          <div class="model-name openai-text">GPT-5.6 Terra<span class="model-detail">Subscription · 77.6 s mean · 133,398 tokens</span></div>
+          <div class="bar-track"><div class="bar openai" style="width:98%"></div></div>
+          <div class="score">9.8</div><div class="perfect-count">4/5</div>
+        </div>
+        <div class="model-row">
+          <div class="model-name openai-text">GPT-5.6 Sol API<span class="model-detail">API standard · 49.7 s mean · 88,031 tokens</span></div>
+          <div class="bar-track"><div class="bar openai" style="width:96%"></div></div>
+          <div class="score">9.6</div><div class="perfect-count">4/5</div>
+        </div>
+        <div class="model-row">
+          <div class="model-name openai-text">GPT-5.6 Sol subscription Fast<span class="model-detail">Fast requested · 64.0 s mean · 137,587 tokens</span></div>
+          <div class="bar-track"><div class="bar openai" style="width:94%"></div></div>
+          <div class="score">9.4</div><div class="perfect-count">3/5</div>
+        </div>
+        <div class="model-row">
+          <div class="model-name openai-text">GPT-5.6 Sol subscription<span class="model-detail">Standard · 87.6 s mean · 125,245 tokens</span></div>
+          <div class="bar-track"><div class="bar openai" style="width:90%"></div></div>
+          <div class="score">9.0</div><div class="perfect-count">2/5</div>
+        </div>
+        <div class="model-row">
+          <div class="model-name openai-text">GPT-5.6 Sol API Fast<span class="model-detail">Fast requested · 25.5 s mean · 85,672 tokens</span></div>
+          <div class="bar-track"><div class="bar openai" style="width:90%"></div></div>
+          <div class="score">9.0</div><div class="perfect-count">2/5</div>
+        </div>
+        <div class="model-row">
+          <div class="model-name openai-text">GPT-5.6 Luna<span class="model-detail">Subscription · 85.4 s mean · 114,168 tokens</span></div>
+          <div class="bar-track"><div class="bar openai" style="width:72%"></div></div>
+          <div class="score">7.2</div><div class="perfect-count">1/5</div>
+        </div>
+        <div class="model-row">
+          <div class="model-name claude-text">Claude Opus 5<span class="model-detail">API · 78.8 s mean · 171,316 tokens</span></div>
+          <div class="bar-track"><div class="bar claude" style="width:70%"></div></div>
+          <div class="score">7.0</div><div class="perfect-count">0/5</div>
+        </div>
+        <div class="model-row">
+          <div class="model-name claude-text">Claude Sonnet 5<span class="model-detail">API · 89.1 s mean · 265,369 tokens</span></div>
+          <div class="bar-track"><div class="bar claude" style="width:62%"></div></div>
+          <div class="score">6.2</div><div class="perfect-count">1/5</div>
+        </div>
+        <div class="model-row">
+          <div class="model-name claude-text">Claude Haiku 4.5<span class="model-detail">API · 53.8 s mean · 269,723 tokens</span></div>
+          <div class="bar-track"><div class="bar claude" style="width:40%"></div></div>
+          <div class="score">4.0</div><div class="perfect-count">0/5</div>
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="criteria-title">
+      <p class="eyebrow">Where the points were lost</p>
+      <h2 id="criteria-title">Failure modes are provider-shaped, not random noise.</h2>
+      <p class="section-intro">Failed-criterion counts across each model's five trials. The MCP schema (c1) is the surface that shows whether the agent read the whole artifact instead of only the files that look like documentation.</p>
+      <div class="mode-table-wrap">
+        <table>
+          <thead><tr><th>Model</th><th>c1 schema</th><th>c2 timing</th><th>c3 motif</th><th>c4 runtime</th><th>c5 RESULT.md</th><th>c6 scope</th></tr></thead>
+          <tbody>
+            <tr><td>Grok 4.6 · Grok 4.5</td><td class="clean">0</td><td class="clean">0</td><td class="clean">0</td><td class="clean">0</td><td class="clean">0</td><td class="clean">0</td></tr>
+            <tr><td>Sol API</td><td>0</td><td>0</td><td class="miss">1</td><td>0</td><td>0</td><td>0</td></tr>
+            <tr><td>Terra subscription</td><td>0</td><td>0</td><td>0</td><td>0</td><td class="miss">1</td><td>0</td></tr>
+            <tr><td>Sol subscription</td><td>0</td><td>0</td><td class="miss">2</td><td>0</td><td class="miss">1</td><td>0</td></tr>
+            <tr><td>Sol subscription Fast</td><td>0</td><td>0</td><td class="miss">1</td><td>0</td><td class="miss">1</td><td>0</td></tr>
+            <tr><td>Sol API Fast</td><td>0</td><td>0</td><td class="miss">2</td><td>0</td><td class="miss">1</td><td>0</td></tr>
+            <tr><td>Luna subscription</td><td class="miss">2</td><td>0</td><td class="miss">4</td><td>0</td><td class="miss">2</td><td>0</td></tr>
+            <tr><td>Claude Opus 5</td><td class="miss">3</td><td>0</td><td class="miss">4</td><td>0</td><td class="miss">1</td><td>0</td></tr>
+            <tr><td>Claude Sonnet 5</td><td class="miss">4</td><td>0</td><td class="miss">4</td><td>0</td><td class="miss">3</td><td>0</td></tr>
+            <tr><td>Claude Haiku 4.5</td><td class="miss">5</td><td class="miss">2</td><td class="miss">5</td><td class="miss">1</td><td class="miss">3</td><td class="miss">1</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="callout warm">
+        <strong>Only one condition broke the prohibition.</strong>
+        Haiku changed a runtime file in one trial and left the permitted descriptive surfaces, making the stale documentation true instead of correcting it. That is the one move the prompt forbids: the failure is not a missed edit, it is an inverted constraint.
+      </div>
+    </section>
+
+    <section aria-labelledby="cost-title">
+      <p class="eyebrow">Time, tokens, money</p>
+      <h2 id="cost-title">Completeness, wall-clock, and spend moved together for Grok.</h2>
+      <p class="section-intro">Cost is not homogeneous across rows and the table cannot carry that caveat on its own. Claude and Sol API figures are calculated or CLI-reported under standard list prices. Grok figures are the Grok CLI's own accounting on a grok.com subscription login, not a separable invoice line. Subscription Codex rows have no per-call API charge and are reported as n/a rather than invented.</p>
+      <div class="mode-table-wrap">
+        <table>
+          <thead><tr><th>Model</th><th>Mean score</th><th>Perfect</th><th>Mean time</th><th>Mean tokens</th><th>Iterations</th><th>Mean cost</th></tr></thead>
+          <tbody>
+            <tr><td>Grok 4.5</td><td><strong>10.0</strong></td><td><strong>5/5</strong></td><td>45.2 s</td><td><strong>71,130</strong></td><td>4.0</td><td>$0.0272</td></tr>
+            <tr><td>Grok 4.6</td><td><strong>10.0</strong></td><td><strong>5/5</strong></td><td>65.9 s</td><td>88,051</td><td>4.8</td><td><strong>$0.0174</strong></td></tr>
+            <tr><td>Terra subscription</td><td>9.8</td><td>4/5</td><td>77.6 s</td><td>133,398</td><td>3.6</td><td>n/a</td></tr>
+            <tr><td>Sol API</td><td>9.6</td><td>4/5</td><td>49.7 s</td><td>88,031</td><td>3.4</td><td>$0.1926</td></tr>
+            <tr><td>Sol subscription Fast</td><td>9.4</td><td>3/5</td><td>64.0 s</td><td>137,587</td><td>3.8</td><td>n/a</td></tr>
+            <tr><td>Sol subscription</td><td>9.0</td><td>2/5</td><td>87.6 s</td><td>125,245</td><td>3.8</td><td>n/a</td></tr>
+            <tr><td>Sol API Fast</td><td>9.0</td><td>2/5</td><td><strong>25.5 s</strong></td><td>85,672</td><td>3.4</td><td>$0.3598</td></tr>
+            <tr><td>Luna subscription</td><td>7.2</td><td>1/5</td><td>85.4 s</td><td>114,168</td><td>4.4</td><td>n/a</td></tr>
+            <tr><td>Claude Opus 5</td><td>7.0</td><td>0/5</td><td>78.8 s</td><td>171,316</td><td>13.0</td><td>$0.3431</td></tr>
+            <tr><td>Claude Sonnet 5</td><td>6.2</td><td>1/5</td><td>89.1 s</td><td>265,369</td><td>12.8</td><td>$0.2799</td></tr>
+            <tr><td>Claude Haiku 4.5</td><td>4.0</td><td>0/5</td><td>53.8 s</td><td>269,723</td><td>12.8</td><td>$0.0799</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="callout">
+        <strong>Once Grok is in the same benchmark, Sol is no longer the cheap complete row.</strong>
+        In the earlier Codex-versus-Claude ranking Sol was the premium win because it matched Opus at a lower price. That comparison was real and incomplete. Against a 5/5 row at $0.0174 per trial, Sol API becomes the expensive almost-complete one.
+      </div>
+    </section>
+
+    <section aria-labelledby="fast-title">
+      <p class="eyebrow">The same Sol model, four delivery conditions</p>
+      <h2 id="fast-title">Fast mode bought latency, and it was not free.</h2>
+      <p class="section-intro">Every row used exact <code>gpt-5.6-sol</code>, high reasoning effort, the same fixture and scorer, and multi-agent execution disabled. Only the authentication channel and the requested service tier changed.</p>
+      <div class="mode-table-wrap">
+        <table>
+          <thead><tr><th>Condition</th><th>Score</th><th>Perfect</th><th>Mean time</th><th>Time CV</th><th>Mean cost</th></tr></thead>
+          <tbody>
+            <tr><td>Subscription Standard</td><td>9.0</td><td>2/5</td><td>87.6 s</td><td>19.9%</td><td>n/a</td></tr>
+            <tr><td>Subscription Fast requested</td><td>9.4</td><td>3/5</td><td>64.0 s</td><td>19.9%</td><td>n/a</td></tr>
+            <tr><td>API Standard</td><td><strong>9.6</strong></td><td><strong>4/5</strong></td><td>49.7 s</td><td>24.2%</td><td>$0.1926</td></tr>
+            <tr><td>API Fast requested</td><td>9.0</td><td>2/5</td><td><strong>25.5 s</strong></td><td><strong>5.8%</strong></td><td>$0.3598</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="callout warm">
+        <strong>Latency fell 48.6%, observed cost per trial rose 86.8%.</strong>
+        The Fast short-context rate card is exactly 2x Standard: $10 input, $1 cached input, $60 output per million tokens. The lower Fast mean score is ordinary five-trial variation, not evidence that a latency tier changes the model. Fast mode was requested with <code>service_tier="fast"</code>; Codex CLI 0.147.0 does not expose the response's effective tier, so this reports the condition asked for, not an independently confirmed server response.
+      </div>
+    </section>
+
+    <section aria-labelledby="raw-title">
+      <p class="eyebrow">No averages without the trials</p>
+      <h2 id="raw-title">The raw sequences are where the stability lives.</h2>
+      <p class="section-intro">A highlighted cell is a perfect 10, in trial order. Two rows are solid. Several means that look respectable are built on trials that swing by five points.</p>
+      <div class="trial-grid">
+        <article class="trial-card"><h3>Grok 4.6</h3><p>Mean 10.00 · time CV 5.0%</p><div class="score-strip"><span class="score-chip perfect">10</span><span class="score-chip perfect">10</span><span class="score-chip perfect">10</span><span class="score-chip perfect">10</span><span class="score-chip perfect">10</span></div></article>
+        <article class="trial-card"><h3>Grok 4.5</h3><p>Mean 10.00 · time CV 11.5%</p><div class="score-strip"><span class="score-chip perfect">10</span><span class="score-chip perfect">10</span><span class="score-chip perfect">10</span><span class="score-chip perfect">10</span><span class="score-chip perfect">10</span></div></article>
+        <article class="trial-card"><h3>GPT-5.6 Terra</h3><p>Mean 9.80 · SD 0.40</p><div class="score-strip"><span class="score-chip perfect">10</span><span class="score-chip perfect">10</span><span class="score-chip">9</span><span class="score-chip perfect">10</span><span class="score-chip perfect">10</span></div></article>
+        <article class="trial-card"><h3>Sol API Standard</h3><p>Mean 9.60 · SD 0.80</p><div class="score-strip"><span class="score-chip perfect">10</span><span class="score-chip perfect">10</span><span class="score-chip perfect">10</span><span class="score-chip perfect">10</span><span class="score-chip">8</span></div></article>
+        <article class="trial-card"><h3>Sol subscription Fast</h3><p>Mean 9.40 · SD 0.80</p><div class="score-strip"><span class="score-chip">9</span><span class="score-chip perfect">10</span><span class="score-chip">8</span><span class="score-chip perfect">10</span><span class="score-chip perfect">10</span></div></article>
+        <article class="trial-card"><h3>Sol subscription</h3><p>Mean 9.00 · SD 0.89</p><div class="score-strip"><span class="score-chip">8</span><span class="score-chip">9</span><span class="score-chip perfect">10</span><span class="score-chip perfect">10</span><span class="score-chip">8</span></div></article>
+        <article class="trial-card"><h3>Sol API Fast</h3><p>Mean 9.00 · SD 0.89</p><div class="score-strip"><span class="score-chip">9</span><span class="score-chip perfect">10</span><span class="score-chip perfect">10</span><span class="score-chip">8</span><span class="score-chip">8</span></div></article>
+        <article class="trial-card"><h3>GPT-5.6 Luna</h3><p>Mean 7.20 · SD 1.94</p><div class="score-strip"><span class="score-chip">5</span><span class="score-chip">8</span><span class="score-chip">8</span><span class="score-chip">5</span><span class="score-chip perfect">10</span></div></article>
+        <article class="trial-card"><h3>Claude Opus 5</h3><p>Mean 7.00 · SD 0.89</p><div class="score-strip"><span class="score-chip">6</span><span class="score-chip">7</span><span class="score-chip">8</span><span class="score-chip">8</span><span class="score-chip">6</span></div></article>
+        <article class="trial-card"><h3>Claude Sonnet 5</h3><p>Mean 6.20 · SD 1.94</p><div class="score-strip"><span class="score-chip">5</span><span class="score-chip">5</span><span class="score-chip perfect">10</span><span class="score-chip">5</span><span class="score-chip">6</span></div></article>
+        <article class="trial-card"><h3>Claude Haiku 4.5</h3><p>Mean 4.00 · SD 1.79</p><div class="score-strip"><span class="score-chip">5</span><span class="score-chip">1</span><span class="score-chip">3</span><span class="score-chip">6</span><span class="score-chip">5</span></div></article>
+      </div>
+    </section>
+
+    <section aria-labelledby="limits-title">
+      <p class="eyebrow">What this does not establish</p>
+      <h2 id="limits-title">The honest limits of a single fixture.</h2>
+      <ul class="limits">
+        <li>Five trials on one deterministic documentation-repair fixture. Ten consecutive Grok trials at 10/10 is a strong signal on this task, not a population-level model ranking.</li>
+        <li>The Grok rows were executed on 17 August, one week after the aligned matrix, on a different CLI. Provider capacity and machine state are uncontrolled between them, so the wall-clock ranking that mixes Grok with older rows is indicative rather than controlled. Scores remain comparable because fixture, prompt, scorer, and reasoning effort are byte-identical.</li>
+        <li>Cost mixes billing channels: real API rates, a subscription CLI's own accounting, and rows with no separable per-call charge at all. Token taxonomies differ between providers, and latency includes launcher and authentication work.</li>
+        <li>Agent-loop iteration counts are provider-specific events. The 12.8 to 13.0 iterations of the Claude rows against 3.4 to 4.8 for Codex and Grok describe loop shape, not more or less work.</li>
+        <li>An earlier three-trial run on this task had Sol and Opus both at 10/10. This stricter five-trial run does not reproduce it. Small samples swing, snapshots move, and cleaner CLI isolation removes help a personal configuration was quietly providing.</li>
+      </ul>
+    </section>
+
+    <section class="conclusion" aria-labelledby="conclusion-title">
+      <p class="eyebrow">Conclusion</p>
+      <h2 id="conclusion-title">A benchmark with an empty row is a bad way to finish.</h2>
+      <p>On this fixture the pattern is stable and provider-shaped. Claude keeps missing the less obvious surface, the MCP schema, in three to five of five trials. Codex is usually complete and loses wording rather than constraints. Grok, once it is actually in the run, is complete every time, in fewer iterations, on fewer tokens, at a fraction of the reported spend.</p>
+      <p>That does not tell you who writes the better service, who reviews a gnarly refactor, or who survives a long session in a real repository. It does tell you that leaving Grok out of a benchmark like this is no longer a neutral omission.</p>
+    </section>
+
+    <footer>
+      <span>Codex CLI 0.147.0 · Claude Code 2.1.224 · Grok CLI 1.0.4</span>
+      <span>Aligned matrix 2026-08-10 · Grok matrix 2026-08-17 · combined by reference, no rescoring</span>
+      <span><a href="./">&larr; Back to the write-up</a></span>
+    </footer>
+  </main>
+</body>
+</html>
