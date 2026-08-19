@@ -314,5 +314,25 @@ sitemap = sitemap.replace(
   /<loc>https:\/\/straus\.it\/blog\/([^<]+?)(?<!\/)(?=<\/loc>)/g,
   (match, urlPath) => (path.extname(urlPath) ? match : `<loc>https://straus.it/blog/${urlPath}/`)
 );
+
+const sitemapUrls = new Set(
+  [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map(([, url]) => url)
+);
+const missingArticleEntries = index.articles
+  .filter(article => !sitemapUrls.has(`${BASE_URL}/blog/${article.slug}/`))
+  .map(article => `  <url>
+    <loc>${BASE_URL}/blog/${article.slug}/</loc>
+    <lastmod>${article.date}</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>`);
+
+if (missingArticleEntries.length > 0) {
+  sitemap = sitemap.replace(
+    '</urlset>',
+    `${missingArticleEntries.join('\n')}\n</urlset>`
+  );
+}
+
 fs.writeFileSync(sitemapPath, sitemap);
 console.log('Updated sitemap.xml with /blog/ URLs');

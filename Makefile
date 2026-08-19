@@ -4,7 +4,7 @@ REMOTE_DIR = /volume1/web/me
 DEPLOY_FILES = index.html favicon.svg robots.txt sitemap.xml feed.xml 404.html CNAME .nojekyll
 DEPLOY_DIRS = css js content img vendor assets blog apps
 
-.PHONY: generate deploy serve test
+.PHONY: generate deploy serve
 
 # Generate all derived files (feed, blog pages, sitemap)
 generate:
@@ -21,7 +21,3 @@ deploy: generate
 # Local dev server
 serve:
 	python3 -m http.server 7080
-
-# Run Playwright tests
-test: generate
-	npx playwright test

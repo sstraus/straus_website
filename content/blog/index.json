@@ -1,6 +1,14 @@
 {
   "articles": [
     {
+      "slug": "when-more-precise-ai-feels-less-clear",
+      "title": "When More Precise AI Feels Less Clear",
+      "date": "2026-08-19",
+      "description": "Opus answers became longer and more complete as many people found them harder to absorb. A 20-response benchmark shows why machine-scored coverage and human comprehension can move in opposite directions.",
+      "tags": ["ai", "llm", "claude", "comprehension", "evaluation"],
+      "file": "2026-08-19-when-more-precise-ai-feels-less-clear.md"
+    },
+    {
       "slug": "measured-codex-claude-grok-one-defect",
       "title": "I Left Grok Out of the Last Benchmark",
       "date": "2026-08-18",

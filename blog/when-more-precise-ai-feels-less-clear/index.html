@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light">
+  <title>When More Precise AI Feels Less Clear | Stefano Straus</title>
+  <meta name="description" content="Opus answers became longer and more complete as many people found them harder to absorb. A 20-response benchmark shows why machine-scored coverage and human comprehension can move in opposite directions.">
+  <meta name="author" content="Stefano Straus">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="canonical" href="https://straus.it/blog/when-more-precise-ai-feels-less-clear/">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/rss+xml" title="Stefano Straus" href="/feed.xml">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="When More Precise AI Feels Less Clear">
+  <meta property="og:description" content="Opus answers became longer and more complete as many people found them harder to absorb. A 20-response benchmark shows why machine-scored coverage and human comprehension can move in opposite directions.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://straus.it/blog/when-more-precise-ai-feels-less-clear/">
+  <meta property="og:image" content="https://straus.it/img/profile.jpg">
+  <meta property="og:image:alt" content="Stefano Straus">
+  <meta property="og:site_name" content="Stefano Straus">
+  <meta property="article:published_time" content="2026-08-19">
+  <meta property="article:author" content="https://straus.it">
+  <meta property="article:tag" content="ai">
+  <meta property="article:tag" content="llm">
+  <meta property="article:tag" content="claude">
+  <meta property="article:tag" content="comprehension">
+  <meta property="article:tag" content="evaluation">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@StefanoStraus">
+  <meta name="twitter:title" content="When More Precise AI Feels Less Clear">
+  <meta name="twitter:description" content="Opus answers became longer and more complete as many people found them harder to absorb. A 20-response benchmark shows why machine-scored coverage and human comprehension can move in opposite directions.">
+  <meta name="twitter:image" content="https://straus.it/img/profile.jpg">
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "When More Precise AI Feels Less Clear",
+  "description": "Opus answers became longer and more complete as many people found them harder to absorb. A 20-response benchmark shows why machine-scored coverage and human comprehension can move in opposite directions.",
+  "url": "https://straus.it/blog/when-more-precise-ai-feels-less-clear/",
+  "image": "https://straus.it/img/profile.jpg",
+  "author": {
+    "@type": "Person",
+    "name": "Stefano Straus",
+    "url": "https://straus.it"
+  },
+  "datePublished": "2026-08-19",
+  "dateModified": "2026-08-19",
+  "publisher": {
+    "@type": "Person",
+    "name": "Stefano Straus"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://straus.it/blog/when-more-precise-ai-feels-less-clear/"
+  },
+  "keywords": "ai, llm, claude, comprehension, evaluation"
+}
+  </script>
+
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #ffffff; --fg: #1f2328; --muted: #656d76; --accent: #0066cc;
+      --surface: #f6f8fa; --border: #d0d7de;
+      --mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+    }
+    * { box-sizing: border-box; }
+    html { background: #ffffff; }
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+      max-width: 780px; margin: 0 auto; padding: 0 1.25rem 3rem;
+      line-height: 1.7; color: var(--fg); background: var(--bg);
+      font-size: 1rem;
+    }
+    article p, article li { font-size: 1em; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .site-nav {
+      display: flex; gap: 1.25rem; align-items: baseline;
+      padding: 1.25rem 0; margin-bottom: 2rem;
+      border-bottom: 1px solid var(--border);
+      font-family: var(--mono); font-size: 1rem;
+    }
+    .site-nav .brand { font-weight: 700; color: var(--fg); }
+    .site-nav .brand:hover { color: var(--accent); text-decoration: none; }
+    .post-header { margin-bottom: 2.5rem; }
+    .post-header h1 {
+      font-size: 2.5rem; line-height: 1.2; margin: 0 0 0.75rem;
+      letter-spacing: -0.02em;
+    }
+    .post-meta {
+      display: flex; flex-wrap: wrap; gap: 0.5rem 1rem; align-items: baseline;
+      font-family: var(--mono); font-size: 0.95rem; color: var(--muted);
+    }
+    .tag { color: var(--accent); }
+    article h2 { font-size: 1.75rem; margin-top: 2.5rem; letter-spacing: -0.01em; }
+    article h3 { font-size: 1.4rem; margin-top: 2rem; }
+    article img { max-width: 100%; border-radius: 6px; }
+    article hr { border: 0; border-top: 1px solid var(--border); margin: 2.5rem 0; }
+    pre {
+      background: var(--surface); border: 1px solid var(--border);
+      padding: 1rem; overflow-x: auto; border-radius: 6px; line-height: 1.5;
+    }
+    code { font-family: var(--mono); font-size: 0.875em; }
+    :not(pre) > code {
+      background: var(--surface); border: 1px solid var(--border);
+      padding: 0.1em 0.35em; border-radius: 4px;
+    }
+    blockquote {
+      border-left: 3px solid var(--accent); margin: 1.75rem 0;
+      padding: 0.5rem 1.25rem; color: var(--accent); font-style: italic;
+      background: rgba(0, 102, 204, 0.06); border-radius: 0 6px 6px 0;
+    }
+    table { border-collapse: collapse; width: 100%; }
+    th, td { border: 1px solid var(--border); padding: 0.5rem; text-align: left; }
+    th { background: var(--surface); }
+    .terminal-link {
+      margin-top: 3rem; padding: 0.875rem 1.25rem;
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 6px; font-family: var(--mono); font-size: 1rem;
+    }
+    .terminal-link::before { content: '$ '; color: var(--muted); }
+    .post-nav {
+      display: flex; justify-content: space-between; gap: 1rem;
+      margin-top: 1.5rem;
+    }
+    .post-nav-link {
+      display: block; max-width: 48%; font-size: 1rem; line-height: 1.4;
+    }
+    .post-nav-link span {
+      display: block; font-family: var(--mono); font-size: 0.85rem;
+      color: var(--muted); margin-bottom: 0.25rem;
+    }
+    .post-nav-link.next { text-align: right; margin-left: auto; }
+    .site-footer {
+      margin-top: 3rem; padding-top: 1.25rem;
+      border-top: 1px solid var(--border);
+      font-family: var(--mono); font-size: 0.9rem; color: var(--muted);
+      display: flex; gap: 1.25rem;
+    }
+  </style>
+</head>
+<body>
+  <nav class="site-nav">
+    <a class="brand" href="/">stefano@straus.it:~$</a>
+    <a href="/#blog">blog</a>
+    <a href="/feed.xml">rss</a>
+  </nav>
+  <article>
+    <header class="post-header">
+      <h1>When More Precise AI Feels Less Clear</h1>
+      <div class="post-meta">
+        <time datetime="2026-08-19">August 19, 2026</time>
+        <span>8 min read</span>
+        <span class="tag">#ai</span> <span class="tag">#llm</span> <span class="tag">#claude</span> <span class="tag">#comprehension</span> <span class="tag">#evaluation</span>
+      </div>
+    </header>
+<p>For many people, Opus 4.6 became the most understandable, friendly and versatile version of the model. It was not only capable. It could move from code to research to an ordinary conversation without making every exchange feel like a technical report.</p>
+<p>Then 4.7 arrived, followed by 4.8, and the perception began to change. The models were still strong, often stronger, but many people felt that something was fading. Answers became denser. More qualifications appeared. More context was preserved. The information was there, yet the explanation sometimes became harder to hold in your head.</p>
+<p>It is tempting to turn that into a simple story about a good model getting worse. I do not think that is the interesting question.</p>
+<p>The sharper question is whether Opus became more precise and informative until it crossed the point where additional context stopped helping the human reader.</p>
+<h2>Understanding is successful compression</h2>
+<p>A good explanation is not the one that contains the most information. It is the one that leaves the right model in someone else&#39;s mind.</p>
+<p>That requires compression. The reader needs enough causal anchors to understand what happened, the details that disambiguate those causes, and the context placed exactly where it becomes useful. Everything else competes for working memory. Even a true detail can make an explanation worse when it arrives too early, repeats a point already understood, or forces the reader to keep another branch of the story alive.</p>
+<p>The practical test is not whether every fact was visible on the page. It is whether, after one reading, the reader can retell the event and predict what happens next.</p>
+<p>For a duplicate payment, that mental model is compact. The first charge succeeded. Its response was lost. The timeout was therefore ambiguous, not proof of failure. The application retried without an idempotency key, so the provider treated the retry as a new request and charged again. Reusing one key for the same logical payment would have turned that retry into a replay of the saved result instead.</p>
+<p>There are more details behind the policy, and some are necessary. The request fingerprint matters. Conflicts matter. Retention matters. But understanding comes from attaching those details to the causal skeleton, not from presenting every available fact with equal weight.</p>
+<p>That is what I mean by successful compression: not less information by default, but the right information surviving the trip into another person&#39;s head.</p>
+<h2>What the benchmark actually found</h2>
+<p>I tested this with one synthetic duplicate-payment incident. Four Opus versions answered it five times each, producing 20 responses in total. The audience was a backend developer who understands HTTP but is new to distributed systems.</p>
+<p>The first two evaluation rounds used the same blinded rubric and independent scoring. For the third round I deliberately changed the method. Instead of asking for another set of absolute scores, I compared responses in blind pairs and separated three decisions: which better supported reconstruction of the incident, which was more economical, and which had the best overall balance.</p>
+<p>That distinction matters because a repeated method can reproduce its own assumptions. A changed method gives the result a chance to fail differently.</p>
+<p>The visible length trend was unambiguous. Opus 4.6 averaged 451 words, 4.7 averaged 543, 4.8 averaged 687, and Opus 5 averaged 951. The newest response was, on average, more than twice as long as the 4.6 response to the same incident.</p>
+<p>In the machine-verifiable benchmark record, 4.7 won the overall-balance ranking. It combined strong coverage with substantially better economy than 4.8 or Opus 5. Opus 4.6 was the shortest and strongest on economy. Opus 4.8 and Opus 5 performed better on the reconstruction proxy, but they did it at much greater length.</p>
+<p>The pairwise comparisons make the tension unusually visible. When the overall-balance decision was decisive, the selected response averaged 241 fewer words than the rejected one. When the reconstruction decision was decisive, the selected response averaged 273 more words.</p>
+<p>The automated reviewer more often preferred the longer response for reconstruction. It preferred the shorter response for overall balance. Both can be true.</p>
+<p><strong><a href="https://opus-clarity-gap.stefano150390.chatgpt.site">Read the full benchmark report</a></strong></p>
+<p>What cannot be concluded is equally important. This does not prove that 4.7 is more comprehensible to humans. It does not prove a general decline across Opus versions. It is one incident, five responses per version, and machine-mediated evaluation. The benchmark measures stable properties of these responses and useful proxies around them. It does not measure what remained in a person&#39;s memory after reading.</p>
+<h2>Why automated evaluation likes visible detail</h2>
+<p>Checklist evaluation has a structural preference. It can reliably reward what is present.</p>
+<p>Did the answer explain that the first charge committed? Did it mention the lost response, the ambiguous timeout, the reused key, the fingerprint conflict and the retention window? Each visible detail creates evidence that a judge can detect. Missing one creates an obvious deduction.</p>
+<p>Surplus is harder to score. A paragraph can be accurate, relevant and still make the explanation more difficult by competing with the central causal chain. The cost appears in the reader&#39;s attention, not in a missing checklist item. Unless the rubric measures that cost directly, completeness has a clearer path to reward than restraint.</p>
+<p>This is not a defect unique to AI judges. Human reviewers using a checklist can behave the same way. The difference is scale. Once evaluation becomes automated, visible coverage can be rewarded millions of times, consistently and cheaply. The system learns that saying one more correct thing is safer than deciding which correct thing the reader does not need.</p>
+<p>The result can look like improvement from the evaluator&#39;s side and feel like deterioration from the user&#39;s side.</p>
+<h2>The case for 4.6</h2>
+<p>My interpretation is that 4.6 may be more comprehensible precisely because it selects the right details.</p>
+<p>That is not what the reconstruction proxy ranked highest, and I am not replacing the measured result with my preference. I am separating two claims. Longer answers gave the machine judge more material from which to reconstruct the incident. A human reader may still build the same mental model more reliably from a shorter answer with fewer competing details.</p>
+<p>At 451 words, 4.6 was not terse. It had room to explain the commit, the lost response, the ambiguity of the timeout and the retry policy. Its advantage was not that it said almost nothing. It was that it had less opportunity to make secondary context compete with the mechanism that mattered.</p>
+<p>This is the point automated scoring can easily miss. Selection is part of intelligence. Knowing a fact is useful. Knowing that this reader does not need it yet is also useful.</p>
+<p>More detail can therefore raise machine-scored completeness and lower human clarity at the same time. There is no contradiction. The two measures are observing different costs.</p>
+<h2>A hypothesis, not a cause</h2>
+<p>Earlier this month I asked whether we are training AI to communicate with other AI. This benchmark does not answer that question, but it gives the concern a more precise shape.</p>
+<p>If training and evaluation increasingly depend on rubrics that detect explicit coverage, models have an incentive to produce text that makes every criterion easy for another model to find. That could gradually shift communication toward machine-legible completeness: more named concepts, more qualifications, more restatement and fewer decisions about what to leave implicit.</p>
+<p>It is a plausible hypothesis and a useful direction for research. It is not a proven explanation for the differences between these Opus versions. The benchmark cannot identify training data, reward design or the causes of model behavior. Product tuning, system prompts, inference changes and ordinary sampling variation could all matter.</p>
+<p>The responsible claim is narrower. Our current evaluation methods can reward the same visible detail that makes an answer harder for a person to absorb. If those methods influence training, a drift toward rubric-detectable coverage is possible. We should measure it instead of turning it into a story we merely find convincing.</p>
+<h2>The next benchmark needs people</h2>
+<p>The next step is not a more elaborate checklist. It is a human comprehension study.</p>
+<p>Give people one response, remove it, and ask them to retell why the duplicate happened. Ask them to predict what the system should do when the same key returns with the same fingerprint, and what should happen when the fingerprint changes. Measure what they remember, what they misunderstand, how confident they are, and how much mental effort the explanation required.</p>
+<p>Recall, retelling, prediction, confidence and cognitive load are closer to the thing we actually care about. Checklist presence still matters because an elegant explanation that omits the remedy is not a good explanation. But presence is the input. Understanding is the outcome.</p>
+<p>If a reader can reconstruct the mechanism and use it correctly after one reading, the explanation worked. If every fact is present but the reader cannot tell the story back, it did not.</p>
+<p>The best AI response may not be the one that says the most. It may be the one that knows what the human mind can safely leave behind.</p>
+
+  </article>
+  <div class="terminal-link">
+    Read this in the <a href="/#read/when-more-precise-ai-feels-less-clear">terminal view</a>
+  </div>
+  <nav class="post-nav" aria-label="Post navigation">
+    <a class="post-nav-link prev" href="/blog/measured-codex-claude-grok-one-defect/" rel="prev"><span>&larr; Older</span>I Left Grok Out of the Last Benchmark</a>
+    <span></span>
+  </nav>
+  <footer class="site-footer">
+    <a href="/">&larr; straus.it</a>
+    <span>&copy; Stefano Straus</span>
+  </footer>
+</body>
+</html>
