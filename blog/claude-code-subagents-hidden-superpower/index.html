@@ -1,13 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="reader">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="color-scheme" content="light">
+  <meta name="color-scheme" content="dark light">
+  <!-- Same theme preference as the terminal; applied before paint -->
+  <script>
+    try {
+      if (localStorage.getItem('straus-terminal-theme') === 'light') {
+        document.documentElement.classList.add('light-theme');
+      }
+    } catch (e) {}
+  </script>
   <title>Claude Code Subagents: The Hidden Superpower You're Not Using | Stefano Straus</title>
   <meta name="description" content="How to use competing subagents for better code reviews and why a little pressure makes AI work harder">
   <meta name="author" content="Stefano Straus">
-  <meta name="theme-color" content="#ffffff">
   <link rel="canonical" href="https://straus.it/blog/claude-code-subagents-hidden-superpower/">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="alternate" type="application/rss+xml" title="Stefano Straus" href="/feed.xml">
@@ -63,85 +70,49 @@
 }
   </script>
 
+  <link rel="stylesheet" href="/css/reader.css?v=1.6.0">
   <style>
-    :root {
-      color-scheme: light;
-      --bg: #ffffff; --fg: #1f2328; --muted: #656d76; --accent: #0066cc;
-      --surface: #f6f8fa; --border: #d0d7de;
-      --mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
-    }
     * { box-sizing: border-box; }
-    html { background: #ffffff; }
     body {
-      font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
-      max-width: 780px; margin: 0 auto; padding: 0 1.25rem 3rem;
-      line-height: 1.7; color: var(--fg); background: var(--bg);
-      font-size: 1rem;
+      font-family: var(--rd-sans);
+      max-width: calc(680px + 2.5rem); margin: 0 auto; padding: 0 1.25rem 3rem;
     }
-    article p, article li { font-size: 1em; }
-    a { color: var(--accent); text-decoration: none; }
+    a { color: var(--rd-link); text-decoration: none; }
     a:hover { text-decoration: underline; }
     .site-nav {
       display: flex; gap: 1.25rem; align-items: baseline;
-      padding: 1.25rem 0; margin-bottom: 2rem;
-      border-bottom: 1px solid var(--border);
-      font-family: var(--mono); font-size: 1rem;
+      padding: 1.25rem 0; margin-bottom: 3rem;
+      border-bottom: 1px solid var(--rd-rule);
+      font-family: var(--rd-mono); font-size: 0.95rem;
     }
-    .site-nav .brand { font-weight: 700; color: var(--fg); }
-    .site-nav .brand:hover { color: var(--accent); text-decoration: none; }
-    .post-header { margin-bottom: 2.5rem; }
-    .post-header h1 {
-      font-size: 2.5rem; line-height: 1.2; margin: 0 0 0.75rem;
-      letter-spacing: -0.02em;
+    .site-nav .brand { font-weight: 700; color: var(--rd-head); }
+    .theme-toggle {
+      margin-left: auto; font-size: 1rem; color: var(--rd-soft);
+      background: none; border: 1px solid var(--rd-rule); border-radius: 6px;
+      padding: 0.1rem 0.55rem; cursor: pointer;
     }
-    .post-meta {
-      display: flex; flex-wrap: wrap; gap: 0.5rem 1rem; align-items: baseline;
-      font-family: var(--mono); font-size: 0.95rem; color: var(--muted);
-    }
-    .tag { color: var(--accent); }
-    article h2 { font-size: 1.75rem; margin-top: 2.5rem; letter-spacing: -0.01em; }
-    article h3 { font-size: 1.4rem; margin-top: 2rem; }
-    article img { max-width: 100%; border-radius: 6px; }
-    article hr { border: 0; border-top: 1px solid var(--border); margin: 2.5rem 0; }
-    pre {
-      background: var(--surface); border: 1px solid var(--border);
-      padding: 1rem; overflow-x: auto; border-radius: 6px; line-height: 1.5;
-    }
-    code { font-family: var(--mono); font-size: 0.875em; }
-    :not(pre) > code {
-      background: var(--surface); border: 1px solid var(--border);
-      padding: 0.1em 0.35em; border-radius: 4px;
-    }
-    blockquote {
-      border-left: 3px solid var(--accent); margin: 1.75rem 0;
-      padding: 0.5rem 1.25rem; color: var(--accent); font-style: italic;
-      background: rgba(0, 102, 204, 0.06); border-radius: 0 6px 6px 0;
-    }
-    table { border-collapse: collapse; width: 100%; }
-    th, td { border: 1px solid var(--border); padding: 0.5rem; text-align: left; }
-    th { background: var(--surface); }
     .terminal-link {
       margin-top: 3rem; padding: 0.875rem 1.25rem;
-      background: var(--surface); border: 1px solid var(--border);
-      border-radius: 6px; font-family: var(--mono); font-size: 1rem;
+      background: var(--rd-surface); border: 1px solid var(--rd-rule);
+      border-radius: 6px; font-family: var(--rd-mono); font-size: 0.95rem;
     }
-    .terminal-link::before { content: '$ '; color: var(--muted); }
+    .terminal-link::before { content: '$ '; color: var(--rd-soft); }
     .post-nav {
       display: flex; justify-content: space-between; gap: 1rem;
       margin-top: 1.5rem;
     }
     .post-nav-link {
-      display: block; max-width: 48%; font-size: 1rem; line-height: 1.4;
+      display: block; max-width: 48%; line-height: 1.4;
     }
     .post-nav-link span {
-      display: block; font-family: var(--mono); font-size: 0.85rem;
-      color: var(--muted); margin-bottom: 0.25rem;
+      display: block; font-family: var(--rd-mono); font-size: 0.85rem;
+      color: var(--rd-soft); margin-bottom: 0.25rem;
     }
     .post-nav-link.next { text-align: right; margin-left: auto; }
     .site-footer {
       margin-top: 3rem; padding-top: 1.25rem;
-      border-top: 1px solid var(--border);
-      font-family: var(--mono); font-size: 0.9rem; color: var(--muted);
+      border-top: 1px solid var(--rd-rule);
+      font-family: var(--rd-mono); font-size: 0.9rem; color: var(--rd-soft);
       display: flex; gap: 1.25rem;
     }
   </style>
@@ -151,13 +122,13 @@
     <a class="brand" href="/">stefano@straus.it:~$</a>
     <a href="/#blog">blog</a>
     <a href="/feed.xml">rss</a>
+    <button class="theme-toggle" type="button" aria-label="Toggle light and dark theme">&#9680;</button>
   </nav>
-  <article>
-    <header class="post-header">
+  <article class="reader-article">
+    <header>
       <h1>Claude Code Subagents: The Hidden Superpower You're Not Using</h1>
-      <div class="post-meta">
-        <time datetime="2026-01-08">January 8, 2026</time>
-        <span>6 min read</span>
+      <div class="reader-meta">
+        <time datetime="2026-01-08">January 8, 2026</time> · <span>6 min read</span>
         <span class="tag">#ai</span> <span class="tag">#claude-code</span> <span class="tag">#subagents</span> <span class="tag">#code-review</span> <span class="tag">#development</span>
       </div>
     </header>
@@ -304,5 +275,11 @@ They&#39;re competing to prove each other wrong.
     <a href="/">&larr; straus.it</a>
     <span>&copy; Stefano Straus</span>
   </footer>
+  <script>
+    document.querySelector('.theme-toggle').addEventListener('click', function () {
+      var light = document.documentElement.classList.toggle('light-theme');
+      try { localStorage.setItem('straus-terminal-theme', light ? 'light' : 'dark'); } catch (e) {}
+    });
+  </script>
 </body>
 </html>

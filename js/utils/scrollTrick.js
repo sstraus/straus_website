@@ -6,7 +6,12 @@
 import { delay } from './delay.js';
 import { createElement } from './dom.js';
 
-export async function scrollToTopTrick(output) {
+export async function scrollToTopTrick(terminal) {
+  const { output } = terminal;
+  // Another command started meanwhile: the trick would land on its page
+  const runId = terminal.runId;
+  const stale = () => terminal.runId !== runId;
+
   // Check if content is taller than viewport (needs scrolling)
   const needsScroll = output.container.scrollHeight > output.container.clientHeight + 50;
   if (!needsScroll) return;
@@ -26,7 +31,7 @@ export async function scrollToTopTrick(output) {
     await delay(1250);
 
     // Abort if user already started reading
-    if (userScrolled) return;
+    if (userScrolled || stale()) return;
   } finally {
     // Always remove listener, even if function is interrupted
     output.container.removeEventListener('scroll', onScroll);
@@ -35,28 +40,32 @@ export async function scrollToTopTrick(output) {
   // Add typing class for visibility
   output.container.classList.add('typing');
 
-  // Scroll to bottom first so user can see the trick
-  output.container.scrollTo({ top: 999999, behavior: 'smooth' });
+  try {
+    // Scroll to bottom first so user can see the trick
+    output.container.scrollTo({ top: 999999, behavior: 'smooth' });
 
-  // Create a fake command echo
-  const cmdLine = createElement('div', { className: 'command-echo scroll-trick' });
-  const prompt = createElement('span', { className: 'prompt-symbol' });
-  const cmdText = createElement('span', { className: 'command-text' }, 'top');
-  cmdLine.appendChild(prompt);
-  cmdLine.appendChild(cmdText);
-  output.container.appendChild(cmdLine);
-  output.container.scrollTo({ top: 999999, behavior: 'smooth' });
+    // Create a fake command echo
+    const cmdLine = createElement('div', { className: 'command-echo scroll-trick' });
+    const prompt = createElement('span', { className: 'prompt-symbol' });
+    const cmdText = createElement('span', { className: 'command-text' }, 'top');
+    cmdLine.appendChild(prompt);
+    cmdLine.appendChild(cmdText);
+    output.container.appendChild(cmdLine);
+    output.container.scrollTo({ top: 999999, behavior: 'smooth' });
 
-  await delay(300);
+    await delay(300);
+    if (stale()) return;
 
-  // Add the witty message
-  output.print("↑ Scrolling up... this content is meant to be read from the beginning!", 'system');
-  output.container.scrollTo({ top: 999999, behavior: 'smooth' });
+    // Add the witty message
+    output.print("↑ Scrolling up... this content is meant to be read from the beginning!", 'system');
+    output.container.scrollTo({ top: 999999, behavior: 'smooth' });
 
-  await delay(800);
-
-  // Remove typing class
-  output.container.classList.remove('typing');
+    await delay(800);
+    if (stale()) return;
+  } finally {
+    // Remove typing class, also when a newer command cut the trick short
+    output.container.classList.remove('typing');
+  }
 
   // Smooth scroll to top
   output.container.scrollTo({

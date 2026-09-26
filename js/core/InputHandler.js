@@ -46,8 +46,11 @@ export class InputHandler {
           this.submit();
           break;
         case 'Tab':
-          e.preventDefault();
-          this.autocomplete();
+          // Autocomplete only while typing; otherwise let focus move to the links
+          if (this.hiddenInput.value && !e.shiftKey) {
+            e.preventDefault();
+            this.autocomplete();
+          }
           break;
         case 'ArrowUp':
           e.preventDefault();

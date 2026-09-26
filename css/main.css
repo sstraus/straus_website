@@ -6,4 +6,6 @@
 @import 'cursor.css';
 @import 'prompt.css';
 @import 'output.css';
+@import 'reader.css';
+@import 'reader-window.css';
 @import 'animations.css';

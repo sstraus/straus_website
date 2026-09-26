@@ -1,0 +1,226 @@
+/*
+ * Reader - long-form article typography.
+ * Shared by the terminal reader window and the static /blog/<slug>/ pages,
+ * which link this file directly. Keep it self-contained: no dependency on
+ * variables.css.
+ */
+.reader {
+  --rd-bg: #12161d;
+  --rd-ink: #d7dde4;
+  --rd-head: #f0f6fc;
+  --rd-soft: #8b949e;
+  --rd-rule: #262c36;
+  --rd-accent: #e3913a;
+  --rd-link: #79c0ff;
+  --rd-surface: rgba(110, 118, 129, 0.14);
+  --rd-serif: 'Iowan Old Style', 'Charter', 'Bitstream Charter', 'Sitka Text', Cambria, Georgia, serif;
+  --rd-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --rd-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  background: var(--rd-bg);
+  color: var(--rd-ink);
+}
+
+.light-theme .reader,
+.light-theme-loading .reader,
+.reader.light-theme {
+  --rd-bg: #fbfaf7;
+  --rd-ink: #2a2a2a;
+  --rd-head: #141414;
+  --rd-soft: #6f6a62;
+  --rd-rule: #e5e2da;
+  --rd-accent: #b45309;
+  --rd-link: #0b5cad;
+  --rd-surface: rgba(0, 0, 0, 0.045);
+}
+
+.reader-article {
+  max-width: 680px;
+  margin: 0 auto;
+  font-family: var(--rd-serif);
+  font-size: 19px;
+  line-height: 1.72;
+  overflow-wrap: break-word;
+}
+
+/* Header */
+.reader-article h1 {
+  font: 700 2.15em/1.13 var(--rd-serif);
+  color: var(--rd-head);
+  letter-spacing: -0.01em;
+  margin: 0 0 14px;
+}
+
+.reader-meta {
+  font: 13px/1.6 var(--rd-sans);
+  color: var(--rd-soft);
+  padding-bottom: 22px;
+  margin-bottom: 34px;
+  border-bottom: 1px solid var(--rd-rule);
+}
+
+.reader-meta > * {
+  white-space: nowrap;
+}
+
+.reader-meta .tag {
+  font-family: var(--rd-mono);
+  font-size: 12px;
+  margin-left: 10px;
+}
+
+/* Body */
+.reader-article p,
+.reader-article ul,
+.reader-article ol {
+  margin: 0 0 1.1em;
+}
+
+.reader-article ul,
+.reader-article ol {
+  padding-left: 1.4em;
+}
+
+.reader-article li {
+  margin: 0.3em 0;
+}
+
+.reader-article h2 {
+  font: 650 1.3em/1.3 var(--rd-serif);
+  color: var(--rd-head);
+  margin: 2em 0 0.6em;
+}
+
+.reader-article h3,
+.reader-article h4 {
+  font: 650 1.08em/1.35 var(--rd-serif);
+  color: var(--rd-head);
+  margin: 1.6em 0 0.5em;
+}
+
+.reader-article strong {
+  color: var(--rd-head);
+}
+
+.reader-article a {
+  color: var(--rd-link);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+.reader-article blockquote {
+  margin: 1.8em 0;
+  padding: 0.2em 0 0.2em 1.2em;
+  border-left: 3px solid var(--rd-accent);
+  font-style: italic;
+  font-size: 1.08em;
+  color: var(--rd-head);
+}
+
+.reader-article blockquote p:last-child {
+  margin-bottom: 0;
+}
+
+.reader-article code {
+  font-family: var(--rd-mono);
+  font-size: 0.8em;
+  background: var(--rd-surface);
+  padding: 0.12em 0.4em;
+  border-radius: 4px;
+}
+
+.reader-article pre {
+  font-size: 15px;
+  line-height: 1.55;
+  background: var(--rd-surface);
+  border: 1px solid var(--rd-rule);
+  border-radius: 6px;
+  padding: 14px 16px;
+  margin: 0 0 1.4em;
+  overflow-x: auto;
+}
+
+.reader-article pre code {
+  background: none;
+  padding: 0;
+  font-size: 0.88em;
+}
+
+.reader-article img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 6px;
+}
+
+.reader-article hr {
+  border: 0;
+  border-top: 1px solid var(--rd-rule);
+  margin: 2.4em 0;
+}
+
+.reader-article table {
+  width: 100%;
+  border-collapse: collapse;
+  font: 15px/1.5 var(--rd-sans);
+  margin: 0 0 1.4em;
+  display: block;
+  overflow-x: auto;
+}
+
+.reader-article th,
+.reader-article td {
+  border: 1px solid var(--rd-rule);
+  padding: 7px 10px;
+  text-align: left;
+}
+
+.reader-article th {
+  background: var(--rd-surface);
+  color: var(--rd-head);
+}
+
+/* Footer: sign-off and related posts */
+.reader-footer {
+  margin-top: 3em;
+  padding-top: 1.4em;
+  border-top: 1px solid var(--rd-rule);
+  font-size: 0.9em;
+  color: var(--rd-soft);
+}
+
+.reader-related {
+  margin-top: 1.6em;
+  font-family: var(--rd-sans);
+  font-size: 15px;
+}
+
+.reader-related h2 {
+  font: 600 12px var(--rd-mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--rd-soft);
+  margin: 0 0 10px;
+}
+
+.reader-related a {
+  display: block;
+  padding: 6px 0;
+  color: var(--rd-link);
+  text-decoration: none;
+}
+
+.reader-related a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .reader-article {
+    font-size: 17px;
+    line-height: 1.66;
+  }
+
+  .reader-article h1 {
+    font-size: 1.75em;
+  }
+}

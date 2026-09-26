@@ -117,6 +117,7 @@ body.is-dragging * {
   bottom: 0 !important;
   width: 100vw !important;
   height: 100vh !important;
+  height: 100dvh !important;
   max-width: none !important;
   max-height: none !important;
   border-radius: 0 !important;
@@ -183,6 +184,8 @@ body.is-dragging * {
     bottom: 0 !important;
     width: 100vw !important;
     height: 100vh !important;
+    height: 100dvh !important;
+  height: 100dvh !important;
     max-width: none !important;
     max-height: none !important;
     border-radius: 0 !important;

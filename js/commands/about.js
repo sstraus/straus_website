@@ -13,7 +13,7 @@ const about = {
   name: 'about',
   description: 'Learn about me',
   usage: 'about',
-  aliases: ['me', 'profile', 'whoami'],
+  aliases: ['me', 'profile'],
 
   async execute(args, terminal) {
     const { output } = terminal;
@@ -42,7 +42,7 @@ const about = {
       ]);
 
       // Trigger scroll-to-top trick if content is long
-      scrollToTopTrick(output);
+      scrollToTopTrick(terminal);
 
       return { success: true };
     } catch (err) {

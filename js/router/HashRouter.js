@@ -1,6 +1,8 @@
 /**
  * HashRouter - Hash-based URL routing
  */
+import { commandRegistry } from '../commands/CommandRegistry.js';
+
 export class HashRouter {
   /**
    * @param {Terminal} terminal
@@ -61,7 +63,8 @@ export class HashRouter {
    */
   updateHash(command) {
     const parts = command.trim().split(/\s+/);
-    const cmd = parts[0];
+    // Resolve aliases so "open x" or "posts" produce the canonical hash
+    const cmd = commandRegistry.get(parts[0].toLowerCase())?.name;
     const args = parts.slice(1);
 
     // Only update hash for navigation commands

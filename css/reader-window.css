@@ -1,0 +1,180 @@
+/* Reader window - a second macOS window opened on top of the terminal */
+.reader-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 10000; /* above the fullscreen terminal (9999) */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px;
+  background: rgba(8, 10, 14, 0.5);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  animation: readerFadeIn 0.18s ease-out;
+}
+
+.light-theme .reader-overlay {
+  background: rgba(60, 64, 72, 0.28);
+}
+
+body.reader-open {
+  overflow: hidden;
+}
+
+.reader-window {
+  --rd-chrome: #1e1e1e;
+  --rd-chrome-ink: #8e8e8e;
+  --rd-chrome-border: #3a3a3a;
+
+  display: flex;
+  flex-direction: column;
+  width: min(920px, 100%);
+  height: 100%;
+  max-height: 1100px;
+  border-radius: var(--window-border-radius);
+  overflow: hidden;
+  box-shadow: 0 30px 90px 6px rgba(0, 0, 0, 0.55), 0 0 0 1px var(--rd-chrome-border);
+  animation: readerOpen 0.22s ease-out;
+}
+
+.light-theme .reader-window {
+  --rd-chrome: #ececec;
+  --rd-chrome-ink: #555;
+  --rd-chrome-border: #d4d4d4;
+  box-shadow: 0 30px 90px 6px rgba(0, 0, 0, 0.18), 0 0 0 1px var(--rd-chrome-border);
+}
+
+.reader-titlebar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  height: var(--titlebar-height);
+  padding: 0 12px;
+  flex-shrink: 0;
+  background: var(--rd-chrome);
+  border-bottom: 1px solid var(--rd-chrome-border);
+  user-select: none;
+}
+
+.reader-titlebar .traffic-light {
+  border: 0;
+  padding: 0;
+}
+
+.reader-titlebar .traffic-light--idle {
+  background: var(--traffic-inactive);
+  cursor: default;
+}
+
+.light-theme .reader-titlebar .traffic-light--idle {
+  background: #d0d0d0;
+}
+
+.reader-title {
+  flex: 1;
+  text-align: center;
+  font: 13px var(--font-mono);
+  color: var(--rd-chrome-ink);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.reader-tool {
+  font: 16px var(--font-system);
+  color: var(--rd-chrome-ink);
+  background: none;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  padding: 2px 8px;
+  cursor: pointer;
+}
+
+.reader-tool:hover,
+.reader-tool:focus-visible {
+  border-color: var(--rd-chrome-border);
+}
+
+/* Text back button replaces the traffic lights on mobile */
+.reader-back {
+  display: none;
+}
+
+.reader-progress {
+  height: 2px;
+  flex-shrink: 0;
+  background: var(--rd-bg);
+}
+
+.reader-progress-bar {
+  height: 100%;
+  background: var(--rd-accent);
+  transform-origin: left;
+  transform: scaleX(0);
+}
+
+.reader-scroll {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 52px 28px 72px;
+  outline: none;
+}
+
+.reader-hint {
+  max-width: 680px;
+  margin: 2.4em auto 0;
+  font: 12px var(--font-mono);
+  color: var(--rd-soft);
+}
+
+/* Wide screens: offset the window so the terminal stays visible behind it */
+@media (min-width: 1100px) {
+  .reader-window {
+    width: min(860px, 100%);
+    height: calc(100% - 24px);
+    margin: 24px 0 0 160px;
+  }
+}
+
+@keyframes readerFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes readerOpen {
+  from { opacity: 0; transform: translateY(12px) scale(0.985); }
+  to { opacity: 1; transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reader-overlay,
+  .reader-window {
+    animation: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .reader-overlay {
+    padding: 0;
+  }
+
+  .reader-window {
+    width: 100%;
+    max-height: none;
+    border-radius: 0;
+  }
+
+  .reader-back {
+    display: inline-block;
+  }
+
+  .reader-scroll {
+    padding: 32px 20px 56px;
+  }
+
+  .reader-hint {
+    display: none;
+  }
+}

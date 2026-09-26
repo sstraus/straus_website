@@ -6,10 +6,69 @@ import { ArticleIndex } from '../content/ArticleIndex.js';
 import { ContentLoader } from '../content/ContentLoader.js';
 import { MarkdownParser } from '../content/MarkdownParser.js';
 import { createElement } from '../utils/dom.js';
-import { scrollToTopTrick } from '../utils/scrollTrick.js';
 import { setPageTitle } from '../utils/pageTitle.js';
 import { MetaManager } from '../seo/MetaManager.js';
 import { config } from '../config.js';
+
+const FOOTER = '*Questions? [Reach out on X](https://x.com/StefanoStraus).*\n\n*Most of this was still written by a human. For now.*';
+
+/**
+ * Estimated reading time at ~200 words per minute (same as the static pages)
+ * @param {string} markdown
+ * @returns {number}
+ */
+function readingMinutes(markdown) {
+  return Math.max(1, Math.round(markdown.trim().split(/\s+/).length / 200));
+}
+
+/**
+ * Build the article element shown in the reader window
+ * @param {Object} article - Index entry
+ * @param {string} markdown - Article source
+ * @param {Object[]} related - Related index entries
+ * @param {Function} onRelated - Called with a related entry when clicked
+ * @returns {HTMLElement}
+ */
+function buildArticle(article, markdown, related, onRelated) {
+  // The header renders the title, so drop the leading "# Title" of the source
+  const body = MarkdownParser.removeFrontmatter(markdown).replace(/^\s*# .+\n/, '');
+  const tags = (article.tags || []).map(tag => createElement('span', { className: 'tag' }, `#${tag}`));
+
+  const el = createElement('article', { className: 'reader-article' },
+    createElement('header', {},
+      createElement('h1', {}, article.title),
+      createElement('div', { className: 'reader-meta' },
+        createElement('time', { datetime: article.date }, article.date),
+        ' · ',
+        createElement('span', {}, `${readingMinutes(body)} min read`),
+        ...tags
+      )
+    )
+  );
+
+  const content = createElement('div');
+  content.innerHTML = MarkdownParser.parse(body);
+  el.appendChild(content);
+
+  const footer = createElement('footer', { className: 'reader-footer' });
+  footer.innerHTML = MarkdownParser.parse(FOOTER);
+
+  if (related.length > 0) {
+    const nav = createElement('nav', { className: 'reader-related', 'aria-label': 'Related articles' },
+      createElement('h2', {}, 'Related')
+    );
+    for (const rel of related) {
+      nav.appendChild(createElement('a', {
+        href: `#read/${rel.slug}`,
+        onClick: (e) => { e.preventDefault(); onRelated(rel); },
+      }, rel.title));
+    }
+    footer.appendChild(nav);
+  }
+
+  el.appendChild(footer);
+  return el;
+}
 
 const read = {
   name: 'read',
@@ -56,7 +115,7 @@ const read = {
 
       const basePath = isArchive ? config.paths.archive : config.paths.blog;
       const markdown = await ContentLoader.load(`${basePath}/${article.file}`);
-      const html = MarkdownParser.parse(markdown);
+      const related = await ArticleIndex.findRelated(article, 2);
 
       // Update page title for GA tracking
       setPageTitle(article.title);
@@ -64,57 +123,15 @@ const read = {
       // Update meta tags and structured data for SEO
       MetaManager.updateArticleMeta(article);
 
-      output.clear();
+      output.print(`Opening ${article.slug}.md in Reader...`, 'system');
 
-      // Article header
-      output.print(article.title, 'info');
+      const onRelated = (rel) => terminal.runCommand(`read ${rel.slug}`);
+      terminal.reader.open(`${article.slug}.md`, buildArticle(article, markdown, related, onRelated));
 
-      // Meta info
-      const meta = createElement('div', { className: 'article-meta' });
-
-      const dateSpan = createElement('span', { className: 'date' }, article.date);
-      meta.appendChild(dateSpan);
-
-      if (article.tags && article.tags.length > 0) {
-        const tagsSpan = createElement('span', { className: 'tags' });
-        for (const tag of article.tags) {
-          tagsSpan.appendChild(createElement('span', { className: 'tag' }, tag));
-        }
-        meta.appendChild(tagsSpan);
-      }
-
-      output.container.appendChild(meta);
-      output.printDivider();
-      output.newline();
-
-      // Article content
-      output.renderHtml(html);
-
-      // Standard blog footer
-      output.newline();
-      output.printDivider();
-      output.newline();
-      const footer = '*Questions? [Reach out on X](https://x.com/StefanoStraus).*\n\n*Most of this was still written by a human. For now.*';
-      output.renderHtml(MarkdownParser.parse(footer));
-      output.newline();
-
-      // Find related articles (same tags)
-      const related = await ArticleIndex.findRelated(article, 2);
-      const suggestions = [
-        { label: 'blog', command: 'blog' },
-        { label: 'about', command: 'about' },
-      ];
-
-      if (related.length > 0) {
-        for (const rel of related) {
-          suggestions.unshift({ label: rel.slug, command: `read ${rel.slug}` });
-        }
-      }
-
+      // Left in the terminal for when the reader is closed
+      const suggestions = related.map(rel => ({ label: rel.slug, command: `read ${rel.slug}` }));
+      suggestions.push({ label: 'blog', command: 'blog' }, { label: 'about', command: 'about' });
       terminal.showSuggestions(suggestions);
-
-      // Trigger the scroll-to-top trick (don't await - runs in background)
-      scrollToTopTrick(output);
 
       return { success: true };
     } catch (err) {

@@ -50,7 +50,7 @@ Wire Claude into pipelines that run automatically:
 
 The feedback loop should be fast and mechanical. Claude proposes changes. The system validates them. When something breaks, skills and agents are there to fix it. This keeps reasoning focused on design, not syntax cleanup.
 
-For repetitive fixes, the [Ralph Wiggum technique](/read/ralph-wiggum-autonomous-loops) takes this further. Wrap the whole thing in a loop and let Claude iterate until tests pass.
+For repetitive fixes, the [Ralph Wiggum technique](/blog/ralph-wiggum-autonomous-loops/) takes this further. Wrap the whole thing in a loop and let Claude iterate until tests pass.
 
 ## 4. Connect to real services via MCP
 

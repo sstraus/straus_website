@@ -2,7 +2,7 @@ REMOTE = stefano@100.86.23.27
 REMOTE_DIR = /volume1/web/me
 
 DEPLOY_FILES = index.html favicon.svg robots.txt sitemap.xml feed.xml 404.html CNAME .nojekyll
-DEPLOY_DIRS = css js content img vendor assets blog apps
+DEPLOY_DIRS = css js content img vendor blog apps
 
 .PHONY: generate deploy serve
 

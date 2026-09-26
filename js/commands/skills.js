@@ -41,7 +41,7 @@ const skills = {
       ]);
 
       // Trigger scroll-to-top trick if content is long
-      scrollToTopTrick(output);
+      scrollToTopTrick(terminal);
 
       return { success: true };
     } catch (err) {

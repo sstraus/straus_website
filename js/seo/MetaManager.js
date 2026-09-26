@@ -109,7 +109,7 @@ class MetaManagerClass {
         'Developer Productivity',
       ],
       sameAs: [
-        'https://github.com/straussmaximilian',
+        'https://github.com/sstraus',
         'https://x.com/StefanoStraus',
       ],
     });

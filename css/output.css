@@ -158,31 +158,6 @@
   background: rgba(88, 166, 255, 0.04);
 }
 
-/* Article meta */
-.article-meta {
-  color: var(--term-text-dim);
-  font-size: var(--font-size-sm);
-  margin-bottom: 12px;
-}
-
-.article-meta .date {
-  color: var(--term-info);
-}
-
-.article-meta .tags {
-  margin-left: 12px;
-}
-
-.article-meta .tag {
-  display: inline-block;
-  background: rgba(168, 85, 247, 0.2);
-  color: var(--claude-purple);
-  padding: 2px 8px;
-  border-radius: 3px;
-  font-size: 11px;
-  margin-left: 4px;
-}
-
 /* Blog list item */
 .blog-item {
   margin: 8px 0;

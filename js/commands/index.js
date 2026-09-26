@@ -9,7 +9,8 @@ import './read.js';
 import './skills.js';
 import './contact.js';
 import './zsh.js';
-import { initTheme } from './theme.js';
+import './theme.js';
+import { initTheme } from '../utils/theme.js';
 
 // Initialize theme on load
 initTheme();

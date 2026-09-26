@@ -13,6 +13,7 @@ html {
 
 body {
   min-height: 100vh;
+  min-height: 100dvh;
   background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
   display: flex;
   flex-direction: column;
@@ -26,6 +27,47 @@ body {
 html.light-theme-loading body,
 body.light-theme {
   background: linear-gradient(135deg, #f6f8fa 0%, #e1e4e8 50%, #d1d5db 100%);
+}
+
+/*
+ * Liquid background: soft colour blobs drifting slowly over the gradient.
+ * Only transform is animated, so it stays on the compositor.
+ */
+body::before {
+  content: '';
+  position: fixed;
+  inset: -25%;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(38% 42% at 22% 30%, rgba(83, 52, 131, 0.55), transparent 70%),
+    radial-gradient(34% 40% at 78% 24%, rgba(15, 52, 96, 0.9), transparent 70%),
+    radial-gradient(40% 44% at 64% 78%, rgba(11, 72, 88, 0.6), transparent 70%),
+    radial-gradient(30% 34% at 30% 80%, rgba(217, 119, 6, 0.12), transparent 70%);
+  filter: blur(40px);
+  animation: liquidDrift 70s ease-in-out infinite alternate;
+}
+
+html.light-theme-loading body::before,
+body.light-theme::before {
+  background:
+    radial-gradient(38% 42% at 22% 30%, rgba(196, 181, 253, 0.45), transparent 70%),
+    radial-gradient(34% 40% at 78% 24%, rgba(147, 197, 253, 0.5), transparent 70%),
+    radial-gradient(40% 44% at 64% 78%, rgba(153, 246, 228, 0.35), transparent 70%),
+    radial-gradient(30% 34% at 30% 80%, rgba(253, 186, 116, 0.3), transparent 70%);
+}
+
+@keyframes liquidDrift {
+  0%   { transform: translate(0, 0) rotate(0deg) scale(1); }
+  33%  { transform: translate(6%, -4%) rotate(25deg) scale(1.08); }
+  66%  { transform: translate(-5%, 5%) rotate(-15deg) scale(0.96); }
+  100% { transform: translate(3%, 3%) rotate(40deg) scale(1.05); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body::before {
+    animation: none;
+  }
 }
 
 .container {
@@ -126,6 +168,11 @@ body.light-theme {
   }
 
   .site-footer {
+    display: none;
+  }
+
+  /* The terminal covers the whole screen: no point animating behind it */
+  body::before {
     display: none;
   }
 }

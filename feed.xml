@@ -1343,7 +1343,7 @@ Add to <code>~/.config/ghostty/config</code>:</p>
 <li>Type checkers in the background</li>
 </ul>
 <p>The feedback loop should be fast and mechanical. Claude proposes changes. The system validates them. When something breaks, skills and agents are there to fix it. This keeps reasoning focused on design, not syntax cleanup.</p>
-<p>For repetitive fixes, the <a href="/read/ralph-wiggum-autonomous-loops">Ralph Wiggum technique</a> takes this further. Wrap the whole thing in a loop and let Claude iterate until tests pass.</p>
+<p>For repetitive fixes, the <a href="/blog/ralph-wiggum-autonomous-loops/">Ralph Wiggum technique</a> takes this further. Wrap the whole thing in a loop and let Claude iterate until tests pass.</p>
 <h2>4. Connect to real services via MCP</h2>
 <p>Claude becomes far more useful when it can talk to real systems.</p>
 <p>Model Context Protocol lets you expose APIs, databases, repos, and internal tools safely. This shifts Claude from speculative coding to grounded engineering. It can check actual data. Query real schemas. Verify assumptions against reality.</p>

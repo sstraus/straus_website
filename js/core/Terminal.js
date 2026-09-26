@@ -7,6 +7,9 @@ import { InputHandler } from './InputHandler.js';
 import { CommandProcessor } from './CommandProcessor.js';
 import { InitSequence } from '../effects/InitSequence.js';
 import { HashRouter } from '../router/HashRouter.js';
+import { ReaderWindow } from './ReaderWindow.js';
+import { MetaManager } from '../seo/MetaManager.js';
+import { resetPageTitle, setPageTitle } from '../utils/pageTitle.js';
 import { ContentLoader } from '../content/ContentLoader.js';
 import { config } from '../config.js';
 
@@ -25,6 +28,7 @@ export class Terminal {
     this.output = new OutputRenderer(this.outputContainer);
     this.processor = new CommandProcessor();
     this.router = new HashRouter(this);
+    this.reader = new ReaderWindow({ onClose: () => this.onReaderClose() });
 
     this.input = new InputHandler({
       hiddenInput: this.hiddenInput,
@@ -34,6 +38,9 @@ export class Terminal {
     });
 
     this.ready = false;
+    this.busy = false;
+    // Incremented on every command so background effects can tell they are stale
+    this.runId = 0;
   }
 
   /**
@@ -58,14 +65,33 @@ export class Terminal {
     // Mark as ready
     this.ready = true;
 
-    // Execute deep link command if present
+    // Execute deep link command if present; it sends its own page_view
     if (initialCommand) {
       await this.executeCommand(initialCommand, { echo: false });
+    } else {
+      setPageTitle();
     }
 
-    // Enable input and show prompt
+    this.releaseInput();
+  }
+
+  /**
+   * Hand the keyboard back to the prompt, unless the reader window owns it
+   */
+  releaseInput() {
+    if (this.reader.isOpen || this.busy) return;
     this.input.enable();
     this.input.focus();
+  }
+
+  /**
+   * The reader was closed: the URL and metadata describe the terminal again
+   */
+  onReaderClose() {
+    this.router.clear();
+    MetaManager.resetToDefault();
+    resetPageTitle();
+    this.releaseInput();
   }
 
   /**
@@ -76,28 +102,34 @@ export class Terminal {
   async executeCommand(commandString, options = {}) {
     const { echo = true } = options;
 
+    // One command at a time: clicks and hash changes during a run are ignored
+    if (this.busy) return;
+    this.busy = true;
+    this.runId++;
+
     // Disable input during execution
     this.input.disable();
 
-    // Echo the command (unless suppressed)
-    if (echo) {
-      this.output.printCommand(commandString);
+    try {
+      // Echo the command (unless suppressed)
+      if (echo) {
+        this.output.printCommand(commandString);
+      }
+
+      // Process the command
+      const result = await this.processor.process(commandString, this);
+
+      // Handle errors; a failed command must not become a shareable URL
+      if (result.error) {
+        this.output.error(result.message);
+      } else {
+        this.router.updateHash(commandString);
+      }
+    } finally {
+      this.busy = false;
     }
 
-    // Process the command
-    const result = await this.processor.process(commandString, this);
-
-    // Handle errors
-    if (result.error) {
-      this.output.error(result.message);
-    }
-
-    // Update URL hash
-    this.router.updateHash(commandString);
-
-    // Re-enable input
-    this.input.enable();
-    this.input.focus();
+    this.releaseInput();
   }
 
   /**

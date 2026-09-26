@@ -26,6 +26,35 @@ const ALLOWED_ATTRS = {
   th: ['align'],
 };
 
+const SAFE_PROTOCOLS = new Set(['http:', 'https:', 'mailto:']);
+
+/**
+ * Resolve the URL the way the browser will, so obfuscated schemes
+ * such as "java\tscript:" are caught
+ * @param {string} value
+ * @returns {boolean}
+ */
+function isSafeUrl(value) {
+  try {
+    return SAFE_PROTOCOLS.has(new URL(value, window.location.href).protocol);
+  } catch (e) {
+    return false;
+  }
+}
+
+/**
+ * @param {string|null} href
+ * @returns {boolean}
+ */
+function isExternalUrl(href) {
+  if (!href) return false;
+  try {
+    return new URL(href, window.location.href).origin !== window.location.origin;
+  } catch (e) {
+    return false;
+  }
+}
+
 /**
  * Sanitize HTML string
  * @param {string} html - Raw HTML
@@ -60,17 +89,13 @@ export function sanitizeHtml(html) {
     for (const attr of attrs) {
       if (!allowedAttrs.includes(attr.name)) {
         node.removeAttribute(attr.name);
-      } else if (attr.name === 'href' || attr.name === 'src') {
-        // Validate URLs
-        const url = attr.value.toLowerCase().trim();
-        if (url.startsWith('javascript:') || url.startsWith('data:')) {
-          node.removeAttribute(attr.name);
-        }
+      } else if ((attr.name === 'href' || attr.name === 'src') && !isSafeUrl(attr.value)) {
+        node.removeAttribute(attr.name);
       }
     }
 
-    // Add security attributes to links
-    if (tagName === 'a') {
+    // External links open in a new tab; internal ones stay on the site
+    if (tagName === 'a' && isExternalUrl(node.getAttribute('href'))) {
       node.setAttribute('target', '_blank');
       node.setAttribute('rel', 'noopener noreferrer');
     }
