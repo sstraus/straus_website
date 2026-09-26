@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en" class="reader">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <!-- Same theme preference as the terminal; applied before paint -->
+  <script>
+    try {
+      if (localStorage.getItem('straus-terminal-theme') === 'light') {
+        document.documentElement.classList.add('light-theme');
+      }
+    } catch (e) {}
+  </script>
+  <title>The Herd Effect of Vibe Coding | Stefano Straus</title>
+  <meta name="description" content="Narrow technical observations get compressed into absolute claims as they travel through social feeds. Vibe coding now turns those claims into software in a weekend, and the software makes the claim look validated.">
+  <meta name="author" content="Stefano Straus">
+  <link rel="canonical" href="https://straus.it/blog/herd-effect-of-vibe-coding/">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/rss+xml" title="Stefano Straus" href="/feed.xml">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="The Herd Effect of Vibe Coding">
+  <meta property="og:description" content="Narrow technical observations get compressed into absolute claims as they travel through social feeds. Vibe coding now turns those claims into software in a weekend, and the software makes the claim look validated.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://straus.it/blog/herd-effect-of-vibe-coding/">
+  <meta property="og:image" content="https://straus.it/img/profile.jpg">
+  <meta property="og:image:alt" content="Stefano Straus">
+  <meta property="og:site_name" content="Stefano Straus">
+  <meta property="article:published_time" content="2026-09-26">
+  <meta property="article:author" content="https://straus.it">
+  <meta property="article:tag" content="ai">
+  <meta property="article:tag" content="vibe-coding">
+  <meta property="article:tag" content="open-source">
+  <meta property="article:tag" content="social-media">
+  <meta property="article:tag" content="engineering">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@StefanoStraus">
+  <meta name="twitter:title" content="The Herd Effect of Vibe Coding">
+  <meta name="twitter:description" content="Narrow technical observations get compressed into absolute claims as they travel through social feeds. Vibe coding now turns those claims into software in a weekend, and the software makes the claim look validated.">
+  <meta name="twitter:image" content="https://straus.it/img/profile.jpg">
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "The Herd Effect of Vibe Coding",
+  "description": "Narrow technical observations get compressed into absolute claims as they travel through social feeds. Vibe coding now turns those claims into software in a weekend, and the software makes the claim look validated.",
+  "url": "https://straus.it/blog/herd-effect-of-vibe-coding/",
+  "image": "https://straus.it/img/profile.jpg",
+  "author": {
+    "@type": "Person",
+    "name": "Stefano Straus",
+    "url": "https://straus.it"
+  },
+  "datePublished": "2026-09-26",
+  "dateModified": "2026-09-26",
+  "publisher": {
+    "@type": "Person",
+    "name": "Stefano Straus"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://straus.it/blog/herd-effect-of-vibe-coding/"
+  },
+  "keywords": "ai, vibe-coding, open-source, social-media, engineering"
+}
+  </script>
+
+  <link rel="stylesheet" href="/css/reader.css?v=1.6.0">
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      font-family: var(--rd-sans);
+      max-width: calc(680px + 2.5rem); margin: 0 auto; padding: 0 1.25rem 3rem;
+    }
+    a { color: var(--rd-link); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .site-nav {
+      display: flex; gap: 1.25rem; align-items: baseline;
+      padding: 1.25rem 0; margin-bottom: 3rem;
+      border-bottom: 1px solid var(--rd-rule);
+      font-family: var(--rd-mono); font-size: 0.95rem;
+    }
+    .site-nav .brand { font-weight: 700; color: var(--rd-head); }
+    .theme-toggle {
+      margin-left: auto; font-size: 1rem; color: var(--rd-soft);
+      background: none; border: 1px solid var(--rd-rule); border-radius: 6px;
+      padding: 0.1rem 0.55rem; cursor: pointer;
+    }
+    .terminal-link {
+      margin-top: 3rem; padding: 0.875rem 1.25rem;
+      background: var(--rd-surface); border: 1px solid var(--rd-rule);
+      border-radius: 6px; font-family: var(--rd-mono); font-size: 0.95rem;
+    }
+    .terminal-link::before { content: '$ '; color: var(--rd-soft); }
+    .post-nav {
+      display: flex; justify-content: space-between; gap: 1rem;
+      margin-top: 1.5rem;
+    }
+    .post-nav-link {
+      display: block; max-width: 48%; line-height: 1.4;
+    }
+    .post-nav-link span {
+      display: block; font-family: var(--rd-mono); font-size: 0.85rem;
+      color: var(--rd-soft); margin-bottom: 0.25rem;
+    }
+    .post-nav-link.next { text-align: right; margin-left: auto; }
+    .site-footer {
+      margin-top: 3rem; padding-top: 1.25rem;
+      border-top: 1px solid var(--rd-rule);
+      font-family: var(--rd-mono); font-size: 0.9rem; color: var(--rd-soft);
+      display: flex; gap: 1.25rem;
+    }
+  </style>
+</head>
+<body>
+  <nav class="site-nav">
+    <a class="brand" href="/">stefano@straus.it:~$</a>
+    <a href="/#blog">blog</a>
+    <a href="/feed.xml">rss</a>
+    <button class="theme-toggle" type="button" aria-label="Toggle light and dark theme">&#9680;</button>
+  </nav>
+  <article class="reader-article">
+    <header>
+      <h1>The Herd Effect of Vibe Coding</h1>
+      <div class="reader-meta">
+        <time datetime="2026-09-26">September 26, 2026</time> · <span>7 min read</span>
+        <span class="tag">#ai</span> <span class="tag">#vibe-coding</span> <span class="tag">#open-source</span> <span class="tag">#social-media</span> <span class="tag">#engineering</span>
+      </div>
+    </header>
+<p>Something odd is happening around vibe coding, and I think it has less to do with code generation than with how technical ideas now move through social networks.</p>
+<p>I see the same pattern often on X. Someone with real experience points out a legitimate problem. Usually the original observation is narrow and tied to a specific failure mode. Then it gets compressed into something stronger because stronger claims travel better. A few days later, most of the conditions are gone.</p>
+<h2>From a narrow problem to an absolute claim</h2>
+<p>AI-generated tests are a good example. There is a real problem when the model writes both the implementation and the tests from the same reasoning. It can end up validating its own mistake, especially if the test is derived from the code instead of from an independent specification. That is worth discussing.</p>
+<p>But from there it is very easy to end up at <em>“AI-generated tests are useless”</em>, which is a different claim. Once enough people repeat it, the distinction gets lost. You start seeing the same position everywhere, often from people who have not really tested the problem themselves.</p>
+<p>This is not mainly an AI problem. <strong>It is a social one.</strong></p>
+<p>Being early on a new idea gets attention. A strong statement travels better than a conditional one. If a position starts getting engagement, more people repeat it. Some because they agree, some because they only understand part of it, some because they can see that this is where the attention is going. After a while, repetition starts to look like validation.</p>
+<h2>Moving targets</h2>
+<p>This has always happened on social networks, but AI makes the effect much stronger because the technology changes so fast that almost nobody has deep, long-term experience with all the things they are talking about.</p>
+<p>We are all testing moving targets. Models change, tools change, workflows change. Something that looked fragile six months ago may work well today, while something that looks impressive after two days can still become a maintenance problem after six months.</p>
+<p>The problem is that social media removes most of that time dimension. A pattern noticed on Monday can become a best practice by Friday.</p>
+<h2>When the opinion becomes a repository</h2>
+<p>Vibe coding adds another layer, and this is where the issue becomes more concrete.</p>
+<p>Until recently, a weak technical idea could spread as an opinion, but turning it into software still required enough work to slow things down. Somebody had to design it, write the code, debug it, package it and maintain it. That friction did not guarantee quality, but it did filter out a lot of things before they became reusable software. Now that filter is getting much weaker.</p>
+<p>Someone can see a claim on X, understand half of it, agree with the conclusion, and build a working open source tool around it in a weekend. At that point the distortion is no longer only in the feed. It has become software.</p>
+<p>And software has a different kind of authority. A repository feels more concrete than a post. A demo looks like proof. A polished interface makes an idea look more mature than it may actually be. Then other people find the repository, try it, fork it, integrate it, and the activity around the tool starts reinforcing the idea that produced it.</p>
+<blockquote>
+<p>The original claim creates software, the software creates visibility, and the visibility makes the original claim look more credible.</p>
+</blockquote>
+<p>That feedback loop is what interests me. Not because people suddenly became worse engineers. Quite the opposite. Vibe coding lets people build things they could never have justified building before, and a lot of that experimentation is genuinely useful.</p>
+<h2>Cheap code, expensive understanding</h2>
+<p>The problem is that <strong>the cost of implementation is falling much faster than the cost of understanding.</strong></p>
+<p>You can build a tool in an afternoon. Knowing whether the abstraction is useful, whether it survives real users, whether it behaves well at scale, whether it becomes expensive to maintain, or whether it still makes sense after the underlying model changes still takes time. The code can arrive almost immediately. Judgement cannot.</p>
+<p>This also changes the meaning of producing something. A lot of people now want to build, partly because building has become accessible enough that the act itself is attractive. That is not bad in itself, but it means the existence of a tool tells you less than it used to. A repository can represent months of serious work, or a weekend experiment with a good README and a nice interface. From the outside, the difference is not always obvious.</p>
+<h2>An ecosystem that validates itself</h2>
+<p>Open source is especially exposed to this because discovery already depends heavily on social signals. A project gets some attention because the idea behind it is already circulating. That attention brings users, forks and integrations. Then someone else sees all that activity and assumes the underlying idea must be solid. At some point the ecosystem starts to validate the assumption simply because the ecosystem exists.</p>
+<p>This is where I think the herd effect becomes more important than the usual discussion about AI-generated low quality content. The issue is not AI producing bad content. <strong>The issue is that weak or incomplete technical consensus can now turn into executable artefacts almost immediately.</strong></p>
+<p>That makes it much harder to distinguish between something that is popular, something that is interesting, and something that has actually been validated.</p>
+<h2>The conditions are the interesting part</h2>
+<p>The difference matters a lot in areas where nobody has much historical experience yet. Agent frameworks, testing strategies, retrieval architectures, MCP patterns, memory systems and orchestration layers are all changing quickly enough that strong conclusions age badly.</p>
+<p>Still, every week there is a new absolute position. Frameworks are suddenly the problem. Then they are necessary again. Retrieval is dead, then everybody is using it under another name. AI-written tests are useless, then someone shows a workflow where they are extremely effective.</p>
+<p>Usually the interesting part is in the conditions. Those are exactly the parts that disappear as the idea moves through the feed. Then vibe coding gives the simplified version a codebase.</p>
+<p>That creates a practical problem even for experienced engineers, because ignoring all of this noise is not an option. Some genuinely useful ideas emerge from the same environment. I have found good tools and better workflows through people experimenting publicly. The difficulty is that <strong>visibility and quality are becoming less correlated.</strong></p>
+<h2>What still takes months</h2>
+<p>The only thing that still seems expensive is operational experience. You only learn certain things after real use, after maintenance, after failures, after seeing what happens when the original author is no longer the only person who understands the system.</p>
+<p>That takes months. The social cycle takes days. By the time someone has enough experience to answer the important questions properly, the conversation may already have moved through several new fashions.</p>
+<p>This is probably the part I find most uncomfortable about the current phase of AI software. We have made creation extremely cheap, but judgement is still expensive. And now the output of that cheap creation can feed directly back into the social system that produced the original idea.</p>
+<p>The herd does not just repeat the message anymore. It can build on top of it, package it, publish it and turn it into something that looks established before the underlying assumption has really been tested.</p>
+<h2>What we treat as evidence</h2>
+<p>I would not want to give up the speed of experimentation. That part is valuable. But I think we need to become much more careful about what we treat as evidence:</p>
+<ul>
+<li>A tool can work and still be based on a bad assumption.</li>
+<li>A demo can be impressive and still tell us very little about long-term use.</li>
+<li>A repository can be popular because it solves a real problem, or because it arrived at the right moment in the right conversation.</li>
+</ul>
+<p>The distinction only becomes clear later, when the hype is gone and the software has had to survive reality. That part has not become faster.</p>
+
+  </article>
+  <div class="terminal-link">
+    Read this in the <a href="/#read/herd-effect-of-vibe-coding">terminal view</a>
+  </div>
+  <nav class="post-nav" aria-label="Post navigation">
+    <a class="post-nav-link prev" href="/blog/when-more-precise-ai-feels-less-clear/" rel="prev"><span>&larr; Older</span>When More Precise AI Feels Less Clear</a>
+    <span></span>
+  </nav>
+  <footer class="site-footer">
+    <a href="/">&larr; straus.it</a>
+    <span>&copy; Stefano Straus</span>
+  </footer>
+  <script>
+    document.querySelector('.theme-toggle').addEventListener('click', function () {
+      var light = document.documentElement.classList.toggle('light-theme');
+      try { localStorage.setItem('straus-terminal-theme', light ? 'light' : 'dark'); } catch (e) {}
+    });
+  </script>
+</body>
+</html>

@@ -1,6 +1,14 @@
 {
   "articles": [
     {
+      "slug": "herd-effect-of-vibe-coding",
+      "title": "The Herd Effect of Vibe Coding",
+      "date": "2026-09-26",
+      "description": "Narrow technical observations get compressed into absolute claims as they travel through social feeds. Vibe coding now turns those claims into software in a weekend, and the software makes the claim look validated.",
+      "tags": ["ai", "vibe-coding", "open-source", "social-media", "engineering"],
+      "file": "2026-09-26-herd-effect-of-vibe-coding.md"
+    },
+    {
       "slug": "when-more-precise-ai-feels-less-clear",
       "title": "When More Precise AI Feels Less Clear",
       "date": "2026-08-19",
