@@ -21,7 +21,7 @@ export const EXPERIMENTS = [
   { slug: 'brakes', draw: 'brakes', open: false, title: 'Where braking goes',
     hook: 'A disc turns motion into heat. A motor turns it back into charge.',
     tags: 'energy · regenerative braking' },
-  { slug: 'engines', draw: 'engines', open: false, title: 'Pistons vs magnets',
+  { slug: 'engines', draw: 'engines', open: true, title: 'Pistons vs magnets',
     hook: 'Thousands of small explosions against one rotating magnetic field.',
     tags: 'combustion · electric motor' },
   { slug: 'scramjet', draw: 'scramjet', open: false, title: 'Fire at Mach 6',

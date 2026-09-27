@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Pistons vs Magnets: an engine and an electric motor | Lab | Stefano Straus</title>
+  <meta name="description" content="Interactive 3D bench: a four-cylinder petrol engine and a permanent-magnet electric motor on one plinth, at the same shaft speed. Slow them down, take them apart, compare torque, efficiency and heat.">
+  <meta name="author" content="Stefano Straus">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <meta name="theme-color" content="#0d1117">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../lib/intro.css">
+  <link rel="stylesheet" href="../lib/links.css">
+  <link rel="stylesheet" href="style.css">
+  <script src="../lib/importmap.js"></script>
+  <script type="module" src="../lib/intro.js"></script>
+  <script type="module" src="../lib/links.js"></script>
+  <script type="module" src="main.js"></script>
+</head>
+<body class="loading">
+  <div id="stage"></div>
+  <div id="chips"></div>
+  <div id="object-tip" role="tooltip"></div>
+
+  <!-- Loader: the hub pen sketch of the bench draws itself as the load progresses (lab/lib/intro.js). -->
+  <div id="lab-loader" class="lab-loader" data-sketch="engines" data-seed="692"></div>
+
+  <header class="hud hud-left">
+    <p class="eyebrow">Same shaft speed, two machines</p>
+    <h1><span>Pistons</span> <strong>vs Magnets</strong></h1>
+    <p class="hook">On the left, a petrol engine: four pistons, a crank, sixteen valves and a spark every half turn. On the right, an electric motor where a turning magnetic field pulls one rotor round. Set the speed, slow time down, then take both apart.</p>
+    <div class="tiles">
+      <div class="tile"><span class="tile-label">Torque <small>Nm</small></span><span class="tile-pair"><b class="e" id="t-te">0</b><b class="m" id="t-tm">0</b></span></div>
+      <div class="tile"><span class="tile-label">Efficiency <small>%</small></span><span class="tile-pair"><b class="e" id="t-ee">0</b><b class="m" id="t-em">0</b></span></div>
+      <div class="tile"><span class="tile-label">Heat <small>kW</small></span><span class="tile-pair"><b class="e" id="t-he">0</b><b class="m" id="t-hm">0</b></span></div>
+    </div>
+    <p class="sentence glass" id="sentence" aria-live="polite"></p>
+  </header>
+
+  <section class="hud console glass" id="console" aria-label="Controls">
+    <div class="segmented" id="views" aria-label="Camera">
+      <button data-view="both" class="active">Both</button>
+      <button data-view="engine">Engine</button>
+      <button data-view="motor">Motor</button>
+    </div>
+    <div class="row-head"><span>Shaft speed</span><span class="value" id="rpm-value">0 rpm</span></div>
+    <input id="rpm" type="range" min="0" max="6500" step="50" value="1500" aria-label="Shaft speed in revolutions per minute">
+    <canvas id="torque-chart" aria-label="Torque against speed: engine in orange, motor in blue" role="img"></canvas>
+    <div class="row-foot">
+      <button class="pill" id="slow" aria-pressed="false" aria-label="Slow motion">1/10×</button>
+      <button class="pill" id="explode" aria-pressed="false">Take apart</button>
+      <button class="round" id="about-open" aria-label="How it works">?</button>
+    </div>
+  </section>
+
+  <aside class="card glass" id="card" aria-hidden="true">
+    <button class="round close" id="card-close" aria-label="Close">×</button>
+    <p class="card-kicker" id="card-kicker"></p>
+    <h2 id="card-title"></h2>
+    <dl id="card-rows"></dl>
+    <p class="card-note" id="card-note"></p>
+  </aside>
+
+  <aside class="essay glass" id="essay" aria-hidden="true">
+    <button class="round close" id="about-close" aria-label="Close">×</button>
+    <h2>How it works</h2>
+    <h3>What you are seeing</h3>
+    <p>On the left is a 2.0 litre inline four-cylinder petrol engine, cut open down the middle so you can see into the bores, the crankcase and the head. The red faces are the cut. Each cylinder repeats four strokes over two turns of the crank: intake, compression, power and exhaust. The cylinders take turns in the order 1-3-4-2, so there is one power stroke every half turn. Two camshafts, driven by a toothed belt at half the crank speed, open sixteen valves at the right moments.</p>
+    <p>On the right is a permanent-magnet synchronous motor, the kind in most electric cars, with a wedge cut out of its housing and stator. Twelve copper coils sit on the teeth of a laminated steel stator. The inverter feeds them three-phase current, so the coils switch on in turn and the magnetic pattern turns round the bore. Eight neodymium magnets on the rotor follow it. The colour on each coil shows the current: red and blue are the two directions, and the brightness is the strength.</p>
+    <h3>The numbers</h3>
+    <p>Torque, efficiency and heat in the tiles are for full throttle and full current at the speed you set. The engine curve is representative of a naturally aspirated 2.0 litre engine: about 200 Nm at its peak, nothing below idle at 800 rpm, and 27 to 34 % of the fuel energy reaching the shaft. The motor gives 250 Nm from standstill up to 3800 rpm and then constant power, with 90 to 97 % of the electrical energy reaching the shaft over most of the range. The rest is heat, in both machines. At standstill the motor still draws current to hold its torque, so all of that input is heat.</p>
+    <p>The count of moving parts is for what is modelled: the engine has <b id="e-parts">98</b> (pistons, rings, pins, rods, crank, flywheel, cams, valves, springs, retainers, buckets, belt, pulleys), the motor has one, the rotor. A real engine adds the oil pump, the alternator, the starter and the gearbox.</p>
+    <h3>What is simplified</h3>
+    <p>The curves are representative of the two classes of machine, not measurements of one product. The cylinder pressure follows a simple compression and expansion model with a burn over about 45° of crank, not measured data. The flame and the spark are drawn at the right moment of the cycle but not as a solved combustion. The inverter's own losses, 1 to 3 %, are not in the motor figure, and the engine figure does not include the gearbox.</p>
+    <p>Time runs at one tenth of real speed, or one hundredth in slow motion, so the eye can follow the parts. The tiles always show real-time values. The cut through both machines is a display cutaway: a real engine is closed, and so is a real motor.</p>
+    <h3>History</h3>
+    <p>Nikolaus Otto ran the first practical four-stroke engine in 1876, and the layout here, four cylinders in a line with overhead cams, has been the standard car engine for more than half a century. Permanent-magnet motors became practical for cars after the neodymium-iron-boron magnet was invented in 1982, and cheap power transistors made the inverter possible.</p>
+  </aside>
+
+  <nav id="lab-links" class="hud"></nav>
+  <span class="hud" id="perf"></span>
+</body>
+</html>

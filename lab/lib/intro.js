@@ -122,7 +122,15 @@ function createLoader(el) {
       draw(1);
       el.classList.add('handoff', 'done');
       console.table(rows);
-      window.__lab = { ...window.__lab, loadTimes: rows };
+      // transferSize is 0 for a response from the HTTP cache: a cold run shows the real download.
+      const resources = performance.getEntriesByType('resource');
+      const network = {
+        requests: resources.length,
+        kB: Math.round(resources.reduce((sum, r) => sum + r.transferSize, 0) / 1024),
+        lastByteMs: Math.round(Math.max(0, ...resources.map((r) => r.responseEnd))),
+      };
+      console.log('lab network', network);
+      window.__lab = { ...window.__lab, loadTimes: rows, network };
       if (window.__lab.builds?.length) console.table(window.__lab.builds); // precompile misses
       return rows;
     },
@@ -136,6 +144,19 @@ function createLoader(el) {
 }
 
 let precompiling = false;
+// Milliseconds in render() calls (node builds, pipeline requests: main thread) and waiting for the
+// GPU (driver shader compiles, the frame itself). Added to the timing rows by trackRenderer.
+const spent = { js: 0, gpu: 0 };
+function timedRender(render) {
+  const t = performance.now();
+  render();
+  spent.js += performance.now() - t;
+}
+async function timedWait(promise) {
+  const t = performance.now();
+  await promise;
+  spent.gpu += performance.now() - t;
+}
 
 /** The page's loader, started as soon as this module runs. */
 export const loader = createLoader(document.getElementById('lab-loader'));
@@ -165,6 +186,13 @@ export async function precompile(renderer, { scene, render, groups }) {
   // once per browser frame. Several renders in one browser frame would draw the scene only the
   // first time, so every other unit would skip the passes and their shadow maps and build later.
   const { nodeFrame } = renderer._nodes;
+  // three requests pipelines asynchronously (createRenderPipelineAsync on WebGPU, parallel shader
+  // compile on WebGL 2) only in compileAsync; a render creates them one by one. Here the render path
+  // requests them asynchronously too, so the driver can compile them in parallel. A draw waits for
+  // its pipeline, which does not matter behind the loader; each group then waits for all of them.
+  const pipelines = renderer._pipelines;
+  const pending = [];
+  pipelines.updateForRender = (renderObject) => pipelines.getForRender(renderObject, pending);
   let lastYield = performance.now();
   try {
     for (const [label, objects] of groups) {
@@ -186,26 +214,29 @@ export async function precompile(renderer, { scene, render, groups }) {
         chain.forEach((o) => { o.visible = true; });
         unit.frustumCulled = false;
         nodeFrame.update();
-        render();
+        timedRender(render);
         unit.frustumCulled = culled;
         chain.forEach((o) => { o.visible = false; });
         loader.progress((i + 1) / units.length);
         if (performance.now() - lastYield > 100) {
-          await gpuDone(renderer);
+          await timedWait(gpuDone(renderer));
           await nextFrame();
           lastYield = performance.now();
         }
       }
+      await timedWait(Promise.all(pending.splice(0)));
     }
   } finally {
+    delete pipelines.updateForRender; // back to the prototype method
     hidden.forEach((o) => { o.visible = true; });
     precompiling = false;
   }
 }
 
 /**
- * Timing rows get three columns: node builds (the costly JS part), GPU pipelines and programs created
- * in that step. After precompile, a step that still builds is a precompile miss: each such build is
+ * Timing rows get these columns per step: node builds, GPU pipelines and programs created, and the ms
+ * spent in render() calls (js: node builds, pipeline requests) and waiting for the GPU (gpu: driver
+ * compiles, the frames). A cold run (no GPU shader cache) against a warm one shows the driver share. After precompile, a step that still builds is a precompile miss: each such build is
  * kept on window.__lab.builds with the object (its name, or type and geometry), its nearest named
  * ancestor and the material name, and ready() prints them.
  */
@@ -227,7 +258,10 @@ function trackRenderer(renderer) {
       context: renderObject.context.id,
     });
   };
-  loader.count(() => ({ builds, pipelines: renderer._pipelines.caches.size, programs: renderer.info.memory.programs }));
+  loader.count(() => ({
+    builds, pipelines: renderer._pipelines.caches.size, programs: renderer.info.memory.programs,
+    js: Math.round(spent.js), gpu: Math.round(spent.gpu),
+  }));
   window.__lab = { ...window.__lab, builds: late };
 }
 
@@ -251,9 +285,9 @@ export async function warmUp(renderer, frames) {
   for (const [label, render] of frames) {
     loader.step(label);
     await nextFrame();
-    render(); // synchronous: the part that compiles, so the bar can only move around it
+    timedRender(render); // synchronous: the part that compiles, so the bar can only move around it
     loader.progress(0.5);
-    await gpuDone(renderer);
+    await timedWait(gpuDone(renderer));
     loader.progress(1);
   }
 }
