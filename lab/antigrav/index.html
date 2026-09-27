@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Antigrav: an orbital racer | Lab | Stefano Straus</title>
+  <meta name="description" content="An anti-gravity racer on a huge circuit in orbit, three computer ships, bolts, magnetic mines and shields.">
+  <meta name="robots" content="noindex">
+  <meta name="author" content="Stefano Straus">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <meta name="theme-color" content="#05070c">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../lib/intro.css">
+  <link rel="stylesheet" href="../lib/links.css">
+  <link rel="stylesheet" href="style.css">
+  <script src="../lib/importmap.js"></script>
+  <script type="module" src="../lib/intro.js"></script>
+  <script type="module" src="../lib/links.js"></script>
+  <script type="module" src="main.js"></script>
+</head>
+<body class="loading phase-grid">
+  <div id="stage"></div>
+
+  <!-- Loader: borrows the scramjet pen sketch until an antigrav sketch is approved. -->
+  <div id="lab-loader" class="lab-loader" data-sketch="scramjet" data-seed="13"></div>
+
+  <header class="hud hud-top">
+    <div class="brand">
+      <nav id="lab-links"></nav>
+      <h1><span>Orbital</span> <strong>Antigrav</strong></h1>
+    </div>
+    <div class="tiles">
+      <div class="tile"><span class="tile-label">Speed</span><span class="tile-value"><b id="t-speed">0</b> km/h</span></div>
+      <div class="tile"><span class="tile-label">Lap</span><span class="tile-value"><b id="t-lap">1</b>/<span id="t-laps">3</span></span></div>
+      <div class="tile"><span class="tile-label">Place</span><span class="tile-value"><b id="t-place">1</b>/<span id="t-ships">4</span></span></div>
+      <div class="tile"><span class="tile-label">Time</span><span class="tile-value"><b id="t-time">0:00.00</b></span></div>
+      <div class="tile" id="tile-item"><span class="tile-label">Item</span><span class="tile-value"><b id="t-item">–</b></span></div>
+    </div>
+    <div class="top-buttons">
+      <button class="round" id="music" aria-pressed="true" aria-label="Music">
+        <svg viewBox="0 0 24 24"><path d="M9 18V5l11-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="17" cy="16" r="3"/></svg>
+      </button>
+      <button class="round" id="mute" aria-pressed="false" aria-label="Sound">
+        <svg viewBox="0 0 24 24"><path d="M4 9h4l5-4v14l-5-4H4z"/><path class="wave" d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12"/><path class="cross" d="M16 9l6 6M22 9l-6 6"/></svg>
+      </button>
+      <button class="round" id="about-open" aria-label="How it works">?</button>
+    </div>
+  </header>
+  <p class="sentence glass hud" id="sentence" aria-live="polite"></p>
+
+  <!-- Controls: left thumb steers (airbrakes above), right thumb holds the throttle, fire beside it. -->
+  <section class="hud controls" id="controls" aria-label="Controls">
+    <div class="left-hand">
+      <div class="brakes">
+        <button class="pad brake" id="brake-l" aria-label="Left airbrake">L</button>
+        <button class="pad brake" id="brake-r" aria-label="Right airbrake">R</button>
+      </div>
+      <div class="strip steer" id="steer" aria-label="Steer"><span class="knob"></span></div>
+    </div>
+    <div class="right-hand">
+      <button class="pad fire" id="fire" aria-label="Use the item">
+        <svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-5.5 4.5L18.5 21 12 16.5 5.5 21l2-7.5L2 9h7z"/></svg>
+      </button>
+      <div class="strip throttle" id="throttle" aria-label="Throttle"><span class="fill"></span><span class="mark">Thrust</span></div>
+    </div>
+  </section>
+
+  <section class="card glass" id="grid-card" aria-label="Start">
+    <p class="card-kicker">3 laps · 7.2 km</p>
+    <h2>Four ships in orbit</h2>
+    <p class="card-note">A circuit hung in orbit above a planet: banked sweepers, a 100 m drop, a crest that throws fast ships into the air, two loops, two corkscrews and a tunnel through a ring station. Glowing pads give a bolt, a magnetic mine or a shield.</p>
+    <div class="segmented" id="difficulty" aria-label="Opponents">
+      <button data-level="easy">Easy</button>
+      <button data-level="pro" class="active">Pro</button>
+    </div>
+    <button class="go" id="race">Race</button>
+  </section>
+
+  <section class="card glass" id="finish-card" aria-label="Results" aria-hidden="true">
+    <p class="card-kicker" id="finish-kicker">Finish</p>
+    <h2 id="finish-title"></h2>
+    <table id="finish-table"></table>
+    <p class="card-note" id="finish-best"></p>
+    <button class="go" id="again">Race again</button>
+  </section>
+
+  <div class="turn" id="turn" aria-hidden="true">
+    <svg viewBox="0 0 64 64"><rect x="20" y="8" width="24" height="44" rx="4"/><path d="M50 40a18 18 0 0 1-18 18M36 54l-4 4 4 4"/></svg>
+    <p>Turn your phone sideways to race.</p>
+  </div>
+
+  <aside class="essay glass" id="essay" aria-hidden="true">
+    <button class="round close" id="about-close" aria-label="Close">×</button>
+    <h2>How it works</h2>
+    <h3>What you are flying</h3>
+    <p>An anti-gravity racer on a circuit in orbit. There is no gravity up here: the ship floats on the track's field, which holds it at a hover height of 1.2 m like a stiff, damped spring. That is why the loops and the corkscrews work at any speed, why the banked sweepers press you into the deck, and why a crest taken fast enough throws you off into free flight until the field catches you again.</p>
+    <h3>The handling model</h3>
+    <p>The ship lives in track coordinates: distance along the centre line, offset to the side, height above the deck. The throttle is absolute: its position is the thrust, 45 m/s² at full, against a drag that caps the top speed at 140 m/s (504 km/h). Steering sets a yaw rate that the hull reaches with a short lag. The velocity keeps its direction until grip bends it round, so the ship slides; an airbrake adds drag, yaws the nose toward its side and lowers the grip, which is how you turn a hairpin at speed. Part of the slide energy comes back as forward speed. Walls reflect the sideways speed weakly and cost forward speed; grinding along them costs more. The grip comes from the field, so in the air it drops to a third, like the steering, and a jump keeps its drift: a ship higher than the wall top (3.3 m) that drifts past it leaves the track. Nothing holds it out there, and after 1.5 s it is put back where it left, centred and slow, about 3.3 s down at racing speed. Contact between ships costs each of them speed, a quarter second of thrust and a wobble unless a shield is up, once per contact; the one behind is held to the speed of the one in front and never pushes it along.</p>
+    <h3>What is invented</h3>
+    <p>No published source gives the handling formulas of the games in this genre, so the numbers are mine, tuned for feel: the hover spring (1.3 Hz, damping 0.55, stiffening close to the deck), the grip rates, the airbrake yaw. The field's reach (4 m) and its weak pull beyond are chosen so the crest launches ships above about 110 m/s. Nothing here claims to be real anti-gravity physics; it is a consistent toy world in which banking, loops and jumps follow from one rule.</p>
+    <h3>Items</h3>
+    <p>A purple pad gives one item if you hold none; the draw favours bolts for the ships behind and mines and shields for the leader. A bolt flies along the track at 320 m/s and homes weakly on the first ship ahead: a hit halves its speed and cuts its thrust for 0.6 s. A magnetic mine lies on the deck for 25 s and drags a ship that passes within 4 m for 1.8 s. A shield absorbs one hit for 4 s. Every hit is followed by 1.8 s of immunity. Measured in the tests, a hit costs a ship between 1 and 2 s.</p>
+    <h3>The other ships</h3>
+    <p>Each computer pilot follows a racing line computed once for the circuit: it leans toward the inside of the curvature ahead and keeps the speed the yaw budget allows, with braking zones in front of the tight parts. It steers with the same controls you have, makes a random error on every 250 m stretch, and can hit the walls. It uses its items when they help: a shield when a bolt or a mine is coming, a mine when a ship sits on its tail, a bolt when a target is in reach. Easy pilots react later and drive slower.</p>
+    <h3>Sound and music</h3>
+    <h3>What you see around the circuit</h3>
+    <p>The backdrop is art, not astronomy. The Milky Way, three nebulae, five faint galaxies, a ringed planet, its moon and a gas giant are painted once into a sky map at load; three shells of stars at 1.8, 3.4 and 6 km, rocks near the track, a shipyard, a far circuit and its traffic are real geometry, so they move against each other as you fly. The sun flare and its ghosts dim when the deck or the station hides the sun, and light shafts show while it is half hidden; they are a camera effect, not light in the scene. The blur and the widening view at speed are camera effects too.</p>
+    <h3>Sound and music</h3>
+    <p>Space is silent, so what you hear is the cockpit playing back its sensors. Your engine is synthesized, with no recording: a turbine whine of pure tones whose pitch follows the speed, the air of its blades an octave up, a sub tone and a low rumble that follow the thrust, the field's electric hum, and a rush of air that rises with speed. The whine is kept quiet at the top of its range so it does not tire the ear over three laps. Boosts, pass-bys and the mine crackle are synthesized noise sweeps; the other ships play a recorded engine and shift gently in pitch as they close or pull away. All recorded effects are CC0 recordings by Kenney (kenney.nl) and from OpenGameArt. Music: "Winning the Race" by section31 (CC0), "Hyperflight Racing" and "Hyper Ultra-Racing" by cynicmusic (cynicmusic.com, pixelsphere.org, CC0). The full list with sources is in <a href="audio/CREDITS.md">audio/CREDITS.md</a>.</p>
+  </aside>
+
+  <footer class="hud footer-left"><span id="perf"></span></footer>
+</body>
+</html>

@@ -43,6 +43,12 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://straus.it/lab/antigrav/</loc>
+    <lastmod>2026-09-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://straus.it/feed.xml</loc>
     <lastmod>2026-09-26</lastmod>
     <changefreq>weekly</changefreq>

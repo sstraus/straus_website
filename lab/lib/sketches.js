@@ -379,6 +379,35 @@ export function engines(p) {
   p.text(300, 234, 'magnets', { tone: 'blue', anchor: 'middle' });
 }
 
+export function antigrav(p) {
+  p.ellipse(90, 270, 80, 60, { from: 3.7, to: 5.4, tone: 'faint' });
+  p.ellipse(90, 270, 70, 50, { from: 3.8, to: 5.3, tone: 'faint', passes: 1 });
+  p.smooth([[20, 240], [120, 170], [200, 120], [250, 96], [300, 70]], { width: 1.7 });
+  p.smooth([[380, 240], [300, 170], [258, 124], [262, 100], [306, 74]], { width: 1.7 });
+  p.smooth([[40, 226], [130, 162], [204, 114], [254, 92], [301, 68]], { tone: 'blue', passes: 1 });
+  p.smooth([[362, 228], [290, 162], [254, 120], [258, 96], [305, 70]], { tone: 'blue', passes: 1 });
+  for (const [a, b] of [[[118, 206], [140, 196]], [[176, 168], [190, 160]], [[216, 138], [224, 132]], [[244, 118], [248, 114]]]) {
+    p.line(...a, ...b, { tone: 'faint', passes: 1, overshoot: 0 });
+  }
+  p.ellipse(330, 50, 22, 26, { width: 1.4 });
+  p.ellipse(330, 50, 17, 21, { tone: 'faint', passes: 1 });
+  p.group('rock-small', () => {
+    p.shape([[200, 158], [150, 196], [172, 204], [228, 204], [250, 196]], { closed: true, sharp: true, width: 1.8 });
+    p.line(200, 158, 200, 200, { tone: 'faint' });
+    p.shape([[192, 176], [200, 166], [208, 176]], { closed: true, sharp: true, tone: 'blue' });
+    p.line(160, 194, 156, 180);
+    p.line(240, 194, 244, 180);
+    p.hatch([[172, 206], [228, 206], [236, 214], [164, 214]], { gap: 7, angle: 90, tone: 'blue' });
+  }, { origin: [200, 190] });
+  p.group('flicker', () => {
+    for (const x of [178, 200, 222]) p.line(x, 204, x, 234, { tone: 'orange', passes: 1 });
+  });
+  for (const [x0, y0, x1, y1] of [[60, 140, 120, 118], [70, 110, 130, 96], [340, 140, 290, 122], [350, 112, 296, 100]]) {
+    p.line(x0, y0, x1, y1, { tone: 'faint', dash: true, flow: true, passes: 1 });
+  }
+  p.text(110, 244, 'hover field', { tone: 'blue', anchor: 'middle' });
+  p.text(362, 40, 'loop', { anchor: 'start' });
+}
 
 export function gpsIns(p) {
   for (const [x, y] of [[62, 40], [160, 24], [262, 36]]) {
