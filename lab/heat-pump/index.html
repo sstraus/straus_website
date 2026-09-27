@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>The Heat Pump | Lab | Stefano Straus</title>
+  <meta name="description" content="A propane heat pump and the house it heats, cut open. Make it colder outside and watch where the heat comes from, how the compressor lifts it and where it goes in the room. Switch to summer and watch the same circuit run backwards.">
+  <meta name="author" content="Stefano Straus">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <meta name="theme-color" content="#040507">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../lib/intro.css">
+  <link rel="stylesheet" href="../lib/links.css">
+  <link rel="stylesheet" href="style.css">
+  <script src="../lib/importmap.js"></script>
+  <script type="module" src="../lib/intro.js"></script>
+  <script type="module" src="../lib/links.js"></script>
+  <script type="module" src="main.js"></script>
+</head>
+<body class="loading">
+  <div id="stage"></div>
+
+  <!-- Loader: the hub pen sketch of the bench draws itself as the load progresses (lab/lib/intro.js). -->
+  <div id="lab-loader" class="lab-loader" data-sketch="heatPump" data-seed="304"></div>
+
+  <header class="hero">
+    <nav id="lab-links"></nav>
+    <h1><span>The heat</span><strong>Pump</strong></h1>
+    <p class="hook">Heat from cold air, pumped uphill into a warm house. In summer, the same loop run backwards.</p>
+    <div class="tiles">
+      <div class="tile"><span class="tile-label">Outside</span><span class="tile-value" id="m-outside">−7 °C</span></div>
+      <div class="tile"><span class="tile-label" id="m-eff-label">COP</span><span class="tile-value" id="m-eff">—</span></div>
+      <div class="tile"><span class="tile-label">Compressor</span><span class="tile-value" id="m-hz">—</span></div>
+    </div>
+    <p class="sentence glass" id="sentence" aria-live="polite">&nbsp;</p>
+  </header>
+
+  <div class="tag" id="tag-0" hidden></div>
+  <div class="tag" id="tag-1" hidden></div>
+  <div class="tag" id="tag-2" hidden></div>
+
+  <section class="console glass" aria-label="Controls">
+    <div class="slider-row">
+      <span class="label">Outside</span>
+      <input id="slider" type="range" min="-20" max="15" step="1" value="-7" aria-label="Outside temperature in degrees Celsius">
+      <span class="value" id="outside-value">−7 °C</span>
+    </div>
+    <div class="pair">
+      <div class="segmented" aria-label="Season">
+        <button data-season="winter">Winter</button>
+        <button data-season="summer">Summer</button>
+      </div>
+      <div class="segmented" aria-label="Outside presets">
+        <button data-preset="0"></button>
+        <button data-preset="1"></button>
+        <button data-preset="2"></button>
+      </div>
+    </div>
+    <div class="pair split">
+      <div class="segmented" aria-label="Emitter">
+        <button data-mode="floor" id="mode-floor">Floor 35°</button>
+        <button data-mode="radiator">Radiator 55°</button>
+      </div>
+      <button class="tool" id="view">View · <span id="view-name">Overview</span></button>
+    </div>
+    <div class="duo">
+      <button class="tool" id="thermal" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a3 3 0 0 0-3 3v9.1a5 5 0 1 0 6 0V5a3 3 0 0 0-3-3zm0 18a3 3 0 0 1-1.5-5.6l.5-.3V5a1 1 0 0 1 2 0v9.1l.5.3A3 3 0 0 1 12 20z"/></svg>
+        Thermal
+      </button>
+      <button class="tool" id="open" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h16v11H4zM6 4h12l2 3H4z"/></svg>
+        Open unit
+      </button>
+    </div>
+  </section>
+
+  <section class="legend glass" id="legend" aria-label="Thermal scale" hidden>
+    <span id="legend-lo"></span><i id="legend-bar"></i><span id="legend-hi"></span>
+  </section>
+
+  <section class="card glass" id="card" aria-live="polite" hidden>
+    <button class="close" id="card-close" aria-label="Close">×</button>
+    <h3 id="card-title"></h3>
+    <p id="card-text"></p>
+    <dl id="card-rows"></dl>
+  </section>
+
+  <div id="object-tip" class="object-tip glass" role="tooltip" hidden>
+    <span id="tip-text"></span>
+    <button id="tip-open">Details ›</button>
+  </div>
+
+  <nav class="corner">
+    <span class="stats" id="stats"></span>
+    <button id="info" class="icon" aria-label="The physics">?</button>
+  </nav>
+
+  <aside class="essay glass" id="essay" aria-hidden="true">
+    <button class="close" id="essay-close" aria-label="Close">×</button>
+    <h2>What you are looking at</h2>
+    <p>A house cut in half, from the garden to the living room. Outside stands a monoblock heat pump: every part that holds refrigerant is sealed in that one box, so only water and electricity cross into the house. A pre-insulated twin pipe carries the water through a trench below the frost line and through a sleeve in the foundation to a manifold, and from there into a loop under the floor or into a radiator. Open the unit to see the circuit: the points of light inside the copper are the refrigerant, a dense crowd where it is liquid and a few fast points where it is vapour, blue when cold and red when hot.</p>
+    <h2>How heat goes uphill</h2>
+    <p>Inside the unit, propane (R290) goes round a loop. In the finned coil it boils at a temperature below the outside air, so even at −20 °C heat flows from the air into it. The compressor squeezes the vapour to a higher pressure, and that raises its temperature. In the plate exchanger it condenses above the temperature of the heating water and gives up its heat. The expansion valve drops the pressure again and the loop starts over. The electricity pays only for the lift, not for the heat, so every kilowatt-hour of electricity delivers three or four of heat.</p>
+    <h2>Summer: the same loop, backwards</h2>
+    <p>Nothing in a heat pump knows which side is warm. A four-way valve right after the compressor decides where the hot gas goes. In winter it goes to the plate exchanger, condenses there and heats the water, while the outdoor coil is the evaporator. Switch to summer and a slider inside the valve moves over: the hot gas now goes to the coil outside, condenses above the garden air and the fan blows that heat away as warm air. The plate becomes the evaporator: propane boils in it at about 13 °C and chills the water to 18 °C. The expansion valve still sits between the two exchangers; it now takes liquid from the coil and feeds the plate. The four pipes between the valve and the exchangers carry the flow the other way, while the compressor still pumps in its one direction. The ideal cooling efficiency is the Carnot EER, T<sub>cold</sub> / (T<sub>hot</sub> − T<sub>cold</sub>), and at A35/W18 a real unit reaches about 4.5 of it. The heat thrown into the garden is the heat taken from the house plus the electricity.</p>
+    <p>The floor cools with 18 °C water that comes back at 21 °C. It must not go lower: at 26 °C and 55 % relative humidity the dew point of the room air is about 16 °C, and a floor below it collects condensate. Cooling floors therefore run with a dew-point sensor that raises the flow temperature when the air gets humid. They also cool far less than they heat, about 7 W/m² per kelvin against 11, because cold air stays on the floor instead of rising. The radiator cannot cool at all.</p>
+    <p>The changeover is itself worth watching. The unit first slows the compressor to a stop, because the slider is moved by the pressure difference and only switches cleanly when there is little of it. Then the valve moves, the flow restarts in the other direction, the water temperatures cross over (the water pipes turn from orange, heating, to blue, cooling) and the fan starts to blow warm air instead of cold. Tap the season again to skip it.</p>
+    <h2>The inverter</h2>
+    <p>A house needs a lot of heat at −20 °C and very little at +10 °C. An old heat pump ran at one speed and switched on and off to match. An inverter instead turns the mains into a variable frequency for the compressor motor, here between 20 and 90 Hz, so the compressor runs as fast as the load needs: the house loses 0.2 kW for every kelvin between inside and outside, and at full speed the unit moves 8.5 kW. At +7 °C it turns slowly at about 28 Hz, at −20 °C it runs near its limit. A slow compressor is quieter, wears less and is more efficient, because the exchangers are oversized for the small flow of refrigerant. In summer the load is the heat that comes through the walls when the air is hotter than the room, plus the sun through the glazing and a hot roof. That second part is an assumption, not a solar model: nothing at 20 °C, rising to 2.5 kW at 35 °C. With it the compressor turns at 20 Hz at +25 °C, about 26 Hz at +30 °C and about 46 Hz at +35 °C.</p>
+    <h2>Why the floor wins</h2>
+    <p>The bigger the lift, the more work per unit of heat. The ideal limit is the Carnot COP, T<sub>hot</sub> / (T<sub>hot</sub> − T<sub>cold</sub>) in kelvin. A floor heats a whole room with 35 °C water; a radiator needs 55 °C for the same room, and that costs about a third of the efficiency. The thermal view shows why: the floor is a large, barely warm surface, the radiator a small hot one that works mostly by a plume of warm air.</p>
+    <h2>How honest is this</h2>
+    <p>The cycle is a steady-state model: the refrigerant evaporates 8 K below the air and condenses 5 K above the flow water, and the unit reaches half of the Carnot COP, which reproduces EN 14511 ratings (about 3.8 at A7/W35 and 2.9 at A−7/W35). R290 pressures come from a fit to the NIST tables. The house loses 0.2 kW per kelvin. Wall temperatures follow from the layer conductivities and the surface resistances of EN ISO 6946; the floor surface from the EN 1264 curve; the soil from a steady exponential damping of the air temperature. In summer the refrigerant evaporates 5 K below the chilled water and condenses 10 K above the air; the cooling load is the heat through the walls plus an assumed solar and roof gain that grows linearly from 0 kW at 20 °C to 2.5 kW at 35 °C, and the dew point comes from the Magnus formula. The compressor frequency is proportional to the load. Not modelled: defrost cycles, on-off cycling below 20 Hz, the sun's position and the orientation of the windows, the heat stored in the screed, and the timing of a real changeover, which the show slows down to a few seconds. The streaks show air only; heat itself is shown on the surfaces.</p>
+    <h2>Where it comes from</h2>
+    <p>William Thomson, later Lord Kelvin, described the heat pump in 1852. The first large one heated Zürich's city hall from 1938, with water from the Limmat as the source. Propane is back because it barely warms the climate: a global warming potential of about 3, against 2088 for the R410A it replaces.</p>
+  </aside>
+</body>
+</html>

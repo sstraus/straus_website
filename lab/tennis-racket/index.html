@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>The Tennis Racket Effect | Lab | Stefano Straus</title>
+  <meta name="description" content="Throw a tennis racket in slow motion under floodlights. Spin it about its middle axis and it turns over on its own: the intermediate axis theorem, live in 3D.">
+  <meta name="author" content="Stefano Straus">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <meta name="theme-color" content="#0d1117">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../lib/intro.css">
+  <link rel="stylesheet" href="../lib/links.css">
+  <link rel="stylesheet" href="style.css">
+  <script src="../lib/importmap.js"></script>
+  <script type="module" src="../lib/intro.js"></script>
+  <script type="module" src="../lib/links.js"></script>
+  <script type="module" src="main.js"></script>
+</head>
+<body>
+  <div id="stage"></div>
+
+  <!-- Loader: the hub pen sketch of the bench draws itself as the load progresses (lab/lib/intro.js). -->
+  <div id="lab-loader" class="lab-loader" data-sketch="tennisRacket" data-seed="13"></div>
+
+  <header class="hero">
+    <p class="kicker">The tennis</p>
+    <h1>Racket effect</h1>
+    <p class="hook">Throw a racket spinning about its middle axis and it comes back turned over. Every time. Nothing pushes it.</p>
+    <div class="tiles">
+      <div class="tile"><span class="tile-label">Twist</span><span class="tile-value" id="m-twist">0°</span></div>
+      <div class="tile"><span class="tile-label">Flips</span><span class="tile-value" id="m-flips">0</span></div>
+      <div class="tile"><span class="tile-label">Spin</span><span class="tile-value" id="m-spin">1.0 rev/s</span></div>
+    </div>
+    <p class="live" id="live" aria-live="polite">Setting up the court.</p>
+  </header>
+
+  <aside class="console glass" aria-label="Controls">
+    <div class="row">
+      <span class="label">Spin axis</span>
+    </div>
+    <div class="segmented" id="axis">
+      <button data-axis="handle"><i class="dot calm"></i>Handle</button>
+      <button data-axis="middle" class="on"><i class="dot wild"></i>Middle</button>
+      <button data-axis="face"><i class="dot calm"></i>Face</button>
+    </div>
+    <div class="row two">
+      <div>
+        <div class="row"><span class="label">World</span></div>
+        <div class="segmented" id="world">
+          <button data-world="court" class="on">Court</button>
+          <button data-world="zero-g">Zero-g</button>
+        </div>
+      </div>
+      <div>
+        <div class="row"><span class="label">Spin</span><span class="value" id="spin-value">1.0 rev/s</span></div>
+        <input id="spin" type="range" min="0.5" max="3" step="0.1" value="1" aria-label="Spin rate in revolutions per second">
+      </div>
+    </div>
+    <div class="actions">
+      <button id="throw" class="primary">Throw</button>
+      <button id="camera" class="icon" title="Change camera" aria-label="Change camera">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M4 7h11a2 2 0 0 1 2 2v1.5l4-2.5v8l-4-2.5V15a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2z"/></svg>
+      </button>
+      <button id="about" class="icon" title="How it works" aria-label="How it works">?</button>
+    </div>
+  </aside>
+
+  <article class="essay glass" id="essay" hidden>
+    <button class="close" id="essay-close" aria-label="Close">×</button>
+    <h2>What you are watching</h2>
+    <p>A racket is thrown with a spin about one of its three principal axes: along the handle, across the head, or through the strings. The ghosts are exposures taken at equal time steps, like a stroboscope photo, and the thin blue ring marks the angular momentum, which stays fixed in space. About the handle and through the strings the spin stays regular. About the middle axis, the one across the head, the racket makes a half turn about its handle while it flies: the red face ends up where the white face was.</p>
+    <h2>Why the middle one</h2>
+    <p>This is the intermediate axis theorem. With no torque, two things are fixed: the angular momentum and the kinetic energy. Together they confine the spin to a curve on the body. Near the largest and the smallest inertia that curve is a small loop, so a small wobble stays small. Near the middle inertia the curve runs away to the opposite side, so the wobble grows as e<sup>λt</sup>, with λ = Ω·√((I<sub>x</sub>−I<sub>y</sub>)(I<sub>y</sub>−I<sub>z</sub>)/(I<sub>x</sub>I<sub>z</sub>)). Spin faster and it flips sooner. In zero-g nothing ends the flight, so the same racket flips back and forth for ever.</p>
+    <h2>What is modelled</h2>
+    <p>The exact torque-free Euler equations, integrated with RK4 at 2400 steps per simulated second. The inertia ratios of a real racket from Mardešić et al., PRL 125, 064301 (2020): I<sub>x</sub> : I<sub>y</sub> : I<sub>z</sub> = 14.4 : 13.5 : 1. Gravity acts on the centre of mass only and gives no torque about it, so the flight is a parabola and the rotation is untouched. The throw has a 3% error in the direction of the angular momentum, as a hand would. The face axis can wobble up to about 26° because I<sub>x</sub> and I<sub>y</sub> differ by only 6%: stable, but soft.</p>
+    <h2>What is simplified</h2>
+    <p>No air: a real racket also feels drag and a small aerodynamic torque. The inertia comes from the measured ratios, not from the drawn racket. Time runs at one fifth of real speed, and slows down a little more while the racket turns over, so you can follow the flip. On a phone the throw is steeper to fit the screen; the horizontal speed changes only the shape of the parabola, not the rotation or the time in the air.</p>
+    <h2>A short history</h2>
+    <p>Euler wrote the equations of a spinning body in 1765, and Poinsot drew their geometry in 1834: the instability of the middle axis is in both. It became famous in 1985, when the cosmonaut Vladimir Dzhanibekov, in orbit on Salyut 7, saw a wingnut spin off its bolt and turn over at regular intervals, again and again. In 1991 Ashbaugh, Chicone and Cushman studied the twist of a thrown racket in "The twisting tennis racket". In 2020 Mardešić and colleagues showed in Physical Review Letters that the twist has a geometric origin, proved that it becomes a perfect half turn in the limit of an ideal asymmetric body, and gave bounds on how far a real body misses it. A tennis racket misses by very little, which is why the flip looks so clean.</p>
+  </article>
+
+  <footer class="corner">
+    <span class="stats" id="stats"></span>
+    <nav id="lab-links"></nav>
+  </footer>
+</body>
+</html>

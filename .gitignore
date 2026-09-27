@@ -8,3 +8,5 @@ package-lock.json
 test-results
 .codex
 .wiz
+.codex/**
+.mdkb/**

@@ -2,7 +2,7 @@ REMOTE = stefano@100.86.23.27
 REMOTE_DIR = /volume1/web/me
 
 DEPLOY_FILES = index.html favicon.svg robots.txt sitemap.xml feed.xml 404.html CNAME .nojekyll
-DEPLOY_DIRS = css js content img vendor blog apps
+DEPLOY_DIRS = css js content img vendor blog apps lab
 
 .PHONY: generate deploy serve
 
@@ -15,7 +15,7 @@ generate:
 deploy: generate
 	@echo "Deploying to $(REMOTE):$(REMOTE_DIR)..."
 	ssh $(REMOTE) 'cd $(REMOTE_DIR) && find . -maxdepth 1 ! -name apps ! -name . -exec rm -rf {} +'
-	tar cf - $(DEPLOY_FILES) $(DEPLOY_DIRS) | ssh $(REMOTE) 'cd $(REMOTE_DIR) && tar xf -'
+	tar cf - --exclude lab/proto $(DEPLOY_FILES) $(DEPLOY_DIRS) | ssh $(REMOTE) 'cd $(REMOTE_DIR) && tar xf -'
 	@echo "Done."
 
 # Local dev server

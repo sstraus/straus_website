@@ -1,0 +1,15 @@
+/* Shared "← Lab" + "Follow for more" links (lab/lib/links.js). */
+.lab-links { display: flex; align-items: center; gap: 14px; font: 500 12px/1 'JetBrains Mono', ui-monospace, monospace; }
+.lab-back { color: #8b949e; text-decoration: none; padding: 10px 4px; }
+.lab-back:hover { color: #79c0ff; }
+.lab-follow {
+  display: inline-flex; align-items: center; gap: 8px;
+  min-height: 36px; padding: 0 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(121, 192, 255, 0.45);
+  background: rgba(88, 166, 255, 0.14);
+  color: #e6edf3; text-decoration: none; font-weight: 600;
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  transition: background 0.25s, border-color 0.25s;
+}
+.lab-follow:hover { background: rgba(88, 166, 255, 0.26); border-color: rgba(121, 192, 255, 0.8); }

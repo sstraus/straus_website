@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Lab | Stefano Straus</title>
+  <meta name="description" content="Interactive 3D physics experiments built by Claude Opus 5.5: not videos, but complete worlds that run live in the browser. Orbit them, open them up, change the physics.">
+  <meta name="author" content="Stefano Straus">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <meta name="theme-color" content="#0d1117">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="hub.css">
+  <link rel="stylesheet" href="lib/links.css">
+  <script type="module" src="lib/links.js"></script>
+  <script type="module" src="hub.js"></script>
+</head>
+<body>
+  <svg width="0" height="0" aria-hidden="true" style="position:absolute">
+    <filter id="ink" x="-5%" y="-5%" width="110%" height="110%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="4" result="grain"/>
+      <feDisplacementMap in="SourceGraphic" in2="grain" scale="1.6" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+  </svg>
+
+  <header class="hero">
+    <a class="eyebrow" href="/">straus.it / lab</a>
+    <h1>The <em>Lab</em></h1>
+    <p class="lede">Physics you can walk around in. Every experiment here was built by
+      <strong>Claude Opus 5.5</strong>, with me as the director.</p>
+    <p class="why">These are not rendered videos. Each one is a complete three-dimensional world
+      that runs live in your browser: you orbit it, zoom into any part, open it up and change the
+      physics while it runs. I asked for cinematic quality and pushed the model as far as it goes,
+      because an interactive world you can explore is what a video can never give you.</p>
+    <ul class="facts">
+      <li><b>Live 3D</b> WebGPU, rendered as you watch</li>
+      <li><b>Touch every part</b> each one opens its own card</li>
+      <li><b>Real physics</b> tested in code, with the honest limits</li>
+    </ul>
+    <nav id="lab-links" data-back="false"></nav>
+  </header>
+
+  <main>
+    <h2 class="section">On the bench</h2>
+    <div class="grid" id="open"></div>
+
+    <h2 class="section">On the drawing board</h2>
+    <div class="grid" id="soon"></div>
+  </main>
+
+  <footer class="foot">
+    <a href="/">straus.it</a>
+  </footer>
+</body>
+</html>
