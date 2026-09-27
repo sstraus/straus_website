@@ -11,10 +11,19 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="hub.css">
-  <link rel="stylesheet" href="lib/links.css">
-  <script type="module" src="lib/links.js"></script>
-  <script type="module" src="hub.js"></script>
+  <!-- ?v= = the site version: a deploy changes every URL, so no browser keeps a stale card list.
+       The import map versions the modules that hub.js imports without a query. -->
+  <script type="importmap">
+    { "imports": {
+      "/lab/experiments.js": "/lab/experiments.js?v=1.7.2",
+      "/lab/lib/sketches.js": "/lab/lib/sketches.js?v=1.7.2",
+      "/lab/lib/sketch.js": "/lab/lib/sketch.js?v=1.7.2"
+    } }
+  </script>
+  <link rel="stylesheet" href="hub.css?v=1.7.2">
+  <link rel="stylesheet" href="lib/links.css?v=1.7.2">
+  <script type="module" src="lib/links.js?v=1.7.2"></script>
+  <script type="module" src="hub.js?v=1.7.2"></script>
 </head>
 <body>
   <svg width="0" height="0" aria-hidden="true" style="position:absolute">

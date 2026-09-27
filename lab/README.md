@@ -37,6 +37,6 @@ rules, loader standard, links, pan, techniques and lessons learned).
 1. Move `proto/<name>/` to `lab/<name>/` and change `../../lib/` to `../lib/`.
 2. Set `open: true` for it in `experiments.js`.
 3. Add the URL to `sitemap.xml` and to the Lab list in the site `index.html`, and bump the
-   site version (see the project `AGENTS.md`).
+   site version (see the project `AGENTS.md`), also in every `?v=` of `lab/index.html`.
 4. Run `node --test lab/ tests/lab/` and check the page in a browser: WebGPU and `?webgl`,
    a 390×844 phone and a desktop window, and a resize after load.
