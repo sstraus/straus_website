@@ -1,6 +1,14 @@
 {
   "articles": [
     {
+      "slug": "insulting-claude-usage-policy",
+      "title": "Insulting Claude Is Now a Usage Policy Question",
+      "date": "2026-10-10",
+      "description": "Anthropic now forbids sustained abuse of Claude, right after 5.5 fixed the behaviour that made people angry. The policy looks like insurance for the next bad release, and the classifier behind it raises real questions about training opt-outs and retention.",
+      "tags": ["ai", "claude", "anthropic", "privacy", "policy"],
+      "file": "2026-10-10-insulting-claude-usage-policy.md"
+    },
+    {
       "slug": "herd-effect-of-vibe-coding",
       "title": "The Herd Effect of Vibe Coding",
       "date": "2026-09-26",
