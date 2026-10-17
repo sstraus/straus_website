@@ -1,0 +1,80 @@
+/* Shared frame for the Gemini 4 Argon post cards (1200x675, rendered to PNG). */
+:root {
+  --surface: #0d1117;
+  --text: #f0f6fc;
+  --text-2: #c9d1d9;
+  --muted: #8b949e;
+  --rule: #30363d;
+  --grid: #21262d;
+  --argon: #3987e5;
+  --opus: #d95926;
+  --astra: #199e70;
+  --other: #6e7681;
+  --good: #3fb950;
+  --warn: #d29922;
+  --bad: #f85149;
+}
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 1200px;
+  height: 675px;
+  overflow: hidden;
+  background: var(--surface);
+  color: var(--text-2);
+  font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+.card {
+  box-sizing: border-box;
+  width: 1200px;
+  height: 675px;
+  padding: 36px 44px 28px;
+  display: flex;
+  flex-direction: column;
+}
+.kicker {
+  color: var(--muted);
+  font-size: 15px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+h1 {
+  margin: 0 0 8px;
+  font-size: 30px;
+  line-height: 1.2;
+  color: var(--text);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+.sub {
+  color: var(--muted);
+  font-size: 15px;
+  margin-bottom: 18px;
+}
+.legend {
+  display: flex;
+  gap: 24px;
+  font-size: 14px;
+  color: var(--text-2);
+}
+.legend span::before {
+  content: '';
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin-right: 8px;
+  vertical-align: -1px;
+  background: var(--c);
+}
+svg text { font-family: inherit; }
+.foot {
+  margin-top: auto;
+  display: flex;
+  justify-content: space-between;
+  color: var(--muted);
+  font-size: 13px;
+  padding-top: 12px;
+}
+.foot strong { color: #79c0ff; font-weight: 400; }

@@ -1,12 +1,28 @@
 {
   "articles": [
     {
+      "slug": "open-source-but-not-if-you-use-ai",
+      "title": "Open Source, But Not If You Use AI",
+      "date": "2026-10-17",
+      "description": "New experimental licences forbid modifying code with Claude Code or Codex, others restrict AI training and AI products, and one proposal tackles copyright in AI-generated code. What they cover, why enforcement is hard, and what it means for agentic IDEs.",
+      "tags": ["ai", "open-source", "licensing", "coding-agents", "legal"],
+      "file": "2026-10-17-open-source-but-not-if-you-use-ai.md"
+    },
+    {
       "slug": "french-supermarket-fridge-hack",
       "title": "The French Fridge Hack Is Not About the Fridge",
       "date": "2026-10-14",
       "description": "Around 700 French supermarkets lost their refrigeration to compromised Danfoss and Copeland controllers. The real lesson is asset intelligence, and an economic gap that AI keeps widening: finding old equipment gets cheaper while replacing it does not.",
       "tags": ["security", "iot", "ot", "ai", "asset-management"],
       "file": "2026-10-14-french-supermarket-fridge-hack.md"
+    },
+    {
+      "slug": "gemini-4-argon-no-single-ranking",
+      "title": "Gemini 4 Argon Changes the Ranking, but There Is No Longer One Ranking",
+      "date": "2026-10-10",
+      "description": "Gemini 4 Argon leads the Vals Index and Finance Agent v2, ties Astra on Artificial Analysis and finishes seventh of eight on CUA-bench. A source-checked look at why a single frontier ranking no longer works.",
+      "tags": ["ai", "llm", "gemini", "claude", "gpt", "benchmarks"],
+      "file": "2026-10-10-gemini-4-argon-no-single-ranking.md"
     },
     {
       "slug": "insulting-claude-usage-policy",

@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en" class="reader">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <!-- Same theme preference as the terminal; applied before paint -->
+  <script>
+    try {
+      if (localStorage.getItem('straus-terminal-theme') === 'light') {
+        document.documentElement.classList.add('light-theme');
+      }
+    } catch (e) {}
+  </script>
+  <title>Gemini 4 Argon Changes the Ranking, but There Is No Longer One Ranking | Stefano Straus</title>
+  <meta name="description" content="Gemini 4 Argon leads the Vals Index and Finance Agent v2, ties Astra on Artificial Analysis and finishes seventh of eight on CUA-bench. A source-checked look at why a single frontier ranking no longer works.">
+  <meta name="author" content="Stefano Straus">
+  <link rel="canonical" href="https://straus.it/blog/gemini-4-argon-no-single-ranking/">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/rss+xml" title="Stefano Straus" href="/feed.xml">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Gemini 4 Argon Changes the Ranking, but There Is No Longer One Ranking">
+  <meta property="og:description" content="Gemini 4 Argon leads the Vals Index and Finance Agent v2, ties Astra on Artificial Analysis and finishes seventh of eight on CUA-bench. A source-checked look at why a single frontier ranking no longer works.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://straus.it/blog/gemini-4-argon-no-single-ranking/">
+  <meta property="og:image" content="https://straus.it/img/profile.jpg">
+  <meta property="og:image:alt" content="Stefano Straus">
+  <meta property="og:site_name" content="Stefano Straus">
+  <meta property="article:published_time" content="2026-10-10">
+  <meta property="article:author" content="https://straus.it">
+  <meta property="article:tag" content="ai">
+  <meta property="article:tag" content="llm">
+  <meta property="article:tag" content="gemini">
+  <meta property="article:tag" content="claude">
+  <meta property="article:tag" content="gpt">
+  <meta property="article:tag" content="benchmarks">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@StefanoStraus">
+  <meta name="twitter:title" content="Gemini 4 Argon Changes the Ranking, but There Is No Longer One Ranking">
+  <meta name="twitter:description" content="Gemini 4 Argon leads the Vals Index and Finance Agent v2, ties Astra on Artificial Analysis and finishes seventh of eight on CUA-bench. A source-checked look at why a single frontier ranking no longer works.">
+  <meta name="twitter:image" content="https://straus.it/img/profile.jpg">
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Gemini 4 Argon Changes the Ranking, but There Is No Longer One Ranking",
+  "description": "Gemini 4 Argon leads the Vals Index and Finance Agent v2, ties Astra on Artificial Analysis and finishes seventh of eight on CUA-bench. A source-checked look at why a single frontier ranking no longer works.",
+  "url": "https://straus.it/blog/gemini-4-argon-no-single-ranking/",
+  "image": "https://straus.it/img/profile.jpg",
+  "author": {
+    "@type": "Person",
+    "name": "Stefano Straus",
+    "url": "https://straus.it"
+  },
+  "datePublished": "2026-10-10",
+  "dateModified": "2026-10-10",
+  "publisher": {
+    "@type": "Person",
+    "name": "Stefano Straus"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://straus.it/blog/gemini-4-argon-no-single-ranking/"
+  },
+  "keywords": "ai, llm, gemini, claude, gpt, benchmarks"
+}
+  </script>
+
+  <link rel="stylesheet" href="/css/reader.css?v=1.7.6">
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      font-family: var(--rd-sans);
+      max-width: calc(680px + 2.5rem); margin: 0 auto; padding: 0 1.25rem 3rem;
+    }
+    a { color: var(--rd-link); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .site-nav {
+      display: flex; gap: 1.25rem; align-items: baseline;
+      padding: 1.25rem 0; margin-bottom: 3rem;
+      border-bottom: 1px solid var(--rd-rule);
+      font-family: var(--rd-mono); font-size: 0.95rem;
+    }
+    .site-nav .brand { font-weight: 700; color: var(--rd-head); }
+    .theme-toggle {
+      margin-left: auto; font-size: 1rem; color: var(--rd-soft);
+      background: none; border: 1px solid var(--rd-rule); border-radius: 6px;
+      padding: 0.1rem 0.55rem; cursor: pointer;
+    }
+    .terminal-link {
+      margin-top: 3rem; padding: 0.875rem 1.25rem;
+      background: var(--rd-surface); border: 1px solid var(--rd-rule);
+      border-radius: 6px; font-family: var(--rd-mono); font-size: 0.95rem;
+    }
+    .terminal-link::before { content: '$ '; color: var(--rd-soft); }
+    .post-nav {
+      display: flex; justify-content: space-between; gap: 1rem;
+      margin-top: 1.5rem;
+    }
+    .post-nav-link {
+      display: block; max-width: 48%; line-height: 1.4;
+    }
+    .post-nav-link span {
+      display: block; font-family: var(--rd-mono); font-size: 0.85rem;
+      color: var(--rd-soft); margin-bottom: 0.25rem;
+    }
+    .post-nav-link.next { text-align: right; margin-left: auto; }
+    .site-footer {
+      margin-top: 3rem; padding-top: 1.25rem;
+      border-top: 1px solid var(--rd-rule);
+      font-family: var(--rd-mono); font-size: 0.9rem; color: var(--rd-soft);
+      display: flex; gap: 1.25rem;
+    }
+  </style>
+</head>
+<body>
+  <nav class="site-nav">
+    <a class="brand" href="/">stefano@straus.it:~$</a>
+    <a href="/#blog">blog</a>
+    <a href="/feed.xml">rss</a>
+    <button class="theme-toggle" type="button" aria-label="Toggle light and dark theme">&#9680;</button>
+  </nav>
+  <article class="reader-article">
+    <header>
+      <h1>Gemini 4 Argon Changes the Ranking, but There Is No Longer One Ranking</h1>
+      <div class="reader-meta">
+        <time datetime="2026-10-10">October 10, 2026</time> · <span>13 min read</span>
+        <span class="tag">#ai</span> <span class="tag">#llm</span> <span class="tag">#gemini</span> <span class="tag">#claude</span> <span class="tag">#gpt</span> <span class="tag">#benchmarks</span>
+      </div>
+    </header>
+<p>A few days ago a chart crossed my feed that ranked the current frontier models in a tidy line: <code>Gemini 4 Argon &gt; Claude Opus 5.5 &gt; Gemini 3.1 Pro &gt; GPT-6 Astra &gt; GPT-6.1 Sol &gt; GPT-5.6 Sol &gt; Grok 4.7 &gt; Grok 4.6</code>. My first reaction was that it looked wrong, so I went through the sources behind it, Artificial Analysis, Vals AI and Arena first, and the vendor tables separately.</p>
+<p>I changed my mind about one thing. Gemini 4 Argon really is a frontier model, and on some independent leaderboards it is the best one available. What I did not change my mind about is the ranking itself, because in 2026 putting frontier models in a single ordered list has become almost meaningless, and Argon turns out to be the best illustration of why. I also have to admit that my first draft of this post contained numbers I could not trace back to any leaderboard. They came from an AI-assisted summary, they looked plausible, and they were wrong. Every number below now links back to a page I checked, which turned out to be the most useful lesson of the whole exercise.</p>
+<h2>Google DeepMind is a vendor</h2>
+<p>Google announced Gemini 4 Argon on September 30, and access is still gated, so there is far less production evidence for it than for Claude or GPT. That matters more than it sounds. Google DeepMind is Google, and a Gemini result published by DeepMind is a vendor result in exactly the same way an Opus number published by Anthropic or an Astra number published by OpenAI is a vendor result. The vendor chose the harness, the reasoning budget and the comparison set, and in the case of Argon&#39;s DeepSWE score Google ran its own model while taking the competitors&#39; numbers from elsewhere.</p>
+<p>So the rule for this post is simple. Every quantitative comparison uses one independent source, Artificial Analysis for general intelligence, cost and calibration, Vals AI for professional and agentic tasks, Arena for human preference. Google&#39;s own numbers get their own section, clearly labelled, and no conclusion rests on them alone.</p>
+<h2>General intelligence brought Google back, not ahead</h2>
+<p>Artificial Analysis gives Argon 53 on its Intelligence Index v4.3.2, level with GPT-6 Astra, one point ahead of GPT-6.1 Sol and five points behind Claude Opus 5.5.</p>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th align="right">AA Intelligence Index</th>
+<th>Reasoning setting</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Claude Opus 5.5</td>
+<td align="right">58</td>
+<td>Max</td>
+</tr>
+<tr>
+<td>Gemini 4 Argon</td>
+<td align="right">53</td>
+<td>High</td>
+</tr>
+<tr>
+<td>GPT-6 Astra</td>
+<td align="right">53</td>
+<td>Max</td>
+</tr>
+<tr>
+<td>GPT-6.1 Sol</td>
+<td align="right">52</td>
+<td>Max</td>
+</tr>
+<tr>
+<td>Grok 4.7</td>
+<td align="right">46</td>
+<td>Xhigh</td>
+</tr>
+<tr>
+<td>Gemini 3.1 Pro Preview</td>
+<td align="right">30</td>
+<td>As published by AA</td>
+</tr>
+</tbody></table>
+<p>This table alone breaks the chart I started from, where Gemini 3.1 Pro sat in third place. On this index the Preview version scores 30, twenty-three points below Argon, and I would not stretch that number to other 3.1 variants. Argon did not establish a lead in general intelligence. It brought Google back into the leading cluster, which is a real achievement and a different story from the one the chart was telling.</p>
+<h2>One evaluator, one model, first to seventh</h2>
+<p>Things become interesting once you stop averaging unrelated abilities into one number and look at a single evaluator testing a single model across many tasks. Vals AI tests Argon on more than twenty benchmarks, and the spread of positions is the clearest argument against a single ranking I have seen.</p>
+<p><img src="/img/argon-vals-ranks-card.png" alt="Gemini 4 Argon&#39;s rank on eight Vals AI leaderboards: first on Finance Agent v2 and the Vals Index, second on Vibe Code Bench, Code Migration and CyberBench, fifth on Harvey Legal Agent and Terminal-Bench 4.0, seventh of eight on CUA-bench"></p>
+<table>
+<thead>
+<tr>
+<th>Vals benchmark</th>
+<th align="right">Argon</th>
+<th>Rank</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Finance Agent v2</td>
+<td align="right">65.40%</td>
+<td>#1 of 76</td>
+</tr>
+<tr>
+<td>Vals Index</td>
+<td align="right">68.90%</td>
+<td>#1 of 45</td>
+</tr>
+<tr>
+<td>Vibe Code Bench v1.1</td>
+<td align="right">91.91%</td>
+<td>#2 of 110</td>
+</tr>
+<tr>
+<td>Code Migration</td>
+<td align="right">68.17%</td>
+<td>#2 of 75</td>
+</tr>
+<tr>
+<td>CyberBench v1.1</td>
+<td align="right">77.86%</td>
+<td>#2 of 45</td>
+</tr>
+<tr>
+<td>Harvey Legal Agent</td>
+<td align="right">19.58%</td>
+<td>#5 of 76</td>
+</tr>
+<tr>
+<td>Terminal-Bench 4.0</td>
+<td align="right">57.58%</td>
+<td>#5 of 45</td>
+</tr>
+<tr>
+<td>CUA-bench</td>
+<td align="right">4.83%</td>
+<td>#7 of 8</td>
+</tr>
+</tbody></table>
+<p>The top of that table is the strongest independent case for Argon. The Vals Index weights agentic work in finance, coding, law and tax by each sector&#39;s share of US GDP, and Argon leads it at 68.90%, ahead of Claude Sonnet 5.5 at 67.04% and Claude Opus 5.5 at 66.97%. On Finance Agent v2 the gap is wider, 65.40% against 58.59% for Opus, which sits ninth. CyberBench is the most surprising row, with Argon second at 77.86% and Opus thirty-seventh of forty-five at 55.36%. The bottom of the table is just as real, though, and it is where the agentic story starts.</p>
+<h2>Writing code and running a terminal are different jobs</h2>
+<p>Arena tells a similar story from the human-preference side. Argon (High) took first place in Text Arena with 1525 points, and eighth place in Code Arena WebDev with 1679. Being the model people prefer to talk to and being the model people prefer to build with are clearly not the same thing.</p>
+<p>Vals is more nuanced on code. Argon is second on Vibe Code Bench and second on Code Migration, so it writes and transforms code at the very top level. Hand it a terminal and it drops to fifth on Terminal-Bench 4.0, at 57.58%, while Opus 5.5 is first. And here the obvious question is which Opus number to quote, because Vals documents three of them on the same page.</p>
+<p><img src="/img/argon-terminal-bench-card.png" alt="Terminal-Bench 4.0 on Vals: Opus 5.5 current listing 65.15%, earlier run 61.62%, Argon 57.58%, earlier Opus run 53.54% when fallback-assisted tasks count as failures"></p>
+<p>The current listing gives Opus 65.15%. An earlier run gave 61.62%, and Vals explains that some of those runs used fallback models, so counting fallback-assisted tasks as failures moves that earlier result to 53.54%, below Argon. I do not think this makes Opus weaker than Argon in a terminal, and the current number is still clearly ahead. It does mean that a single figure on a slide hides a configuration choice, and that &quot;Opus 5.5&quot; on a leaderboard is sometimes a system rather than a model. This is the part of agentic evaluation that keeps getting more important, because the reasoning budget, the prompts, the tools, the scaffolding and the fallback strategy all move the score.</p>
+<p>Computer use is stranger still. Vals CUA-bench has agents play commercial video games for three hours each, pixels in and keystrokes out, and Argon finishes seventh of eight at 4.83%, behind GPT-6 Astra at 19.17% and Opus 5.5 at 14.00%. It is a narrow test, since it measures game play through mouse and keyboard rather than every kind of computer use, so I would not turn Astra&#39;s lead into a general claim. The narrower statement holds anyway: Argon&#39;s excellent reasoning and knowledge scores do not automatically translate into control of a computer.</p>
+<h2>Calibration is not the same as accuracy</h2>
+<p>One Argon result deserves more attention than it has received, and also more care. Artificial Analysis&#39; Omniscience evaluation separates accuracy, hallucination and abstention, and Argon&#39;s profile is unusual.</p>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th align="right">AA-Omniscience accuracy</th>
+<th align="right">Hallucination rate</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Gemini 4 Argon</td>
+<td align="right">50%</td>
+<td align="right">15%</td>
+</tr>
+<tr>
+<td>GPT-6 Astra (max)</td>
+<td align="right">63%</td>
+<td align="right">51%</td>
+</tr>
+<tr>
+<td>GPT-6.1 Sol (max)</td>
+<td align="right">n/a</td>
+<td align="right">54%</td>
+</tr>
+</tbody></table>
+<p>Argon is right less often than Astra, and it invents answers far less often. The difference is abstention: Argon is much more willing to say, in effect, &quot;I don&#39;t know&quot;. I would not summarise this as &quot;very low hallucination&quot; because a model that answers less often can hallucinate less without being more accurate, and the benchmark does not promise reliability in general. Strong factual calibration in AA testing is the honest description. Still, imagine two research agents, one of which answers more questions and confidently invents a third of what it does not know, while the other declines the questions it cannot establish. For a chatbot you might prefer the first. For financial analysis, security work, or any agent that feeds its output into other agents, I prefer the second, because the invented answers are the ones that end up in a report nobody rechecks.</p>
+<blockquote>
+<p>Calibration is becoming a capability in its own right, and leaderboards that only count right answers are slowly measuring the wrong thing.</p>
+</blockquote>
+<h2>The price list changes the picture</h2>
+<p>Artificial Analysis also publishes what it costs to run each model through its own index, as an average cost per task. This is not the price of a generic API request, but it is measured on the same workload for every model, which makes it the fairest cost comparison I have.</p>
+<p><img src="/img/argon-cost-card.png" alt="Artificial Analysis Intelligence Index against cost per task: Opus 5.5 58 at $5.98, Argon 53 at $1.99 introductory and $3.98 at full price, Astra 53 at $3.26, Sol 52 at $0.72, Grok 4.7 46 at $3.74, Gemini 3.1 Pro Preview 30 at $1.30"></p>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th align="right">AA Intelligence</th>
+<th align="right">Cost per task (AA)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Claude Opus 5.5 (Max)</td>
+<td align="right">58</td>
+<td align="right">$5.98</td>
+</tr>
+<tr>
+<td>Gemini 4 Argon (High), introductory price</td>
+<td align="right">53</td>
+<td align="right">$1.99</td>
+</tr>
+<tr>
+<td>Gemini 4 Argon (High), full price</td>
+<td align="right">53</td>
+<td align="right">$3.98</td>
+</tr>
+<tr>
+<td>GPT-6 Astra (Max)</td>
+<td align="right">53</td>
+<td align="right">$3.26</td>
+</tr>
+<tr>
+<td>GPT-6.1 Sol (Max)</td>
+<td align="right">52</td>
+<td align="right">$0.72</td>
+</tr>
+<tr>
+<td>Grok 4.7 (Xhigh)</td>
+<td align="right">46</td>
+<td align="right">$3.74</td>
+</tr>
+<tr>
+<td>Gemini 3.1 Pro Preview</td>
+<td align="right">30</td>
+<td align="right">$1.30</td>
+</tr>
+</tbody></table>
+<p>Argon&#39;s $1.99 uses the introductory price of $2 per million input tokens and $10 per million output tokens, which is half the standard $4 and $20 that Vals already lists. At full price Artificial Analysis puts it at $3.98 per task, more than Astra. The reason is verbosity: Argon averages around 62k output tokens per task against 27k for Astra, so its cost advantage comes from the price per token rather than from using fewer tokens. That also means you cannot compare Argon&#39;s cost on Vals and on Artificial Analysis without checking which price each one used.</p>
+<p>The model that this table really flatters is GPT-6.1 Sol. It scores 52 against 53 for Argon and Astra, and costs $0.72 per task. That does not make Sol the cheapest choice for every workload, but in the ratio between measured capability and measured cost it is very hard to beat, and for a production system processing millions of requests, one point on a composite index matters much less than the shape of the cost curve.</p>
+<h2>What Google says, separately</h2>
+<p>Google&#39;s launch table contains several results that would be very important if they were reproduced. As reproduced by DataCamp and others from the DeepMind announcement, these are vendor-reported numbers.</p>
+<table>
+<thead>
+<tr>
+<th>Benchmark (Google DeepMind)</th>
+<th align="right">Argon</th>
+<th align="right">Astra</th>
+<th align="right">Opus 5.5</th>
+<th>Who ran it</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>GraphWalks, 256K to 1M tokens</td>
+<td align="right">84.2%</td>
+<td align="right">71.8%</td>
+<td align="right">66.8%</td>
+<td>Google, all models</td>
+</tr>
+<tr>
+<td>LVBench, long video</td>
+<td align="right">91.7%</td>
+<td align="right">87.5%</td>
+<td align="right">83.7%</td>
+<td>Google, all models, Gemini at 1 frame per second</td>
+</tr>
+<tr>
+<td>DeepSWE v1.1</td>
+<td align="right">77.9%</td>
+<td align="right">74.1%</td>
+<td align="right">74.2%</td>
+<td>Google for Argon, other sources for rivals</td>
+</tr>
+<tr>
+<td>FrontierSWE v2</td>
+<td align="right">55.0%</td>
+<td align="right">65.5%</td>
+<td align="right">62.3%</td>
+<td>as reported by Google</td>
+</tr>
+</tbody></table>
+<p>The long-context row is the most striking, a 12.4-point lead over Astra between 256K and one million tokens. If it holds up independently, it changes how you build systems around large repositories, corporate knowledge bases and long-running agent state. At launch no third party had reproduced these figures, so I treat them as signals rather than findings. It is also worth noticing that Google&#39;s own table shows Argon losing clearly on FrontierSWE, which fits the Terminal-Bench picture: the vendor table itself does not claim that Argon is the best agentic engineer.</p>
+<h2>So which model is the best?</h2>
+<p>There is not one. Instead of a ranking, this is what I think the data supports today, and, just as important, what it does not. It is a qualitative reading, not a statistical ranking.</p>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th>Strengths the data supports</th>
+<th>What we cannot claim</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Gemini 4 Argon</td>
+<td>Knowledge work, finance, competitive coding, calibration</td>
+<td>Best autonomous agent</td>
+</tr>
+<tr>
+<td>Claude Opus 5.5</td>
+<td>General reasoning, terminal work and agentic coding</td>
+<td>Best on every benchmark</td>
+</tr>
+<tr>
+<td>GPT-6 Astra</td>
+<td>Reasoning, software engineering, game-based computer use</td>
+<td>Best software architect</td>
+</tr>
+<tr>
+<td>GPT-6.1 Sol</td>
+<td>Capability per dollar on the AA index</td>
+<td>Cheapest for every workflow</td>
+</tr>
+<tr>
+<td>Gemini 3.1 Pro Preview</td>
+<td>A much cheaper earlier Gemini</td>
+<td>Competitive with Argon on general intelligence</td>
+</tr>
+<tr>
+<td>Grok 4.7</td>
+<td>Some professional and reasoning tasks</td>
+<td>Overall leadership in cybersecurity</td>
+</tr>
+</tbody></table>
+<p>Before looking at the independent results I was skeptical that Argon deserved the hype, and after looking at them I think Google has built something more interesting than &quot;the new best model&quot;. It leads the economically weighted Vals Index, it is clearly first in financial research, it writes and migrates code at the very top level, it is unusually conservative about claims it cannot establish, and there are vendor signs, not yet independent ones, that its long-context ability is exceptional. Give it a terminal or a video game, though, and it falls well behind. Ask for broad hard reasoning and Opus still leads the Artificial Analysis composite, and ask for intelligence per dollar and GPT-6.1 Sol is very hard to beat. None of that is a weakness of Argon. It is evidence that the frontier has fragmented.</p>
+<h2>Reading a benchmark in 2026</h2>
+<p>Model evaluation has become substantially harder, and the mistake I made in my first draft is a good example of how easy it is to go wrong. These are the questions I now ask before a number changes my mind about anything:</p>
+<ul>
+<li><strong>Who ran it?</strong> Google testing Gemini, Anthropic testing Claude and OpenAI testing GPT are all vendor results. Only an independent evaluator removes the incentive.</li>
+<li><strong>At what reasoning level?</strong> &quot;High&quot;, &quot;Max&quot; and &quot;Xhigh&quot; are effectively different configurations of the same model.</li>
+<li><strong>With which harness, and with which fallbacks?</strong> For agentic benchmarks the scaffolding can move the result by more than the gap between two models.</li>
+<li><strong>At which price?</strong> Introductory pricing can halve the measured cost of a verbose model.</li>
+<li><strong>Can I open the page it came from?</strong> If a number cannot be traced to a leaderboard, it does not go in the post, no matter how plausible it looks.</li>
+<li><strong>Does it measure what I care about?</strong> Vibe Code Bench and Terminal-Bench are both &quot;coding benchmarks&quot;, and they do not measure the same capability.</li>
+</ul>
+<p>That last question is why one leaderboard can put Argon second and another can put it fifth on the same day, without either of them being wrong.</p>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>What I used it for</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a href="https://artificialanalysis.ai/articles/gemini-4-argon-google-top-three-labs">Artificial Analysis</a></td>
+<td>Intelligence Index, reasoning settings, cost per task, Omniscience</td>
+</tr>
+<tr>
+<td><a href="https://www.vals.ai/models/google_gemini-4-argon">Vals AI</a></td>
+<td>Professional and agentic benchmarks, Terminal-Bench, CUA-bench</td>
+</tr>
+<tr>
+<td><a href="https://x.com/arena/status/2105394855644139908">Arena</a></td>
+<td>Human preference in Text Arena and Code Arena</td>
+</tr>
+<tr>
+<td>Google DeepMind launch table</td>
+<td>Vendor claims, kept separate</td>
+</tr>
+</tbody></table>
+<p>The question that matters in late 2026 is no longer which model is the smartest. It is which model I give this particular job to, and which evaluator I trust to tell me.</p>
+
+  </article>
+  <div class="terminal-link">
+    Read this in the <a href="/#read/gemini-4-argon-no-single-ranking">terminal view</a>
+  </div>
+  <nav class="post-nav" aria-label="Post navigation">
+    <a class="post-nav-link prev" href="/blog/insulting-claude-usage-policy/" rel="prev"><span>&larr; Older</span>Insulting Claude Is Now a Usage Policy Question</a>
+    <a class="post-nav-link next" href="/blog/french-supermarket-fridge-hack/" rel="next"><span>Newer &rarr;</span>The French Fridge Hack Is Not About the Fridge</a>
+  </nav>
+  <footer class="site-footer">
+    <a href="/">&larr; straus.it</a>
+    <span>&copy; Stefano Straus</span>
+  </footer>
+  <script>
+    document.querySelector('.theme-toggle').addEventListener('click', function () {
+      var light = document.documentElement.classList.toggle('light-theme');
+      try { localStorage.setItem('straus-terminal-theme', light ? 'light' : 'dark'); } catch (e) {}
+    });
+  </script>
+</body>
+</html>
