@@ -45,4 +45,7 @@ export const EXPERIMENTS = [
   { slug: 'battery', draw: 'battery', open: false, title: 'Inside a lithium cell',
     hook: 'Ions shuttle between the layers. Charge too fast and they plate out as metal.',
     tags: 'electrochemistry · Li-ion' },
+  { slug: 'mars-rover', draw: 'marsRover', open: true, title: 'Mars Rover',
+    hook: 'One button. Jump on the crest and land on the slip face, in 38 % gravity.',
+    tags: 'game · Mars · physics' },
 ];

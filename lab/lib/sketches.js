@@ -568,3 +568,57 @@ export function scramjet(p) {
   p.line(246, 82, 246, 164, { tone: 'faint', overshoot: 0 });
   p.text(200, 240, 'no moving parts', { anchor: 'middle' });
 }
+
+export function marsRover(p) {
+  // A field of dunes seen from the side: long windward slopes, short steep slip faces. The rover
+  // jumps from one crest and comes down on the slip face of the next; the arc shows the move.
+  const ground = (x) => {
+    const crests = [[70, 150], [205, 120], [340, 142]];
+    let y = 214;
+    for (const [cx, cy] of crests) {
+      if (x <= cx && x > cx - 110) y = Math.min(y, cy + ((cx - x) / 110) ** 1.2 * (214 - cy));
+      if (x > cx && x < cx + 38) y = Math.min(y, cy + ((x - cx) / 38) ** 1.3 * (214 - cy));
+    }
+    return y;
+  };
+  const line = [];
+  for (let x = 10; x <= 392; x += 6) line.push([x, ground(x)]);
+  p.smooth(line, { width: 1.8 });
+  p.hatch([[20, 222], [390, 222], [390, 238], [20, 238]], { gap: 9, angle: -30 });
+  for (let x = 30; x < 380; x += 22) p.line(x, ground(x) + 5, x + 10, ground(x + 10) + 5, { tone: 'faint', passes: 1, overshoot: 0 });
+
+  // The steep sides, shaded.
+  for (const cx of [70, 205, 340]) {
+    for (let k = 4; k < 34; k += 7) p.line(cx + k, ground(cx + k) + 2, cx + k - 5, ground(cx + k) + 14, { tone: 'orange', passes: 1, overshoot: 0 });
+  }
+
+  // The rover on the first crest: body, mast, power source, six wheels on the rocker-bogie.
+  p.group('rock-small', () => {
+    p.rect(52, 126, 44, 12);
+    p.line(88, 126, 88, 104);
+    p.rect(84, 98, 12, 7);
+    p.line(52, 128, 44, 118, { width: 2.2 });
+    for (const [x, y] of [[56, 146], [74, 146], [92, 146]]) p.circle(x, y, 6);
+    p.line(56, 146, 74, 138);
+    p.line(74, 138, 92, 146);
+  }, { origin: [74, 140] });
+
+  // The jump: from this crest to the slip face of the next dune.
+  p.smooth([[96, 126], [140, 86], [190, 92], [228, 128]], { tone: 'blue', dash: true, flow: true });
+  p.arrowHead(228, 128, 0.95, { tone: 'blue' });
+  // The landing to avoid: nose into the rising side.
+  p.line(150, 176, 164, 164, { tone: 'red' });
+  p.line(150, 164, 164, 176, { tone: 'red' });
+
+  // The sky: the small sun, its blue halo, and Phobos.
+  p.circle(330, 44, 7, { tone: 'ink' });
+  p.group('pulse-soft', () => {
+    p.circle(330, 44, 16, { tone: 'blue', passes: 1 });
+    p.circle(330, 44, 24, { tone: 'blue', passes: 1, rough: 1.6 });
+  });
+  p.ellipse(262, 30, 4, 3, { tone: 'faint' });
+
+  p.text(236, 150, 'land here', { tone: 'blue' });
+  p.text(110, 196, 'not here', { tone: 'red', anchor: 'middle' });
+  p.text(200, 254, 'one button: jump', { anchor: 'middle' });
+}

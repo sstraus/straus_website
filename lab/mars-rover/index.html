@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Mars Rover: a game on the dunes of Mars | Lab | Stefano Straus</title>
+  <meta name="description" content="A one-button game: a six-wheeled rover races over the dunes of Mars in 38% gravity. The only thing you can do is jump, at the right point, so you land on the steep side of the next dune and not nose first into it.">
+  <meta name="robots" content="noindex">
+  <meta name="author" content="Stefano Straus">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <meta name="theme-color" content="#0d1117">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../lib/intro.css">
+  <link rel="stylesheet" href="../lib/links.css">
+  <link rel="stylesheet" href="style.css">
+  <script src="../lib/importmap.js"></script>
+  <script type="module" src="../lib/intro.js"></script>
+  <script type="module" src="../lib/links.js"></script>
+  <script type="module" src="main.js"></script>
+</head>
+<body class="loading">
+  <div id="stage"></div>
+
+  <!-- Loader: the hub pen sketch of the bench draws itself as the load progresses (lab/lib/intro.js). -->
+  <div id="lab-loader" class="lab-loader" data-sketch="marsRover" data-seed="1565"></div>
+
+  <nav id="lab-links" class="hud"></nav>
+
+  <header class="hud hud-top">
+    <p class="eyebrow">A game on the dunes of Mars</p>
+    <h1><span>Mars</span> <strong>Rover</strong></h1>
+    <div class="tiles">
+      <div class="tile"><span class="tile-label">Distance</span><b id="t-distance">0</b><small>m</small></div>
+      <div class="tile"><span class="tile-label">Speed</span><b id="t-speed">0</b><small>km/h</small></div>
+      <div class="tile" id="tile-hull"><span class="tile-label">Hull</span><b id="t-hull">100</b><small>%</small><i id="hull-bar"></i></div>
+    </div>
+    <p class="sentence glass" id="sentence" aria-live="polite"></p>
+  </header>
+
+  <div class="grade" id="grade" aria-hidden="true"></div>
+
+  <section class="card glass hud" id="start" aria-label="Start">
+    <p class="card-kicker">Jezero-style dune field · 38 % gravity</p>
+    <h2>One button. Jump.</h2>
+    <p class="card-text">The rover drives itself over the dunes. Jump on the crest so you come down on the steep side of the next dune, not into its rising face. Clean landings make you faster.</p>
+    <button class="go" id="go">Drive</button>
+    <p class="card-best" id="best-start"></p>
+  </section>
+
+  <section class="card glass hud" id="over" aria-label="Run over" hidden>
+    <p class="card-kicker" id="over-reason">Run over</p>
+    <h2><b id="over-distance">0</b> m</h2>
+    <dl class="card-rows">
+      <dt>Best</dt><dd id="over-best">0 m</dd>
+      <dt>Clean landings in a row</dt><dd id="over-streak">0</dd>
+      <dt>Time on Mars</dt><dd id="over-time">0 s</dd>
+    </dl>
+    <button class="go" id="again">Drive again</button>
+  </section>
+
+  <button class="round hud" id="about-open" aria-label="How it works">?</button>
+
+  <aside class="essay glass" id="essay" aria-hidden="true">
+    <button class="round close" id="about-close" aria-label="Close">×</button>
+    <h2>How it works</h2>
+
+    <h3>The one move</h3>
+    <p>The rover drives itself. All you can do is jump, and only while its wheels are on the sand. The dunes do the rest. Every dune has a long, gentle windward side and a short slip face on the lee, as steep as loose sand can stand. The rover climbs the gentle side and leaves the ground at the crest. If it comes down on the slip face, falling along it, the landing is clean and the slope throws it forward faster. If it flies too far, it comes down on the rising side of the next dune, nose into the sand, and the hull takes the hit. A jump at the right point carries it over that dune to the next slip face. Jump at the wrong point and you make the flight worse.</p>
+    <p>Whether a landing is clean is not decided by a timing window. It comes out of the physics: the angle between the chassis and the ground at touchdown, and how fast the rover hits the ground along its normal.</p>
+
+    <h3>What is real</h3>
+    <ul class="sources">
+      <li><b>3.73 m/s²</b> of gravity, 38 % of Earth's (NASA NSSDC, <i>Mars Fact Sheet</i>). This is why every jump hangs in the air for so long.</li>
+      <li><b>0.016 kg/m³</b> of air at the surface, about 1.3 % of Earth's (same source). The drag is in the model, and at these speeds it is under a hundredth of the rover's weight.</li>
+      <li>The rover has Perseverance's size and mass: <b>1025 kg</b>, <b>3 m</b> long, <b>2.7 m</b> wide, <b>2.2 m</b> tall, six wheels <b>52.5 cm</b> across, on a rocker-bogie suspension (NASA, <i>Perseverance Rover Components</i>). The finned cylinder at the back is its radioisotope power source, which delivers about <b>110 W</b> at the start of the mission.</li>
+      <li>Slip faces of active Martian dunes stand at <b>30 to 34°</b>, the same angle of repose as sand on Earth, measured from HiRISE elevation models (Atwood-Stone and McEwen, <i>Geophysical Research Letters</i>, 2013). The dunes here use 31°.</li>
+      <li>The sky is <b>butterscotch</b> by day and the sunset is <b>blue</b>: fine dust lets blue light through a little more easily and scatters it forward, so the blue stays close to the sun (NASA/JPL, <i>Sunset in Mars' Gale Crater</i>, Curiosity, sol 956).</li>
+      <li>A sol lasts <b>24 h 39 min 35 s</b> (NASA GISS, <i>Mars24</i>). Here one passes every 2.6 km.</li>
+      <li><b>Phobos</b>, about 22 km across, goes round Mars in 7 h 39 min, faster than Mars turns, so it rises in the west and crosses the sky twice a sol. <b>Deimos</b>, about 12 km across, takes 30.3 h and creeps across the sky for days (NASA).</li>
+      <li>Nights at Jezero crater fall to about <b>−83 °C</b>; at noon the ground reaches about 0 °C (NASA/JPL, MEDA weather reports).</li>
+    </ul>
+
+    <h3>What is a game</h3>
+    <p>Real rovers do not jump, and they are slow: Perseverance tops out at <b>152 m per hour</b>, just over 4 cm a second, and its record is <b>411.7 m</b> in one sol (NASA/JPL, 2025). This one drives about 300 times faster, so it leaves the ground at every crest. In the air it turns its nose along its flight path, the way the bird does in Tiny Wings; nothing would turn a real rover in flight, and without it the landings would be luck instead of skill. Its suspension has longer travel than the real one, to survive the landings. The dunes are real in shape but packed closer than most real dune fields.</p>
+  </aside>
+</body>
+</html>
