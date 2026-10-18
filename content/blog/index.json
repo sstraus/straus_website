@@ -1,6 +1,20 @@
 {
   "articles": [
     {
+      "slug": "tesla-roadster-commercial-sense",
+      "title": "Tesla Roadster. Why Does Everything Have to Make Commercial Sense?",
+      "date": "2026-10-18",
+      "description": "Tesla's new Roadster drove upside down, jumped with SpaceX cold-gas thrusters and claimed 0-60 mph in 0.81 seconds. Most reactions went straight to sales and ROI. Why engineering work without an immediately saleable product is not automatically wasted work.",
+      "tags": [
+        "engineering",
+        "tesla",
+        "engineering-culture",
+        "innovation",
+        "spacex"
+      ],
+      "file": "2026-10-18-tesla-roadster-commercial-sense.md"
+    },
+    {
       "slug": "open-source-but-not-if-you-use-ai",
       "title": "Open Source, But Not If You Use AI",
       "date": "2026-10-17",
