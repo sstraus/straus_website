@@ -2,6 +2,7 @@
 title: "The 512 GB Mac Studio was sized for last year's open models"
 date: 2026-10-24
 tags: ["local-ai", "llm", "apple-silicon", "infrastructure"]
+og_image: "https://straus.it/img/mac-studio-512gb-open-frontier.png"
 ---
 
 # The 512 GB Mac Studio was sized for last year's open models

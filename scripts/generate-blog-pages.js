@@ -79,7 +79,9 @@ function generatePage(article, prev, next) {
   const url = `${BASE_URL}/blog/${article.slug}/`;
   const description = escapeAttr(article.description || article.title);
   const title = escapeAttr(article.title);
-  const image = `${BASE_URL}/img/profile.jpg`;
+  const frontmatter = rawMarkdown.match(/^---\s*\n([\s\S]*?)\n---\s*\n/);
+  const imageOverride = frontmatter?.[1].match(/^og_image:\s*["']?(https?:\/\/[^\s"']+)["']?\s*$/m);
+  const image = imageOverride?.[1] || `${BASE_URL}/img/profile.jpg`;
   const tags = article.tags || [];
   const minutes = readingTime(markdown);
 
@@ -151,7 +153,7 @@ function generatePage(article, prev, next) {
   <meta property="og:description" content="${description}">
   <meta property="og:type" content="article">
   <meta property="og:url" content="${url}">
-  <meta property="og:image" content="${image}">
+  <meta property="og:image" content="${escapeAttr(image)}">
   <meta property="og:image:alt" content="Stefano Straus">
   <meta property="og:site_name" content="Stefano Straus">
 ${articleMeta}
@@ -161,7 +163,7 @@ ${articleMeta}
   <meta name="twitter:site" content="@StefanoStraus">
   <meta name="twitter:title" content="${title}">
   <meta name="twitter:description" content="${description}">
-  <meta name="twitter:image" content="${image}">
+  <meta name="twitter:image" content="${escapeAttr(image)}">
 
   <!-- Structured Data -->
   <script type="application/ld+json">
