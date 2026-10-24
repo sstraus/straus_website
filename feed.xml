@@ -7,13 +7,117 @@
     <link>https://straus.it</link>
     <description>Engineering Manager specializing in AI-driven development, software architecture, and developer productivity. Insights on intent-based programming, Claude Code, and modern development patterns.</description>
     <language>en</language>
-    <lastBuildDate>Sun, 18 Oct 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 24 Oct 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://straus.it/feed.xml" rel="self" type="application/rss+xml"/>
     <image>
       <url>https://straus.it/img/profile.jpg</url>
       <title>Stefano Straus</title>
       <link>https://straus.it</link>
     </image>
+
+    <item>
+      <title>The 512 GB Mac Studio was sized for last year&apos;s open models</title>
+      <link>https://straus.it/blog/512gb-mac-studio-sized-for-last-years-open-models/</link>
+      <guid isPermaLink="true">https://straus.it/blog/512gb-mac-studio-sized-for-last-years-open-models/</guid>
+      <pubDate>Sat, 24 Oct 2026 00:00:00 +0000</pubDate>
+      <description>Kimi K3.1 Pro needs around 1.5 TB of memory at its native 4-bit format, three times the biggest Mac Studio. Open frontier models are growing faster than desktop memory, and soldered memory leaves no upgrade path.</description>
+      <content:encoded><![CDATA[<h1>The 512 GB Mac Studio was sized for last year&#39;s open models</h1>
+<p><img src="/img/mac-studio-512gb-open-frontier.png" alt="A small aluminium desktop box dwarfed by a towering stack of glowing model layers that rises far beyond it"></p>
+<p>Moonshot announced Kimi K3.1 Pro this week, with open weights promised by 4 November. It is a mixture of experts model with 2.8 trillion parameters in total, 104 billion active per token, a context window of just over one million tokens, and image input. When a model like this comes out with open weights I do the usual sizing exercise, mostly to understand what &quot;open&quot; means in practice. This time the result was clear enough to be worth writing down.</p>
+<h2>The sizing exercise</h2>
+<p>K3.1 Pro is a post-trained version of Kimi K3, and Moonshot trained it quantization-aware with MXFP4 weights. That detail matters more than it looks. Four bit is the native format of the model, not a lossy compression somebody applies afterwards to make it fit. MXFP4 stores 4 bits per value plus a shared 8 bit scale every 32 values, so about 4.25 bits per parameter. Multiply by 2.8 trillion and you get roughly 1.49 TB of weights. Add the vision encoder, embeddings and runtime buffers and the realistic number is 1.5 to 1.6 TB.</p>
+<p>The KV cache is the part where I expected bad news and found good news. Only 24 of the 93 layers use MLA style attention, which grows with context. The other 69 use Kimi Delta Attention, a linear attention variant with a state of fixed size. Moonshot does not publish all the dimensions I would need, so this is my estimate, assuming a compressed latent similar to what DeepSeek uses. It lands at roughly 28 KB per token, so around 30 GB for a full one million token session, plus a few hundred MB of fixed state. Tens of GB, not hundreds.</p>
+<p>So one session at full context needs about 1.55 to 1.65 TB of fast memory. The biggest Mac Studio has 512 GB. That is roughly a factor of three, before any second user or second agent.</p>
+<h2>What Apple sold, and when</h2>
+<p>The Ultra Mac Studio has been positioned as the local LLM machine since March 2025. The M3 Ultra version came with up to 512 GB of unified memory, over 800 GB/s of bandwidth, and Apple said explicitly that it could run models with over 600 billion parameters entirely in memory. At the time this was true and it was a strong claim. DeepSeek R1 had 671 billion parameters and at 4-bit took a bit over 400 GB. It fit, with room for context.</p>
+<p>In August 2026 Apple announced the M5 Ultra Mac Studio. Bandwidth went up to 1.2 TB/s, peak AI compute up to 4.3 times the M3 Ultra according to Apple, and Thunderbolt 5 clustering is now part of the official pitch. The message was again about running enormous LLMs entirely on device. The memory ceiling stayed at 512 GB, and that configuration is only arriving now, in late October. Apple has not published the price yet, but fully specced it should be around 20k.</p>
+<h2>The open frontier had already moved</h2>
+<p>The uncomfortable detail is the timeline. Kimi K3, same size and same architecture as K3.1 Pro, was released with open weights in July 2026, a few weeks before the M5 Ultra was announced. In August Qwen and DeepSeek released open models between 1.6 and 2.4 trillion parameters. So the flagship open models had already outgrown the machine on the day it was presented. K3.1 Pro did not change the picture, it is just the latest data point.</p>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th>Open weights</th>
+<th>Total params</th>
+<th>Approx. 4-bit size (estimate)</th>
+<th>Fits in 512 GB</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>DeepSeek R1</td>
+<td>Jan 2025</td>
+<td>671B</td>
+<td>~400 GB</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Kimi K3</td>
+<td>Jul 2026</td>
+<td>2.8T</td>
+<td>~1.5 TB (native MXFP4)</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Qwen3.8-2.4T-A95B</td>
+<td>Aug 2026</td>
+<td>2.4T</td>
+<td>~1.3 TB</td>
+<td>No</td>
+</tr>
+<tr>
+<td>DeepSeek V4 Pro 0813</td>
+<td>Aug 2026</td>
+<td>1.65T</td>
+<td>~0.9 TB</td>
+<td>No</td>
+</tr>
+<tr>
+<td>GLM-5.3</td>
+<td>Aug 2026</td>
+<td>753B</td>
+<td>~0.4 TB</td>
+<td>Yes, tight</td>
+</tr>
+<tr>
+<td>DeepSeek V4.1 Flash</td>
+<td>Sep 2026</td>
+<td>763B</td>
+<td>~0.4 TB</td>
+<td>Yes, tight</td>
+</tr>
+<tr>
+<td>Kimi K3.1 Pro</td>
+<td>by 4 Nov 2026</td>
+<td>2.8T</td>
+<td>~1.5 TB plus KV</td>
+<td>No, about 3x</td>
+</tr>
+</tbody></table>
+<p>In eighteen months the top open models grew about four times in total parameters, and Apple&#39;s maximum desktop memory did not grow at all. Parameter count is not quality, and some of the models that still fit are very good. But if the goal is the open frontier, the trend is not going in the direction of the desk.</p>
+<h2>Why I think this is structural</h2>
+<p>My interpretation is that a desktop bought for local AI is sized for the models of the month it was announced, and in this market that already means one generation late. Unified memory is soldered. There is no upgrade path, the only way to get more memory is to buy another machine. Hardware cycles are measured in years, open model releases currently in weeks.</p>
+<p>Clustering is the official answer, and it does work on paper. Four M5 Ultra with 512 GB each give 2 TB, enough for K3.1 Pro with some headroom. The problem moves to bandwidth and latency. Decoding reads the active weights once per token, here about 55 GB. With the model split across four machines in a pipeline, each node reads its part in sequence, so the ceiling is roughly 55 GB divided by 1.2 TB/s, about 46 ms per token, around 20 tokens per second in theory. My estimate for real use is more like 8 to 12 tokens per second, plus the Thunderbolt hops. Nobody has benchmarked this model on such a setup yet, so treat these numbers as estimates.</p>
+<p>Prefill is worse. Ingesting one million tokens means roughly 2 x 10^17 floating point operations just for the dense part. On a node with eight datacenter GPUs that is tens of seconds. Apple does not publish TFLOPS for the M5 Ultra, so I cannot give a number, but I would expect minutes. A cluster of four Macs that loads the model and answers is a working prototype. It is not something I would plan daily work on.</p>
+<h2>Usable, not bootable</h2>
+<p>The reason to run a model like this locally is to use it every day, including for agents, not to prove that it starts. That puts the bar where an API already is, and for me it means at least these things.</p>
+<ul>
+<li>30 or more tokens per second per stream for interactive work</li>
+<li>time to first token on 100k to 1M tokens of context in seconds, not minutes</li>
+<li>several agents in parallel, each adding around 30 GB of KV cache at full context</li>
+<li>uptime, updates and failed nodes handled by someone</li>
+<li>power and noise that fit the room it runs in</li>
+<li>a cost that makes sense compared to the API</li>
+</ul>
+<p>Today only datacenter nodes clear that bar, and not every one of them. Eight H200 have 1,128 GB, which does not even hold the weights, so you need twelve or more. Eight AMD MI350X have 2,304 GB and native MXFP4 support, which fits comfortably, at about 1000 W per GPU. Moonshot itself recommends supernodes with 64 or more accelerators for serving K3. That tells you what the people who built the model consider a normal deployment.</p>
+<h2>The money side</h2>
+<p>Moonshot sells the same model through its API at 2 dollars per million input tokens, 0.20 for cached input and 10 dollars per million output tokens, flat across the whole context. As a rough example, an agent heavy day with 50 million input tokens, 90 percent cached, and 5 million output tokens costs about 70 dollars. That is around 25k per year, which is in the same range as the price of a single fully specced top Mac Studio, and well below four of them. The four Macs still give you a prototype, while the API gives you the production version.</p>
+<p>So on cost alone local does not win. The reasons to do it anyway are privacy, data sovereignty and control over the model version, and they are legitimate. But they should be budgeted as what they are, a premium paid for control, not as a saving.</p>
+<h2>What the Mac Studio is still good for</h2>
+<p>None of this makes the M5 Ultra a bad computer. Models in the 30B to 750B range run on it, some of them very well, and for many real tasks a carefully chosen model of that size is enough. Bandwidth and compute went up a lot in this generation, and for that class of model it shows.</p>
+<p>My problem is with a specific promise, frontier open models on your desk, in a way that lasts. For that goal I think the top Mac Studio is useless as an investment. It was behind when it was announced, its memory cannot grow, and the only way forward is buying more of them and accepting prototype performance. The alternatives are less exciting and more honest. Pick a smaller model on purpose and size the machine for it, or rent GPUs for the cases where the big model is really needed.</p>
+<p>Some things remain open. Real numbers for K3.1 Pro on Mac clusters will only arrive after the weights are out. It is not clear how fast MLX will support Kimi Delta Attention properly. And Apple&#39;s next Ultra might lift the 512 GB ceiling. For now the gap between open weights and a local setup you can actually work with is measured in terabytes.</p>
+]]></content:encoded>
+    </item>
 
     <item>
       <title>Tesla Roadster. Why Does Everything Have to Make Commercial Sense?</title>

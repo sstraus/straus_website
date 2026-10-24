@@ -1,6 +1,19 @@
 {
   "articles": [
     {
+      "slug": "512gb-mac-studio-sized-for-last-years-open-models",
+      "title": "The 512 GB Mac Studio was sized for last year's open models",
+      "date": "2026-10-24",
+      "description": "Kimi K3.1 Pro needs around 1.5 TB of memory at its native 4-bit format, three times the biggest Mac Studio. Open frontier models are growing faster than desktop memory, and soldered memory leaves no upgrade path.",
+      "tags": [
+        "local-ai",
+        "llm",
+        "apple-silicon",
+        "infrastructure"
+      ],
+      "file": "2026-10-24-512gb-mac-studio-sized-for-last-years-open-models.md"
+    },
+    {
       "slug": "tesla-roadster-commercial-sense",
       "title": "Tesla Roadster. Why Does Everything Have to Make Commercial Sense?",
       "date": "2026-10-18",
