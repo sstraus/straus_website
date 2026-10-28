@@ -81,7 +81,7 @@ function generatePage(article, prev, next) {
   const title = escapeAttr(article.title);
   const frontmatter = rawMarkdown.match(/^---\s*\n([\s\S]*?)\n---\s*\n/);
   const imageOverride = frontmatter?.[1].match(/^og_image:\s*["']?(https?:\/\/[^\s"']+)["']?\s*$/m);
-  const image = imageOverride?.[1] || `${BASE_URL}/img/profile.jpg`;
+  const image = (article.cover ? `${BASE_URL}/${article.cover}` : imageOverride?.[1]) || `${BASE_URL}/img/profile.jpg`;
   const tags = article.tags || [];
   const minutes = readingTime(markdown);
 
@@ -154,7 +154,7 @@ function generatePage(article, prev, next) {
   <meta property="og:type" content="article">
   <meta property="og:url" content="${url}">
   <meta property="og:image" content="${escapeAttr(image)}">
-  <meta property="og:image:alt" content="Stefano Straus">
+  <meta property="og:image:alt" content="${escapeAttr(article.coverAlt || 'Stefano Straus')}">
   <meta property="og:site_name" content="Stefano Straus">
 ${articleMeta}
 
@@ -232,7 +232,7 @@ ${jsonLd}
         ${tagChips}
       </div>
     </header>
-${html}
+${article.cover ? `<img src="/${escapeAttr(article.cover)}" alt="${escapeAttr(article.coverAlt || article.title)}" style="max-width:100%;height:auto">` : ''}${html}
   </article>
   <div class="terminal-link">
     Read this in the <a href="/#read/${article.slug}">terminal view</a>

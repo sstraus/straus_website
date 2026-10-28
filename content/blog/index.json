@@ -1,6 +1,24 @@
 {
   "articles": [
     {
+      "slug": "european-ai-sovereignty-hosted-in-europe-made-elsewhere",
+      "title": "European AI sovereignty, hosted in Europe, made elsewhere",
+      "date": "2026-10-28",
+      "description": "Most European sovereign AI is European hosting for models made elsewhere. Who builds what, what EU hosting costs vs the US, and what sovereignty buys.",
+      "tags": [
+        "ai",
+        "europe",
+        "llm",
+        "sovereign-ai",
+        "mistral",
+        "open-weights",
+        "infrastructure"
+      ],
+      "file": "2026-10-28-european-ai-sovereignty-hosted-in-europe-made-elsewhere.md",
+      "cover": "img/eu-ai-sovereignty-cover.png",
+      "coverAlt": "An EU flag painted on the facade of a grand building held up by wooden scaffolding, with server racks and cables behind it, while a man in a suit looks at it"
+    },
+    {
       "slug": "512gb-mac-studio-sized-for-last-years-open-models",
       "title": "The 512 GB Mac Studio was sized for last year's open models",
       "date": "2026-10-24",

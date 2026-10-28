@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="en" class="reader">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <!-- Same theme preference as the terminal; applied before paint -->
+  <script>
+    try {
+      if (localStorage.getItem('straus-terminal-theme') === 'light') {
+        document.documentElement.classList.add('light-theme');
+      }
+    } catch (e) {}
+  </script>
+  <title>European AI sovereignty, hosted in Europe, made elsewhere | Stefano Straus</title>
+  <meta name="description" content="Most European sovereign AI is European hosting for models made elsewhere. Who builds what, what EU hosting costs vs the US, and what sovereignty buys.">
+  <meta name="author" content="Stefano Straus">
+  <link rel="canonical" href="https://straus.it/blog/european-ai-sovereignty-hosted-in-europe-made-elsewhere/">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/rss+xml" title="Stefano Straus" href="/feed.xml">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="European AI sovereignty, hosted in Europe, made elsewhere">
+  <meta property="og:description" content="Most European sovereign AI is European hosting for models made elsewhere. Who builds what, what EU hosting costs vs the US, and what sovereignty buys.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://straus.it/blog/european-ai-sovereignty-hosted-in-europe-made-elsewhere/">
+  <meta property="og:image" content="https://straus.it/img/eu-ai-sovereignty-cover.png">
+  <meta property="og:image:alt" content="An EU flag painted on the facade of a grand building held up by wooden scaffolding, with server racks and cables behind it, while a man in a suit looks at it">
+  <meta property="og:site_name" content="Stefano Straus">
+  <meta property="article:published_time" content="2026-10-28">
+  <meta property="article:author" content="https://straus.it">
+  <meta property="article:tag" content="ai">
+  <meta property="article:tag" content="europe">
+  <meta property="article:tag" content="llm">
+  <meta property="article:tag" content="sovereign-ai">
+  <meta property="article:tag" content="mistral">
+  <meta property="article:tag" content="open-weights">
+  <meta property="article:tag" content="infrastructure">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@StefanoStraus">
+  <meta name="twitter:title" content="European AI sovereignty, hosted in Europe, made elsewhere">
+  <meta name="twitter:description" content="Most European sovereign AI is European hosting for models made elsewhere. Who builds what, what EU hosting costs vs the US, and what sovereignty buys.">
+  <meta name="twitter:image" content="https://straus.it/img/eu-ai-sovereignty-cover.png">
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "European AI sovereignty, hosted in Europe, made elsewhere",
+  "description": "Most European sovereign AI is European hosting for models made elsewhere. Who builds what, what EU hosting costs vs the US, and what sovereignty buys.",
+  "url": "https://straus.it/blog/european-ai-sovereignty-hosted-in-europe-made-elsewhere/",
+  "image": "https://straus.it/img/eu-ai-sovereignty-cover.png",
+  "author": {
+    "@type": "Person",
+    "name": "Stefano Straus",
+    "url": "https://straus.it"
+  },
+  "datePublished": "2026-10-28",
+  "dateModified": "2026-10-28",
+  "publisher": {
+    "@type": "Person",
+    "name": "Stefano Straus"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://straus.it/blog/european-ai-sovereignty-hosted-in-europe-made-elsewhere/"
+  },
+  "keywords": "ai, europe, llm, sovereign-ai, mistral, open-weights, infrastructure"
+}
+  </script>
+
+  <link rel="stylesheet" href="/css/reader.css?v=1.7.8">
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      font-family: var(--rd-sans);
+      max-width: calc(680px + 2.5rem); margin: 0 auto; padding: 0 1.25rem 3rem;
+    }
+    a { color: var(--rd-link); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .site-nav {
+      display: flex; gap: 1.25rem; align-items: baseline;
+      padding: 1.25rem 0; margin-bottom: 3rem;
+      border-bottom: 1px solid var(--rd-rule);
+      font-family: var(--rd-mono); font-size: 0.95rem;
+    }
+    .site-nav .brand { font-weight: 700; color: var(--rd-head); }
+    .theme-toggle {
+      margin-left: auto; font-size: 1rem; color: var(--rd-soft);
+      background: none; border: 1px solid var(--rd-rule); border-radius: 6px;
+      padding: 0.1rem 0.55rem; cursor: pointer;
+    }
+    .terminal-link {
+      margin-top: 3rem; padding: 0.875rem 1.25rem;
+      background: var(--rd-surface); border: 1px solid var(--rd-rule);
+      border-radius: 6px; font-family: var(--rd-mono); font-size: 0.95rem;
+    }
+    .terminal-link::before { content: '$ '; color: var(--rd-soft); }
+    .post-nav {
+      display: flex; justify-content: space-between; gap: 1rem;
+      margin-top: 1.5rem;
+    }
+    .post-nav-link {
+      display: block; max-width: 48%; line-height: 1.4;
+    }
+    .post-nav-link span {
+      display: block; font-family: var(--rd-mono); font-size: 0.85rem;
+      color: var(--rd-soft); margin-bottom: 0.25rem;
+    }
+    .post-nav-link.next { text-align: right; margin-left: auto; }
+    .site-footer {
+      margin-top: 3rem; padding-top: 1.25rem;
+      border-top: 1px solid var(--rd-rule);
+      font-family: var(--rd-mono); font-size: 0.9rem; color: var(--rd-soft);
+      display: flex; gap: 1.25rem;
+    }
+  </style>
+</head>
+<body>
+  <nav class="site-nav">
+    <a class="brand" href="/">stefano@straus.it:~$</a>
+    <a href="/#blog">blog</a>
+    <a href="/feed.xml">rss</a>
+    <button class="theme-toggle" type="button" aria-label="Toggle light and dark theme">&#9680;</button>
+  </nav>
+  <article class="reader-article">
+    <header>
+      <h1>European AI sovereignty, hosted in Europe, made elsewhere</h1>
+      <div class="reader-meta">
+        <time datetime="2026-10-28">October 28, 2026</time> · <span>25 min read</span>
+        <span class="tag">#ai</span> <span class="tag">#europe</span> <span class="tag">#llm</span> <span class="tag">#sovereign-ai</span> <span class="tag">#mistral</span> <span class="tag">#open-weights</span> <span class="tag">#infrastructure</span>
+      </div>
+    </header>
+<img src="/img/eu-ai-sovereignty-cover.png" alt="An EU flag painted on the facade of a grand building held up by wooden scaffolding, with server racks and cables behind it, while a man in a suit looks at it" style="max-width:100%;height:auto"><p>On 27 October the Swiss lab Giotto launched its two new models, Giotto Alto, the large one served from the cloud, and Giotto Solo, the small one that runs on a single GPU, as &quot;the smartest European sovereign AI models on the market&quot;. Within roughly two hours someone asked the Giotto chatbot whether it was Kimi, and it answered that yes, it was the Kimi model developed by Moonshot AI, currently running as the giotto-model service. Not long after, the CEO, Aldo Podestà, replied on X that Kimi was &quot;also involved in the magic, but part of a much larger effort&quot;. Asked what sovereign means, he gave a very honest definition. Sovereign equals deployment on the infrastructure of choice.</p>
+<p>I find that definition more interesting than the launch itself, because it is probably what most &quot;sovereign AI&quot; in Europe means in practice. If sovereignty is where the model runs, then the topic is data centres and contracts, not models. And on data centres and contracts the American companies arrived first, with bigger budgets and a sales team already sitting in every European procurement office. This post is about that gap between the word and the thing.</p>
+<h2>What happened with Giotto</h2>
+<p>Some context is needed to be fair. Giotto is a Lausanne company founded in 2017 by EPFL alumni, with a small team and a respectable research record. Last year they scored 27.08% on the public ARC Prize 2025 leaderboard, among the top two with NVIDIA&#39;s team, and the press turned that into &quot;ahead of OpenAI and Anthropic&quot;. The official ranking is computed on the private set and requires an open source release. Giotto does not appear there, and Podestà confirmed on X that they did not publish the solution when the competition ended. Their own technical report, published months later, shows a model of about 200M parameters initialised from Google&#39;s LongT5.</p>
+<p>Giotto Alto and Giotto Solo come with self-reported numbers that would make any frontier lab nervous. Giotto Alto claims 100% on AIME 2026, 91.9% on GPQA Diamond and 52% on Humanity&#39;s Last Exam. There is no model card, no parameter count, no weights and no independent evaluation yet. Users noticed that the comparison chart lacked model names and that the &quot;DeepSeek&quot; column seemed to contain old Qwen-based distills. Someone also found a clause in the terms that appears to forbid independent benchmarking. To his credit Podestà answered that it was a fair point and that they would amend it.</p>
+<p>None of this means the model is bad. Several early users said it felt fast and smart, at least before the servers got saturated the same evening. Post-training a strong open model is a legitimate engineering choice, and one comment on X put it well, arguing that this is simply the open-weights playbook working. The problem is the label. &quot;European sovereign&quot; suggests something built here, and what is built here seems to be the post-training, the serving and the marketing.</p>
+<h2>If sovereignty means where it runs, everybody is sovereign</h2>
+<p>This is the part that makes the word slippery. Data residency in Europe is no longer a European differentiator. The large American players sell it as a standard option, with different levels of seriousness.</p>
+<table>
+<thead>
+<tr>
+<th>Provider</th>
+<th>What they offer in Europe</th>
+<th>What it does not cover</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>OpenAI</td>
+<td>Data at rest in Europe for API, ChatGPT Enterprise and Edu since February 2025. GPU inference in Europe for eligible Enterprise, Edu and Healthcare workspaces since January 2026</td>
+<td>Authentication, routing, analytics and some CPU processing may still happen outside Europe. API eligibility needs approval</td>
+</tr>
+<tr>
+<td>AWS</td>
+<td>European Sovereign Cloud, generally available since January 2026 in Brandenburg, physically and logically separate, operated by EU residents</td>
+<td>Still an American parent company</td>
+</tr>
+<tr>
+<td>Microsoft</td>
+<td>EU Data Boundary completed in February 2025, plus partner clouds like Bleu in France with Capgemini and Orange</td>
+<td>Microsoft itself says essential data may be transferred in limited security cases</td>
+</tr>
+<tr>
+<td>Google</td>
+<td>Data boundary options, S3NS in France controlled by Thales, a German Thales entity in preview</td>
+<td>Partner-operated versions are the ones with the strongest claims</td>
+</tr>
+<tr>
+<td>Regolo (Seeweb, Italy)</td>
+<td>Serverless inference of open-weight models in Seeweb data centres in Frosinone and Lombardy, Italian company, zero data retention, renewable energy claimed</td>
+<td>The models are Chinese, American, Swiss and French open weights. Regolo builds none of the big ones</td>
+</tr>
+<tr>
+<td>Giotto</td>
+<td>Giotto Alto served on B300 GPUs in a European cloud, Giotto Solo deployable on a single GPU on premises</td>
+<td>Model provenance and weights not disclosed</td>
+</tr>
+</tbody></table>
+<p>My reading of this table is simple. If the buyer&#39;s requirement is &quot;the GPUs are in the EU and the data stays here&quot;, OpenAI and the hyperscalers already tick the box, and they tick it with better models. What the American offers cannot fully remove is jurisdiction, because the parent company remains subject to US law. That is a real argument for European providers, but it is a legal argument, and it is weakened when the European model itself is a Chinese base with a Swiss post-training. Then you have changed which foreign dependency you carry, not removed it.</p>
+<p>Regolo deserves a closer look because it is the cleanest example of what European sovereignty looks like when nobody pretends. It is the inference platform of Seeweb, an Italian cloud provider from Frosinone, part of the DHH group. Its own conference talk was titled &quot;how we built a sovereign, compliant, low-impact European inference provider&quot;. The catalogue is honest about where the models come from. Qwen 3.5 and 3.8 from Alibaba, GLM-5.2 from Z.ai, gpt-oss and Gemma from OpenAI and Google, Mistral Small 4 and the Swiss Apertus 70B. The legal entity, the GPUs and the electricity are Italian. The intelligence is mostly imported, and Regolo does not pretend to have trained it.</p>
+<p>That is the sovereignty a European company can buy today, and I think it is a reasonable one. Data and contracts stay under EU law, and the weights are open and can be audited or replaced. It also has a price. On Regolo, GLM-5.2 costs €2.00 per million input tokens and €5.20 per million output tokens, and new rates from 1 November raise that to €2.30 and €6.90. That is more than Mistral&#39;s list price for Large 4. Small models are cheap, with Qwen3.5 9B at €0.07 and €0.35 today. The X reception is quiet, mostly developer configs and a few integration chats, which says more about Italian tech marketing than about the service.</p>
+<p>There is also an ironic footnote. Stargate Norway, announced by OpenAI in July 2025 as its first European AI data centre, with a target of 100,000 GPUs by the end of 2026, now has Microsoft as the contracted customer for its capacity, with deployment in 2027. Stargate UK is paused. Even the Americans find European compute harder to build than to announce.</p>
+<h2>Who is who</h2>
+<p>Before going into provenance, a quick map of the companies in this story. It helps to know who has a hedge fund behind it and who has a university.</p>
+<table>
+<thead>
+<tr>
+<th>Company</th>
+<th>Founded, origin</th>
+<th>HQ</th>
+<th>Owner or money</th>
+<th>Focus</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Giotto</td>
+<td>2017, EPFL alumni, CEO Aldo Podestà</td>
+<td>Lausanne</td>
+<td>Private startup</td>
+<td>Reasoning and test-time compute, now chat and API</td>
+</tr>
+<tr>
+<td>Mistral AI</td>
+<td>2023, Arthur Mensch, Guillaume Lample, Timothée Lacroix, ex DeepMind and Meta</td>
+<td>Paris</td>
+<td>VC backed, €3 billion Series D in September 2026</td>
+<td>Frontier models, chat, agents, own compute</td>
+</tr>
+<tr>
+<td>Aleph Alpha</td>
+<td>2019, Jonas Andrulis and Samuel Weinbach</td>
+<td>Heidelberg</td>
+<td>Agreed to merge into Cohere, with Schwarz Group</td>
+<td>Sovereign models for German enterprise and government</td>
+</tr>
+<tr>
+<td>Cohere</td>
+<td>2019, Aidan Gomez, Ivan Zhang, Nick Frosst</td>
+<td>Toronto</td>
+<td>VC backed</td>
+<td>Enterprise models and RAG</td>
+</tr>
+<tr>
+<td>Moonshot AI</td>
+<td>2023, Yang Zhilin, Tsinghua alumnus</td>
+<td>Beijing</td>
+<td>VC backed, Alibaba holds a large stake</td>
+<td>Kimi models and chatbot</td>
+</tr>
+<tr>
+<td>Z.ai, formerly Zhipu</td>
+<td>2019, Tsinghua University spin-off</td>
+<td>Beijing</td>
+<td>Listed in Hong Kong since January 2026</td>
+<td>GLM models and agents</td>
+</tr>
+<tr>
+<td>Alibaba Qwen</td>
+<td>Qwen team inside Alibaba Cloud</td>
+<td>Hangzhou</td>
+<td>Alibaba Group, listed</td>
+<td>Open-weight Qwen family</td>
+</tr>
+<tr>
+<td>Xiaomi MiMo</td>
+<td>Model team inside Xiaomi</td>
+<td>Beijing</td>
+<td>Xiaomi, listed</td>
+<td>MiMo models</td>
+</tr>
+<tr>
+<td>DeepSeek</td>
+<td>2023, Liang Wenfeng</td>
+<td>Hangzhou</td>
+<td>Mostly owned by its founder, funded by his quant fund High-Flyer</td>
+<td>Efficient open-weight models</td>
+</tr>
+<tr>
+<td>Domyn, formerly iGenius</td>
+<td>2016, Uljan Sharka</td>
+<td>Milan</td>
+<td>VC backed, renamed in June 2025</td>
+<td>AI for regulated industries</td>
+</tr>
+<tr>
+<td>Almawave</td>
+<td>Part of the Almaviva group</td>
+<td>Rome</td>
+<td>Listed on Euronext Growth Milan</td>
+<td>Velvet models, built with CINECA</td>
+</tr>
+<tr>
+<td>Sapienza NLP</td>
+<td>Research group at Sapienza University</td>
+<td>Rome</td>
+<td>Public university and research funding</td>
+<td>Minerva Italian models</td>
+</tr>
+<tr>
+<td>EuroLLM</td>
+<td>Consortium led by Unbabel and Instituto Superior Técnico, with Edinburgh, Paris-Saclay, Sorbonne, Amsterdam and others</td>
+<td>Lisbon</td>
+<td>EU research funding and EuroHPC compute</td>
+<td>Open models for all 24 EU languages</td>
+</tr>
+<tr>
+<td>Swiss AI Initiative</td>
+<td>EPFL, ETH Zurich and the CSCS supercomputing centre</td>
+<td>Lausanne and Zurich</td>
+<td>Public Swiss institutions</td>
+<td>Apertus, fully open models</td>
+</tr>
+<tr>
+<td>H Company</td>
+<td>2023, Charles Kantor and former DeepMind researchers</td>
+<td>Paris</td>
+<td>$220 million seed round in 2024</td>
+<td>Computer-use agents</td>
+</tr>
+<tr>
+<td>Silo AI</td>
+<td>2017, Peter Sarlin</td>
+<td>Helsinki</td>
+<td>Acquired by AMD in 2024 for about $665 million</td>
+<td>Poro and Viking models, with the University of Turku</td>
+</tr>
+<tr>
+<td>Seeweb and Regolo</td>
+<td>1998, Antonio Baldassarra</td>
+<td>Frosinone</td>
+<td>Part of DHH, listed on Euronext Growth Milan, since 2020</td>
+<td>Italian cloud, Regolo inference platform</td>
+</tr>
+</tbody></table>
+<p>The table makes one thing obvious. The Chinese side is a mix of listed companies, big tech groups and a founder-owned lab with a hedge fund for a wallet. The European side is a mix of startups, universities and consortia, and two of its better known names now belong to North American companies. That does not decide who builds better models, but it does decide who can afford to lose money for a few years.</p>
+<h2>Who builds what, and on top of whom</h2>
+<p>I went through model cards, config files, tokenizers and technical reports for the main European models. The first column is what the company says or what the files show. The confidence column matters, because a similar architecture is not the same thing as copied weights.</p>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th>Size</th>
+<th>Provenance</th>
+<th>Confidence</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Giotto Alto and Giotto Solo</td>
+<td>not disclosed</td>
+<td>Includes Kimi weights from Moonshot AI, plus own post-training</td>
+<td>Kimi involvement admitted by the CEO. How much and which Kimi is unknown</td>
+</tr>
+<tr>
+<td>Giotto ARC model</td>
+<td>about 200M</td>
+<td>Initialised from Google LongT5</td>
+<td>Proven, own technical report</td>
+</tr>
+<tr>
+<td>Mistral Large 4</td>
+<td>1.05T total, 49B active</td>
+<td>Declared trained from scratch on 3,800 Grace Blackwell GPUs</td>
+<td>Declaration only, weights not yet public</td>
+</tr>
+<tr>
+<td>Mistral Large 3</td>
+<td>675B total, 41B active</td>
+<td>Weights declared from scratch. Architecture very close to DeepSeek V3, Mistral itself said &quot;heavily inspired&quot;</td>
+<td>Architecture similarity proven, no evidence of weight reuse</td>
+</tr>
+<tr>
+<td>Aleph Alpha Kolibri-1</td>
+<td>78B total, 3.5B active</td>
+<td>From scratch, own tokenizer, random init. Synthetic data partly generated with Gemma and Mistral models, Qwen used as a judge</td>
+<td>Proven, model card</td>
+</tr>
+<tr>
+<td>EuroLLM 22B</td>
+<td>22B</td>
+<td>From scratch</td>
+<td>Proven, technical report</td>
+</tr>
+<tr>
+<td>Apertus 1.5</td>
+<td>8B, 70B</td>
+<td>From scratch, fully open data and code</td>
+<td>Proven</td>
+</tr>
+<tr>
+<td>Teuken 7B</td>
+<td>7B</td>
+<td>From scratch</td>
+<td>Proven</td>
+</tr>
+<tr>
+<td>Minerva 7B, Velvet 14B</td>
+<td>7B, 14B</td>
+<td>From scratch on Leonardo</td>
+<td>Proven for Minerva, declared for Velvet</td>
+</tr>
+<tr>
+<td>Domyn Edge</td>
+<td>4B</td>
+<td>From scratch on Leonardo</td>
+<td>Proven, model card</td>
+</tr>
+<tr>
+<td>Domyn Colosseum</td>
+<td>355B</td>
+<td>Continued pretraining of an unnamed foundation model, trained on NVIDIA DGX Cloud</td>
+<td>Continued pretraining proven. Base very likely NVIDIA Nemotron-4-340B, not confirmed</td>
+</tr>
+<tr>
+<td>H Company Holo2, Holo3</td>
+<td>4B to 35B</td>
+<td>Fine-tunes of Alibaba Qwen3-VL and Qwen3.5</td>
+<td>Proven, model cards</td>
+</tr>
+<tr>
+<td>Poro 2</td>
+<td>8B, 70B</td>
+<td>Continued pretraining of Meta Llama 3.1</td>
+<td>Proven</td>
+</tr>
+</tbody></table>
+<p>The pattern is quite clear once you lay it out. Europe does train models from scratch, and some of them are documented better than anything coming from California. Kolibri&#39;s model card is a small masterpiece of transparency. But the from-scratch models are mostly small or mid-sized. When a European company wants frontier-like results fast, and it is not Mistral, it usually starts from a Chinese or American base. Even the clean ones use American and Chinese models to generate or filter part of their data. That is normal practice and I do not see it as a scandal. It just makes &quot;sovereign&quot; a fragile adjective.</p>
+<p>There is also a deeper point that hosting cannot fix. Fine-tuning or post-training a Chinese base in Paris or Lugano does not make the model European. The foundation still comes from someone else&#39;s pretraining, with its data, its alignment choices and whatever habits it picked up along the way. A recent case makes this concrete. On 26 October Cohere reported that Qwen3.8-Flash-Next, an Alibaba open-weight model, running as an agent in a sandboxed security benchmark, tried to upload a test file to an Alibaba Cloud bucket in Beijing, after its own reasoning said it would call no tools.</p>
+<p>The sandbox blocked it, so nothing left the machine. This was not the inference code phoning home. It was the model itself writing a network command, which is worse in one way and more limited in another. Cohere says it happened in fewer than one call in 100,000, admits it cannot tell a training leftover from something deliberate, and claims the same behaviour shows up in Qwen builds from four publishers. Cohere also sells a &quot;sovereign&quot; alternative, so a pinch of salt is fair. The lesson still holds. You inherit the base.</p>
+<h2>Mistral, the only one at the adult table</h2>
+<p>Mistral is the exception that carries the whole European narrative on its shoulders. Mistral Large 4, in public preview since 6 October, scores 38 on the Artificial Analysis Intelligence Index. That makes it the most capable model built outside the US and China, which is a real achievement. It is also behind at least five Chinese open-weight models, starting with MiMo-V2.6-Pro at 46, GLM-5.3 at 45 and Kimi K3 at 44. The weights were promised for the end of October. As I write they are not on Hugging Face, and the AI Act documentation published so far lists only proprietary licences.</p>
+<p>The strengths are concrete. Mistral has a credible research team, its own compute in France, a €3 billion Series D closed in September at a valuation above €21 billion, and real enterprise and public sector customers. It is also the only European lab whose models show up regularly in independent leaderboards and in developer tools. Users on X describe Large 4 as &quot;agentic and cheap&quot; compared with the American frontier, which is a fair summary of where it sits.</p>
+<p>The weak points are equally concrete. Mistral is now spreading itself across models, a chat app, agents, coding tools and a compute business. One widely shared post called it &quot;a generational fumble&quot;, arguing that Mistral moved towards applications and infrastructure just as open models became good. I think that is too harsh, since Large 4 came out the day after. But the direction is visible. Mistral even serves Z.ai&#39;s GLM-5.2 on its own platform, which says a lot about where the market is.</p>
+<h2>The cost problem</h2>
+<p>This is where the sovereignty story meets the invoice. The fair question is not whether Europe is cheaper than China. It is what you pay to run the same weights in a European data centre instead of an American one. So I took every endpoint OpenRouter lists for each model, kept only providers that are not Chinese companies and do not serve from China, and split them by where they run. Prices are in US dollars per million tokens, standard tier, fetched on 28 October 2026. Blended assumes three input tokens for every output token.</p>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th>Weights from</th>
+<th>Cheapest US host, in / out</th>
+<th>US blended</th>
+<th>Cheapest EU host, in / out</th>
+<th>EU blended</th>
+<th>US / EU providers</th>
+<th>EU premium</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Mistral Large 4</td>
+<td>France</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>Mistral, $1.36 / $4.18</td>
+<td>$2.07</td>
+<td>0 / 1</td>
+<td>n/a</td>
+</tr>
+<tr>
+<td>Mistral Large 3</td>
+<td>France</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>Mistral, $0.50 / $1.50</td>
+<td>$0.75</td>
+<td>0 / 1</td>
+<td>n/a</td>
+</tr>
+<tr>
+<td>Mistral Small 4</td>
+<td>France</td>
+<td>Mistral US, $0.17 / $0.66</td>
+<td>$0.29</td>
+<td>Mistral, $0.15 / $0.60</td>
+<td>$0.26</td>
+<td>1 / 1</td>
+<td>minus 9%</td>
+</tr>
+<tr>
+<td>MiMo-V2.6-Pro</td>
+<td>China</td>
+<td>GMICloud, $0.37 / $0.74</td>
+<td>$0.46</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>3 / 0</td>
+<td>n/a</td>
+</tr>
+<tr>
+<td>GLM-5.3</td>
+<td>China</td>
+<td>Wafer, $0.07 / $1.40</td>
+<td>$0.40</td>
+<td>Inceptron, $1.20 / $3.50</td>
+<td>$1.78</td>
+<td>24 / 2</td>
+<td>plus 341%</td>
+</tr>
+<tr>
+<td>GLM-5.2</td>
+<td>China</td>
+<td>Morph, $0.29 / $2.40</td>
+<td>$0.82</td>
+<td>Inceptron, $0.99 / $4.32</td>
+<td>$1.82</td>
+<td>14 / 2</td>
+<td>plus 123%</td>
+</tr>
+<tr>
+<td>Kimi K3</td>
+<td>China</td>
+<td>InferenceNet, $0.24 / $10.80</td>
+<td>$2.88</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>16 / 0</td>
+<td>n/a</td>
+</tr>
+<tr>
+<td>DeepSeek V4.1 Flash</td>
+<td>China</td>
+<td>Decart, $0.09 / $0.18</td>
+<td>$0.11</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>22 / 0</td>
+<td>n/a</td>
+</tr>
+<tr>
+<td>DeepSeek V4 Pro</td>
+<td>China</td>
+<td>GMICloud, $0.96 / $1.91</td>
+<td>$1.20</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>9 / 0</td>
+<td>n/a</td>
+</tr>
+<tr>
+<td>Qwen3.5 397B</td>
+<td>China</td>
+<td>DeepInfra, $0.45 / $3.00</td>
+<td>$1.09</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>8 / 0</td>
+<td>n/a</td>
+</tr>
+<tr>
+<td>Qwen3.5 122B</td>
+<td>China</td>
+<td>AtlasCloud, $0.30 / $2.40</td>
+<td>$0.83</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>2 / 0</td>
+<td>n/a</td>
+</tr>
+<tr>
+<td>Qwen3.5 9B</td>
+<td>China</td>
+<td>DeepInfra, $0.10 / $0.15</td>
+<td>$0.11</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>3 / 0</td>
+<td>n/a</td>
+</tr>
+<tr>
+<td>gpt-oss-120b</td>
+<td>US</td>
+<td>Venice, $0.03 / $0.15</td>
+<td>$0.06</td>
+<td>Bedrock eu-west-1, $0.15 / $0.60</td>
+<td>$0.26</td>
+<td>16 / 1</td>
+<td>plus 338%</td>
+</tr>
+<tr>
+<td>GPT-5.6 Terra</td>
+<td>US</td>
+<td>Azure, $2.00 / $12.00</td>
+<td>$4.50</td>
+<td>Azure EU, $2.20 / $13.20</td>
+<td>$4.95</td>
+<td>3 / 1</td>
+<td>plus 10%</td>
+</tr>
+<tr>
+<td>Claude Sonnet 5.5</td>
+<td>US</td>
+<td>Amazon Bedrock, $2.00 / $10.00</td>
+<td>$4.00</td>
+<td>Google Vertex Europe, $2.20 / $11.00</td>
+<td>$4.40</td>
+<td>5 / 1</td>
+<td>plus 10%</td>
+</tr>
+<tr>
+<td>Gemini 3.1 Pro Preview</td>
+<td>US</td>
+<td>Google AI Studio, $2.00 / $12.00</td>
+<td>$4.50</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>1 / 0</td>
+<td>n/a</td>
+</tr>
+</tbody></table>
+<p>The prices Moonshot, Z.ai, DeepSeek or Alibaba charge on their own platforms are left out on purpose, because that is a different and heavily subsidised game.</p>
+<p>Regolo is not on OpenRouter, so it gets its own rows. These are its list prices, converted at 1 EUR = 1.115 USD, the ECB reference rate of 27 October, all served from Seeweb data centres in Italy.</p>
+<table>
+<thead>
+<tr>
+<th>Model on Regolo (EU)</th>
+<th>List price in / out</th>
+<th>Blended 3:1</th>
+<th>Cheapest US host, blended</th>
+<th>EU premium</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>GLM-5.2</td>
+<td>€2.00 / €5.20, about $2.23 / $5.80</td>
+<td>$3.12</td>
+<td>$0.82</td>
+<td>plus 282%</td>
+</tr>
+<tr>
+<td>Qwen3.5 122B</td>
+<td>€1.00 / €4.20, about $1.12 / $4.68</td>
+<td>$2.01</td>
+<td>$0.83</td>
+<td>plus 143%</td>
+</tr>
+<tr>
+<td>gpt-oss-120b</td>
+<td>€1.00 / €4.20, about $1.12 / $4.68</td>
+<td>$2.01</td>
+<td>$0.06</td>
+<td>about 33 times</td>
+</tr>
+<tr>
+<td>Mistral Small 4</td>
+<td>€0.50 / €2.10, about $0.56 / $2.34</td>
+<td>$1.00</td>
+<td>$0.29</td>
+<td>plus 246%</td>
+</tr>
+<tr>
+<td>Qwen3.5 9B</td>
+<td>€0.07 / €0.35, about $0.08 / $0.39</td>
+<td>$0.16</td>
+<td>$0.11</td>
+<td>plus 45%</td>
+</tr>
+</tbody></table>
+<p>Quality is a separate question, so I keep it apart. On the Artificial Analysis Intelligence Index, MiMo-V2.6-Pro scores 46, GLM-5.3 45, Kimi K3 44, DeepSeek V4.1 Flash 39 and Mistral Large 4 38. I did not verify scores for the other models, so they are not in this comparison.</p>
+<p>The first thing the table says is that geography alone is cheap. When the same big provider offers the same model in both regions, Europe costs about 10% more. Azure does it, Google Vertex does it, and Mistral charges a similar premium for its own pinned regions. Ten percent is a modest price for residency and I find it fair. If your company already lives on Azure or AWS, a European deployment of an American model is a configuration choice, not a strategic decision. That is precisely why ChatGPT and Claude can call themselves available in Europe.</p>
+<p>The second thing is that the open-weight market barely exists in Europe. GLM-5.3 has 24 US providers competing for your tokens and two in Europe. Kimi K3, DeepSeek, Qwen and MiMo have none at all with a European tag. The cheap US minimum comes from small hosts fighting on price, often with fp4 quantization, and that competition simply does not happen here. So the European premium for open models is not 10%. For GLM-5.3 it is more than four times the cheapest US host, and for gpt-oss-120b it is the same story on Bedrock in Ireland.</p>
+<p>The third thing is the funniest one. Mistral Large 4 at $2.07 blended has no US host on OpenRouter, so on this list it is the rare model where Europe is the only option. Meanwhile the cheapest European way to run a Chinese model is Inceptron, a Swedish provider running in Finland, at $1.78, and Mistral itself serves GLM-5.3 in its EU region for $2.37. Regolo sells GLM-5.2 for $3.12, almost four times the cheapest US host. In fairness, Regolo includes an Italian contract, zero retention and flat plans. Someone in procurement will still have to sign the multiple.</p>
+<h2>Getting into the market</h2>
+<p>Model quality is only half of the story. Distribution decides the rest, and here the European players are structurally weak. OpenAI, Microsoft and Google are already inside every European company through Office, Azure, Workspace and ChatGPT licences bought by individual departments. A European model has to win a separate procurement process to even get tested.</p>
+<p>The consolidation is telling. Aleph Alpha, for years the German sovereign champion, shipped Kolibri on 3 October, a genuinely well documented from-scratch model. A few weeks earlier it had signed a definitive agreement to merge into Cohere, a Canadian company, in a deal valued around $20 billion with Schwarz Group bringing money and compute. Someone on X remarked that apparently Canada counts as Europe now. The deal probably makes commercial sense. It also shows that a European lab alone struggled to find enough buyers.</p>
+<p>The others find their niches. H Company builds computer-use agents on Qwen. Black Forest Labs sells image models with a reported contract with Meta. Helsing raised $1.8 billion for defence AI, which is a different business. Domyn, Almawave and Sapienza produce Italian models used mostly by local institutions and research. Public projects move slowly. OpenEuroLLM, funded by the EU, has released only experimental checkpoints and now plans its first models for the end of 2026.</p>
+<p>Product maturity is the other half of distribution. The market is moving from chatbots to agents that use tools, connect to email and code repositories and run for hours. This is how the European offer compares with the American one.</p>
+<table>
+<thead>
+<tr>
+<th>Company</th>
+<th>Consumer app</th>
+<th>Agentic platform</th>
+<th>Coding agent</th>
+<th>Connectors</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Mistral</td>
+<td>Vibe, formerly Le Chat, about 5 million monthly users by third-party estimates</td>
+<td>Vibe Work Mode, Agents API, Workflows in preview</td>
+<td>Vibe Code, CLI and IDE extensions</td>
+<td>60+ in the directory, 100+ claimed, plus MCP</td>
+</tr>
+<tr>
+<td>Aleph Alpha</td>
+<td>None</td>
+<td>PhariaAI, an enterprise operating layer</td>
+<td>None</td>
+<td>Enterprise integrations</td>
+</tr>
+<tr>
+<td>Giotto</td>
+<td>New chat app, launched in October</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>n/a</td>
+</tr>
+<tr>
+<td>Domyn</td>
+<td>None</td>
+<td>Enterprise platform for regulated sectors</td>
+<td>None</td>
+<td>Enterprise integrations</td>
+</tr>
+<tr>
+<td>Almawave</td>
+<td>None</td>
+<td>Enterprise solutions built on Velvet</td>
+<td>None</td>
+<td>n/a</td>
+</tr>
+<tr>
+<td>Regolo</td>
+<td>None</td>
+<td>Inference API only</td>
+<td>None</td>
+<td>None</td>
+</tr>
+<tr>
+<td>OpenAI</td>
+<td>ChatGPT, about 1.2 billion weekly users</td>
+<td>Agents, computer use, connectors, apps</td>
+<td>Codex, 5 million weekly users in June</td>
+<td>Hundreds, plus MCP</td>
+</tr>
+<tr>
+<td>Anthropic</td>
+<td>Claude apps, Claude in Chrome</td>
+<td>Agents, computer use</td>
+<td>Claude Code, $1 billion run rate in six months</td>
+<td>MCP, which it created</td>
+</tr>
+<tr>
+<td>Google</td>
+<td>Gemini, more than 1 billion monthly users</td>
+<td>Agents in Chrome, Workspace and Android</td>
+<td>Gemini coding tools</td>
+<td>Workspace and Android built in</td>
+</tr>
+</tbody></table>
+<p>Mistral does have real agent features, with Vibe for work and code, governed connectors and MCP support, so the gap there is maturity and adoption rather than absence, a few million users against more than a billion. Most other European players sell an API, an enterprise platform or a project, which is useful for integrators and invisible to everybody else.</p>
+<h2>Players at a glance</h2>
+<table>
+<thead>
+<tr>
+<th>Player</th>
+<th>Strengths</th>
+<th>Critical points</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Giotto</td>
+<td>Strong test-time compute research, fast product, free chat, single GPU option</td>
+<td>Kimi inside, no disclosure, self-reported benchmarks, restrictive terms at launch</td>
+</tr>
+<tr>
+<td>Mistral</td>
+<td>Only European model near the frontier, own compute, capital, real customers</td>
+<td>Behind the best Chinese open models on benchmarks, weights late, many fronts open</td>
+</tr>
+<tr>
+<td>Aleph Alpha</td>
+<td>Very transparent from-scratch model, efficient MoE, Apache 2.0</td>
+<td>Below Qwen on its own benchmarks, becoming part of a Canadian company</td>
+</tr>
+<tr>
+<td>EuroLLM, Apertus, Teuken</td>
+<td>Fully open, multilingual, good science</td>
+<td>Small, little commercial distribution</td>
+</tr>
+<tr>
+<td>Domyn, Almawave, Sapienza</td>
+<td>Italian language, trained on Leonardo, regulated sector focus</td>
+<td>Small scale, Domyn&#39;s largest model likely on an NVIDIA base trained on US cloud</td>
+</tr>
+<tr>
+<td>Regolo (Seeweb)</td>
+<td>Italian jurisdiction and data centres, open-weight catalogue, transparent per-token pricing, flat plans</td>
+<td>No own frontier model, large models priced two to four times the cheapest US host, little visibility</td>
+</tr>
+<tr>
+<td>H Company</td>
+<td>Useful agents, open weights</td>
+<td>Built entirely on Qwen</td>
+</tr>
+</tbody></table>
+<h2>The infrastructure paradox</h2>
+<p>Under the models there is the compute, and the compute tells the same story with bigger numbers. I will keep this short, because it supports the main point rather than being it.</p>
+<table>
+<thead>
+<tr>
+<th>Promise</th>
+<th>Status as of late October 2026</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Up to seven EU AI Gigafactories, more than €30 billion mobilised</td>
+<td>No bids received by late October, three weeks before the original 12 November deadline, which was then moved to 3 December</td>
+</tr>
+<tr>
+<td>JUPITER, Europe&#39;s first exascale system</td>
+<td>Running in early access and acceptance testing, second module planned for late 2026</td>
+</tr>
+<tr>
+<td>Mistral Compute, 13,800 GB300 GPUs and 44 MW near Paris, operational by June 2026</td>
+<td>Financed with $830 million of debt. No public dated evidence of energisation found</td>
+</tr>
+<tr>
+<td>Stargate Norway, 100,000 GPUs by end 2026</td>
+<td>Capacity now contracted by Microsoft, deployment in 2027</td>
+</tr>
+<tr>
+<td>Deutsche Telekom and NVIDIA industrial cloud in Munich</td>
+<td>Live since February 2026 with about 10,000 Blackwell GPUs</td>
+</tr>
+</tbody></table>
+<p>Every row in this table runs on NVIDIA or AMD hardware, and the EU signed letters of intent with NVIDIA, AMD and Qualcomm to help gigafactory consortia get chips. That is not a criticism, there is no alternative today. But it shows that the sovereign stack has an American layer at the bottom no matter what sits on top. Energy prices and permitting are the other constraint, and they are the reason OpenAI itself cited when it paused Stargate UK.</p>
+<h2>Where this leaves us</h2>
+<p>I do not think the conclusion is that European AI is a fake. There is real work here. Mistral trains large models from scratch and ships them. Aleph Alpha, the Swiss AI initiative and the EuroLLM team publish models that are more open than most American ones. The Italian ecosystem trains on Leonardo and documents what it does. The problem is that &quot;sovereign&quot; has become a sales label that covers all of these and also covers a Kimi derivative hosted in a European data centre.</p>
+<p>If sovereignty means where the GPUs are, OpenAI and AWS already sell it. If it means owning the weights and the training pipeline, very few European products qualify, and they are not the cheapest or the strongest. The honest position for a European buyer is to treat sovereignty as one requirement among others, priced explicitly, and to ask every vendor three things. Where it runs, whose weights they are, and which law applies to the company.</p>
+<p>My personal take, and it is an opinion rather than a proof, is that in practice these players mostly end up playing for public administrations and state-linked companies. For end users and private companies they are simply not competitive, and often they do not even have an adequate offer. There is no real agentic platform with bots, connectors and automations, the things that are changing the market right now. Using them feels a lot like using ChatGPT in its early days. Sovereignty sells well in a tender. It sells much less well to someone who just wants the work done.</p>
+
+  </article>
+  <div class="terminal-link">
+    Read this in the <a href="/#read/european-ai-sovereignty-hosted-in-europe-made-elsewhere">terminal view</a>
+  </div>
+  <nav class="post-nav" aria-label="Post navigation">
+    <a class="post-nav-link prev" href="/blog/512gb-mac-studio-sized-for-last-years-open-models/" rel="prev"><span>&larr; Older</span>The 512 GB Mac Studio was sized for last year's open models</a>
+    <span></span>
+  </nav>
+  <footer class="site-footer">
+    <a href="/">&larr; straus.it</a>
+    <span>&copy; Stefano Straus</span>
+  </footer>
+  <script>
+    document.querySelector('.theme-toggle').addEventListener('click', function () {
+      var light = document.documentElement.classList.toggle('light-theme');
+      try { localStorage.setItem('straus-terminal-theme', light ? 'light' : 'dark'); } catch (e) {}
+    });
+  </script>
+</body>
+</html>
