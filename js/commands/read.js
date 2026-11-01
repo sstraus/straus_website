@@ -118,7 +118,7 @@ const read = {
       const related = await ArticleIndex.findRelated(article, 2);
 
       // Update page title for GA tracking
-      setPageTitle(article.title);
+      setPageTitle(article.title, `/blog/${article.slug}/`);
 
       // Update meta tags and structured data for SEO
       MetaManager.updateArticleMeta(article);

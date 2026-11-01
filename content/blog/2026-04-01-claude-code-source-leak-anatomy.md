@@ -122,3 +122,5 @@ The deeper lesson is about build pipelines as attack surface. This is the second
 I still use Claude Code. I will keep using it. The engineering inside is genuinely impressive, and the prompt caching strategy alone is worth studying. But I now use it with eyes open about what telemetry it collects and how differently it behaves depending on who is running it.
 
 The most dangerous code is not the code you write. It is the code you publish by accident.
+
+For a related look at the risks around coding-agent dependencies, see [why supply-chain attacks love AI-assisted development](/blog/supply-chain-attacks-love-ai-assisted-development/).

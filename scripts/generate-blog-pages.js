@@ -141,6 +141,10 @@ function generatePage(article, prev, next) {
       }
     } catch (e) {}
   </script>
+  <script src="/js/analytics.js"></script>
+  <script>
+    window.siteAnalytics.track(${JSON.stringify('/blog/' + article.slug + '/').replace(/</g, '\u003c')}, ${JSON.stringify(article.title + ' | Stefano Straus').replace(/</g, '\u003c')});
+  </script>
   <title>${title} | Stefano Straus</title>
   <meta name="description" content="${description}">
   <meta name="author" content="Stefano Straus">

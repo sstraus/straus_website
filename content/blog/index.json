@@ -66,7 +66,7 @@
       "slug": "open-source-but-not-if-you-use-ai",
       "title": "Open Source, But Not If You Use AI",
       "date": "2026-10-17",
-      "description": "New experimental licences forbid modifying code with Claude Code or Codex, others restrict AI training and AI products, and one proposal tackles copyright in AI-generated code. What they cover, why enforcement is hard, and what it means for agentic IDEs.",
+      "description": "Experimental anti-AI software licences restrict coding agents, training or AI products. I examine the differences and the implications for development workflows.",
       "tags": ["ai", "open-source", "licensing", "coding-agents", "legal"],
       "file": "2026-10-17-open-source-but-not-if-you-use-ai.md"
     },
@@ -154,7 +154,7 @@
       "slug": "mistral-strategy-not-scale",
       "title": "Mistral Did Not Lose Because Europe Cannot Build AI",
       "date": "2026-06-14",
-      "description": "Europe's AI champion did not stumble for lack of GPUs or funding. Mistral chose to compete in OpenAI's arena instead of owning the one position only a European company could hold: the trusted enterprise platform.",
+      "description": "Why Mistral fell behind: an analysis of model competition, European AI sovereignty and the opportunity to build a trusted enterprise platform.",
       "tags": ["ai", "mistral", "europe", "strategy", "enterprise"],
       "file": "2026-06-14-mistral-strategy-not-scale.md"
     },
@@ -210,7 +210,7 @@
       "slug": "claude-code-source-leak-anatomy",
       "title": "Anatomy of the Claude Code Source Leak: What 512K Lines of TypeScript Reveal",
       "date": "2026-04-01",
-      "description": "A source map left in the npm package exposed Claude Code's full architecture. Prompt caching, context management, dual telemetry, security hardening, and the internal/external bifurcation.",
+      "description": "Inside the Claude Code source leak: TypeScript architecture, prompt caching, context management and telemetry, plus lessons for release pipelines.",
       "tags": ["ai", "claude-code", "security", "software-engineering", "anthropic"],
       "file": "2026-04-01-claude-code-source-leak-anatomy.md"
     },

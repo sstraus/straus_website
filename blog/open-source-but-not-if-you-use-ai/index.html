@@ -12,8 +12,12 @@
       }
     } catch (e) {}
   </script>
+  <script src="/js/analytics.js"></script>
+  <script>
+    window.siteAnalytics.track("/blog/open-source-but-not-if-you-use-ai/", "Open Source, But Not If You Use AI | Stefano Straus");
+  </script>
   <title>Open Source, But Not If You Use AI | Stefano Straus</title>
-  <meta name="description" content="New experimental licences forbid modifying code with Claude Code or Codex, others restrict AI training and AI products, and one proposal tackles copyright in AI-generated code. What they cover, why enforcement is hard, and what it means for agentic IDEs.">
+  <meta name="description" content="Experimental anti-AI software licences restrict coding agents, training or AI products. I examine the differences and the implications for development workflows.">
   <meta name="author" content="Stefano Straus">
   <link rel="canonical" href="https://straus.it/blog/open-source-but-not-if-you-use-ai/">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
@@ -21,7 +25,7 @@
 
   <!-- Open Graph -->
   <meta property="og:title" content="Open Source, But Not If You Use AI">
-  <meta property="og:description" content="New experimental licences forbid modifying code with Claude Code or Codex, others restrict AI training and AI products, and one proposal tackles copyright in AI-generated code. What they cover, why enforcement is hard, and what it means for agentic IDEs.">
+  <meta property="og:description" content="Experimental anti-AI software licences restrict coding agents, training or AI products. I examine the differences and the implications for development workflows.">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://straus.it/blog/open-source-but-not-if-you-use-ai/">
   <meta property="og:image" content="https://straus.it/img/profile.jpg">
@@ -39,7 +43,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="@StefanoStraus">
   <meta name="twitter:title" content="Open Source, But Not If You Use AI">
-  <meta name="twitter:description" content="New experimental licences forbid modifying code with Claude Code or Codex, others restrict AI training and AI products, and one proposal tackles copyright in AI-generated code. What they cover, why enforcement is hard, and what it means for agentic IDEs.">
+  <meta name="twitter:description" content="Experimental anti-AI software licences restrict coding agents, training or AI products. I examine the differences and the implications for development workflows.">
   <meta name="twitter:image" content="https://straus.it/img/profile.jpg">
 
   <!-- Structured Data -->
@@ -48,7 +52,7 @@
   "@context": "https://schema.org",
   "@type": "BlogPosting",
   "headline": "Open Source, But Not If You Use AI",
-  "description": "New experimental licences forbid modifying code with Claude Code or Codex, others restrict AI training and AI products, and one proposal tackles copyright in AI-generated code. What they cover, why enforcement is hard, and what it means for agentic IDEs.",
+  "description": "Experimental anti-AI software licences restrict coding agents, training or AI products. I examine the differences and the implications for development workflows.",
   "url": "https://straus.it/blog/open-source-but-not-if-you-use-ai/",
   "image": "https://straus.it/img/profile.jpg",
   "author": {
@@ -70,7 +74,7 @@
 }
   </script>
 
-  <link rel="stylesheet" href="/css/reader.css?v=1.7.8">
+  <link rel="stylesheet" href="/css/reader.css?v=1.7.9">
   <style>
     * { box-sizing: border-box; }
     body {
@@ -290,6 +294,7 @@
 <p>I am not convinced that restricting AI-assisted development addresses this problem effectively. It introduces compliance costs, raises unresolved legal questions, and may discourage adoption without providing much protection to maintainers.</p>
 <p>For now, these licences are experiments. Their long-term relevance will depend on whether developers adopt them, whether organisations are willing to accept their restrictions, and eventually how courts interpret them.</p>
 <p>But they already expose a contradiction. We have spent decades building a software ecosystem around the freedom to study, modify, and redistribute code. Now that AI is making those activities dramatically cheaper, some developers are trying to restrict the tools used to exercise that freedom.</p>
+<p>The security side of this workflow matters too. I look at that in <a href="/blog/supply-chain-attacks-love-ai-assisted-development/">supply-chain attacks and AI-assisted development</a>.</p>
 
   </article>
   <div class="terminal-link">

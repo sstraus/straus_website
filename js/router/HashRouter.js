@@ -1,6 +1,7 @@
 /**
  * HashRouter - Hash-based URL routing
  */
+import { resetPageTitle } from '../utils/pageTitle.js';
 import { commandRegistry } from '../commands/CommandRegistry.js';
 
 export class HashRouter {
@@ -20,7 +21,10 @@ export class HashRouter {
     this.hashChangeHandler = () => {
       if (this.terminal.isReady()) {
         const command = this.parseCurrentHash();
-        if (command) {
+        if (!command) {
+          if (this.terminal.reader.isOpen) this.terminal.reader.close();
+          else resetPageTitle();
+        } else {
           this.terminal.executeCommand(command, { echo: true });
         }
       }

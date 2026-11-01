@@ -9,22 +9,16 @@ const BASE_TITLE = 'Stefano Straus | Software Engineer';
  * Set the page title and send a GA4 page_view event
  * @param {string} [subtitle] - Optional subtitle to append
  */
-export function setPageTitle(subtitle = null) {
+export function setPageTitle(subtitle = null, articlePath = null) {
   const title = subtitle ? `${subtitle} | ${config.site.author}` : BASE_TITLE;
   document.title = title;
 
-  // Send page_view event to GA4 if gtag is available
-  if (typeof window.gtag === 'function') {
-    window.gtag('event', 'page_view', {
-      page_title: title,
-      page_location: window.location.href,
-    });
-  }
+  const routes = { About: '/about/', Skills: '/skills/', Contact: '/contact/', Blog: '/blog/' };
+  const path = articlePath || (subtitle === null ? '/' : routes[subtitle]);
+  if (path) window.siteAnalytics?.track(path, title);
 }
 
-/**
- * Reset page title to default
- */
+/** Reset page title to default. */
 export function resetPageTitle() {
   setPageTitle(null);
 }

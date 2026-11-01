@@ -142,3 +142,5 @@ I am not convinced that restricting AI-assisted development addresses this probl
 For now, these licences are experiments. Their long-term relevance will depend on whether developers adopt them, whether organisations are willing to accept their restrictions, and eventually how courts interpret them.
 
 But they already expose a contradiction. We have spent decades building a software ecosystem around the freedom to study, modify, and redistribute code. Now that AI is making those activities dramatically cheaper, some developers are trying to restrict the tools used to exercise that freedom.
+
+The security side of this workflow matters too. I look at that in [supply-chain attacks and AI-assisted development](/blog/supply-chain-attacks-love-ai-assisted-development/).

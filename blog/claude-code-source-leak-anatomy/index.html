@@ -12,8 +12,12 @@
       }
     } catch (e) {}
   </script>
+  <script src="/js/analytics.js"></script>
+  <script>
+    window.siteAnalytics.track("/blog/claude-code-source-leak-anatomy/", "Anatomy of the Claude Code Source Leak: What 512K Lines of TypeScript Reveal | Stefano Straus");
+  </script>
   <title>Anatomy of the Claude Code Source Leak: What 512K Lines of TypeScript Reveal | Stefano Straus</title>
-  <meta name="description" content="A source map left in the npm package exposed Claude Code's full architecture. Prompt caching, context management, dual telemetry, security hardening, and the internal/external bifurcation.">
+  <meta name="description" content="Inside the Claude Code source leak: TypeScript architecture, prompt caching, context management and telemetry, plus lessons for release pipelines.">
   <meta name="author" content="Stefano Straus">
   <link rel="canonical" href="https://straus.it/blog/claude-code-source-leak-anatomy/">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
@@ -21,7 +25,7 @@
 
   <!-- Open Graph -->
   <meta property="og:title" content="Anatomy of the Claude Code Source Leak: What 512K Lines of TypeScript Reveal">
-  <meta property="og:description" content="A source map left in the npm package exposed Claude Code's full architecture. Prompt caching, context management, dual telemetry, security hardening, and the internal/external bifurcation.">
+  <meta property="og:description" content="Inside the Claude Code source leak: TypeScript architecture, prompt caching, context management and telemetry, plus lessons for release pipelines.">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://straus.it/blog/claude-code-source-leak-anatomy/">
   <meta property="og:image" content="https://straus.it/img/profile.jpg">
@@ -39,7 +43,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="@StefanoStraus">
   <meta name="twitter:title" content="Anatomy of the Claude Code Source Leak: What 512K Lines of TypeScript Reveal">
-  <meta name="twitter:description" content="A source map left in the npm package exposed Claude Code's full architecture. Prompt caching, context management, dual telemetry, security hardening, and the internal/external bifurcation.">
+  <meta name="twitter:description" content="Inside the Claude Code source leak: TypeScript architecture, prompt caching, context management and telemetry, plus lessons for release pipelines.">
   <meta name="twitter:image" content="https://straus.it/img/profile.jpg">
 
   <!-- Structured Data -->
@@ -48,7 +52,7 @@
   "@context": "https://schema.org",
   "@type": "BlogPosting",
   "headline": "Anatomy of the Claude Code Source Leak: What 512K Lines of TypeScript Reveal",
-  "description": "A source map left in the npm package exposed Claude Code's full architecture. Prompt caching, context management, dual telemetry, security hardening, and the internal/external bifurcation.",
+  "description": "Inside the Claude Code source leak: TypeScript architecture, prompt caching, context management and telemetry, plus lessons for release pipelines.",
   "url": "https://straus.it/blog/claude-code-source-leak-anatomy/",
   "image": "https://straus.it/img/profile.jpg",
   "author": {
@@ -70,7 +74,7 @@
 }
   </script>
 
-  <link rel="stylesheet" href="/css/reader.css?v=1.7.8">
+  <link rel="stylesheet" href="/css/reader.css?v=1.7.9">
   <style>
     * { box-sizing: border-box; }
     body {
@@ -196,6 +200,7 @@
 <p>The deeper lesson is about build pipelines as attack surface. This is the second source map leak in under a year. The fix is trivial: <code>&quot;sourceMap&quot;: false</code> in tsconfig, or a CI gate that rejects <code>.map</code> files in publishable artifacts. The fact that it happened twice suggests the fix needs to live in process, not in individual memory.</p>
 <p>I still use Claude Code. I will keep using it. The engineering inside is genuinely impressive, and the prompt caching strategy alone is worth studying. But I now use it with eyes open about what telemetry it collects and how differently it behaves depending on who is running it.</p>
 <p>The most dangerous code is not the code you write. It is the code you publish by accident.</p>
+<p>For a related look at the risks around coding-agent dependencies, see <a href="/blog/supply-chain-attacks-love-ai-assisted-development/">why supply-chain attacks love AI-assisted development</a>.</p>
 
   </article>
   <div class="terminal-link">
