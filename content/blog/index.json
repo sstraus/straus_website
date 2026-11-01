@@ -1,6 +1,23 @@
 {
   "articles": [
     {
+      "slug": "cheap-code-expensive-quality",
+      "title": "Cheap code, expensive quality",
+      "date": "2026-11-01",
+      "description": "AI agents made code cheap and GitHub, the App Store and Product Hunt are flooded. Most new projects go quiet within months. The value moved to quality.",
+      "tags": [
+        "ai",
+        "github",
+        "open-source",
+        "coding-agents",
+        "software-quality",
+        "rust"
+      ],
+      "file": "2026-11-01-cheap-code-expensive-quality.md",
+      "cover": "img/cheap-code-expensive-quality-cover.png",
+      "coverAlt": "Illustration of a vast field of identical grey app windows, cracked, dusty and covered in cobwebs, with one carefully crafted window glowing warm amber in the foreground."
+    },
+    {
       "slug": "european-ai-sovereignty-hosted-in-europe-made-elsewhere",
       "title": "European AI sovereignty, hosted in Europe, made elsewhere",
       "date": "2026-10-28",
